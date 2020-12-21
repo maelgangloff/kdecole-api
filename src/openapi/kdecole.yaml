@@ -1,0 +1,255 @@
+swagger: "2.0"
+info:
+  description: "API Mon Bureau Numerique"
+  version: "1.0"
+  title: "Mon Bureau Numérique"
+host: "mobilite.monbureaunumerique.fr"
+basePath: "/mobilite"
+tags:
+  - name: "Messagerie"
+  - name: "Calendrier"
+  - name: "Vie scolaire"
+  - name: "Notes"
+  - name: "Utilisateur"
+
+schemes:
+  - "https"
+paths:
+  /activation/{username}/{password}/:
+    get:
+      tags:
+        - "Utilisateur"
+      summary: "activation"
+      security:
+        - api_version: [ ]
+      parameters:
+        - name: "username"
+          in: path
+          type: string
+          required: true
+        - name: "password"
+          in: path
+          type: string
+          required: true
+      responses:
+        200:
+          description: "successuful operation"
+  /messagerie/boiteReception/:
+    get:
+      tags:
+        - "Messagerie"
+      summary: "boiteReception"
+      security:
+        - api_version: [ ]
+        - api_key: [ ]
+      responses:
+        200:
+          description: "successful operation"
+  /messagerie/communication/{communicationID}/:
+    get:
+      tags:
+        - "Mesagerie"
+      summary: "communication"
+      security:
+        - api_version: [ ]
+        - api_key: [ ]
+      parameters:
+        - name: "communicationID"
+          in: path
+          type: number
+          required: true
+      responses:
+        200:
+          description: "successful operation"
+  /calendrier/idetablissement/{etabID}/:
+    get:
+      tags:
+        - "Calendrier"
+      summary: "calendrier"
+      security:
+        - api_version: [ ]
+        - api_key: [ ]
+      parameters:
+        - name: "etabID"
+          in: path
+          type: number
+          required: true
+      responses:
+        200:
+          description: "successful operation"
+  /consulterAbsences/idetablissement/{etabID}/:
+    get:
+      tags:
+        - "Vie scolaire"
+      summary: "consulterAbsences"
+      security:
+        - api_version: [ ]
+        - api_key: [ ]
+      parameters:
+
+        - name: "etabID"
+          in: path
+          type: number
+          required: true
+      responses:
+        200:
+          description: "successful operation"
+  /consulterNotes/idetablissement/{etabID}/:
+    get:
+      tags:
+        - "Notes"
+      summary: "consulterNotes"
+      security:
+        - api_version: [ ]
+        - api_key: [ ]
+      parameters:
+
+        - name: "etabID"
+          in: path
+          type: number
+          required: true
+      responses:
+        200:
+          description: "successful operation"
+  /consulterReleves/idetablissement/{etabID}/:
+    get:
+      tags:
+        - "Notes"
+      summary: "consulterReleves"
+      security:
+        - api_version: [ ]
+        - api_key: [ ]
+      parameters:
+
+        - name: "etabID"
+          in: path
+          type: number
+          required: true
+      responses:
+        200:
+          description: "successful operation"
+  /desactivation/:
+    get:
+      tags:
+        - "Utilisateur"
+      summary: "activation"
+      security:
+        - api_version: [ ]
+        - api_key: [ ]
+      responses:
+        200:
+          description: "successful operation"
+  /infoutilisateur/:
+    get:
+      tags:
+        - "Utilisateur"
+      summary: "infoutilisateur"
+      security:
+        - api_version: [ ]
+        - api_key: [ ]
+      responses:
+        200:
+          description: "successful operation"
+  /starting/:
+    get:
+      tags:
+        - "Utilisateur"
+      summary: "starting"
+      security:
+        - api_version: [ ]
+        - api_key: [ ]
+      responses:
+        200:
+          description: "successful operation"
+  /travailAFaire/idetablissement/{etabID}/:
+    get:
+      tags:
+        - "Calendrier"
+      summary: "travailAFaire"
+      security:
+        - api_version: [ ]
+        - api_key: [ ]
+      parameters:
+
+        - name: "etabID"
+          in: path
+          type: number
+          required: true
+      responses:
+        200:
+          description: "successful operation"
+  /contenuActivite/idetablissement/{etabID}/{seanceID}/{activiteID}/:
+    get:
+      tags:
+        - "Calendrier"
+      security:
+        - api_version: [ ]
+        - api_key: [ ]
+      summary: "contenuActivite"
+      parameters:
+
+        - name: "etabID"
+          in: path
+          type: number
+          required: true
+        - name: "seanceID"
+          in: path
+          type: number
+          required: true
+        - name: "activiteID"
+          in: path
+          type: number
+          required: true
+      responses:
+        200:
+          description: "successful operation"
+    put:
+      tags:
+        - "Calendrier"
+      security:
+        - api_version: [ ]
+        - api_key: [ ]
+      summary: "changer statut réalisé"
+      consumes:
+        - "application/json"
+      parameters:
+
+        - name: "etabID"
+          in: path
+          type: number
+          required: true
+        - name: "seanceID"
+          in: path
+          type: number
+          required: true
+        - name: "activiteID"
+          in: path
+          type: number
+          required: true
+        - in: "body"
+          name: "body"
+          description: "flagRealise"
+          required: true
+          schema:
+            $ref: "#/definitions/FlagRealise"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/FlagRealise"
+securityDefinitions:
+  api_key:
+    in: header
+    type: apiKey
+    name: X-Kdecole-Auth
+  api_version:
+    in: header
+    type: apiKey
+    name: X-Kdecole-Vers
+definitions:
+  FlagRealise:
+    type: "object"
+    properties:
+      flagRealise:
+        type: "boolean"
+        
