@@ -90,6 +90,7 @@ export class Communication {
     public async signalerCommunication ():Promise<void> {
       await Endpoint.kdecole({
         service: 'messagerie/communication/signaler',
+        type: 'put',
         parameters: `${this.id}`
       })
     }

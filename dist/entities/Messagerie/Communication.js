@@ -34,6 +34,7 @@ class Communication {
     async signalerCommunication() {
         await Endpoint_1.Endpoint.kdecole({
             service: 'messagerie/communication/signaler',
+            type: 'put',
             parameters: `${this.id}`
         });
     }
