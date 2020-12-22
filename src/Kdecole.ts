@@ -1,11 +1,10 @@
 import { Desactivation } from './entities/Authentication/Desactivation.js'
 import { Activation } from './entities/Authentication/Activation.js'
-import { APP_VERSION, IDETABLISSEMENT, LOGIN, PASSWORD, SECRET } from './config'
+import { APP_VERSION, IDETABLISSEMENT, SECRET } from './config'
 import { Releve } from './entities/Note/Releve'
 import { Endpoint } from './entities/Endpoint'
 import { TravailAFaire } from './entities/Travail/TravailAFaire'
 import { Actualite } from './entities/News/Actualite'
-import { Absence } from './entities/VieScolaire/Absence'
 import { AbsencesList } from './entities/VieScolaire/AbsencesList'
 import { Utilisateur } from './entities/User/Utilisateur'
 import { Calendrier } from './entities/Calendar/Calendrier'
@@ -18,84 +17,97 @@ import { MessageBoiteReception } from './entities/Messagerie/MessageBoiteRecepti
  */
 
 export class Kdecole {
-    public static authToken: string
-    public static appVersion = '3.4.14'
-    public static idEtablissement = 0
+  public static authToken: string
+  public static appVersion = '3.4.14'
+  public static idEtablissement = 0
 
-    constructor (
-      authToken = SECRET ?? null,
-      appVersion = APP_VERSION ?? undefined,
-      idEtablissement = IDETABLISSEMENT ?? 0
-    ) {
-      if (authToken === null) {
-        throw Error("Un jeton d'accès doit être renseigné")
-      }
-      Kdecole.authToken = authToken
-      if (appVersion) Kdecole.appVersion = appVersion
-      Kdecole.idEtablissement = idEtablissement
+  constructor (
+    authToken:string = SECRET ?? null,
+    appVersion:string = APP_VERSION ?? undefined,
+    idEtablissement:number = IDETABLISSEMENT ?? 0
+  ) {
+    if (authToken === null) {
+      throw Error("Un jeton d'accès doit être renseigné")
     }
+    Kdecole.authToken = authToken
+    if (appVersion) Kdecole.appVersion = appVersion
+    Kdecole.idEtablissement = idEtablissement
+  }
 
-    public static async login (config?: { login: string, password: string }): Promise<Kdecole> {
-      return Activation.activation({
-        login: config?.login ?? LOGIN ?? '',
-        password: config?.password ?? PASSWORD ?? ''
-      }).then(activation => {
-        if (activation.authtoken && activation.success) {
-          return new Kdecole()
-        } else {
-          throw Error('Erreur de connexion')
-        }
-      })
+  public static async login (login: string, password: string): Promise<string> {
+    const activation = await Activation.activation({
+      login: login,
+      password: password
+    })
+    if (activation.authtoken && activation.success) {
+      return activation.authtoken
+    } else {
+      throw Error('Erreur de connexion')
     }
+  }
 
-    public logout (): Promise<Desactivation | Error> {
-      return Desactivation.desactivation()
-    }
+  public logout (): Promise<Desactivation | Error> {
+    return Desactivation.desactivation()
+  }
 
-    public getReleve (): Promise<Releve> {
-      return Endpoint.kdecole('consulterReleves', `idetablissement/${Kdecole.idEtablissement}`).then(releve =>
-        new Releve(releve)
-      )
-    }
+  public async getReleve (idEleve?: string): Promise<Releve> {
+    return new Releve(await Endpoint.kdecole({
+      service: 'consulterReleves',
+      parameters: idEleve ? `ideleve/${idEleve}` : undefined
+    }))
+  }
 
-    public getActualites (): Promise<Actualite[]> {
-      return Endpoint.kdecole('actualites', `idetablissement/${Kdecole.idEtablissement}`).then(JSONactualites => {
-        const actualites: Actualite[] = []
-        for (const JSONactualite of JSONactualites) {
-          actualites.push(new Actualite(JSONactualite))
-        }
-        return actualites
-      })
+  public async getActualites (idEleve?: string): Promise<Actualite[]> {
+    const actualites: Actualite[] = []
+    for (const JSONactualite of await Endpoint.kdecole({
+      service: 'actualites',
+      parameters: idEleve ? `ideleve/${idEleve}` : undefined
+    })) {
+      actualites.push(new Actualite(JSONactualite))
     }
+    return actualites
+  }
 
-    public getTravailAFaire (): Promise<TravailAFaire> {
-      return Endpoint.kdecole('travailAFaire', `idetablissement/${Kdecole.idEtablissement}`).then(travailAFaire =>
-        new TravailAFaire(travailAFaire))
-    }
+  public async getTravailAFaire (idEleve?:string): Promise<TravailAFaire> {
+    return new TravailAFaire(await Endpoint.kdecole({
+      service: 'travailAFaire',
+      parameters: idEleve ? `ideleve/${idEleve}` : undefined
+    }))
+  }
 
-    public getAbsences (): Promise<Absence[]> {
-      return Endpoint.kdecole('consulterAbsences', `idetablissement/${Kdecole.idEtablissement}`).then(absences =>
-        new AbsencesList(absences).listeAbsences
-      )
-    }
+  public async getAbsences (idEleve?: string): Promise<AbsencesList> {
+    return new AbsencesList(await Endpoint.kdecole({
+      service: 'consulterAbsences',
+      parameters: idEleve ? `ideleve/${idEleve}` : undefined
+    }))
+  }
 
-    public getInfoUtilisateur (): Promise<Utilisateur> {
-      return Endpoint.kdecole('infoutilisateur').then(utilisateur => new Utilisateur(utilisateur))
-    }
+  public async getInfoUtilisateur (idEleve?: string): Promise<Utilisateur> {
+    return new Utilisateur(await Endpoint.kdecole({
+      service: 'infoutilisateur',
+      parameters: idEleve ? `ideleve/${idEleve}` : undefined
+    }))
+  }
 
-    public getCalendrier (): Promise<Calendrier> {
-      return Endpoint.kdecole('calendrier', `idetablissement/${Kdecole.idEtablissement}`).then(calendrier => new Calendrier(calendrier))
-    }
+  public async getCalendrier (idEleve?:string): Promise<Calendrier> {
+    return new Calendrier(await Endpoint.kdecole({
+      service: 'calendrier',
+      parameters: idEleve ? `ideleve/${idEleve}` : undefined
+    }))
+  }
 
-    public getNotes (): Promise<NotesList> {
-      return Endpoint.kdecole('consulterNotes', `idetablissement/${Kdecole.idEtablissement}`).then(notesList => new NotesList(notesList))
-    }
+  public async getNotes (idEleve?:string): Promise<NotesList> {
+    return new NotesList(await Endpoint.kdecole({
+      service: 'consulterNotes',
+      parameters: idEleve ? `ideleve/${idEleve}` : undefined
+    }))
+  }
 
-    public getMessagerieInfo (): Promise<MessageInfo> {
-      return Endpoint.kdecole('messagerie/info').then(messagerieInfo => new MessageInfo(messagerieInfo))
-    }
+  public async getMessagerieInfo (): Promise<MessageInfo> {
+    return new MessageInfo(await Endpoint.kdecole({ service: 'messagerie/info' }))
+  }
 
-    public getMessagerieBoiteReception (): Promise<MessageBoiteReception> {
-      return Endpoint.kdecole('messagerie/boiteReception').then(messagerieBoiteReception => new MessageBoiteReception(messagerieBoiteReception))
-    }
+  public async getMessagerieBoiteReception (): Promise<MessageBoiteReception> {
+    return new MessageBoiteReception(await Endpoint.kdecole({ service: 'messagerie/boiteReception' }))
+  }
 }

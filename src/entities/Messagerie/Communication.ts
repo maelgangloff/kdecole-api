@@ -1,5 +1,6 @@
 import { Participant } from './Participant.js'
 import { Participation } from './Participation.js'
+import { Endpoint } from '../Endpoint'
 
 export class Communication {
     private participants: Array<Participant> = []
@@ -76,5 +77,27 @@ export class Communication {
       this.etat = communication.etat
       this.premieresLignes = communication.premieresLignes
       this.etatLecure = communication.etatLecture
+    }
+
+    public async getCommunication (): Promise<Communication> {
+      return new Communication(await Endpoint.kdecole({
+        service: 'messagerie/communication',
+        type: 'put',
+        parameters: `${this.id}`
+      }))
+    }
+
+    public async signalerCommunication ():Promise<void> {
+      await Endpoint.kdecole({
+        service: 'messagerie/communication/signaler',
+        parameters: `${this.id}`
+      })
+    }
+
+    public async supprimerCommunication ():Promise<void> {
+      await Endpoint.kdecole({
+        service: 'messagerie/communication/supprimer',
+        parameters: `${this.id}`
+      })
     }
 }

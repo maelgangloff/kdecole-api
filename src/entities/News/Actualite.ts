@@ -26,7 +26,7 @@ export class Actualite {
     }
 
     public getContenuArticle (): Promise<ContenuArticle> {
-      return Endpoint.kdecole('contenuArticle', `article/${this.uid}`).then(contenuArticle =>
+      return Endpoint.kdecole({ service: 'contenuArticle', parameters: `article/${this.uid}` }).then(contenuArticle =>
         new ContenuArticle(contenuArticle)
       )
     }

@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.Communication = void 0;
 const Participant_js_1 = require("./Participant.js");
 const Participation_js_1 = require("./Participation.js");
+const Endpoint_1 = require("../Endpoint");
 class Communication {
     constructor(communication) {
         this.participants = [];
@@ -22,6 +23,25 @@ class Communication {
         this.etat = communication.etat;
         this.premieresLignes = communication.premieresLignes;
         this.etatLecure = communication.etatLecture;
+    }
+    async getCommunication() {
+        return new Communication(await Endpoint_1.Endpoint.kdecole({
+            service: 'messagerie/communication',
+            type: 'put',
+            parameters: `${this.id}`
+        }));
+    }
+    async signalerCommunication() {
+        await Endpoint_1.Endpoint.kdecole({
+            service: 'messagerie/communication/signaler',
+            parameters: `${this.id}`
+        });
+    }
+    async supprimerCommunication() {
+        await Endpoint_1.Endpoint.kdecole({
+            service: 'messagerie/communication/supprimer',
+            parameters: `${this.id}`
+        });
     }
 }
 exports.Communication = Communication;

@@ -16,11 +16,12 @@ export class Activation extends Endpoint {
       this.authtoken = activation.authtoken
     }
 
-    public static activation (data: { login: string, password: string }): Promise<Activation> {
-      return Endpoint.kdecole('activation', `${data.login}/${data.password}`).then(response => {
-        const activation = new Activation(response)
-        if (activation.success) return activation
-        throw new Error("Une erreur est survenue dans le traitement des données d'authentification")
-      })
+    public static async activation (data: { login: string, password: string }): Promise<Activation> {
+      const activation = new Activation(await Endpoint.kdecole({
+        service: 'activation',
+        parameters: `${data.login}/${data.password}`
+      }))
+      if (activation.success) return activation
+      throw new Error("Une erreur est survenue dans le traitement des données d'authentification")
     }
 }

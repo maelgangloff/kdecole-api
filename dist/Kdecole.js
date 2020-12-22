@@ -24,54 +24,72 @@ class Kdecole {
             Kdecole.appVersion = appVersion;
         Kdecole.idEtablissement = idEtablissement;
     }
-    static async login(config) {
-        return Activation_js_1.Activation.activation({
-            login: config?.login ?? config_1.LOGIN ?? '',
-            password: config?.password ?? config_1.PASSWORD ?? ''
-        }).then(activation => {
-            if (activation.authtoken && activation.success) {
-                return new Kdecole();
-            }
-            else {
-                throw Error('Erreur de connexion');
-            }
+    static async login(login, password) {
+        const activation = await Activation_js_1.Activation.activation({
+            login: login,
+            password: password
         });
+        if (activation.authtoken && activation.success) {
+            return activation.authtoken;
+        }
+        else {
+            throw Error('Erreur de connexion');
+        }
     }
     logout() {
         return Desactivation_js_1.Desactivation.desactivation();
     }
-    getReleve() {
-        return Endpoint_1.Endpoint.kdecole('consulterReleves', `idetablissement/${Kdecole.idEtablissement}`).then(releve => new Releve_1.Releve(releve));
+    async getReleve(idEleve) {
+        return new Releve_1.Releve(await Endpoint_1.Endpoint.kdecole({
+            service: 'consulterReleves',
+            parameters: idEleve ? `ideleve/${idEleve}` : undefined
+        }));
     }
-    getActualites() {
-        return Endpoint_1.Endpoint.kdecole('actualites', `idetablissement/${Kdecole.idEtablissement}`).then(JSONactualites => {
-            const actualites = [];
-            for (const JSONactualite of JSONactualites) {
-                actualites.push(new Actualite_1.Actualite(JSONactualite));
-            }
-            return actualites;
-        });
+    async getActualites(idEleve) {
+        const actualites = [];
+        for (const JSONactualite of await Endpoint_1.Endpoint.kdecole({
+            service: 'actualites',
+            parameters: idEleve ? `ideleve/${idEleve}` : undefined
+        })) {
+            actualites.push(new Actualite_1.Actualite(JSONactualite));
+        }
+        return actualites;
     }
-    getTravailAFaire() {
-        return Endpoint_1.Endpoint.kdecole('travailAFaire', `idetablissement/${Kdecole.idEtablissement}`).then(travailAFaire => new TravailAFaire_1.TravailAFaire(travailAFaire));
+    async getTravailAFaire(idEleve) {
+        return new TravailAFaire_1.TravailAFaire(await Endpoint_1.Endpoint.kdecole({
+            service: 'travailAFaire',
+            parameters: idEleve ? `ideleve/${idEleve}` : undefined
+        }));
     }
-    getAbsences() {
-        return Endpoint_1.Endpoint.kdecole('consulterAbsences', `idetablissement/${Kdecole.idEtablissement}`).then(absences => new AbsencesList_1.AbsencesList(absences).listeAbsences);
+    async getAbsences(idEleve) {
+        return new AbsencesList_1.AbsencesList(await Endpoint_1.Endpoint.kdecole({
+            service: 'consulterAbsences',
+            parameters: idEleve ? `ideleve/${idEleve}` : undefined
+        }));
     }
-    getInfoUtilisateur() {
-        return Endpoint_1.Endpoint.kdecole('infoutilisateur').then(utilisateur => new Utilisateur_1.Utilisateur(utilisateur));
+    async getInfoUtilisateur(idEleve) {
+        return new Utilisateur_1.Utilisateur(await Endpoint_1.Endpoint.kdecole({
+            service: 'infoutilisateur',
+            parameters: idEleve ? `ideleve/${idEleve}` : undefined
+        }));
     }
-    getCalendrier() {
-        return Endpoint_1.Endpoint.kdecole('calendrier', `idetablissement/${Kdecole.idEtablissement}`).then(calendrier => new Calendrier_1.Calendrier(calendrier));
+    async getCalendrier(idEleve) {
+        return new Calendrier_1.Calendrier(await Endpoint_1.Endpoint.kdecole({
+            service: 'calendrier',
+            parameters: idEleve ? `ideleve/${idEleve}` : undefined
+        }));
     }
-    getNotes() {
-        return Endpoint_1.Endpoint.kdecole('consulterNotes', `idetablissement/${Kdecole.idEtablissement}`).then(notesList => new NotesList_1.NotesList(notesList));
+    async getNotes(idEleve) {
+        return new NotesList_1.NotesList(await Endpoint_1.Endpoint.kdecole({
+            service: 'consulterNotes',
+            parameters: idEleve ? `ideleve/${idEleve}` : undefined
+        }));
     }
-    getMessagerieInfo() {
-        return Endpoint_1.Endpoint.kdecole('messagerie/info').then(messagerieInfo => new MessageInfo_1.MessageInfo(messagerieInfo));
+    async getMessagerieInfo() {
+        return new MessageInfo_1.MessageInfo(await Endpoint_1.Endpoint.kdecole({ service: 'messagerie/info' }));
     }
-    getMessagerieBoiteReception() {
-        return Endpoint_1.Endpoint.kdecole('messagerie/boiteReception').then(messagerieBoiteReception => new MessageBoiteReception_1.MessageBoiteReception(messagerieBoiteReception));
+    async getMessagerieBoiteReception() {
+        return new MessageBoiteReception_1.MessageBoiteReception(await Endpoint_1.Endpoint.kdecole({ service: 'messagerie/boiteReception' }));
     }
 }
 exports.Kdecole = Kdecole;

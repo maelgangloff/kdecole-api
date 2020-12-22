@@ -33,7 +33,10 @@ export class Travail {
     }
 
     public getContenuActivite (): Promise<ContenuActivite> {
-      return Endpoint.kdecole('contenuActivite', `idetablissement/${Kdecole.idEtablissement}/${this.uidSeance}/${this.uid}/`).then(contenuActivite => {
+      return Endpoint.kdecole({
+        service: 'contenuActivite',
+        parameters: `idetablissement/${Kdecole.idEtablissement}/${this.uidSeance}/${this.uid}/`
+      }).then(contenuActivite => {
         return new ContenuActivite(contenuActivite)
       })
     }

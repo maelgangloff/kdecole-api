@@ -9,7 +9,7 @@ class Desactivation {
         this.authtoken = desactivation.authtoken;
     }
     static desactivation() {
-        return Endpoint_js_1.Endpoint.kdecole('desactivation').then(response => {
+        return Endpoint_js_1.Endpoint.kdecole({ service: 'desactivation' }).then(response => {
             const desactivation = new Desactivation(response);
             if (desactivation.success)
                 return desactivation;

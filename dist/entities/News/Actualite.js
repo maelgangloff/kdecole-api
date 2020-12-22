@@ -13,7 +13,7 @@ class Actualite {
         this.uid = article.uid;
     }
     getContenuArticle() {
-        return Endpoint_1.Endpoint.kdecole('contenuArticle', `article/${this.uid}`).then(contenuArticle => new ContenuArticle_1.ContenuArticle(contenuArticle));
+        return Endpoint_1.Endpoint.kdecole({ service: 'contenuArticle', parameters: `article/${this.uid}` }).then(contenuArticle => new ContenuArticle_1.ContenuArticle(contenuArticle));
     }
 }
 exports.Actualite = Actualite;

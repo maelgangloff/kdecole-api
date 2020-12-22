@@ -16,7 +16,7 @@ export class Desactivation {
     }
 
     public static desactivation (): Promise<Desactivation | Error> {
-      return Endpoint.kdecole('desactivation').then(response => {
+      return Endpoint.kdecole({ service: 'desactivation' }).then(response => {
         const desactivation = new Desactivation(response)
         if (desactivation.success) return desactivation
         return new Error('Une erreur est survenue dans le traitement des données de déconnexion')

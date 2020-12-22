@@ -2,7 +2,7 @@ import { Desactivation } from './entities/Authentication/Desactivation.js';
 import { Releve } from './entities/Note/Releve';
 import { TravailAFaire } from './entities/Travail/TravailAFaire';
 import { Actualite } from './entities/News/Actualite';
-import { Absence } from './entities/VieScolaire/Absence';
+import { AbsencesList } from './entities/VieScolaire/AbsencesList';
 import { Utilisateur } from './entities/User/Utilisateur';
 import { Calendrier } from './entities/Calendar/Calendrier';
 import { NotesList } from './entities/Note/NotesList';
@@ -13,18 +13,15 @@ export declare class Kdecole {
     static appVersion: string;
     static idEtablissement: number;
     constructor(authToken?: string, appVersion?: string, idEtablissement?: number);
-    static login(config?: {
-        login: string;
-        password: string;
-    }): Promise<Kdecole>;
+    static login(login: string, password: string): Promise<string>;
     logout(): Promise<Desactivation | Error>;
-    getReleve(): Promise<Releve>;
-    getActualites(): Promise<Actualite[]>;
-    getTravailAFaire(): Promise<TravailAFaire>;
-    getAbsences(): Promise<Absence[]>;
-    getInfoUtilisateur(): Promise<Utilisateur>;
-    getCalendrier(): Promise<Calendrier>;
-    getNotes(): Promise<NotesList>;
+    getReleve(idEleve?: string): Promise<Releve>;
+    getActualites(idEleve?: string): Promise<Actualite[]>;
+    getTravailAFaire(idEleve?: string): Promise<TravailAFaire>;
+    getAbsences(idEleve?: string): Promise<AbsencesList>;
+    getInfoUtilisateur(idEleve?: string): Promise<Utilisateur>;
+    getCalendrier(idEleve?: string): Promise<Calendrier>;
+    getNotes(idEleve?: string): Promise<NotesList>;
     getMessagerieInfo(): Promise<MessageInfo>;
     getMessagerieBoiteReception(): Promise<MessageBoiteReception>;
 }

@@ -9,13 +9,14 @@ class Activation extends Endpoint_js_1.Endpoint {
         this.success = activation.success;
         this.authtoken = activation.authtoken;
     }
-    static activation(data) {
-        return Endpoint_js_1.Endpoint.kdecole('activation', `${data.login}/${data.password}`).then(response => {
-            const activation = new Activation(response);
-            if (activation.success)
-                return activation;
-            throw new Error("Une erreur est survenue dans le traitement des données d'authentification");
-        });
+    static async activation(data) {
+        const activation = new Activation(await Endpoint_js_1.Endpoint.kdecole({
+            service: 'activation',
+            parameters: `${data.login}/${data.password}`
+        }));
+        if (activation.success)
+            return activation;
+        throw new Error("Une erreur est survenue dans le traitement des données d'authentification");
     }
 }
 exports.Activation = Activation;

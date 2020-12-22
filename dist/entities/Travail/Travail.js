@@ -16,7 +16,10 @@ class Travail {
         this.uidSeance = parseInt(travailAFaire.uidSeance);
     }
     getContenuActivite() {
-        return Endpoint_1.Endpoint.kdecole('contenuActivite', `idetablissement/${Kdecole_1.Kdecole.idEtablissement}/${this.uidSeance}/${this.uid}/`).then(contenuActivite => {
+        return Endpoint_1.Endpoint.kdecole({
+            service: 'contenuActivite',
+            parameters: `idetablissement/${Kdecole_1.Kdecole.idEtablissement}/${this.uidSeance}/${this.uid}/`
+        }).then(contenuActivite => {
             return new ContenuActivite_1.ContenuActivite(contenuActivite);
         });
     }
