@@ -174,6 +174,47 @@ export class Kdecole {
     })
   }
 
+  public async getMoyenneGenerale (trimestre?:1|2|3, idEleve?: string): Promise<number> {
+    const moyennes = await this.getTableauMoyennes(trimestre, idEleve)
+    let moyenneGenerale = 0
+    for (const moyenne of moyennes) {
+      moyenneGenerale += moyenne / moyennes.length
+    }
+    return moyenneGenerale
+  }
+
+  public async getMedianeGenerale (trimestre?:1|2|3, idEleve?: string): Promise<number> {
+    let moyennes = await this.getTableauMoyennes(trimestre, idEleve)
+
+    moyennes = moyennes.slice(0).sort(function (x, y) {
+      return x - y
+    })
+    const b = (moyennes.length + 1) / 2
+    return (moyennes.length % 2) ? moyennes[b - 1] : (moyennes[b - 1.5] + moyennes[b - 0.5]) / 2
+  }
+
+  private async getTableauMoyennes (trimestre?:1|2|3, idEleve?: string): Promise<number[]> {
+    const releve = await this.getReleve(idEleve)
+    let numeroTrimestre:number|undefined = trimestre
+    if (numeroTrimestre === undefined) {
+      for (const key in releve.trimestres) {
+        if (releve.trimestres[parseInt(key)].periodeEnCours) {
+          numeroTrimestre = parseInt(key) + 1
+        }
+      }
+    }
+    if (numeroTrimestre === undefined) throw Error('Aucun trimestre en cours')
+    const trimestreObject = releve.trimestres[numeroTrimestre - 1]
+    const moyennes: number[] = []
+    for (const matiere of trimestreObject.matieres) {
+      if (typeof matiere.moyenneEleve === 'number') {
+        moyennes.push(matiere.moyenneEleve)
+      }
+    }
+    if (moyennes.length === 0) throw Error('Pas de moyennes dans ce trimestre.')
+    return moyennes
+  }
+
   private async kdecole ({ service, parameters, type = 'get', data }: KdecoleRequest): Promise<any> {
     if (parameters === undefined) parameters = `idetablissement/${this.idEtablissement}`
     return await Kdecole.callAPI(this.appVersion, this.authToken, { service, parameters, type, data })

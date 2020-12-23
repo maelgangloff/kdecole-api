@@ -38,6 +38,9 @@ export declare class Kdecole {
     getCommunication(id: number): Promise<Communication>;
     signalerCommunication(id: number): Promise<void>;
     supprimerCommunication(id: number): Promise<void>;
+    getMoyenneGenerale(trimestre?: 1 | 2 | 3, idEleve?: string): Promise<number>;
+    getMedianeGenerale(trimestre?: 1 | 2 | 3, idEleve?: string): Promise<number>;
+    private getTableauMoyennes;
     private kdecole;
     static callAPI(appVersion: string, authToken: string, { service, parameters, type, data }: KdecoleRequest): Promise<any>;
 }

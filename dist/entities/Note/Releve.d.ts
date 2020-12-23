@@ -34,5 +34,4 @@ export declare class Releve {
         periodeEnCours: boolean;
         bareme: string;
     }>);
-    getMoyenneGenerale(): number;
 }
