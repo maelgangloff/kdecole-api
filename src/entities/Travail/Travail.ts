@@ -1,7 +1,3 @@
-import { Endpoint } from '../Endpoint'
-import { Kdecole } from '../../Kdecole'
-import { ContenuActivite } from './ContenuActivite'
-
 export class Travail {
     public type: string
     public temps: number
@@ -30,14 +26,5 @@ export class Travail {
       this.date = new Date(travailAFaire.date)
       this.uid = parseInt(travailAFaire.uid)
       this.uidSeance = parseInt(travailAFaire.uidSeance)
-    }
-
-    public getContenuActivite (): Promise<ContenuActivite> {
-      return Endpoint.kdecole({
-        service: 'contenuActivite',
-        parameters: `idetablissement/${Kdecole.idEtablissement}/${this.uidSeance}/${this.uid}/`
-      }).then(contenuActivite => {
-        return new ContenuActivite(contenuActivite)
-      })
     }
 }

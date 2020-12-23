@@ -1,4 +1,3 @@
-import { ContenuActivite } from './ContenuActivite';
 export declare class Travail {
     type: string;
     temps: number;
@@ -18,5 +17,4 @@ export declare class Travail {
         uid: string;
         uidSeance: string;
     });
-    getContenuActivite(): Promise<ContenuActivite>;
 }

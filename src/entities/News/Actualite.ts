@@ -1,6 +1,3 @@
-import { ContenuArticle } from './ContenuArticle'
-import { Endpoint } from '../Endpoint'
-
 export class Actualite {
     public type: string
     public auteur: string
@@ -23,11 +20,5 @@ export class Actualite {
       this.codeEmetteur = parseInt(article.codeEmetteur)
       this.date = new Date(article.date)
       this.uid = article.uid
-    }
-
-    public getContenuArticle (): Promise<ContenuArticle> {
-      return Endpoint.kdecole({ service: 'contenuArticle', parameters: `article/${this.uid}` }).then(contenuArticle =>
-        new ContenuArticle(contenuArticle)
-      )
     }
 }
