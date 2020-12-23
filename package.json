@@ -1,6 +1,6 @@
 {
   "name": "kdecole-api",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "main": "dist/Kdecole.js",
   "author": {
     "name": "Maël Gangloff",
