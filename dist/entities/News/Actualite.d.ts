@@ -1,4 +1,3 @@
-import { ContenuArticle } from './ContenuArticle';
 export declare class Actualite {
     type: string;
     auteur: string;
@@ -14,5 +13,4 @@ export declare class Actualite {
         date: number;
         uid: string;
     });
-    getContenuArticle(): Promise<ContenuArticle>;
 }

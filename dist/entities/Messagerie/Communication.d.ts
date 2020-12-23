@@ -57,7 +57,4 @@ export declare class Communication {
         premieresLignes: string;
         etatLecture: boolean;
     });
-    getCommunication(): Promise<Communication>;
-    signalerCommunication(): Promise<void>;
-    supprimerCommunication(): Promise<void>;
 }
