@@ -261,7 +261,7 @@ export class Kdecole {
    * @return {Promise<number>}
    */
   public async getMoyenneGenerale (trimestre?:number, idEleve?: string): Promise<number> {
-    if(trimestre !== undefined && [1, 2, 3].includes(trimestre)) throw Error('Le trimestre doit être 1, 2 ou 3')
+    if (trimestre !== undefined && [1, 2, 3].includes(trimestre)) throw Error('Le trimestre doit être 1, 2 ou 3')
     const moyennes = await this.getTableauMoyennes(trimestre, idEleve)
     let moyenneGenerale = 0
     for (const moyenne of moyennes) {
@@ -277,7 +277,7 @@ export class Kdecole {
    * @return {Promise<number>}
    */
   public async getMedianeGenerale (trimestre?:number, idEleve?: string): Promise<number> {
-    if(trimestre !== undefined && [1, 2, 3].includes(trimestre)) throw Error('Le trimestre doit être 1, 2 ou 3')
+    if (trimestre !== undefined && [1, 2, 3].includes(trimestre)) throw Error('Le trimestre doit être 1, 2 ou 3')
     let moyennes = await this.getTableauMoyennes(trimestre, idEleve)
 
     moyennes = moyennes.slice(0).sort(function (x, y) {
@@ -295,7 +295,7 @@ export class Kdecole {
    * @private
    */
   private async getTableauMoyennes (trimestre?:number, idEleve?: string): Promise<number[]> {
-    if(trimestre !== undefined && [1, 2, 3].includes(trimestre)) throw Error('Le trimestre doit être 1, 2 ou 3')
+    if (trimestre !== undefined && [1, 2, 3].includes(trimestre)) throw Error('Le trimestre doit être 1, 2 ou 3')
     const releve = await this.getReleve(idEleve)
     let numeroTrimestre:number|undefined = trimestre
     if (numeroTrimestre === undefined) {
