@@ -1,10 +1,10 @@
 import { Communication } from './Communication.js'
 
 export class MessageBoiteReception {
-    private nbMaxCommunicationRecues: number
-    private communications: Array<Communication> = []
-    private nbMaxCaracteresMessage: number
-    private nbMaxCommunicationBoiteReception: number
+    public nbMaxCommunicationRecues: number
+    public communications: Array<Communication> = []
+    public nbMaxCaracteresMessage: number
+    public nbMaxCommunicationBoiteReception: number
 
     constructor (messageBoiteReception: {
         nbMaxCommunicationRecues: number

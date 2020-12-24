@@ -1,8 +1,8 @@
 export class Etablissement {
-    private permissions: string
-    private uid: string
-    private nom: string
-    private active: boolean
+    public permissions: string
+    public uid: string
+    public nom: string
+    public active: boolean
 
     constructor (etablissement: {
         permissions: string

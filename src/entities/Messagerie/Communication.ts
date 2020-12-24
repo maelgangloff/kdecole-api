@@ -2,21 +2,21 @@ import { Participant } from './Participant.js'
 import { Participation } from './Participation.js'
 
 export class Communication {
-    private participants: Array<Participant> = []
-    private expediteurActuel: Participant
-    private signalable: boolean
-    private expediteurInitial: Participant
-    private id: number
-    private dateDernierMessage: Date
-    private nbParticipations: number
-    private isExpediteurInitial: boolean
-    private pieceJointe: boolean
-    private participations: Array<Participation> = []
-    private objet: string
-    private type: string
-    private etat: string
-    private premieresLignes: string
-    private etatLecure: boolean
+    public participants: Array<Participant> = []
+    public expediteurActuel: Participant
+    public signalable: boolean
+    public expediteurInitial: Participant
+    public id: number
+    public dateDernierMessage: Date
+    public nbParticipations: number
+    public isExpediteurInitial: boolean
+    public pieceJointe: boolean
+    public participations: Array<Participation> = []
+    public objet: string
+    public type: string
+    public etat: string
+    public premieresLignes: string
+    public etatLecure: boolean
 
     constructor (communication: {
         participants: Array<{

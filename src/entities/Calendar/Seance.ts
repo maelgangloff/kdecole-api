@@ -1,20 +1,20 @@
 import { Exercice } from './Exercice'
 
 export class Seance {
-    private hdeb: Date
-    private enSeance: Array<Exercice> | null = []
-    private matiere: string
-    private aFaire: Array<Exercice> | null = []
-    private heureFin: string
-    private flagModif: boolean
-    private flagActif: boolean
-    private heureDebut: string
-    private hfin: Date
-    private aRendre: Array<Exercice> | null = []
-    private motifModif: string | null
-    private idSeance: number
-    private salle: string
-    private titre: string
+    public hdeb: Date
+    public enSeance: Array<Exercice> | null = []
+    public matiere: string
+    public aFaire: Array<Exercice> | null = []
+    public heureFin: string
+    public flagModif: boolean
+    public flagActif: boolean
+    public heureDebut: string
+    public hfin: Date
+    public aRendre: Array<Exercice> | null = []
+    public motifModif: string | null
+    public idSeance: number
+    public salle: string
+    public titre: string
 
     constructor (seance: {
         hdeb: number

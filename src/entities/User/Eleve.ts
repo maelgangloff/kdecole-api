@@ -1,8 +1,8 @@
 export class Eleve {
-    private active: boolean
-    private nom: string
-    private uid: string
-    private permissions: string | null
+    public active: boolean
+    public nom: string
+    public uid: string
+    public permissions: string | null
 
     constructor (eleve: {
         active: boolean

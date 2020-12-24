@@ -1,8 +1,8 @@
 export class Exercice {
-    private type: string
-    private uid: number
-    private date: Date
-    private titre: string
+    public type: string
+    public uid: number
+    public date: Date
+    public titre: string
 
     constructor (enSeance: {
         type: string

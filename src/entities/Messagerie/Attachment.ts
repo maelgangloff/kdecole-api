@@ -1,8 +1,8 @@
 export class Attachment {
-    private idRessource: number | null
-    private url: string | null
-    private name: string
-    private typeMIME: string | null
+    public idRessource: number | null
+    public url: string | null
+    public name: string
+    public typeMIME: string | null
 
     constructor (attachment: {
         idRessource: number | null

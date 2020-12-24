@@ -2,14 +2,14 @@ import { Attachment } from './Attachment.js'
 import { Participant } from './Participant.js'
 
 export class Participation {
-    private dateEnvoi: Date
-    private corpsMessage: string
-    private pjs: Attachment[] = []
-    private id: number
-    private libelleObjet: string | null
-    private redacteur: Participant
-    private premieresLignes: string
-    private typeMessage: string
+    public dateEnvoi: Date
+    public corpsMessage: string
+    public pjs: Attachment[] = []
+    public id: number
+    public libelleObjet: string | null
+    public redacteur: Participant
+    public premieresLignes: string
+    public typeMessage: string
 
     constructor (participation: {
         dateEnvoi: number

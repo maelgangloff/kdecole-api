@@ -1,6 +1,6 @@
 export class Participant {
-    private id: string
-    private libelle: string
+    public id: string
+    public libelle: string
 
     constructor (participant: {
         id: string

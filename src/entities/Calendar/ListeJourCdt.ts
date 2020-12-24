@@ -1,8 +1,8 @@
 import { Seance } from './Seance.js'
 
 export class ListeJourCdt {
-    private listeSeances: Seance[] = []
-    private date: Date
+    public listeSeances: Seance[] = []
+    public date: Date
 
     constructor (listeJourCdt: {
         listeSeances: {
