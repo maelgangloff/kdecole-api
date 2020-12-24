@@ -25,7 +25,7 @@ function build (cb) {
 }
 
 async function jsdocToMarkdown () {
-  return fs.writeFileSync('definitions.md', await jsdoc.renderSync({ files: 'dist/**/*.js' }))
+  return fs.writeFileSync('README.md', await jsdoc.renderSync({ files: 'dist/**/*.js' }))
 }
 
 module.exports = {

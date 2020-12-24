@@ -7,4 +7,9 @@ export declare class Activation {
         success: boolean;
         authtoken: string | null;
     });
+    /**
+   * HAHAHA
+   * @return {number}
+   */
+    a(): number;
 }

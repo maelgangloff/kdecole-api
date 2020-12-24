@@ -1,6 +1,5 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Kdecole = void 0;
 const Desactivation_js_1 = require("./entities/Authentication/Desactivation.js");
 const Activation_js_1 = require("./entities/Authentication/Activation.js");
 const config_1 = require("./config");
@@ -18,9 +17,21 @@ const ContenuActivite_1 = require("./entities/Travail/ContenuActivite");
 const ContenuArticle_1 = require("./entities/News/ContenuArticle");
 const Communication_1 = require("./entities/Messagerie/Communication");
 /**
- * Support de l'API Kdecole (Mon Bureau Numérique)
+ * Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
+ * @example ```js
+ * const Kdecole = require('kdecole-api')
+ *
+ * const user = new Kdecole(Kdecole.login(USERNAME, PASSWORD))
+ * // ou encore:
+ * const user = new Kdecole(AUTH_TOKEN)
+ * ```
  */
 class Kdecole {
+    /**
+     * @param {string} authToken Le jeton d'accès
+     * @param {string} appVersion La version de l'API
+     * @param {number} idEtablissement L'identifiant de l'établissement
+     */
     constructor(authToken = config_1.SECRET, appVersion = config_1.APP_VERSION, idEtablissement = config_1.IDETABLISSEMENT) {
         this.idEtablissement = 0;
         if (authToken === undefined) {
@@ -32,9 +43,14 @@ class Kdecole {
     }
     /**
      * Retourne le jeton d'accès de l'utilisateur
-     * @param {string} login
-     * @param {string} password
+     * @param {string} login Le nom d'utilisateur
+     * @param {string} password Le mot de passe à usage unique
      * @return {Promise<string>}
+     * @example ```js
+     * const Kdecole = require('kdecole-api')
+     *
+     * const AUTH_TOKEN = Kdecole.login(USERNAME, PASSWORD)
+     * ```
      */
     static async login(login, password) {
         const activation = new Activation_js_1.Activation(await this.callAPI(config_1.APP_VERSION, '', {
@@ -50,6 +66,11 @@ class Kdecole {
     }
     /**
      * Invalide le jeton d'accès
+     * @example ```js
+     * const Kdecole = require('kdecole-api')
+     * const user = new Kdecole(AUTH_TOKEN)
+     * user.logout()
+     * ```
      * @return {Promise<Desactivation | Error>}
      */
     async logout() {
@@ -60,8 +81,20 @@ class Kdecole {
     }
     /**
      * Retourne le relevé des notes de l'élève
-     * @param {string} idEleve
+     * @example ```js
+     * kdecole.getReleve() //Retorune le relevé de l'élève
+     * kdecole.getReleve(idEleve) //Retourne le relevé d'un élève précis
+     * ```
+     * @param {string} idEleve Identifiant d'un élève
      * @return {Promise<Releve>}
+     * @example ```js
+     * const Kdecole = require('kdecole-api')
+     *
+     * const user = new Kdecole(AUTH_TOKEN)
+     * user.getReleve(idEleve).then((releve)=>{
+     *  // Votre code
+     *  })
+     * ```
      */
     async getReleve(idEleve) {
         return new Releve_1.Releve(await this.kdecole({
@@ -71,8 +104,16 @@ class Kdecole {
     }
     /**
      * Retourne un tableau des actualités de l'établissement de l'utilisateur
-     * @param {string} idEleve
+     * @param {string} idEleve Identifiant d'un élève
      * @return {Promise<Actualite[]>}
+     * @example ```js
+     * const Kdecole = require('kdecole-api')
+     *
+     * const user = new Kdecole(AUTH_TOKEN)
+     * user.getActualites(idEleve).then((actualites)=>{
+     *  // Votre code
+     *  })
+     * ```
      */
     async getActualites(idEleve) {
         const actualites = [];
@@ -86,16 +127,32 @@ class Kdecole {
     }
     /**
      * Retourne le contenu d'un article
-     * @param {string} uid
+     * @param {string} uid Identifiant unique de l'article
      * @return {Promise<ContenuArticle>}
+     * @example ```js
+     * const Kdecole = require('kdecole-api')
+     *
+     * const user = new Kdecole(AUTH_TOKEN)
+     * user.getContenuArticle(uid).then((contenuArticle)=>{
+     *  // Votre code
+     *  })
+     * ```
      */
     async getContenuArticle(uid) {
         return new ContenuArticle_1.ContenuArticle(await this.kdecole({ service: 'contenuArticle', parameters: `article/${uid}` }));
     }
     /**
      * Retourne la liste des devoirs de l'élève
-     * @param {string} idEleve
+     * @param {string} idEleve Identifiant d'un élève
      * @return {Promise<TravailAFaire>}
+     * @example ```js
+     * const Kdecole = require('kdecole-api')
+     *
+     * const user = new Kdecole(AUTH_TOKEN)
+     * user.getTravailAFaire(idEleve).then((taf)=>{
+     *  // Votre code
+     *  })
+     * ```
      */
     async getTravailAFaire(idEleve) {
         return new TravailAFaire_1.TravailAFaire(await this.kdecole({
@@ -105,10 +162,18 @@ class Kdecole {
     }
     /**
      * Retourne les détails d'un devoir à faire
-     * @param {number} uidSeance
-     * @param {number} uid
-     * @param {string} idEleve
+     * @param {number} uidSeance Identifiant de la séance
+     * @param {number} uid Identifiant du devoir à faire
+     * @param {string} idEleve Identifiant d'un élève
      * @return {Promise<ContenuActivite>}
+     * @example ```js
+     * const Kdecole = require('kdecole-api')
+     *
+     * const user = new Kdecole(AUTH_TOKEN)
+     * user.getContenuActivite(uidSeance, uid, idEleve).then((contenuActivite)=>{
+     *  // Votre code
+     *  })
+     * ```
      */
     async getContenuActivite(uidSeance, uid, idEleve) {
         return new ContenuActivite_1.ContenuActivite(await this.kdecole({
@@ -118,8 +183,16 @@ class Kdecole {
     }
     /**
      * Retourne la liste des absences d'un élève
-     * @param {string} idEleve
+     * @param {string} idEleve Identifiant d'un élève
      * @return {Promise<AbsencesList>}
+     * @example ```js
+     * const Kdecole = require('kdecole-api')
+     *
+     * const user = new Kdecole(AUTH_TOKEN)
+     * user.getAbsences(idEleve).then((absences)=>{
+     *  // Votre code
+     *  })
+     * ```
      */
     async getAbsences(idEleve) {
         return new AbsencesList_1.AbsencesList(await this.kdecole({
@@ -129,8 +202,16 @@ class Kdecole {
     }
     /**
      * Retourne les informations d'un utilisateur (type de compte, nom complet, numéro de l'établiissement, etc.)
-     * @param {string} idEleve
+     * @param {string} idEleve Identifiant d'un élève
      * @return {Promise<Utilisateur>}
+     * @example ```js
+     * const Kdecole = require('kdecole-api')
+     *
+     * const user = new Kdecole(AUTH_TOKEN)
+     * user.getInfoUtilisateur(idEleve).then((infoUtilisateur)=>{
+     *  // Votre code
+     *  })
+     * ```
      */
     async getInfoUtilisateur(idEleve) {
         return new Utilisateur_1.Utilisateur(await this.kdecole({
@@ -140,8 +221,16 @@ class Kdecole {
     }
     /**
      * Retourne l'emploi du temps de l'élève à J-7 et J+7
-     * @param {string} idEleve
+     * @param {string} idEleve Identifiant d'un élève
      * @return {Promise<Calendrier>}
+     * @example ```js
+     * const Kdecole = require('kdecole-api')
+     *
+     * const user = new Kdecole(AUTH_TOKEN)
+     * user.getCalendrier(idEleve).then((calendrier)=>{
+     *  // Votre code
+     *  })
+     * ```
      */
     async getCalendrier(idEleve) {
         return new Calendrier_1.Calendrier(await this.kdecole({
@@ -151,8 +240,16 @@ class Kdecole {
     }
     /**
      * Retourne la liste des récentes notes de l'élève
-     * @param {string} idEleve
+     * @param {string} idEleve Identifiant d'un élève
      * @return {Promise<NotesList>}
+     * @example ```js
+     * const Kdecole = require('kdecole-api')
+     *
+     * const user = new Kdecole(AUTH_TOKEN)
+     * user.getNotes(idEleve).then((notes)=>{
+     *  // Votre code
+     *  })
+     * ```
      */
     async getNotes(idEleve) {
         return new NotesList_1.NotesList(await this.kdecole({
@@ -163,6 +260,14 @@ class Kdecole {
     /**
      * Retourne l'état de la messagerie de l'utilisateur (nombre de mails non lus)
      * @return {Promise<MessageInfo>}
+     * @example ```js
+     * const Kdecole = require('kdecole-api')
+     *
+     * const user = new Kdecole(AUTH_TOKEN)
+     * user.getMessagerieInfo().then((messagerieInfo)=>{
+     *  // Votre code
+     *  })
+     * ```
      */
     async getMessagerieInfo() {
         return new MessageInfo_1.MessageInfo(await this.kdecole({ service: 'messagerie/info' }));
@@ -170,14 +275,30 @@ class Kdecole {
     /**
      * Retorune les mails présents dans la boîte mail
      * @return {Promise<MessageBoiteReception>}
+     * @example ```js
+     * const Kdecole = require('kdecole-api')
+     *
+     * const user = new Kdecole(AUTH_TOKEN)
+     * user.getMessagerieBoiteReception().then((messagerieBoiteReception)=>{
+     *  // Votre code
+     *  })
+     * ```
      */
     async getMessagerieBoiteReception() {
         return new MessageBoiteReception_1.MessageBoiteReception(await this.kdecole({ service: 'messagerie/boiteReception' }));
     }
     /**
      * Retorune les détails d'un fil de discussion
-     * @param {number} id
+     * @param {number} id Identifiant d'un fil de discussion
      * @return {Promise<Communication>}
+     * @example ```js
+     * const Kdecole = require('kdecole-api')
+     *
+     * const user = new Kdecole(AUTH_TOKEN)
+     * user.getCommunication(id).then((communication)=>{
+     *  // Votre code
+     *  })
+     * ```
      */
     async getCommunication(id) {
         return new Communication_1.Communication(await this.kdecole({
@@ -188,8 +309,14 @@ class Kdecole {
     }
     /**
      * Permet de signaler une communication
-     * @param {number} id
+     * @param {number} id Identifiant d'un fil de discussion
      * @return {Promise<void>}
+     * @example ```js
+     * const Kdecole = require('kdecole-api')
+     *
+     * const user = new Kdecole(AUTH_TOKEN)
+     * user.signalerCommunication(id)
+     * ```
      */
     async signalerCommunication(id) {
         await this.kdecole({
@@ -200,8 +327,14 @@ class Kdecole {
     }
     /**
      * Supprime la communication
-     * @param {number} id
+     * @param {number} id Identifiant d'un fil de discussion
      * @return {Promise<void>}
+     * @example ```js
+     * const Kdecole = require('kdecole-api')
+     *
+     * const user = new Kdecole(AUTH_TOKEN)
+     * user.supprimerCommunication(id)
+     * ```
      */
     async supprimerCommunication(id) {
         await this.kdecole({
@@ -211,9 +344,17 @@ class Kdecole {
     }
     /**
      * Retourne la valeur exacte de la moyenne générale de l'élève
-     * @param {number} trimestre
-     * @param {string} idEleve
+     * @param {number} trimestre Numéro du trimestre (1, 2 ou 3)
+     * @param {string} idEleve Identifiant d'un élève
      * @return {Promise<number>}
+     * @example ```js
+     * const Kdecole = require('kdecole-api')
+     *
+     * const user = new Kdecole(AUTH_TOKEN)
+     * user.getMoyenneGenerale(trimestre, idEleve).then((moyenneGenerale)=>{
+     * console.log(moyenneGenerale) //Affiche la moyenne générale de l'élève dans la console
+     *  })
+     * ```
      */
     async getMoyenneGenerale(trimestre, idEleve) {
         if (trimestre !== undefined && [1, 2, 3].includes(trimestre))
@@ -227,9 +368,17 @@ class Kdecole {
     }
     /**
      * Retourne la médiane des moyennes des matières de l'élève
-     * @param {number} trimestre
-     * @param {string} idEleve
+     * @param {number} trimestre Numéro du trimestre (1, 2 ou 3)
+     * @param {string} idEleve Identifiant d'un élève
      * @return {Promise<number>}
+     * @example ```js
+     * const Kdecole = require('kdecole-api')
+     *
+     * const user = new Kdecole(AUTH_TOKEN)
+     * user.getCommunication(trimestre, idEleve).then((medianegenerale)=>{
+     * console.log(medianegenerale) //Affiche la médiane des moyennes de l'élève dans la console
+     *  })
+     * ```
      */
     async getMedianeGenerale(trimestre, idEleve) {
         if (trimestre !== undefined && [1, 2, 3].includes(trimestre))
@@ -243,8 +392,8 @@ class Kdecole {
     }
     /**
      * Retourne un tableau contenant les moyennes des matières de l'élève
-     * @param {number} trimestre
-     * @param {string} idEleve
+     * @param {number} trimestre Numéro du trimestre (1, 2 ou 3)
+     * @param {string} idEleve Identifiant d'un élève
      * @return {Promise<number[]>}
      * @private
      */
@@ -306,4 +455,4 @@ class Kdecole {
         }
     }
 }
-exports.Kdecole = Kdecole;
+exports.default = Kdecole;
