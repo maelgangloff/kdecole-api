@@ -1,19 +1,21 @@
+import { Participant } from './Participant.js';
+import { Participation } from './Participation.js';
 export declare class Communication {
-    private participants;
-    private expediteurActuel;
-    private signalable;
-    private expediteurInitial;
-    private id;
-    private dateDernierMessage;
-    private nbParticipations;
-    private isExpediteurInitial;
-    private pieceJointe;
-    private participations;
-    private objet;
-    private type;
-    private etat;
-    private premieresLignes;
-    private etatLecure;
+    participants: Array<Participant>;
+    expediteurActuel: Participant;
+    signalable: boolean;
+    expediteurInitial: Participant;
+    id: number;
+    dateDernierMessage: Date;
+    nbParticipations: number;
+    isExpediteurInitial: boolean;
+    pieceJointe: boolean;
+    participations: Array<Participation>;
+    objet: string;
+    type: string;
+    etat: string;
+    premieresLignes: string;
+    etatLecure: boolean;
     constructor(communication: {
         participants: Array<{
             id: string;

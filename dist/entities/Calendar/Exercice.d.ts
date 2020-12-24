@@ -1,8 +1,8 @@
 export declare class Exercice {
-    private type;
-    private uid;
-    private date;
-    private titre;
+    type: string;
+    uid: number;
+    date: Date;
+    titre: string;
     constructor(enSeance: {
         type: string;
         uid: number;

@@ -1,12 +1,14 @@
+import { Attachment } from './Attachment.js';
+import { Participant } from './Participant.js';
 export declare class Participation {
-    private dateEnvoi;
-    private corpsMessage;
-    private pjs;
-    private id;
-    private libelleObjet;
-    private redacteur;
-    private premieresLignes;
-    private typeMessage;
+    dateEnvoi: Date;
+    corpsMessage: string;
+    pjs: Attachment[];
+    id: number;
+    libelleObjet: string | null;
+    redacteur: Participant;
+    premieresLignes: string;
+    typeMessage: string;
     constructor(participation: {
         dateEnvoi: number;
         corpsMessage: string;

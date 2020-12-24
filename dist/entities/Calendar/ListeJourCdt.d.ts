@@ -1,6 +1,7 @@
+import { Seance } from './Seance.js';
 export declare class ListeJourCdt {
-    private listeSeances;
-    private date;
+    listeSeances: Seance[];
+    date: Date;
     constructor(listeJourCdt: {
         listeSeances: {
             hdeb: number;

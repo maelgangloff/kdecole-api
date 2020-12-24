@@ -1,18 +1,19 @@
+import { Exercice } from './Exercice';
 export declare class Seance {
-    private hdeb;
-    private enSeance;
-    private matiere;
-    private aFaire;
-    private heureFin;
-    private flagModif;
-    private flagActif;
-    private heureDebut;
-    private hfin;
-    private aRendre;
-    private motifModif;
-    private idSeance;
-    private salle;
-    private titre;
+    hdeb: Date;
+    enSeance: Array<Exercice> | null;
+    matiere: string;
+    aFaire: Array<Exercice> | null;
+    heureFin: string;
+    flagModif: boolean;
+    flagActif: boolean;
+    heureDebut: string;
+    hfin: Date;
+    aRendre: Array<Exercice> | null;
+    motifModif: string | null;
+    idSeance: number;
+    salle: string;
+    titre: string;
     constructor(seance: {
         hdeb: number;
         enSeance: {

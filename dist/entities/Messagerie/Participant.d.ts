@@ -1,6 +1,6 @@
 export declare class Participant {
-    private id;
-    private libelle;
+    id: string;
+    libelle: string;
     constructor(participant: {
         id: string;
         libelle: string;

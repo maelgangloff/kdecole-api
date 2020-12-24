@@ -1,19 +1,19 @@
 export declare class Note {
-    private note;
-    private date;
-    private medianeClasse;
-    private noteMin;
-    private appreciation;
-    private bareme;
-    private coefficient;
-    private id;
-    private titreDevoir;
-    private noteMax;
-    private facultatif;
-    private moyenne;
-    private comptabilise;
-    private commentaireDevoir;
-    private matiere?;
+    note: number | null;
+    date: Date;
+    medianeClasse: number | null;
+    noteMin: number | null;
+    appreciation: string | null;
+    bareme: number;
+    coefficient: number;
+    id: number;
+    titreDevoir: string;
+    noteMax: number | null;
+    facultatif: boolean;
+    moyenne: number | null;
+    comptabilise: boolean;
+    commentaireDevoir: string | null;
+    matiere?: string;
     constructor(note: {
         note: string | null;
         date: number;

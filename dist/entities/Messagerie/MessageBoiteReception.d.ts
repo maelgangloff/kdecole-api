@@ -1,8 +1,9 @@
+import { Communication } from './Communication.js';
 export declare class MessageBoiteReception {
-    private nbMaxCommunicationRecues;
-    private communications;
-    private nbMaxCaracteresMessage;
-    private nbMaxCommunicationBoiteReception;
+    nbMaxCommunicationRecues: number;
+    communications: Array<Communication>;
+    nbMaxCaracteresMessage: number;
+    nbMaxCommunicationBoiteReception: number;
     constructor(messageBoiteReception: {
         nbMaxCommunicationRecues: number;
         communications: Array<{
