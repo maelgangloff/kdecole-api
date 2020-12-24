@@ -8,6 +8,14 @@ function clean () {
   return del('./dist')
 }
 
+function lint(cb) {
+  exec('npx eslint . --ext .ts', (err, stdout, stderr)=>{
+    console.log(stdout);
+    console.log(stderr);
+    cb(err);
+  })
+}
+
 function build (cb) {
   exec('tsc', (err, stdout, stderr)=>{
     console.log(stdout);
@@ -22,7 +30,8 @@ async function jsdocToMarkdown () {
 
 module.exports = {
   clean,
+  lint,
   build,
   jsdocToMarkdown,
-  default: gulp.series(clean, build, jsdocToMarkdown)
+  default: gulp.series(clean, lint, build, jsdocToMarkdown)
 }
