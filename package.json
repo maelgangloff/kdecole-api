@@ -25,15 +25,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://gitlab.com/maelgangloff/kdecole-api.git"
+    "url": "https://github.com/maelgangloff/kdecole-api.git"
   },
   "dependencies": {
-    "axios": "^0.21.0"
+    "axios": "^0.21.1"
   },
   "keywords": [
     "API",
     "Kdecole",
     "Mon Bureau Numérique"
   ],
-  "description": "Unofficial API of Kdecole (Mon Bureau Numérique)"
+  "description": "Unofficial API client of Kdecole (Mon Bureau Numérique)"
 }
