@@ -82,7 +82,7 @@ class Kdecole {
     /**
      * Retourne le relevé des notes de l'élève
      * @example ```js
-     * kdecole.getReleve() //Retorune le relevé de l'élève
+     * kdecole.getReleve() //Retourne le relevé de l'élève
      * kdecole.getReleve(idEleve) //Retourne le relevé d'un élève précis
      * ```
      * @param {string} idEleve Identifiant d'un élève
@@ -273,7 +273,7 @@ class Kdecole {
         return new MessageInfo_1.MessageInfo(await this.kdecole({ service: 'messagerie/info' }));
     }
     /**
-     * Retorune les mails présents dans la boîte mail
+     * Retourne les mails présents dans la boîte mail
      * @return {Promise<MessageBoiteReception>}
      * @example ```js
      * const Kdecole = require('kdecole-api')
@@ -288,7 +288,7 @@ class Kdecole {
         return new MessageBoiteReception_1.MessageBoiteReception(await this.kdecole({ service: 'messagerie/boiteReception' }));
     }
     /**
-     * Retorune les détails d'un fil de discussion
+     * Retourne les détails d'un fil de discussion
      * @param {number} id Identifiant d'un fil de discussion
      * @return {Promise<Communication>}
      * @example ```js

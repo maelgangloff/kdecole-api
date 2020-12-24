@@ -62,7 +62,7 @@ Retourne le relevé des notes de l'élève
 | idEleve | <code>string</code> | Identifiant d'un élève |
 
 **Example**  
-```jskdecole.getReleve() //Retorune le relevé de l'élèvekdecole.getReleve(idEleve) //Retourne le relevé d'un élève précis```
+```jskdecole.getReleve() //Retourne le relevé de l'élèvekdecole.getReleve(idEleve) //Retourne le relevé d'un élève précis```
 **Example**  
 ```jsconst Kdecole = require('kdecole-api')const user = new Kdecole(AUTH_TOKEN)user.getReleve(idEleve).then((releve)=>{ // Votre code })```
 <a name="Kdecole+getActualites"></a>
@@ -182,7 +182,7 @@ Retourne l'état de la messagerie de l'utilisateur (nombre de mails non lus)
 <a name="Kdecole+getMessagerieBoiteReception"></a>
 
 ### kdecole.getMessagerieBoiteReception() ⇒ <code>Promise.&lt;MessageBoiteReception&gt;</code>
-Retorune les mails présents dans la boîte mail
+Retourne les mails présents dans la boîte mail
 
 **Kind**: instance method of [<code>Kdecole</code>](#Kdecole)  
 **Example**  
@@ -190,7 +190,7 @@ Retorune les mails présents dans la boîte mail
 <a name="Kdecole+getCommunication"></a>
 
 ### kdecole.getCommunication(id) ⇒ <code>Promise.&lt;Communication&gt;</code>
-Retorune les détails d'un fil de discussion
+Retourne les détails d'un fil de discussion
 
 **Kind**: instance method of [<code>Kdecole</code>](#Kdecole)  
 

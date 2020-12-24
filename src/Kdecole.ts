@@ -113,7 +113,7 @@ export default class Kdecole {
   /**
    * Retourne le relevé des notes de l'élève
    * @example ```js
-   * kdecole.getReleve() //Retorune le relevé de l'élève
+   * kdecole.getReleve() //Retourne le relevé de l'élève
    * kdecole.getReleve(idEleve) //Retourne le relevé d'un élève précis
    * ```
    * @param {string} idEleve Identifiant d'un élève
@@ -314,7 +314,7 @@ export default class Kdecole {
   }
 
   /**
-   * Retorune les mails présents dans la boîte mail
+   * Retourne les mails présents dans la boîte mail
    * @return {Promise<MessageBoiteReception>}
    * @example ```js
    * const Kdecole = require('kdecole-api')
@@ -330,7 +330,7 @@ export default class Kdecole {
   }
 
   /**
-   * Retorune les détails d'un fil de discussion
+   * Retourne les détails d'un fil de discussion
    * @param {number} id Identifiant d'un fil de discussion
    * @return {Promise<Communication>}
    * @example ```js

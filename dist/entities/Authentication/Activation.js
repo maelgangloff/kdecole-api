@@ -7,12 +7,5 @@ class Activation {
         this.success = activation.success;
         this.authtoken = activation.authtoken;
     }
-    /**
-   * HAHAHA
-   * @return {number}
-   */
-    a() {
-        return 3;
-    }
 }
 exports.Activation = Activation;
