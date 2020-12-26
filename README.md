@@ -21,8 +21,10 @@ Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
         * [.getMessagerieInfo()](#Kdecole+getMessagerieInfo) ⇒ <code>Promise.&lt;MessageInfo&gt;</code>
         * [.getMessagerieBoiteReception()](#Kdecole+getMessagerieBoiteReception) ⇒ <code>Promise.&lt;MessageBoiteReception&gt;</code>
         * [.getCommunication(id)](#Kdecole+getCommunication) ⇒ <code>Promise.&lt;Communication&gt;</code>
-        * [.signalerCommunication(id)](#Kdecole+signalerCommunication) ⇒ <code>Promise.&lt;void&gt;</code>
-        * [.supprimerCommunication(id)](#Kdecole+supprimerCommunication) ⇒ <code>Promise.&lt;void&gt;</code>
+        * [.reportCommunication(id)](#Kdecole+reportCommunication) ⇒ <code>Promise.&lt;void&gt;</code>
+        * [.deleteCommunication(id)](#Kdecole+deleteCommunication) ⇒ <code>Promise.&lt;void&gt;</code>
+        * [.setCommunicationLu(id)](#Kdecole+setCommunicationLu) ⇒ <code>Promise.&lt;void&gt;</code>
+        * [.sendMessage(id, corpsMessage)](#Kdecole+sendMessage) ⇒ <code>Promise.&lt;void&gt;</code>
         * [.getMoyenneGenerale(trimestre, idEleve)](#Kdecole+getMoyenneGenerale) ⇒ <code>Promise.&lt;number&gt;</code>
         * [.getMedianeGenerale(trimestre, idEleve)](#Kdecole+getMedianeGenerale) ⇒ <code>Promise.&lt;number&gt;</code>
         * [.kdecole()](#Kdecole+kdecole)
@@ -200,9 +202,9 @@ Retourne les détails d'un fil de discussion
 
 **Example**  
 ```jsconst Kdecole = require('kdecole-api').defaultconst user = new Kdecole(AUTH_TOKEN)user.getCommunication(id).then((communication)=>{ // Votre code })```
-<a name="Kdecole+signalerCommunication"></a>
+<a name="Kdecole+reportCommunication"></a>
 
-### kdecole.signalerCommunication(id) ⇒ <code>Promise.&lt;void&gt;</code>
+### kdecole.reportCommunication(id) ⇒ <code>Promise.&lt;void&gt;</code>
 Permet de signaler une communication
 
 **Kind**: instance method of [<code>Kdecole</code>](#Kdecole)  
@@ -212,10 +214,10 @@ Permet de signaler une communication
 | id | <code>number</code> | Identifiant d'un fil de discussion |
 
 **Example**  
-```jsconst Kdecole = require('kdecole-api').defaultconst user = new Kdecole(AUTH_TOKEN)user.signalerCommunication(id)```
-<a name="Kdecole+supprimerCommunication"></a>
+```jsconst Kdecole = require('kdecole-api').defaultconst user = new Kdecole(AUTH_TOKEN)user.reportCommunication(id)```
+<a name="Kdecole+deleteCommunication"></a>
 
-### kdecole.supprimerCommunication(id) ⇒ <code>Promise.&lt;void&gt;</code>
+### kdecole.deleteCommunication(id) ⇒ <code>Promise.&lt;void&gt;</code>
 Supprime la communication
 
 **Kind**: instance method of [<code>Kdecole</code>](#Kdecole)  
@@ -225,7 +227,34 @@ Supprime la communication
 | id | <code>number</code> | Identifiant d'un fil de discussion |
 
 **Example**  
-```jsconst Kdecole = require('kdecole-api').defaultconst user = new Kdecole(AUTH_TOKEN)user.supprimerCommunication(id)```
+```jsconst Kdecole = require('kdecole-api').defaultconst user = new Kdecole(AUTH_TOKEN)user.deleteCommunication(id)```
+<a name="Kdecole+setCommunicationLu"></a>
+
+### kdecole.setCommunicationLu(id) ⇒ <code>Promise.&lt;void&gt;</code>
+Marquer une communication lue
+
+**Kind**: instance method of [<code>Kdecole</code>](#Kdecole)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| id | <code>number</code> | Identifiant d'un fil de discussion |
+
+**Example**  
+```jsconst Kdecole = require('kdecole-api').defaultconst user = new Kdecole(AUTH_TOKEN)user.setCommunicationLu(id)```
+<a name="Kdecole+sendMessage"></a>
+
+### kdecole.sendMessage(id, corpsMessage) ⇒ <code>Promise.&lt;void&gt;</code>
+Envoyer un message sur un fil de discussion
+
+**Kind**: instance method of [<code>Kdecole</code>](#Kdecole)  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| id | <code>number</code> | Identifiant d'un fil de discussion |
+| corpsMessage | <code>string</code> | Corps du message HTML |
+
+**Example**  
+```jsconst Kdecole = require('kdecole-api').defaultconst user = new Kdecole(AUTH_TOKEN)user.sendMessage(id, corpsMessage)```
 <a name="Kdecole+getMoyenneGenerale"></a>
 
 ### kdecole.getMoyenneGenerale(trimestre, idEleve) ⇒ <code>Promise.&lt;number&gt;</code>

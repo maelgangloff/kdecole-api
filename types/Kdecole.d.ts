@@ -12,7 +12,7 @@ import { ContenuActivite } from './entities/Travail/ContenuActivite';
 import { ContenuArticle } from './entities/News/ContenuArticle';
 import { Communication } from './entities/Messagerie/Communication';
 interface KdecoleRequest {
-    service: 'starting' | 'actualites' | 'contenuArticle' | 'activation' | 'consulterReleves' | 'consulterAbsences' | 'infoutilisateur' | 'desactivation' | 'calendrier' | 'consulterNotes' | 'messagerie/info' | 'messagerie/boiteReception' | 'messagerie/communication' | 'messagerie/communication/nouvelleParticipation' | 'messagerie/communication/signaler' | 'messagerie/communication/supprimer' | 'travailAFaire' | 'contenuActivite' | 'gestionAppels';
+    service: 'starting' | 'actualites' | 'contenuArticle' | 'activation' | 'consulterReleves' | 'consulterAbsences' | 'infoutilisateur' | 'desactivation' | 'calendrier' | 'consulterNotes' | 'messagerie/info' | 'messagerie/boiteReception' | 'messagerie/communication' | 'messagerie/communication/nouvelleParticipation' | 'messagerie/communication/signaler' | 'messagerie/communication/supprimer' | 'messagerie/communication/lu' | 'travailAFaire' | 'contenuActivite' | 'gestionAppels';
     parameters?: string;
     type?: 'get' | 'post' | 'delete' | 'put';
     data?: any;
@@ -239,10 +239,10 @@ export default class Kdecole {
      * const Kdecole = require('kdecole-api').default
      *
      * const user = new Kdecole(AUTH_TOKEN)
-     * user.signalerCommunication(id)
+     * user.reportCommunication(id)
      * ```
      */
-    signalerCommunication(id: number): Promise<void>;
+    reportCommunication(id: number): Promise<void>;
     /**
      * Supprime la communication
      * @param {number} id Identifiant d'un fil de discussion
@@ -251,10 +251,35 @@ export default class Kdecole {
      * const Kdecole = require('kdecole-api').default
      *
      * const user = new Kdecole(AUTH_TOKEN)
-     * user.supprimerCommunication(id)
+     * user.deleteCommunication(id)
      * ```
      */
-    supprimerCommunication(id: number): Promise<void>;
+    deleteCommunication(id: number): Promise<void>;
+    /**
+     * Marquer une communication lue
+     * @param id {number} Identifiant d'un fil de discussion
+     * @return {Promise<void>}
+     * @example ```js
+     * const Kdecole = require('kdecole-api').default
+     *
+     * const user = new Kdecole(AUTH_TOKEN)
+     * user.setCommunicationLu(id)
+     * ```
+     */
+    setCommunicationLu(id: number): Promise<void>;
+    /**
+     * Envoyer un message sur un fil de discussion
+     * @param id {number} Identifiant d'un fil de discussion
+     * @param corpsMessage {string} Corps du message HTML
+     * @return {Promise<void>}
+     * @example ```js
+     * const Kdecole = require('kdecole-api').default
+     *
+     * const user = new Kdecole(AUTH_TOKEN)
+     * user.sendMessage(id, corpsMessage)
+     * ```
+     */
+    sendMessage(id: number, corpsMessage: string): Promise<void>;
     /**
      * Retourne la valeur exacte de la moyenne générale de l'élève
      * @param {number} trimestre Numéro du trimestre (1, 2 ou 3)
