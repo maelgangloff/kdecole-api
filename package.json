@@ -2,6 +2,7 @@
   "name": "kdecole-api",
   "version": "1.0.3",
   "main": "dist/Kdecole.js",
+  "types": "dist/Kdecole.d.ts",
   "author": {
     "name": "Maël Gangloff",
     "email": "maelgangloffd@gmail.com"

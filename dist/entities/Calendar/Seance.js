@@ -1,0 +1,26 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Seance = void 0;
+const Exercice_1 = require("./Exercice");
+class Seance {
+    constructor(seance) {
+        this.enSeance = [];
+        this.aFaire = [];
+        this.aRendre = [];
+        this.hdeb = new Date(seance.hdeb);
+        seance.enSeance?.forEach(enSeance => this.enSeance?.push(new Exercice_1.Exercice(enSeance)));
+        this.matiere = seance.matiere;
+        seance.aFaire?.forEach(aFaire => this.aFaire?.push(new Exercice_1.Exercice(aFaire)));
+        this.heureFin = seance.heureFin;
+        this.flagModif = seance.flagModif;
+        this.titre = seance.titre;
+        this.flagActif = seance.flagActif;
+        this.heureDebut = seance.heureDebut;
+        this.hfin = new Date(seance.hfin);
+        seance.aRendre?.forEach(aRendre => this.aRendre?.push(new Exercice_1.Exercice(aRendre)));
+        this.motifModif = seance.motifModif;
+        this.idSeance = seance.idSeance;
+        this.salle = seance.salle;
+    }
+}
+exports.Seance = Seance;
