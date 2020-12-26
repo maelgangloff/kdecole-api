@@ -1,4 +1,4 @@
-import { Desactivation } from './entities/Authentication/Desactivation.js';
+import { Desactivation } from './entities/Authentication/Desactivation';
 import { Releve } from './entities/Note/Releve';
 import { TravailAFaire } from './entities/Travail/TravailAFaire';
 import { Actualite } from './entities/News/Actualite';

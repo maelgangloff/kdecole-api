@@ -1,5 +1,5 @@
-import { Desactivation } from './entities/Authentication/Desactivation.js'
-import { Activation } from './entities/Authentication/Activation.js'
+import { Desactivation } from './entities/Authentication/Desactivation'
+import { Activation } from './entities/Authentication/Activation'
 import { APP_VERSION, BASE_URL, IDETABLISSEMENT, SECRET } from './config'
 import { Releve } from './entities/Note/Releve'
 import { TravailAFaire } from './entities/Travail/TravailAFaire'

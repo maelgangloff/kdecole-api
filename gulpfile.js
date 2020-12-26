@@ -4,8 +4,12 @@ const del = require('del')
 const gulp = require('gulp')
 const exec = require('child_process').exec
 
-function clean () {
+function cleanDist () {
   return del('./dist')
+}
+
+function cleanTypes() {
+  return del('./types')
 }
 
 function lint(cb) {
@@ -29,9 +33,10 @@ async function jsdocToMarkdown () {
 }
 
 module.exports = {
-  clean,
+  cleanDist,
+  cleanTypes,
   lint,
   build,
   jsdocToMarkdown,
-  default: gulp.series(clean, lint, build, jsdocToMarkdown)
+  default: gulp.series(cleanDist, cleanTypes, lint, build, jsdocToMarkdown)
 }
