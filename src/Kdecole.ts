@@ -32,6 +32,7 @@ interface KdecoleRequest {
       | 'messagerie/communication/nouvelleParticipation'
       | 'messagerie/communication/signaler'
       | 'messagerie/communication/supprimer'
+      | 'messagerie/communication/lu'
       | 'travailAFaire' | 'contenuActivite'
       | 'gestionAppels'
   parameters?: string
@@ -358,10 +359,10 @@ export default class Kdecole {
    * const Kdecole = require('kdecole-api').default
    *
    * const user = new Kdecole(AUTH_TOKEN)
-   * user.signalerCommunication(id)
+   * user.reportCommunication(id)
    * ```
    */
-  public async signalerCommunication (id: number): Promise<void> {
+  public async reportCommunication (id: number): Promise<void> {
     await this.kdecole({
       service: 'messagerie/communication/signaler',
       type: 'put',
@@ -377,13 +378,59 @@ export default class Kdecole {
    * const Kdecole = require('kdecole-api').default
    *
    * const user = new Kdecole(AUTH_TOKEN)
-   * user.supprimerCommunication(id)
+   * user.deleteCommunication(id)
    * ```
    */
-  public async supprimerCommunication (id: number): Promise<void> {
+  public async deleteCommunication (id: number): Promise<void> {
     await this.kdecole({
       service: 'messagerie/communication/supprimer',
       parameters: `${id}`
+    })
+  }
+
+  /**
+   * Marquer une communication lue
+   * @param id {number} Identifiant d'un fil de discussion
+   * @return {Promise<void>}
+   * @example ```js
+   * const Kdecole = require('kdecole-api').default
+   *
+   * const user = new Kdecole(AUTH_TOKEN)
+   * user.setCommunicationLu(id)
+   * ```
+   */
+  public async setCommunicationLu (id: number): Promise<void> {
+    await this.kdecole({
+      service: 'messagerie/communication/lu',
+      parameters: `${id}`,
+      type: 'put',
+      data: {
+        action: 'lu'
+      }
+    })
+  }
+
+  /**
+   * Envoyer un message sur un fil de discussion
+   * @param id {number} Identifiant d'un fil de discussion
+   * @param corpsMessage {string} Corps du message HTML
+   * @return {Promise<void>}
+   * @example ```js
+   * const Kdecole = require('kdecole-api').default
+   *
+   * const user = new Kdecole(AUTH_TOKEN)
+   * user.sendMessage(id, corpsMessage)
+   * ```
+   */
+  public async sendMessage (id:number, corpsMessage:string):Promise<void> {
+    await this.kdecole({
+      service: 'messagerie/communication/nouvelleParticipation',
+      parameters: `${id}`,
+      type: 'put',
+      data: {
+        dateEnvoi: (new Date()).getTime(),
+        corpsMessage: corpsMessage
+      }
     })
   }
 
