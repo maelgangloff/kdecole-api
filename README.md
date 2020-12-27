@@ -133,6 +133,8 @@ Permet de marquer un devoir comme étant fait
 | uid | <code>number</code> | Identifiant du devoir |
 | flagRealise | <code>boolean</code> | Statut du devoir |
 
+**Example**  
+```jsconst Kdecole = require('kdecole-api').defaultconst user = new Kdecole(AUTH_TOKEN)user.setActiviteFinished(uidSeance, uid, flagRealise)```
 <a name="Kdecole+getAbsences"></a>
 
 ### kdecole.getAbsences(idEleve) ⇒ <code>Promise.&lt;AbsencesList&gt;</code>

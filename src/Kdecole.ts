@@ -223,6 +223,12 @@ export default class Kdecole {
    * @param uidSeance {number} Identifiant de la séance
    * @param uid {number} Identifiant du devoir
    * @param flagRealise {boolean} Statut du devoir
+   * @example ```js
+   * const Kdecole = require('kdecole-api').default
+   *
+   * const user = new Kdecole(AUTH_TOKEN)
+   * user.setActiviteFinished(uidSeance, uid, flagRealise)
+   * ```
    */
   public async setActiviteFinished (uidSeance: number, uid: number, flagRealise: boolean): Promise<void> {
     await this.kdecole({
