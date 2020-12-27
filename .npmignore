@@ -7,3 +7,5 @@ gulpfile.js
 CODE_OF_CONDUCT.md
 .eslintignore
 .eslintrc
+tests
+babel.config.js

@@ -39,4 +39,19 @@ export declare class Trimestre {
         periodeEnCours: boolean;
         bareme: string;
     });
+    /**
+     * Retourne la moyenne générale de l'élève
+     * @return {number}
+     */
+    getMoyenneGenerale(): number | false;
+    /**
+     * Retourne la médiane des moyennes des matières de l'élève
+     * @return {number}
+     */
+    getMedianeGenerale(): number | false;
+    /**
+     * Retourne un tableau contenant les moyennes des matières de l'élève
+     * @return {number[]}
+     */
+    private getTableauMoyennes;
 }

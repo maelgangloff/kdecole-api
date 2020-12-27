@@ -25,8 +25,6 @@ Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
         * [.deleteCommunication(id)](#Kdecole+deleteCommunication) ⇒ <code>Promise.&lt;void&gt;</code>
         * [.setCommunicationLu(id)](#Kdecole+setCommunicationLu) ⇒ <code>Promise.&lt;void&gt;</code>
         * [.sendMessage(id, corpsMessage)](#Kdecole+sendMessage) ⇒ <code>Promise.&lt;void&gt;</code>
-        * [.getMoyenneGenerale(trimestre, idEleve)](#Kdecole+getMoyenneGenerale) ⇒ <code>Promise.&lt;number&gt;</code>
-        * [.getMedianeGenerale(trimestre, idEleve)](#Kdecole+getMedianeGenerale) ⇒ <code>Promise.&lt;number&gt;</code>
         * [.kdecole()](#Kdecole+kdecole)
     * _static_
         * [.login(login, password)](#Kdecole.login) ⇒ <code>Promise.&lt;string&gt;</code>
@@ -255,34 +253,6 @@ Envoyer un message sur un fil de discussion
 
 **Example**  
 ```jsconst Kdecole = require('kdecole-api').defaultconst user = new Kdecole(AUTH_TOKEN)user.sendMessage(id, corpsMessage)```
-<a name="Kdecole+getMoyenneGenerale"></a>
-
-### kdecole.getMoyenneGenerale(trimestre, idEleve) ⇒ <code>Promise.&lt;number&gt;</code>
-Retourne la valeur exacte de la moyenne générale de l'élève
-
-**Kind**: instance method of [<code>Kdecole</code>](#Kdecole)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| trimestre | <code>number</code> | Numéro du trimestre (1, 2 ou 3) |
-| idEleve | <code>string</code> | Identifiant d'un élève |
-
-**Example**  
-```jsconst Kdecole = require('kdecole-api').defaultconst user = new Kdecole(AUTH_TOKEN)user.getMoyenneGenerale(trimestre, idEleve).then((moyenneGenerale)=>{console.log(moyenneGenerale) //Affiche la moyenne générale de l'élève dans la console })```
-<a name="Kdecole+getMedianeGenerale"></a>
-
-### kdecole.getMedianeGenerale(trimestre, idEleve) ⇒ <code>Promise.&lt;number&gt;</code>
-Retourne la médiane des moyennes des matières de l'élève
-
-**Kind**: instance method of [<code>Kdecole</code>](#Kdecole)  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| trimestre | <code>number</code> | Numéro du trimestre (1, 2 ou 3) |
-| idEleve | <code>string</code> | Identifiant d'un élève |
-
-**Example**  
-```jsconst Kdecole = require('kdecole-api').defaultconst user = new Kdecole(AUTH_TOKEN)user.getCommunication(trimestre, idEleve).then((medianegenerale)=>{console.log(medianegenerale) //Affiche la médiane des moyennes de l'élève dans la console })```
 <a name="Kdecole+kdecole"></a>
 
 ### kdecole.kdecole()

@@ -435,89 +435,10 @@ export default class Kdecole {
   }
 
   /**
-   * Retourne la valeur exacte de la moyenne générale de l'élève
-   * @param {number} trimestre Numéro du trimestre (1, 2 ou 3)
-   * @param {string} idEleve Identifiant d'un élève
-   * @return {Promise<number>}
-   * @example ```js
-   * const Kdecole = require('kdecole-api').default
-   *
-   * const user = new Kdecole(AUTH_TOKEN)
-   * user.getMoyenneGenerale(trimestre, idEleve).then((moyenneGenerale)=>{
-   * console.log(moyenneGenerale) //Affiche la moyenne générale de l'élève dans la console
-   *  })
-   * ```
-   */
-  public async getMoyenneGenerale (trimestre?:number, idEleve?: string): Promise<number> {
-    if (trimestre !== undefined && [1, 2, 3].includes(trimestre)) throw Error('Le trimestre doit être 1, 2 ou 3')
-    const moyennes = await this.getTableauMoyennes(trimestre, idEleve)
-    let moyenneGenerale = 0
-    for (const moyenne of moyennes) {
-      moyenneGenerale += moyenne / moyennes.length
-    }
-    return moyenneGenerale
-  }
-
-  /**
-   * Retourne la médiane des moyennes des matières de l'élève
-   * @param {number} trimestre Numéro du trimestre (1, 2 ou 3)
-   * @param {string} idEleve Identifiant d'un élève
-   * @return {Promise<number>}
-   * @example ```js
-   * const Kdecole = require('kdecole-api').default
-   *
-   * const user = new Kdecole(AUTH_TOKEN)
-   * user.getCommunication(trimestre, idEleve).then((medianegenerale)=>{
-   * console.log(medianegenerale) //Affiche la médiane des moyennes de l'élève dans la console
-   *  })
-   * ```
-   */
-  public async getMedianeGenerale (trimestre?:number, idEleve?: string): Promise<number> {
-    if (trimestre !== undefined && [1, 2, 3].includes(trimestre)) throw Error('Le trimestre doit être 1, 2 ou 3')
-    let moyennes = await this.getTableauMoyennes(trimestre, idEleve)
-
-    moyennes = moyennes.slice(0).sort(function (x, y) {
-      return x - y
-    })
-    const b = (moyennes.length + 1) / 2
-    return (moyennes.length % 2) ? moyennes[b - 1] : (moyennes[b - 1.5] + moyennes[b - 0.5]) / 2
-  }
-
-  /**
-   * Retourne un tableau contenant les moyennes des matières de l'élève
-   * @param {number} trimestre Numéro du trimestre (1, 2 ou 3)
-   * @param {string} idEleve Identifiant d'un élève
-   * @return {Promise<number[]>}
-   * @private
-   */
-  private async getTableauMoyennes (trimestre?:number, idEleve?: string): Promise<number[]> {
-    if (trimestre !== undefined && [1, 2, 3].includes(trimestre)) throw Error('Le trimestre doit être 1, 2 ou 3')
-    const releve = await this.getReleve(idEleve)
-    let numeroTrimestre:number|undefined = trimestre
-    if (numeroTrimestre === undefined) {
-      for (const key in releve.trimestres) {
-        if (releve.trimestres[parseInt(key)].periodeEnCours) {
-          numeroTrimestre = parseInt(key) + 1
-        }
-      }
-    }
-    if (numeroTrimestre === undefined) throw Error('Aucun trimestre en cours')
-    const trimestreObject = releve.trimestres[numeroTrimestre - 1]
-    const moyennes: number[] = []
-    for (const matiere of trimestreObject.matieres) {
-      if (typeof matiere.moyenneEleve === 'number') {
-        moyennes.push(matiere.moyenneEleve)
-      }
-    }
-    if (moyennes.length === 0) throw Error('Pas de moyennes dans ce trimestre.')
-    return moyennes
-  }
-
-  /**
    * Effectue un premier traitement des données reçues en provenance de l'API et en retourne le résultat
    */
   private async kdecole ({ service, parameters, type = 'get', data }: KdecoleRequest): Promise<any> {
-    if (parameters === undefined) parameters = `idetablissement/${this.idEtablissement}`
+    if (parameters === undefined && service !== 'desactivation') parameters = `idetablissement/${this.idEtablissement}`
     return await Kdecole.callAPI(this.appVersion, this.authToken, { service, parameters, type, data })
   }
 

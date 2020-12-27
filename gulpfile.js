@@ -22,9 +22,15 @@ function lint(cb) {
 
 function build (cb) {
   exec('tsc', (err, stdout, stderr)=>{
-    console.log(stdout);
     console.log(stderr);
     cb(err);
+  })
+}
+
+function test(cb){
+  exec('npx jest', (err, stdout, stderr)=>{
+    console.log(stderr)
+    cb(err)
   })
 }
 
@@ -37,6 +43,7 @@ module.exports = {
   cleanTypes,
   lint,
   build,
+  test,
   jsdocToMarkdown,
-  default: gulp.series(cleanDist, cleanTypes, lint, build, jsdocToMarkdown)
+  default: gulp.series(cleanDist, cleanTypes, lint, build, test, jsdocToMarkdown)
 }

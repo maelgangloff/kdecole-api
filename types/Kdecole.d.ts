@@ -281,44 +281,6 @@ export default class Kdecole {
      */
     sendMessage(id: number, corpsMessage: string): Promise<void>;
     /**
-     * Retourne la valeur exacte de la moyenne générale de l'élève
-     * @param {number} trimestre Numéro du trimestre (1, 2 ou 3)
-     * @param {string} idEleve Identifiant d'un élève
-     * @return {Promise<number>}
-     * @example ```js
-     * const Kdecole = require('kdecole-api').default
-     *
-     * const user = new Kdecole(AUTH_TOKEN)
-     * user.getMoyenneGenerale(trimestre, idEleve).then((moyenneGenerale)=>{
-     * console.log(moyenneGenerale) //Affiche la moyenne générale de l'élève dans la console
-     *  })
-     * ```
-     */
-    getMoyenneGenerale(trimestre?: number, idEleve?: string): Promise<number>;
-    /**
-     * Retourne la médiane des moyennes des matières de l'élève
-     * @param {number} trimestre Numéro du trimestre (1, 2 ou 3)
-     * @param {string} idEleve Identifiant d'un élève
-     * @return {Promise<number>}
-     * @example ```js
-     * const Kdecole = require('kdecole-api').default
-     *
-     * const user = new Kdecole(AUTH_TOKEN)
-     * user.getCommunication(trimestre, idEleve).then((medianegenerale)=>{
-     * console.log(medianegenerale) //Affiche la médiane des moyennes de l'élève dans la console
-     *  })
-     * ```
-     */
-    getMedianeGenerale(trimestre?: number, idEleve?: string): Promise<number>;
-    /**
-     * Retourne un tableau contenant les moyennes des matières de l'élève
-     * @param {number} trimestre Numéro du trimestre (1, 2 ou 3)
-     * @param {string} idEleve Identifiant d'un élève
-     * @return {Promise<number[]>}
-     * @private
-     */
-    private getTableauMoyennes;
-    /**
      * Effectue un premier traitement des données reçues en provenance de l'API et en retourne le résultat
      */
     private kdecole;
