@@ -1,0 +1,23 @@
+{
+  "errmsg": null,
+  "codeEleve": "AAP05567",
+  "nbAbsencesMax": 10,
+  "listeAbsences": [
+    {
+      "dateFin": 1602140100000,
+      "motif": "réunion dans l'établissement",
+      "type": "absence",
+      "matiere": "",
+      "dateDebut": 1602136800000,
+      "justifiee": true
+    },
+    {
+      "dateFin": 1607338800000,
+      "motif": "réunion dans l'établissement",
+      "type": "absence",
+      "matiere": "",
+      "dateDebut": 1607335500000,
+      "justifiee": true
+    }
+  ]
+}

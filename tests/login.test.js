@@ -14,11 +14,7 @@ describe('Test login method', () => {
     it('should call the right url and return the token', async () => {
         const expectedToken = '0AnemIFGvcORx88ESDrvIflY0qRV2ussl0n31tC5Sh2U6xDZJ0E3VrD1RYzrWGX3rYUZK4nI3wLnbxZYQi2sKXMrGbgxIuq2ewjOpRYfWLSP0mLFK3D3CZVu7Ev2s'
         axios.request.mockResolvedValue({
-            data: {
-                "errmsg": null,
-                "success": true,
-                "authtoken": expectedToken
-            }
+            data: require('./fakeData/fakeActivation.json')
         })
         expect(await Kdecole.login('mael.gangloff', 'PRJROFCOZ')).toBe(expectedToken)
         expect(axios.request).toHaveBeenCalledWith({

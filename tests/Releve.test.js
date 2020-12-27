@@ -2,8 +2,6 @@ import axios from 'axios'
 import {APP_VERSION, BASE_URL} from "../dist/config.js"
 import {Releve} from "../dist/entities/Note/Releve.js";
 
-const fakeReleve = require('./fakeData/fakeReleve.json')
-
 const Kdecole = require('../dist/Kdecole.js').default
 
 const authToken = '0AnemIFGvcORx88ESDrvIflY0qRV2ussl0n31tC5Sh2U6xDZJ0E3VrD1RYzrWGX3rYUZK4nI3wLnbxZYQi2sKXMrGbgxIuq2ewjOpRYfWLSP0mLFK3D3CZVu7Ev2s'
@@ -11,10 +9,10 @@ const user = new Kdecole(authToken, APP_VERSION, 10485)
 
 jest.mock('axios')
 axios.request.mockResolvedValue({
-    data: fakeReleve
+    data: require('./fakeData/fakeReleve.json')
 })
 
-describe('Test getReleve method', () => {
+describe('Test Releve', () => {
 
     beforeEach(() => {
         axios.mockClear()
@@ -46,7 +44,7 @@ describe('Test getReleve method', () => {
             }
         }
     })
-    it('should return moyenneGenerale and medianeGenerale of a specific student', async () => {
+    it('should return a releve of a specific student', async () => {
         await user.getReleve('AAP05567')
         expect(axios.request).toHaveBeenCalledWith({
             "baseURL": BASE_URL,

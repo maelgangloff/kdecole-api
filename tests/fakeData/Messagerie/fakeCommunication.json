@@ -1,0 +1,43 @@
+{
+  "participants": [
+    {
+      "id": null,
+      "libelle": "&Eacute;l&egrave;ves 1ERE1&hellip;"
+    }
+  ],
+  "expediteurActuel": {
+    "id": "AAB02877",
+    "libelle": "DOE ERIC"
+  },
+  "signalable": true,
+  "expediteurInitial": {
+    "id": "AAB02877",
+    "libelle": "DOE ERIC"
+  },
+  "id": 31143074,
+  "dateDernierMessage": 1608298458000,
+  "nbParticipations": 1,
+  "isExpediteurInitial": false,
+  "pieceJointe": false,
+  "participations": [
+    {
+      "dateEnvoi": 1608298458000,
+      "corpsMessage": "<p>Bonjour,<\/p> <p>Je vous confirme l'échange entre l'heure d'EMC et la demi-heure d'anglais. Je vous prie de bien marquer ceci dans votre carnet de correspondance, à faire signer par vos parents :<\/p> <p>\"Modification ponctuelle de l'emploi du temps de la 1ère 1 : les élèves de cette classe auront cours d'anglais avec Mme MERCIER le 6 janvier de 13h30 à 15h et non cours d'EMC avec monsieur DOE. Ils rattraperont ce cours d'EMC le 13 janvier de 13h à 14h.\"<\/p> <p>Ceci vous laissera plus de temps pour vous préparer.<\/p> <p>Bonnes vacances et bonnes fêtes,<\/p> <p>Monsieur DOE<\/p>",
+      "pjs": [],
+      "id": 31143074,
+      "libelleObjet": null,
+      "redacteur": {
+        "id": "AAB02877",
+        "libelle": "DOE ERICs"
+      },
+      "premieresLignes": "Bonjour, Je vous confirme l'&eacute;change entre l'heure d'EMC et la demi-heure d'anglais. Je vous prie de bien marquer ceci dans votre carnet de correspondance&hellip;",
+      "typeMessage": "TEXT_RICH"
+    }
+  ],
+  "objet": "échange EMC et anglais",
+  "type": "FIL_MESSAGES",
+  "etat": "ACTIVE",
+  "premieresLignes": "Bonjour, Je vous confirme l'&eacute;change entre l'heure d'EMC et la demi-heure d'anglais. Je vous prie de bien marquer ceci dans votre carnet de correspondance&hellip;",
+  "etatLecture": true,
+  "modeReponse": "TOUS"
+}

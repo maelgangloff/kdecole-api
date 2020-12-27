@@ -136,6 +136,13 @@ export default class Kdecole {
      */
     getContenuActivite(uidSeance: number, uid: number, idEleve?: string): Promise<ContenuActivite>;
     /**
+     * Permet de marquer un devoir comme étant fait
+     * @param uidSeance {number} Identifiant de la séance
+     * @param uid {number} Identifiant du devoir
+     * @param flagRealise {boolean} Statut du devoir
+     */
+    setActiviteFinished(uidSeance: number, uid: number, flagRealise: boolean): Promise<void>;
+    /**
      * Retourne la liste des absences d'un élève
      * @param {string} idEleve Identifiant d'un élève
      * @return {Promise<AbsencesList>}

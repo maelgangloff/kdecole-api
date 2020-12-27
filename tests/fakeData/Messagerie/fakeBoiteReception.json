@@ -1,0 +1,53 @@
+{
+  "nbMaxCommunicationRecues": 20,
+  "communications": [
+    {
+      "participants": null,
+      "expediteurActuel": {
+        "id": "AAB02877",
+        "libelle": "DOE ERIC"
+      },
+      "signalable": true,
+      "expediteurInitial": {
+        "id": "AAB02877",
+        "libelle": "DOE ERIC"
+      },
+      "id": 31143074,
+      "dateDernierMessage": 1608298458000,
+      "nbParticipations": 1,
+      "isExpediteurInitial": false,
+      "pieceJointe": false,
+      "participations": null,
+      "objet": "échange EMC et anglais",
+      "type": "FIL_MESSAGES",
+      "etat": "ACTIVE",
+      "premieresLignes": "Bonjour, Je vous confirme l'&eacute;change entre l'heure d'EMC et la demi-heure d'anglais. Je vous prie de bien marquer ceci dans votre carnet de correspondance&hellip;",
+      "etatLecture": true
+    },
+    {
+      "participants": null,
+      "expediteurActuel": {
+        "id": "AAB01554",
+        "libelle": "DURAND JANE"
+      },
+      "signalable": true,
+      "expediteurInitial": {
+        "id": "AAB01554",
+        "libelle": "DURAND JANE"
+      },
+      "id": 29930990,
+      "dateDernierMessage": 1607325116000,
+      "nbParticipations": 1,
+      "isExpediteurInitial": false,
+      "pieceJointe": false,
+      "participations": null,
+      "objet": "Activation de votre compte EduConnect",
+      "type": "FIL_MESSAGES",
+      "etat": "ACTIVE",
+      "premieresLignes": "Bonjour, Vous avez &eacute;t&eacute; destinataire via votre professeur principal ou par un envoi postal de vos codes&nbsp;EduConnect.&nbsp; Pour rappel : vous devez obligatoirement&hellip;",
+      "etatLecture": true
+    }
+  ],
+  "nbMaxCaracteresMessage": 10000,
+  "nbMaxCommunicationBoiteReception": 100
+}

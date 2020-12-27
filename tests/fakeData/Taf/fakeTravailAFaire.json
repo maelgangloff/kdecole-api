@@ -1,0 +1,91 @@
+{
+  "errmsg": null,
+  "tafOuvert": true,
+  "listeTravaux": [
+    {
+      "date": 1609714800000,
+      "listTravail": [
+        {
+          "type": "Exercices",
+          "temps": -1,
+          "matiere": "ALLEMAND",
+          "flagRealise": false,
+          "titre": "- réviser K 6",
+          "date": 1608292800000,
+          "uid": "72397",
+          "uidSeance": "645003"
+        }
+      ]
+    },
+    {
+      "date": 1609887600000,
+      "listTravail": [
+        {
+          "type": "Exercices",
+          "temps": -1,
+          "matiere": "ANGLAIS",
+          "flagRealise": false,
+          "titre": "Compréhension Orale:  Document audio en pièce jointe.\r\n\r\nEcouter l'enregistrement audio : \"Communica",
+          "date": 1608188400000,
+          "uid": "71784",
+          "uidSeance": "650397"
+        },
+        {
+          "type": "Devoir à la maison",
+          "temps": -1,
+          "matiere": "SPE_MATH",
+          "flagRealise": false,
+          "titre": "Travailler le Devoir Maison afin de se préparer au mieux à l'interrogation écrite qui en découlera (",
+          "date": 1608109800000,
+          "uid": "72356",
+          "uidSeance": "636603"
+        }
+      ]
+    },
+    {
+      "date": 1610578800000,
+      "listTravail": [
+        {
+          "type": "Exercices",
+          "temps": -1,
+          "matiere": "ANGLAIS",
+          "flagRealise": false,
+          "titre": "Evaluation Ecrite: Revoir les connaissances culturelles sur l'Afrique du Sud.",
+          "date": 1608123300000,
+          "uid": "72074",
+          "uidSeance": "650363"
+        }
+      ]
+    },
+    {
+      "date": 1610924400000,
+      "listTravail": [
+        {
+          "type": "Exercices",
+          "temps": -1,
+          "matiere": "FRANC",
+          "flagRealise": false,
+          "titre": "Devoir à rendre:\r\n\r\nSujet de dissertation :\r\n\r\n \r\n\r\nPensez-vous, avec Antonin Artaud, que « l’action",
+          "date": 1608191700000,
+          "uid": "72184",
+          "uidSeance": "636051"
+        }
+      ]
+    },
+    {
+      "date": 1611270000000,
+      "listTravail": [
+        {
+          "type": "Exercices",
+          "temps": -1,
+          "matiere": "ALLEMAND",
+          "flagRealise": false,
+          "titre": "- verbes forts P222 de scheinen à treiben ",
+          "date": 1608292800000,
+          "uid": "72398",
+          "uidSeance": "644946"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "errmsg": null,
+  "type": 1,
+  "nom": "Maël GANGLOFF",
+  "eleves": null,
+  "xiti": {
+    "idProjet": "55",
+    "idCollectivite": "365101",
+    "idXiti": "a3e374469e6f4025bda591b50d573fd9",
+    "idEtab": "34",
+    "idPlateforme": "6",
+    "codeProfil": "1"
+  },
+  "idEtablissementSelectionne": "10485",
+  "idEleveSelectionne": null,
+  "protection": "",
+  "etabs": [
+    {
+      "permissions": "lecture-actu info-actus messagerie lecture-cdt lecture-taf cdt-calendrier cdt-travaux vsc-abs-consulter vsc-notes-consulter vsc-releves-consulter",
+      "uid": "10485",
+      "nom": "Lycée Louise WEISS",
+      "active": true
+    }
+  ],
+  "timezone": "Europe/Paris"
+}

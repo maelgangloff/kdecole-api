@@ -214,8 +214,25 @@ export default class Kdecole {
   public async getContenuActivite (uidSeance: number, uid: number, idEleve?: string): Promise<ContenuActivite> {
     return new ContenuActivite(await this.kdecole({
       service: 'contenuActivite',
-      parameters: `${idEleve ? 'ideleve/' + idEleve : 'idetablissement/' + this.idEtablissement}/${uidSeance}/${uid}/`
+      parameters: `${idEleve ? 'ideleve/' + idEleve : 'idetablissement/' + this.idEtablissement}/${uidSeance}/${uid}`
     }))
+  }
+
+  /**
+   * Permet de marquer un devoir comme étant fait
+   * @param uidSeance {number} Identifiant de la séance
+   * @param uid {number} Identifiant du devoir
+   * @param flagRealise {boolean} Statut du devoir
+   */
+  public async setActiviteFinished (uidSeance: number, uid: number, flagRealise: boolean): Promise<void> {
+    await this.kdecole({
+      service: 'contenuActivite',
+      parameters: `idetablissement/${this.idEtablissement}/${uidSeance}/${uid}`,
+      type: 'put',
+      data: {
+        flagRealise: flagRealise
+      }
+    })
   }
 
   /**
@@ -346,7 +363,7 @@ export default class Kdecole {
   public async getCommunication (id: number): Promise<Communication> {
     return new Communication(await this.kdecole({
       service: 'messagerie/communication',
-      type: 'put',
+      type: 'get',
       parameters: `${id}`
     }))
   }
@@ -384,7 +401,8 @@ export default class Kdecole {
   public async deleteCommunication (id: number): Promise<void> {
     await this.kdecole({
       service: 'messagerie/communication/supprimer',
-      parameters: `${id}`
+      parameters: `${id}`,
+      type: 'delete'
     })
   }
 
@@ -422,7 +440,7 @@ export default class Kdecole {
    * user.sendMessage(id, corpsMessage)
    * ```
    */
-  public async sendMessage (id:number, corpsMessage:string):Promise<void> {
+  public async sendMessage (id: number, corpsMessage: string): Promise<void> {
     await this.kdecole({
       service: 'messagerie/communication/nouvelleParticipation',
       parameters: `${id}`,
@@ -438,7 +456,7 @@ export default class Kdecole {
    * Effectue un premier traitement des données reçues en provenance de l'API et en retourne le résultat
    */
   private async kdecole ({ service, parameters, type = 'get', data }: KdecoleRequest): Promise<any> {
-    if (parameters === undefined && service !== 'desactivation') parameters = `idetablissement/${this.idEtablissement}`
+    if (parameters === undefined && service !== 'desactivation' && service !== 'messagerie/info' && service !== 'messagerie/communication' && service !== 'messagerie/boiteReception') parameters = `idetablissement/${this.idEtablissement}`
     return await Kdecole.callAPI(this.appVersion, this.authToken, { service, parameters, type, data })
   }
 

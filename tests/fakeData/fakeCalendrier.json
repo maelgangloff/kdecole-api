@@ -1,0 +1,134 @@
+{
+  "errmsg": null,
+  "currentDate": 1608015600000,
+  "listeJourCdt": [
+    {
+      "listeSeances": [
+        {
+          "hdeb": 1607670000000,
+          "enSeance": [
+            {
+              "type": "Cours",
+              "uid": 71273,
+              "date": 1607670000000,
+              "titre": "Cours"
+            }
+          ],
+          "matiere": "SPE_SPC",
+          "aFaire": null,
+          "heureFin": "09:50",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "08:00",
+          "hfin": 1607676600000,
+          "aRendre": [
+            {
+              "type": "Exercices",
+              "uid": 70759,
+              "date": 1607065200000,
+              "titre": "Exercices"
+            }
+          ],
+          "motifModif": "",
+          "idSeance": 647984,
+          "salle": "256 - 1ERE1 SPE_SPC1"
+        },
+        {
+          "hdeb": 1607677800000,
+          "enSeance": null,
+          "matiere": "SPE_SVT",
+          "aFaire": null,
+          "heureFin": "12:00",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "10:10",
+          "hfin": 1607684400000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 642127,
+          "salle": "252 - 1ERE1 SPE_SVT1"
+        },
+        {
+          "hdeb": 1607688000000,
+          "enSeance": [
+            {
+              "type": "Cours",
+              "uid": 71581,
+              "date": 1607688000000,
+              "titre": "Cours"
+            }
+          ],
+          "matiere": "ALLEMAND",
+          "aFaire": [
+            {
+              "type": "Exercices",
+              "uid": 71580,
+              "date": 1607940300000,
+              "titre": "Exercices"
+            }
+          ],
+          "heureFin": "13:55",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "13:00",
+          "hfin": 1607691300000,
+          "aRendre": [
+            {
+              "type": "Exercices",
+              "uid": 70900,
+              "date": 1607335500000,
+              "titre": "Exercices"
+            }
+          ],
+          "motifModif": "",
+          "idSeance": 644967,
+          "salle": "307 - 1ERE1"
+        },
+        {
+          "hdeb": 1607691300000,
+          "enSeance": null,
+          "matiere": "SPE_MATH2",
+          "aFaire": [
+            {
+              "type": "Exercices",
+              "uid": 71557,
+              "date": 1608073200000,
+              "titre": "Probabilités"
+            }
+          ],
+          "heureFin": "15:45",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "13:55",
+          "hfin": 1607697900000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 634609,
+          "salle": "312 - 1ERE1 SPEMATH2"
+        },
+        {
+          "hdeb": 1607698800000,
+          "enSeance": null,
+          "matiere": "LCA LATIN",
+          "aFaire": null,
+          "heureFin": "16:55",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "16:00",
+          "hfin": 1607702100000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 638962,
+          "salle": "304 - LATIN_1ERE"
+        }
+      ],
+      "date": 1607670000000
+    }
+  ],
+  "cdtOuvert": true
+}
