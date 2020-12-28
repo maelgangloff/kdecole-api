@@ -693,7 +693,7 @@ paths:
                 $ref: '#/components/schemas/errmsg'
     put:
       summary: Marquer le devoir fait.
-      operationId: eleveConsulterActivite
+      operationId: elevePutFlagRealise
       tags:
         - Elève
       security:
