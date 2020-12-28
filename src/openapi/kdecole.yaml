@@ -78,7 +78,7 @@ paths:
         - AppVersion: [ ]
       responses:
         200:
-          description: Le serveur retourne les infos de l'utilisateur.
+          description: Le serveur retourne les informations de l'utilisateur.
           content:
             application/json:
               schema:
@@ -90,6 +90,34 @@ paths:
               schema:
                 $ref: '#/components/schemas/errmsg'
 
+  /infoutilisateur/ideleve/{ideleve}/:
+    get:
+      summary: Sélectionne un utilisateur pour les requêtes futures.
+      operationId: infoutilisateurSelectionEleve
+      tags:
+        - Utilisateur
+      security:
+        - AuthToken: [ ]
+        - AppVersion: [ ]
+      parameters:
+        - in: path
+          name: ideleve
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Le serveur retourne les informations de l'utilisateur avec le nouvel élève sélectionné.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/infoutilisateur'
+        403:
+          description: Le serveur vous refuse l'accès.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/errmsg'
   /messagerie/info/:
     get:
       summary: Retourne le nombre de messages non lus
