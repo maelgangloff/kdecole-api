@@ -1,0 +1,22 @@
+type: object
+properties:
+  errmsg:
+    $ref: '../schemas/errmsg.yaml'
+  codeHTML:
+    type: string
+  flagTravailAFaire:
+    type: boolean
+  flagRealise:
+    type: boolean
+  titre:
+    type: string
+  date:
+    type: number
+  isFaitModifiable:
+    type: boolean
+  type:
+    type: string
+  matiere:
+    type: string
+  pjs:
+    $ref: '../schemas/pieceJointe.yaml'

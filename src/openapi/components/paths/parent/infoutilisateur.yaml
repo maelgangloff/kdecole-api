@@ -1,0 +1,23 @@
+get:
+  summary: Sélectionne un utilisateur pour les requêtes futures.
+  operationId: infoutilisateurSelectionEleve
+  tags:
+    - Utilisateur
+  security:
+    - AuthToken: [ ]
+    - AppVersion: [ ]
+  parameters:
+    - $ref: '../../parameters/ideleve.yaml'
+  responses:
+    200:
+      description: Le serveur retourne les informations de l'utilisateur avec le nouvel élève sélectionné.
+      content:
+        application/json:
+          schema:
+            $ref: '../../responses/infoutilisateur.yaml'
+    403:
+      description: Le serveur vous refuse l'accès.
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/errmsg.yaml'

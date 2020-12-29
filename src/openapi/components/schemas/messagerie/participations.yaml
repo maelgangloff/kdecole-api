@@ -1,0 +1,22 @@
+type: array
+nullable: true
+items:
+  type: object
+  properties:
+    dateEnvoi:
+      type: number
+    corpsMessage:
+      type: string
+    pjs:
+      $ref: '../pieceJointe.yaml'
+    id:
+      type: number
+    libelleObjet:
+      type: string
+      nullable: true
+    redacteur:
+      $ref: './participant.yaml'
+    premieresLignes:
+      type: string
+    typeMessage:
+      type: string

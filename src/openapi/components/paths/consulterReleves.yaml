@@ -1,0 +1,23 @@
+get:
+  summary: Consulter le relevé de notes de l'élève sélectionné par défaut.
+  operationId: eleveConsulterReleves
+  tags:
+    - Elève
+  security:
+    - AuthToken: [ ]
+    - AppVersion: [ ]
+  parameters:
+    - $ref: '../parameters/idetablissement.yaml'
+  responses:
+    200:
+      description: Le serveur renvoit le relevé de notes de l'élève.
+      content:
+        application/json:
+          schema:
+            $ref: '../responses/consulterReleves.yaml'
+    403:
+      description: Le serveur vous refuse l'accès.
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/errmsg.yaml'

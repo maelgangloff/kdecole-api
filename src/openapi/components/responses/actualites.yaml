@@ -1,0 +1,18 @@
+type: array
+items:
+  type: object
+  properties:
+    errmsg:
+      $ref: '../schemas/errmsg.yaml'
+    type:
+      type: string
+    auteur:
+      type: string
+    codeEmetteur:
+      type: string
+    titre:
+      type: string
+    date:
+      type: number
+    uid:
+      type: string

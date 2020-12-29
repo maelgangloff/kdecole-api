@@ -1,0 +1,30 @@
+put:
+  summary: Envoi un message sur un fil de discussion.
+  operationId: messagerieCommunicationNouvelleParticipation
+  tags:
+    - Messagerie
+  security:
+    - AuthToken: [ ]
+    - AppVersion: [ ]
+  parameters:
+    - in: path
+      name: communication
+      required: true
+      schema:
+        type: string
+  requestBody:
+    description: Le message à envoyer.
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../schemas/messagerie/nouvelleParticipation.yaml'
+  responses:
+    200:
+      description: Le serveur prend en compte la nouvelle participation au fil de messages.
+    403:
+      description: Le serveur vous refuse l'accès.
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/errmsg.yaml'

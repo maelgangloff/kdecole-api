@@ -1,0 +1,32 @@
+type: object
+properties:
+  errmsg:
+    $ref: '../schemas/errmsg.yaml'
+  tafOuvert:
+    type: boolean
+  listeTravaux:
+    type: array
+    items:
+      type: object
+      properties:
+        date:
+          type: number
+        listTravail:
+          type: object
+          properties:
+            type:
+              type: string
+            temps:
+              type: number
+            matiere:
+              type: string
+            flagRealise:
+              type: boolean
+            titre:
+              type: string
+            date:
+              type: number
+            uid:
+              type: string
+            uidSeance:
+              type: string

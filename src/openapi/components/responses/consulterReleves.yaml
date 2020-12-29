@@ -1,0 +1,25 @@
+type: array
+items:
+  type: object
+  properties:
+    matieres:
+      type: array
+      items:
+        type: object
+        properties:
+          bareme:
+            type: string
+          moyenneEleve:
+            type: string
+          devoirs:
+            type: array
+            items:
+              $ref: '../schemas/noteReleve.yaml'
+          enseignants:
+            type: array
+            items:
+              type: string
+          matiereLibelle:
+            type: string
+          moyenneClasse:
+            type: string

@@ -1,0 +1,9 @@
+type: object
+properties:
+  errmsg:
+    $ref: '../schemas/errmsg.yaml'
+  success:
+    type: boolean
+  authtoken:
+    type: string
+    nullable: true

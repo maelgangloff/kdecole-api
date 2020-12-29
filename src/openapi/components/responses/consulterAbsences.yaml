@@ -1,0 +1,26 @@
+type: object
+properties:
+  errmsg:
+    $ref: '../schemas/errmsg.yaml'
+  codeEleve:
+    type: string
+  nbAbsencesMax:
+    type: number
+  listeAbsences:
+    type: array
+    items:
+      type: object
+      properties:
+        dateFin:
+          type: number
+        motif:
+          type: string
+          nullable: true
+        type:
+          type: string
+        matiere:
+          type: string
+        dateDebut:
+          type: number
+        justifiee:
+          type: boolean

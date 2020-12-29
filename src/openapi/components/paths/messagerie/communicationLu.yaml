@@ -1,0 +1,23 @@
+put:
+  summary: Marque une communication lue.
+  operationId: messagerieCommunicationLu
+  tags:
+    - Messagerie
+  security:
+    - AuthToken: [ ]
+    - AppVersion: [ ]
+  parameters:
+    - in: path
+      name: communication
+      required: true
+      schema:
+        type: string
+  responses:
+    200:
+      description: Le serveur marque la communication lue.
+    403:
+      description: Le serveur vous refuse l'accès.
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/errmsg.yaml'

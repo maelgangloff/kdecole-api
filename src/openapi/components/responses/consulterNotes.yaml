@@ -1,0 +1,14 @@
+type: object
+properties:
+  errmsg:
+    $ref: '../schemas/errmsg.yaml'
+  moduleNotesActif:
+    type: boolean
+  codeEleve:
+    type: string
+  nbNotesMax:
+    type: number
+  listeNotes:
+    type: array
+    items:
+      $ref: '../schemas/note.yaml'

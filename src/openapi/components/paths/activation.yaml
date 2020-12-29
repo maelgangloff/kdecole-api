@@ -1,0 +1,29 @@
+get:
+  summary: Récupération du token d'authentification
+  description: Récupération du token d'authentification en fournissant le nom d'utilisateur et le mot de passe à usage unique fournit lors la procédure d'activation de l'accès mobile de l'utilisateur.
+  operationId: activation
+  tags:
+    - Utilisateur
+  security:
+    - AuthToken: [ ]
+    - AppVersion: [ ]
+  parameters:
+    - in: path
+      name: username
+      required: true
+      schema:
+        type: string
+        example: john.doe
+    - in: path
+      name: password
+      required: true
+      schema:
+        type: string
+        example: PRJROFCOZ
+  responses:
+    200:
+      description: Le token est présent ou absent dans le corps de la réponse.
+      content:
+        application/json:
+          schema:
+            $ref: '../responses/activation.yaml'

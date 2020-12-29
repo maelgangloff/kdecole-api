@@ -1,0 +1,23 @@
+get:
+  summary: Consulter l'emploi du temps de l'élève sélectionné par défaut.
+  operationId: eleveConsulterEDT
+  tags:
+    - Elève
+  security:
+    - AuthToken: [ ]
+    - AppVersion: [ ]
+  parameters:
+    - $ref: '../parameters/idetablissement.yaml'
+  responses:
+    200:
+      description: Le serveur renvoit l'emploi du temps de l'élève sur 7 jours.
+      content:
+        application/json:
+          schema:
+            $ref: '../responses/calendrier.yaml'
+    403:
+      description: Le serveur vous refuse l'accès.
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/errmsg.yaml'

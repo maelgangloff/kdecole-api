@@ -1,0 +1,14 @@
+type: array
+nullable: true
+items:
+  type: object
+  properties:
+    idRessource:
+      type: number
+    url:
+      type: string
+      nullable: true
+    name:
+      type: string
+    typeMIME:
+      type: string

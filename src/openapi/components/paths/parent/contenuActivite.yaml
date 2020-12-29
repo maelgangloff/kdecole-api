@@ -1,0 +1,33 @@
+get:
+  summary: Consulter les détails d'un devoir à faire d'un élève précis.
+  operationId: eleveConsulterActiviteParent
+  tags:
+    - Elève
+  security:
+    - AuthToken: [ ]
+    - AppVersion: [ ]
+  parameters:
+    - $ref: '../../parameters/ideleve.yaml'
+    - in: path
+      name: seance
+      required: true
+      schema:
+        type: number
+    - in: path
+      name: travail
+      required: true
+      schema:
+        type: number
+  responses:
+    200:
+      description: Le serveur renvoit les détails du travail à faire.
+      content:
+        application/json:
+          schema:
+            $ref: '../../responses/contenuActivite.yaml'
+    403:
+      description: Le serveur vous refuse l'accès.
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/errmsg.yaml'

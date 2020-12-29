@@ -1,0 +1,23 @@
+get:
+  summary: Consulter les devoirs à faire d'un élève précis.
+  operationId: eleveTafParent
+  tags:
+    - Elève
+  security:
+    - AuthToken: [ ]
+    - AppVersion: [ ]
+  parameters:
+    - $ref: '../../parameters/ideleve.yaml'
+  responses:
+    200:
+      description: Le serveur renvoit les travaux à faire.
+      content:
+        application/json:
+          schema:
+            $ref: '../../responses/travailAFaire.yaml'
+    403:
+      description: Le serveur vous refuse l'accès.
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/errmsg.yaml'

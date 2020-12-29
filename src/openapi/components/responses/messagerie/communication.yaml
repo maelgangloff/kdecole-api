@@ -1,0 +1,38 @@
+type: array
+items:
+  type: object
+  properties:
+    participants:
+      array:
+        items:
+          $ref: '../../schemas/messagerie/participant.yaml'
+    expediteurActuel:
+      $ref: '../../schemas/messagerie/participant.yaml'
+    signalable:
+      type: boolean
+    expediteurInitial:
+      $ref: '../../schemas/messagerie/participant.yaml'
+    id:
+      type: number
+    dateDernierMessage:
+      type: number
+    nbParticipants:
+      type: number
+    isExpediteurInitial:
+      type: boolean
+    pieceJointe:
+      type: boolean
+    participations:
+      $ref: '../../schemas/messagerie/participations.yaml'
+    objet:
+      type: string
+    type:
+      type: string
+    etat:
+      type: string
+    premieresLignes:
+      type: string
+    etatLecture:
+      type: boolean
+    modeReponse:
+      type: string

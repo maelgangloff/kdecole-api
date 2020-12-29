@@ -1,0 +1,38 @@
+type: object
+properties:
+  coefficient:
+    type: number
+  pjs:
+    $ref: './pieceJointe.yaml'
+  id:
+    type: number
+  titreDevoir:
+    type: string
+  noteMax:
+    type: string
+  moyenne:
+    type: string
+  comptabilise:
+    type: boolean
+  commentaireDevoir:
+    type: string
+  facultatif:
+    type: boolean
+  sousMatiere:
+    nullable: true
+    type: string
+  noteMin:
+    type: string
+  appreciation:
+    nullable: true
+    type: string
+  bareme:
+    type: number
+  matiere:
+    type: string
+  date:
+    type: number
+  note:
+    type: string
+  medianeClasse:
+    type: string

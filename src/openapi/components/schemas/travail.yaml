@@ -1,0 +1,10 @@
+type: object
+properties:
+  type:
+    type: string
+  uid:
+    type: number
+  date:
+    type: number
+  titre:
+    type: string

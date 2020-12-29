@@ -1,0 +1,20 @@
+type: object
+properties:
+  errmsg:
+    $ref: '../schemas/errmsg.yaml'
+  titre:
+    type: string
+  codeHTML:
+    type: string
+  date:
+    type: number
+  url:
+    type: string
+  auteur:
+    type: string
+  type:
+    type: string
+  pjs:
+    type: array
+    items:
+      $ref: '../schemas/pieceJointe.yaml'

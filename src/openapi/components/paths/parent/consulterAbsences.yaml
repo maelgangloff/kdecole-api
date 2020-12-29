@@ -1,0 +1,23 @@
+get:
+  summary: Consulter les absences d'un élève précis.
+  operationId: vieScolaireConsulterAbsencesParent
+  tags:
+    - Vie scolaire
+  security:
+    - AuthToken: [ ]
+    - AppVersion: [ ]
+  parameters:
+    - $ref: '../../parameters/ideleve.yaml'
+  responses:
+    200:
+      description: Le serveur renvoit les absences de l'élève.
+      content:
+        application/json:
+          schema:
+            $ref: '../../responses/consulterAbsences.yaml'
+    403:
+      description: Le serveur vous refuse l'accès.
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/errmsg.yaml'

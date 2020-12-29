@@ -1,0 +1,27 @@
+get:
+  summary: Consulter les détails d'un article.
+  operationId: etablissementContenuActualite
+  tags:
+    - Etablissement
+  security:
+    - AuthToken: [ ]
+    - AppVersion: [ ]
+  parameters:
+    - in: path
+      name: article
+      required: true
+      schema:
+        type: string
+  responses:
+    200:
+      description: Le serveur renvoit le contenu de l'article.
+      content:
+        application/json:
+          schema:
+            $ref: '../responses/contenuArticle.yaml'
+    403:
+      description: Le serveur vous refuse l'accès.
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/errmsg.yaml'

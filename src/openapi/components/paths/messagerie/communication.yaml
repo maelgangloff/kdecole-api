@@ -1,0 +1,27 @@
+get:
+  summary: Retourne derniers fils de discussion.
+  operationId: messagerieCommunication
+  tags:
+    - Messagerie
+  security:
+    - AuthToken: [ ]
+    - AppVersion: [ ]
+  parameters:
+    - in: path
+      name: communication
+      required: true
+      schema:
+        type: string
+  responses:
+    200:
+      description: Le serveur les derniers fils de discussion.
+      content:
+        application/json:
+          schema:
+            $ref: '../../responses/messagerie/communication.yaml'
+    403:
+      description: Le serveur vous refuse l'accès.
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/errmsg.yaml'

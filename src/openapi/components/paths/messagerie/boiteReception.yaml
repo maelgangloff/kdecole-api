@@ -1,0 +1,21 @@
+get:
+  summary: Retourne derniers fils de discussion.
+  operationId: messagerieBoiteReception
+  tags:
+    - Messagerie
+  security:
+    - AuthToken: [ ]
+    - AppVersion: [ ]
+  responses:
+    200:
+      description: Le serveur les derniers fils de discussion.
+      content:
+        application/json:
+          schema:
+            $ref: '../../responses/messagerie/boiteReception.yaml'
+    403:
+      description: Le serveur vous refuse l'accès.
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/errmsg.yaml'

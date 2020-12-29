@@ -1,0 +1,62 @@
+type: object
+properties:
+  errmsg:
+    $ref: '../schemas/errmsg.yaml'
+  type:
+    type: number
+    description: Le type de compte (élève, parent, prof, etc.)
+  nom:
+    type: string
+  eleve:
+    type: array
+    items:
+      type: object
+      properties:
+        active:
+          type: boolean
+        nom:
+          type: string
+        uid:
+          type: string
+        permissions:
+          type: string
+          nullable: true
+  xiti:
+    type: object
+    properties:
+      idProjet:
+        type: string
+      idCollectivite:
+        type: string
+      idXiti:
+        type: string
+      idEtab:
+        type: string
+      idPlateforme:
+        type: string
+      codeProfil:
+        type: string
+  idEtablissementSelectionne:
+    type: string
+    nullable: true
+  idEleveSelectionne:
+    type: string
+    nullable: true
+  protection:
+    type: string
+  etabs:
+    type: array
+    items:
+      type: object
+      properties:
+        permissions:
+          type: string
+          nullable: true
+        uid:
+          type: string
+        nom:
+          type: string
+        active:
+          type: boolean
+  timezone:
+    type: string
