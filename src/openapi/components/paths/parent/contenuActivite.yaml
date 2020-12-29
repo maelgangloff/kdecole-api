@@ -7,7 +7,11 @@ get:
     - AuthToken: [ ]
     - AppVersion: [ ]
   parameters:
-    - $ref: '../../parameters/ideleve.yaml'
+    - in: path
+      name: ideleve
+      required: true
+      schema:
+        type: string
     - in: path
       name: seance
       required: true

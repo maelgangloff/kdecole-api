@@ -17,5 +17,5 @@ properties:
           type: number
         dateFin:
           type: number
-          modifiable:
-            type: boolean
+        modifiable:
+          type: boolean

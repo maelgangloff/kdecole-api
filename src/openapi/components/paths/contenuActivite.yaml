@@ -7,7 +7,11 @@ get:
     - AuthToken: [ ]
     - AppVersion: [ ]
   parameters:
-    - $ref: '../parameters/idetablissement.yaml'
+    - in: path
+      name: idetablissement
+      required: true
+      schema:
+        type: string
     - in: path
       name: seance
       required: true
@@ -47,7 +51,11 @@ put:
         schema:
           $ref: '../schemas/flagRealise.yaml'
   parameters:
-    - $ref: '../parameters/idetablissement.yaml'
+    - in: path
+      name: idetablissement
+      required: true
+      schema:
+        type: string
     - in: path
       name: seance
       required: true

@@ -14,7 +14,7 @@ get:
         type: string
   responses:
     200:
-      description: Le serveur les derniers fils de discussion.
+      description: Le serveur retourne le fil de discussion.
       content:
         application/json:
           schema:

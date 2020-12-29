@@ -7,7 +7,11 @@ get:
     - AuthToken: [ ]
     - AppVersion: [ ]
   parameters:
-    - $ref: '../parameters/idetablissement.yaml'
+    - in: path
+      name: idetablissement
+      required: true
+      schema:
+        type: string
   responses:
     200:
       description: Le serveur renvoit les absences de l'élève.

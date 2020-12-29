@@ -8,7 +8,7 @@ get:
     - AppVersion: [ ]
   responses:
     200:
-      description: Le serveur les derniers fils de discussion.
+      description: Le serveur retourne les derniers fils de discussion.
       content:
         application/json:
           schema:

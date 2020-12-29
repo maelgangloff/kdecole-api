@@ -14,7 +14,11 @@ put:
         schema:
           $ref: '../../schemas/prof/gestionAppelsValider.yaml'
   parameters:
-    - $ref: '../../parameters/idetablissement.yaml'
+    - in: path
+      name: idetablissement
+      required: true
+      schema:
+        type: string
   responses:
     200:
       description: Le serveur prend en compte l'appel.

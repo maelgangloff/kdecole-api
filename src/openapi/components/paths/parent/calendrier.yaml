@@ -7,7 +7,11 @@ get:
     - AuthToken: [ ]
     - AppVersion: [ ]
   parameters:
-    - $ref: '../../parameters/ideleve.yaml'
+    - in: path
+      name: ideleve
+      required: true
+      schema:
+        type: string
   responses:
     200:
       description: Le serveur renvoit l'emploi du temps de l'élève sur 7 jours.

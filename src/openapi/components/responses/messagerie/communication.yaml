@@ -3,9 +3,9 @@ items:
   type: object
   properties:
     participants:
-      array:
-        items:
-          $ref: '../../schemas/messagerie/participant.yaml'
+      type: array
+      items:
+        $ref: '../../schemas/messagerie/participant.yaml'
     expediteurActuel:
       $ref: '../../schemas/messagerie/participant.yaml'
     signalable:
