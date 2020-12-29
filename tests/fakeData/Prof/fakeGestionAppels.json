@@ -1,0 +1,32 @@
+{
+  "dateDuJour": 1609260058,
+  "listeAppels": [
+    {
+      "isEnCours": true,
+      "dateDebut": 1609260058,
+      "dateFin": 1609263658,
+      "idAppel": 524545,
+      "libelleGroupe": "1ERE1",
+      "listeElevesAppel": [
+        {
+          "nomEleve": "DOE",
+          "prenomEleve": "John",
+          "idEleve": "AAP05567",
+          "absenceEleveAppel": {
+            "idAbsence": 54542,
+            "type": "retard",
+            "dateDebut": 1609260058,
+            "dateFin": 1609260500,
+            "idMotif": "Transport scolaire",
+            "modifiable": true
+          }
+        },
+        {
+          "nomEleve": "Luc",
+          "prenomEleve": "DUPONT",
+          "idEleve": "AAP05568"
+        }
+      ]
+    }
+  ]
+}

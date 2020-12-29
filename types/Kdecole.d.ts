@@ -11,6 +11,7 @@ import { MessageBoiteReception } from './entities/Messagerie/MessageBoiteRecepti
 import { ContenuActivite } from './entities/Travail/ContenuActivite';
 import { ContenuArticle } from './entities/News/ContenuArticle';
 import { Communication } from './entities/Messagerie/Communication';
+import { GestionAppels } from './entities/Prof/GestionAppels';
 interface KdecoleRequest {
     service: 'starting' | 'actualites' | 'contenuArticle' | 'activation' | 'consulterReleves' | 'consulterAbsences' | 'infoutilisateur' | 'desactivation' | 'calendrier' | 'consulterNotes' | 'messagerie/info' | 'messagerie/boiteReception' | 'messagerie/communication' | 'messagerie/communication/nouvelleParticipation' | 'messagerie/communication/signaler' | 'messagerie/communication/supprimer' | 'messagerie/communication/lu' | 'travailAFaire' | 'contenuActivite' | 'gestionAppels';
     parameters?: string;
@@ -293,6 +294,44 @@ export default class Kdecole {
      * ```
      */
     sendMessage(id: number, corpsMessage: string): Promise<void>;
+    /**
+     * Retourne les feuilles d'appel.
+     * @return {Promise<GestionAppels>} Les feuilles d'appel.
+     * @example ```js
+     * const Kdecole = require('kdecole-api').default
+     *
+     * const user = new Kdecole(AUTH_TOKEN)
+     * user.gestionAppels().then((gestionAppels)=>{
+     *  // Votre code
+     *  })
+     * ```
+     */
+    gestionAppels(): Promise<GestionAppels>;
+    /**
+     * Valide l'appel de la classe.
+     * @return {Promise<void>}
+     * @param appel L'appel à valider
+     * @example ```js
+     * const Kdecole = require('kdecole-api').default
+     *
+     * const user = new Kdecole(AUTH_TOKEN)
+     * const appel = {
+     *   "idEtab": 10485,
+     *   "idAppel": 534552,
+     *   "listeAbsencesAppel": [
+     *     {
+     *       "idEleve": "AAP05567",
+     *       "type": "absence",
+     *       "dateDebut": 1609259443000,
+     *       "dateFin": 1609263043000,
+     *       "modifiable": true
+     *     }
+     *   ]
+     * }
+     * user.validerAppel(appel)
+     * ```
+     */
+    validerAppel(appel: any): Promise<void>;
     /**
      * Effectue un premier traitement des données reçues en provenance de l'API et en retourne le résultat
      */

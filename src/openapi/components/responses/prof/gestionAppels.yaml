@@ -10,9 +10,9 @@ properties:
         isEnCours:
           type: boolean
         dateDebut:
-          type: boolean
+          type: number
         dateFin:
-          type: boolean
+          type: number
         idAppel:
           type: number
         libelleGroupe:

@@ -26,6 +26,8 @@ Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
         * [.deleteCommunication(id)](#Kdecole+deleteCommunication) ⇒ <code>Promise.&lt;void&gt;</code>
         * [.setCommunicationLu(id)](#Kdecole+setCommunicationLu) ⇒ <code>Promise.&lt;void&gt;</code>
         * [.sendMessage(id, corpsMessage)](#Kdecole+sendMessage) ⇒ <code>Promise.&lt;void&gt;</code>
+        * [.gestionAppels()](#Kdecole+gestionAppels) ⇒ <code>Promise.&lt;GestionAppels&gt;</code>
+        * [.validerAppel(appel)](#Kdecole+validerAppel) ⇒ <code>Promise.&lt;void&gt;</code>
         * [.kdecole()](#Kdecole+kdecole)
     * _static_
         * [.login(login, password)](#Kdecole.login) ⇒ <code>Promise.&lt;string&gt;</code>
@@ -269,6 +271,28 @@ Envoyer un message sur un fil de discussion
 
 **Example**  
 ```jsconst Kdecole = require('kdecole-api').defaultconst user = new Kdecole(AUTH_TOKEN)user.sendMessage(id, corpsMessage)```
+<a name="Kdecole+gestionAppels"></a>
+
+### kdecole.gestionAppels() ⇒ <code>Promise.&lt;GestionAppels&gt;</code>
+Retourne les feuilles d'appel.
+
+**Kind**: instance method of [<code>Kdecole</code>](#Kdecole)  
+**Returns**: <code>Promise.&lt;GestionAppels&gt;</code> - Les feuilles d'appel.  
+**Example**  
+```jsconst Kdecole = require('kdecole-api').defaultconst user = new Kdecole(AUTH_TOKEN)user.gestionAppels().then((gestionAppels)=>{ // Votre code })```
+<a name="Kdecole+validerAppel"></a>
+
+### kdecole.validerAppel(appel) ⇒ <code>Promise.&lt;void&gt;</code>
+Valide l'appel de la classe.
+
+**Kind**: instance method of [<code>Kdecole</code>](#Kdecole)  
+
+| Param | Description |
+| --- | --- |
+| appel | L'appel à valider |
+
+**Example**  
+```jsconst Kdecole = require('kdecole-api').defaultconst user = new Kdecole(AUTH_TOKEN)const appel = {  "idEtab": 10485,  "idAppel": 534552,  "listeAbsencesAppel": [    {      "idEleve": "AAP05567",      "type": "absence",      "dateDebut": 1609259443000,      "dateFin": 1609263043000,      "modifiable": true    }  ]}user.validerAppel(appel)```
 <a name="Kdecole+kdecole"></a>
 
 ### kdecole.kdecole()

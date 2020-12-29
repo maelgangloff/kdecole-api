@@ -1,0 +1,13 @@
+{
+  "idEtab": 10485,
+  "idAppel": 534552,
+  "listeAbsencesAppel": [
+    {
+      "idEleve": "AAP05567",
+      "type": "absence",
+      "dateDebut": 1609259443000,
+      "dateFin": 1609263043000,
+      "modifiable": true
+    }
+  ]
+}

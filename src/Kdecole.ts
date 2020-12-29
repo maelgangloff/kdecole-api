@@ -14,6 +14,7 @@ import axios from 'axios'
 import { ContenuActivite } from './entities/Travail/ContenuActivite'
 import { ContenuArticle } from './entities/News/ContenuArticle'
 import { Communication } from './entities/Messagerie/Communication'
+import { GestionAppels } from './entities/Prof/GestionAppels'
 
 interface KdecoleRequest {
   service: 'starting'
@@ -455,6 +456,55 @@ export default class Kdecole {
         dateEnvoi: (new Date()).getTime(),
         corpsMessage: corpsMessage
       }
+    })
+  }
+
+  /**
+   * Retourne les feuilles d'appel.
+   * @return {Promise<GestionAppels>} Les feuilles d'appel.
+   * @example ```js
+   * const Kdecole = require('kdecole-api').default
+   *
+   * const user = new Kdecole(AUTH_TOKEN)
+   * user.gestionAppels().then((gestionAppels)=>{
+   *  // Votre code
+   *  })
+   * ```
+   */
+  public async gestionAppels ():Promise<GestionAppels> {
+    return new GestionAppels(await this.kdecole({ service: 'gestionAppels' }))
+  }
+
+  /**
+   * Valide l'appel de la classe.
+   * @return {Promise<void>}
+   * @param appel L'appel à valider
+   * @example ```js
+   * const Kdecole = require('kdecole-api').default
+   *
+   * const user = new Kdecole(AUTH_TOKEN)
+   * const appel = {
+   *   "idEtab": 10485,
+   *   "idAppel": 534552,
+   *   "listeAbsencesAppel": [
+   *     {
+   *       "idEleve": "AAP05567",
+   *       "type": "absence",
+   *       "dateDebut": 1609259443000,
+   *       "dateFin": 1609263043000,
+   *       "modifiable": true
+   *     }
+   *   ]
+   * }
+   * user.validerAppel(appel)
+   * ```
+   */
+  public async validerAppel (appel: any):Promise<void> {
+    await this.kdecole({
+      service: 'gestionAppels',
+      parameters: `idetablissement/${this.idEtablissement}/valider`,
+      type: 'put',
+      data: appel
     })
   }
 
