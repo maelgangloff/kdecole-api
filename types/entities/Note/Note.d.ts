@@ -1,4 +1,4 @@
-export declare class Note {
+export default class Note {
     note: number | null;
     date: Date;
     medianeClasse: number | null;

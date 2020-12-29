@@ -6,7 +6,7 @@ Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
 **Kind**: global class  
 
 * [Kdecole](#Kdecole)
-    * [new Kdecole(authToken, appVersion, idEtablissement)](#new_Kdecole_new)
+    * [new Kdecole(authToken, appVersion, idEtablissement, apiURL)](#new_Kdecole_new)
     * _instance_
         * [.logout()](#Kdecole+logout) ⇒ <code>Promise.&lt;(Desactivation\|Error)&gt;</code>
         * [.getReleve(idEleve)](#Kdecole+getReleve) ⇒ <code>Promise.&lt;Releve&gt;</code>
@@ -28,20 +28,19 @@ Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
         * [.sendMessage(id, corpsMessage)](#Kdecole+sendMessage) ⇒ <code>Promise.&lt;void&gt;</code>
         * [.gestionAppels()](#Kdecole+gestionAppels) ⇒ <code>Promise.&lt;GestionAppels&gt;</code>
         * [.validerAppel(appel)](#Kdecole+validerAppel) ⇒ <code>Promise.&lt;void&gt;</code>
-        * [.kdecole()](#Kdecole+kdecole)
     * _static_
-        * [.login(login, password)](#Kdecole.login) ⇒ <code>Promise.&lt;string&gt;</code>
-        * [.callAPI()](#Kdecole.callAPI)
+        * [.login(login, password, appVersion)](#Kdecole.login) ⇒ <code>Promise.&lt;string&gt;</code>
 
 <a name="new_Kdecole_new"></a>
 
-### new Kdecole(authToken, appVersion, idEtablissement)
+### new Kdecole(authToken, appVersion, idEtablissement, apiURL)
 
-| Param | Type | Description |
-| --- | --- | --- |
-| authToken | <code>string</code> | Le jeton d'accès |
-| appVersion | <code>string</code> | La version de l'API |
-| idEtablissement | <code>number</code> | L'identifiant de l'établissement |
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| authToken | <code>string</code> |  | Le jeton d'accès |
+| appVersion | <code>string</code> |  | La version de l'application mobile autorisée par l'API |
+| idEtablissement | <code>number</code> | <code>0</code> | L'identifiant de l'établissement |
+| apiURL | <code>string</code> | <code>&quot;https://mobilite.monbureaunumerique.fr/mobilite&quot;</code> | L'URL de l'API Kdecole |
 
 **Example**  
 ```jsconst Kdecole = require('kdecole-api').defaultconst user = new Kdecole(Kdecole.login(USERNAME, PASSWORD))// ou encore:const user = new Kdecole(AUTH_TOKEN)```
@@ -52,11 +51,11 @@ Invalide le jeton d'accès
 
 **Kind**: instance method of [<code>Kdecole</code>](#Kdecole)  
 **Example**  
-```jsconst Kdecole = require('kdecole-api').defaultconst user = new Kdecole(AUTH_TOKEN)user.logout()```
+```jsconst Kdecole = require('kdecole-api').defaultconst user = new Kdecole(authToken)user.logout()```
 <a name="Kdecole+getReleve"></a>
 
 ### kdecole.getReleve(idEleve) ⇒ <code>Promise.&lt;Releve&gt;</code>
-Retourne le relevé des notes de l'élève
+Retourne le relevé de notes de l'élève
 
 **Kind**: instance method of [<code>Kdecole</code>](#Kdecole)  
 
@@ -293,15 +292,9 @@ Valide l'appel de la classe.
 
 **Example**  
 ```jsconst Kdecole = require('kdecole-api').defaultconst user = new Kdecole(AUTH_TOKEN)const appel = {  "idEtab": 10485,  "idAppel": 534552,  "listeAbsencesAppel": [    {      "idEleve": "AAP05567",      "type": "absence",      "dateDebut": 1609259443000,      "dateFin": 1609263043000,      "modifiable": true    }  ]}user.validerAppel(appel)```
-<a name="Kdecole+kdecole"></a>
-
-### kdecole.kdecole()
-Effectue un premier traitement des données reçues en provenance de l'API et en retourne le résultat
-
-**Kind**: instance method of [<code>Kdecole</code>](#Kdecole)  
 <a name="Kdecole.login"></a>
 
-### Kdecole.login(login, password) ⇒ <code>Promise.&lt;string&gt;</code>
+### Kdecole.login(login, password, appVersion) ⇒ <code>Promise.&lt;string&gt;</code>
 Retourne le jeton d'accès de l'utilisateur
 
 **Kind**: static method of [<code>Kdecole</code>](#Kdecole)  
@@ -310,12 +303,7 @@ Retourne le jeton d'accès de l'utilisateur
 | --- | --- | --- |
 | login | <code>string</code> | Le nom d'utilisateur |
 | password | <code>string</code> | Le mot de passe à usage unique |
+| appVersion | <code>string</code> | La version de l'application mobile autorisée par l'API |
 
 **Example**  
-```jsconst Kdecole = require('kdecole-api').defaultconst AUTH_TOKEN = Kdecole.login(USERNAME, PASSWORD)```
-<a name="Kdecole.callAPI"></a>
-
-### Kdecole.callAPI()
-Envoie les requêtes à l'APILes en-têtes qui doivent être présentes sont: - X-Kdecole-Vers  Version de l'application mobile - X-Kdecole-Auth  Jeton d'accès
-
-**Kind**: static method of [<code>Kdecole</code>](#Kdecole)  
+```jsconst Kdecole = require('kdecole-api').defaultconst authToken = Kdecole.login(username, password)console.log(authToken) //Afficher son token d'authentification```

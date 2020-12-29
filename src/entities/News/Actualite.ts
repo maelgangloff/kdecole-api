@@ -1,4 +1,4 @@
-export class Actualite {
+export default class Actualite {
     public type: string
     public auteur: string
     public codeEmetteur: number

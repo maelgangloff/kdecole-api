@@ -1,6 +1,6 @@
 import axios from 'axios'
-import {APP_VERSION, BASE_URL} from "../dist/config.js"
-import {AbsencesList} from "../dist/entities/VieScolaire/AbsencesList.js";
+import AbsencesList from "../dist/entities/VieScolaire/AbsencesList.js";
+import {APP_VERSION, BASE_URL} from "../dist/Kdecole";
 
 const Kdecole = require('../dist/Kdecole.js').default
 

@@ -1,6 +1,6 @@
-import { Matiere } from './Matiere.js'
+import Matiere from './Matiere'
 
-export class Trimestre {
+export default class Trimestre {
   public matieres: Array<Matiere> = []
   public idPeriode: number
   public libelleClasse: string

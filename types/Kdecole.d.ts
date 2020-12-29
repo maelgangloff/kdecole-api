@@ -1,23 +1,19 @@
-import { Desactivation } from './entities/Authentication/Desactivation';
-import { Releve } from './entities/Note/Releve';
-import { TravailAFaire } from './entities/Travail/TravailAFaire';
-import { Actualite } from './entities/News/Actualite';
-import { AbsencesList } from './entities/VieScolaire/AbsencesList';
-import { Utilisateur } from './entities/User/Utilisateur';
-import { Calendrier } from './entities/Calendar/Calendrier';
-import { NotesList } from './entities/Note/NotesList';
-import { MessageInfo } from './entities/Messagerie/MessageInfo';
-import { MessageBoiteReception } from './entities/Messagerie/MessageBoiteReception';
-import { ContenuActivite } from './entities/Travail/ContenuActivite';
-import { ContenuArticle } from './entities/News/ContenuArticle';
-import { Communication } from './entities/Messagerie/Communication';
-import { GestionAppels } from './entities/Prof/GestionAppels';
-interface KdecoleRequest {
-    service: 'starting' | 'actualites' | 'contenuArticle' | 'activation' | 'consulterReleves' | 'consulterAbsences' | 'infoutilisateur' | 'desactivation' | 'calendrier' | 'consulterNotes' | 'messagerie/info' | 'messagerie/boiteReception' | 'messagerie/communication' | 'messagerie/communication/nouvelleParticipation' | 'messagerie/communication/signaler' | 'messagerie/communication/supprimer' | 'messagerie/communication/lu' | 'travailAFaire' | 'contenuActivite' | 'gestionAppels';
-    parameters?: string;
-    type?: 'get' | 'post' | 'delete' | 'put';
-    data?: any;
-}
+import Desactivation from './entities/Authentication/Desactivation';
+import Releve from './entities/Note/Releve';
+import TravailAFaire from './entities/Travail/TravailAFaire';
+import Actualite from './entities/News/Actualite';
+import AbsencesList from './entities/VieScolaire/AbsencesList';
+import Utilisateur from './entities/User/Utilisateur';
+import Calendrier from './entities/Calendar/Calendrier';
+import NotesList from './entities/Note/NotesList';
+import MessageInfo from './entities/Messagerie/MessageInfo';
+import MessageBoiteReception from './entities/Messagerie/MessageBoiteReception';
+import ContenuActivite from './entities/Travail/ContenuActivite';
+import ContenuArticle from './entities/News/ContenuArticle';
+import Communication from './entities/Messagerie/Communication';
+import GestionAppels from './entities/Prof/GestionAppels';
+export declare const APP_VERSION = "3.4.14";
+export declare const BASE_URL = "https://mobilite.monbureaunumerique.fr/mobilite";
 /**
  * Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
  * @example ```js
@@ -30,38 +26,42 @@ interface KdecoleRequest {
  */
 export default class Kdecole {
     private readonly authToken;
-    appVersion: string;
-    idEtablissement: number;
+    private readonly appVersion;
+    private readonly idEtablissement;
+    private readonly apiURL;
     /**
      * @param {string} authToken Le jeton d'accès
-     * @param {string} appVersion La version de l'API
+     * @param {string} appVersion La version de l'application mobile autorisée par l'API
      * @param {number} idEtablissement L'identifiant de l'établissement
+     * @param {string} apiURL L'URL de l'API Kdecole
      */
-    constructor(authToken?: string, appVersion?: string, idEtablissement?: number);
+    constructor(authToken: string, appVersion?: string, idEtablissement?: number, apiURL?: 'https://mobilite.monbureaunumerique.fr/mobilite' | 'https://mobilite.preprod.monbureaunumerique.fr/mobilite' | 'https://mobilite.mon-ent-occitanie.fr/mobilite' | 'https://mobilite.arsene76.fr/mobilite' | 'https://mobilite.ent27.fr/mobilite' | 'https://mobilite.entcreuse.fr/mobilite' | 'https://mobilite.ent.auvergnerhonealpes.fr/mobilite' | 'https://mobilite.savoirsnumeriques62.fr/mobilite');
     /**
      * Retourne le jeton d'accès de l'utilisateur
      * @param {string} login Le nom d'utilisateur
      * @param {string} password Le mot de passe à usage unique
+     * @param {string} appVersion La version de l'application mobile autorisée par l'API
      * @return {Promise<string>}
      * @example ```js
      * const Kdecole = require('kdecole-api').default
      *
-     * const AUTH_TOKEN = Kdecole.login(USERNAME, PASSWORD)
+     * const authToken = Kdecole.login(username, password)
+     * console.log(authToken) //Afficher son token d'authentification
      * ```
      */
-    static login(login: string, password: string): Promise<string>;
+    static login(login: string, password: string, appVersion?: string): Promise<string>;
     /**
      * Invalide le jeton d'accès
      * @example ```js
      * const Kdecole = require('kdecole-api').default
-     * const user = new Kdecole(AUTH_TOKEN)
+     * const user = new Kdecole(authToken)
      * user.logout()
      * ```
      * @return {Promise<Desactivation | Error>}
      */
     logout(): Promise<Desactivation | Error>;
     /**
-     * Retourne le relevé des notes de l'élève
+     * Retourne le relevé de notes de l'élève
      * @example ```js
      * kdecole.getReleve() //Retourne le relevé de l'élève
      * kdecole.getReleve(idEleve) //Retourne le relevé d'un élève précis
@@ -331,17 +331,16 @@ export default class Kdecole {
      * user.validerAppel(appel)
      * ```
      */
-    validerAppel(appel: any): Promise<void>;
-    /**
-     * Effectue un premier traitement des données reçues en provenance de l'API et en retourne le résultat
-     */
-    private kdecole;
-    /**
-     * Envoie les requêtes à l'API
-     * Les en-têtes qui doivent être présentes sont:
-     *  - X-Kdecole-Vers  Version de l'application mobile
-     *  - X-Kdecole-Auth  Jeton d'accès
-     */
-    static callAPI(appVersion: string, authToken: string, { service, parameters, type, data }: KdecoleRequest): Promise<any>;
+    validerAppel(appel: {
+        idEtab: number;
+        idAppel: number;
+        listeAbsencesAppel: {
+            idEleve: string;
+            type: string;
+            dateDebut: number;
+            dateFin: number;
+            modifiable: boolean;
+        }[];
+    }): Promise<void>;
+    private static kdecole;
 }
-export {};

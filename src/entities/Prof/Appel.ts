@@ -1,6 +1,6 @@
-import { EleveAppel } from './EleveAppel'
+import EleveAppel from './EleveAppel'
 
-export class Appel {
+export default class Appel {
   public isEnCours: boolean
   public dateDebut: Date
   public dateFin: Date

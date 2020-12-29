@@ -1,6 +1,6 @@
-import { Participant } from './Participant.js';
-import { Participation } from './Participation.js';
-export declare class Communication {
+import Participant from './Participant';
+import Participation from './Participation';
+export default class Communication {
     participants: Array<Participant>;
     expediteurActuel: Participant;
     signalable: boolean;

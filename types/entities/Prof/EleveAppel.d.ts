@@ -1,5 +1,5 @@
-import { AbsenceEleveAppel } from './AbsenceEleveAppel';
-export declare class EleveAppel {
+import AbsenceEleveAppel from './AbsenceEleveAppel';
+export default class EleveAppel {
     nomEleve: string;
     prenomEleve: string;
     idEleve: string;

@@ -1,6 +1,6 @@
-import { ListeTravaux } from './ListeTravaux.js'
+import ListeTravaux from './ListeTravaux'
 
-export class TravailAFaire {
+export default class TravailAFaire {
     public tafOuvert: boolean
     public listeTravaux: ListeTravaux[] = []
     private errmsg: string | null

@@ -1,4 +1,4 @@
-export declare class Absence {
+export default class Absence {
     dateFin: Date;
     motif: string | null;
     type: string;

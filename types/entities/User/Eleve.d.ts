@@ -1,4 +1,4 @@
-export declare class Eleve {
+export default class Eleve {
     active: boolean;
     nom: string;
     uid: string;

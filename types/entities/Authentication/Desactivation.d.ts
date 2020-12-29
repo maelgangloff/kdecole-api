@@ -1,4 +1,4 @@
-export declare class Desactivation {
+export default class Desactivation {
     success: boolean;
     authtoken: string | null;
     private errmsg;

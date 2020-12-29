@@ -1,4 +1,4 @@
-export class Absence {
+export default class Absence {
     public dateFin: Date
     public motif: string | null
     public type: string

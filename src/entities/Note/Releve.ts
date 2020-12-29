@@ -1,6 +1,6 @@
-import { Trimestre } from './Trimestre.js'
+import Trimestre from './Trimestre'
 
-export class Releve {
+export default class Releve {
     public trimestres: Array<Trimestre> = []
 
     constructor (releve: Array<{

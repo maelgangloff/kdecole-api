@@ -1,6 +1,6 @@
 import axios from 'axios'
-import {APP_VERSION, BASE_URL} from "../../dist/config.js"
-import {Communication} from "../../dist/entities/Messagerie/Communication.js"
+import Communication from "../../dist/entities/Messagerie/Communication.js"
+import {APP_VERSION, BASE_URL} from "../../dist/Kdecole";
 
 const Kdecole = require('../../dist/Kdecole.js').default
 

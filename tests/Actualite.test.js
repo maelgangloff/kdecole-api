@@ -1,7 +1,7 @@
 import axios from 'axios'
-import {APP_VERSION, BASE_URL} from "../dist/config.js"
-import {Actualite} from "../dist/entities/News/Actualite"
-import {ContenuArticle} from "../dist/entities/News/ContenuArticle"
+import Actualite from "../dist/entities/News/Actualite"
+import ContenuArticle from "../dist/entities/News/ContenuArticle"
+import {APP_VERSION, BASE_URL} from "../dist/Kdecole";
 
 
 const Kdecole = require('../dist/Kdecole.js').default

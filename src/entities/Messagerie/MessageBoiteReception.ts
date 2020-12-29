@@ -1,6 +1,6 @@
-import { Communication } from './Communication.js'
+import Communication from './Communication'
 
-export class MessageBoiteReception {
+export default class MessageBoiteReception {
     public nbMaxCommunicationRecues: number
     public communications: Array<Communication> = []
     public nbMaxCaracteresMessage: number

@@ -1,4 +1,4 @@
-export declare class AbsenceEleveAppel {
+export default class AbsenceEleveAppel {
     idAbsence: number | undefined;
     type: string;
     dateDebut: Date;

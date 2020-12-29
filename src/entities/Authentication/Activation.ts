@@ -1,4 +1,4 @@
-export class Activation {
+export default class Activation {
     public success: boolean
     public authtoken: string | null
     private errmsg: string | null

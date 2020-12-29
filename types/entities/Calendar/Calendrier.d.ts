@@ -1,5 +1,5 @@
-import { ListeJourCdt } from './ListeJourCdt.js';
-export declare class Calendrier {
+import ListeJourCdt from './ListeJourCdt';
+export default class Calendrier {
     currentDate: Date;
     listeJourCdt: ListeJourCdt[];
     cdtOuvert: boolean;

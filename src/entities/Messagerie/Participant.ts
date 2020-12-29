@@ -1,4 +1,4 @@
-export class Participant {
+export default class Participant {
     public id: string
     public libelle: string
 

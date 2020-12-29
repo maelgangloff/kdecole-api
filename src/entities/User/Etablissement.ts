@@ -1,4 +1,4 @@
-export class Etablissement {
+export default class Etablissement {
     public permissions: string
     public uid: string
     public nom: string

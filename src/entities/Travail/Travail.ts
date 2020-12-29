@@ -1,4 +1,4 @@
-export class Travail {
+export default class Travail {
     public type: string
     public temps: number
     public matiere: string

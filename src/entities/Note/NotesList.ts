@@ -1,6 +1,6 @@
-import { Note } from './Note'
+import Note from './Note'
 
-export class NotesList {
+export default class NotesList {
     public moduleNotesActif: boolean
     public codeEleve: string
     public nbNotesMax: number

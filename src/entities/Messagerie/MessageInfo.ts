@@ -1,4 +1,4 @@
-export class MessageInfo {
+export default class MessageInfo {
     public nbMessagesNonLus: number
 
     constructor (messageInfo: {

@@ -1,7 +1,7 @@
-import { Participant } from './Participant.js'
-import { Participation } from './Participation.js'
+import Participant from './Participant'
+import Participation from './Participation'
 
-export class Communication {
+export default class Communication {
     public participants: Array<Participant> = []
     public expediteurActuel: Participant
     public signalable: boolean

@@ -1,5 +1,5 @@
-import { Appel } from './Appel';
-export declare class GestionAppels {
+import Appel from './Appel';
+export default class GestionAppels {
     dateDuJour: Date;
     listeAppels: Appel[];
     constructor(gestionAppels: {

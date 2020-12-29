@@ -1,6 +1,6 @@
-import { Absence } from './Absence'
+import Absence from './Absence'
 
-export class AbsencesList {
+export default class AbsencesList {
     public codeEleve: string
     public nbAbsencesMax: number
     public listeAbsences: Absence[] = []

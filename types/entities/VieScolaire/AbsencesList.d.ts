@@ -1,5 +1,5 @@
-import { Absence } from './Absence';
-export declare class AbsencesList {
+import Absence from './Absence';
+export default class AbsencesList {
     codeEleve: string;
     nbAbsencesMax: number;
     listeAbsences: Absence[];

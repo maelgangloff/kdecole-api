@@ -1,7 +1,7 @@
 import axios from 'axios'
-import {APP_VERSION, BASE_URL} from "../../dist/config.js"
-import {TravailAFaire} from "../../dist/entities/Travail/TravailAFaire.js"
-import {ContenuActivite} from "../../dist/entities/Travail/ContenuActivite.js"
+import TravailAFaire from "../../dist/entities/Travail/TravailAFaire.js"
+import ContenuActivite from "../../dist/entities/Travail/ContenuActivite.js"
+import {APP_VERSION, BASE_URL} from "../../dist/Kdecole";
 
 const Kdecole = require('../../dist/Kdecole.js').default
 

@@ -1,5 +1,5 @@
-import { EleveAppel } from './EleveAppel';
-export declare class Appel {
+import EleveAppel from './EleveAppel';
+export default class Appel {
     isEnCours: boolean;
     dateDebut: Date;
     dateFin: Date;

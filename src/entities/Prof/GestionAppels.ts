@@ -1,6 +1,6 @@
-import { Appel } from './Appel'
+import Appel from './Appel'
 
-export class GestionAppels {
+export default class GestionAppels {
   public dateDuJour: Date
   public listeAppels: Appel[] = []
 

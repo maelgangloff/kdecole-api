@@ -1,5 +1,5 @@
-import { Note } from './Note.js';
-export declare class Matiere {
+import Note from './Note';
+export default class Matiere {
     moyenneEleve: number | null;
     bareme: number;
     devoirs: Array<Note>;

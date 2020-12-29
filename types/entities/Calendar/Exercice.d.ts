@@ -1,4 +1,4 @@
-export declare class Exercice {
+export default class Exercice {
     type: string;
     uid: number;
     date: Date;

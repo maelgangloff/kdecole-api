@@ -1,4 +1,4 @@
-export class Eleve {
+export default class Eleve {
     public active: boolean
     public nom: string
     public uid: string

@@ -1,6 +1,6 @@
-import { Seance } from './Seance.js'
+import Seance from './Seance'
 
-export class ListeJourCdt {
+export default class ListeJourCdt {
     public listeSeances: Seance[] = []
     public date: Date
 

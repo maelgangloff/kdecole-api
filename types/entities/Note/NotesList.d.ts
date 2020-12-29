@@ -1,5 +1,5 @@
-import { Note } from './Note';
-export declare class NotesList {
+import Note from './Note';
+export default class NotesList {
     moduleNotesActif: boolean;
     codeEleve: string;
     nbNotesMax: number;

@@ -1,4 +1,4 @@
-export class Exercice {
+export default class Exercice {
     public type: string
     public uid: number
     public date: Date

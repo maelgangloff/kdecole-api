@@ -1,4 +1,4 @@
-export declare class Travail {
+export default class Travail {
     type: string;
     temps: number;
     matiere: string;

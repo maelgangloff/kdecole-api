@@ -1,20 +1,22 @@
-import { Desactivation } from './entities/Authentication/Desactivation'
-import { Activation } from './entities/Authentication/Activation'
-import { APP_VERSION, BASE_URL, IDETABLISSEMENT, SECRET } from './config'
-import { Releve } from './entities/Note/Releve'
-import { TravailAFaire } from './entities/Travail/TravailAFaire'
-import { Actualite } from './entities/News/Actualite'
-import { AbsencesList } from './entities/VieScolaire/AbsencesList'
-import { Utilisateur } from './entities/User/Utilisateur'
-import { Calendrier } from './entities/Calendar/Calendrier'
-import { NotesList } from './entities/Note/NotesList'
-import { MessageInfo } from './entities/Messagerie/MessageInfo'
-import { MessageBoiteReception } from './entities/Messagerie/MessageBoiteReception'
 import axios from 'axios'
-import { ContenuActivite } from './entities/Travail/ContenuActivite'
-import { ContenuArticle } from './entities/News/ContenuArticle'
-import { Communication } from './entities/Messagerie/Communication'
-import { GestionAppels } from './entities/Prof/GestionAppels'
+import Desactivation from './entities/Authentication/Desactivation'
+import Activation from './entities/Authentication/Activation'
+import Releve from './entities/Note/Releve'
+import TravailAFaire from './entities/Travail/TravailAFaire'
+import Actualite from './entities/News/Actualite'
+import AbsencesList from './entities/VieScolaire/AbsencesList'
+import Utilisateur from './entities/User/Utilisateur'
+import Calendrier from './entities/Calendar/Calendrier'
+import NotesList from './entities/Note/NotesList'
+import MessageInfo from './entities/Messagerie/MessageInfo'
+import MessageBoiteReception from './entities/Messagerie/MessageBoiteReception'
+import ContenuActivite from './entities/Travail/ContenuActivite'
+import ContenuArticle from './entities/News/ContenuArticle'
+import Communication from './entities/Messagerie/Communication'
+import GestionAppels from './entities/Prof/GestionAppels'
+
+export const APP_VERSION = '3.4.14'
+export const BASE_URL = 'https://mobilite.monbureaunumerique.fr/mobilite'
 
 interface KdecoleRequest {
   service: 'starting'
@@ -53,18 +55,28 @@ interface KdecoleRequest {
  */
 export default class Kdecole {
   private readonly authToken: string
-  public appVersion: string
-  public idEtablissement = 0
+  private readonly appVersion: string
+  private readonly idEtablissement:number
+  private readonly apiURL: string
 
   /**
    * @param {string} authToken Le jeton d'accès
-   * @param {string} appVersion La version de l'API
+   * @param {string} appVersion La version de l'application mobile autorisée par l'API
    * @param {number} idEtablissement L'identifiant de l'établissement
+   * @param {string} apiURL L'URL de l'API Kdecole
    */
   constructor (
-    authToken: string = SECRET,
+    authToken: string,
     appVersion: string = APP_VERSION,
-    idEtablissement: number = IDETABLISSEMENT
+    idEtablissement = 0,
+    apiURL: 'https://mobilite.monbureaunumerique.fr/mobilite'
+          | 'https://mobilite.preprod.monbureaunumerique.fr/mobilite'
+          | 'https://mobilite.mon-ent-occitanie.fr/mobilite'
+          | 'https://mobilite.arsene76.fr/mobilite'
+          | 'https://mobilite.ent27.fr/mobilite'
+          | 'https://mobilite.entcreuse.fr/mobilite'
+          | 'https://mobilite.ent.auvergnerhonealpes.fr/mobilite'
+          | 'https://mobilite.savoirsnumeriques62.fr/mobilite' = 'https://mobilite.monbureaunumerique.fr/mobilite'
   ) {
     if (authToken === undefined) {
       throw Error("Un jeton d'accès doit être renseigné")
@@ -72,21 +84,24 @@ export default class Kdecole {
     this.authToken = authToken
     this.appVersion = appVersion
     this.idEtablissement = idEtablissement
+    this.apiURL = apiURL
   }
 
   /**
    * Retourne le jeton d'accès de l'utilisateur
    * @param {string} login Le nom d'utilisateur
    * @param {string} password Le mot de passe à usage unique
+   * @param {string} appVersion La version de l'application mobile autorisée par l'API
    * @return {Promise<string>}
    * @example ```js
    * const Kdecole = require('kdecole-api').default
    *
-   * const AUTH_TOKEN = Kdecole.login(USERNAME, PASSWORD)
+   * const authToken = Kdecole.login(username, password)
+   * console.log(authToken) //Afficher son token d'authentification
    * ```
    */
-  public static async login (login: string, password: string): Promise<string> {
-    const activation = new Activation(await this.callAPI(APP_VERSION, '', {
+  public static async login (login: string, password: string, appVersion:string = APP_VERSION): Promise<string> {
+    const activation = new Activation(await Kdecole.kdecole(new Kdecole('', appVersion, 0), {
       service: 'activation',
       parameters: `${login}/${password}`
     }))
@@ -101,19 +116,19 @@ export default class Kdecole {
    * Invalide le jeton d'accès
    * @example ```js
    * const Kdecole = require('kdecole-api').default
-   * const user = new Kdecole(AUTH_TOKEN)
+   * const user = new Kdecole(authToken)
    * user.logout()
    * ```
    * @return {Promise<Desactivation | Error>}
    */
   public async logout (): Promise<Desactivation | Error> {
-    const desactivation = new Desactivation(await this.kdecole({ service: 'desactivation' }))
+    const desactivation = new Desactivation(await Kdecole.kdecole(this, { service: 'desactivation' }))
     if (desactivation.success) return desactivation
     return new Error('Une erreur est survenue dans le traitement des données de déconnexion')
   }
 
   /**
-   * Retourne le relevé des notes de l'élève
+   * Retourne le relevé de notes de l'élève
    * @example ```js
    * kdecole.getReleve() //Retourne le relevé de l'élève
    * kdecole.getReleve(idEleve) //Retourne le relevé d'un élève précis
@@ -130,7 +145,7 @@ export default class Kdecole {
    * ```
    */
   public async getReleve (idEleve?: string): Promise<Releve> {
-    return new Releve(await this.kdecole({
+    return new Releve(await Kdecole.kdecole(this, {
       service: 'consulterReleves',
       parameters: idEleve ? `ideleve/${idEleve}` : undefined
     }))
@@ -151,7 +166,7 @@ export default class Kdecole {
    */
   public async getActualites (idEleve?: string): Promise<Actualite[]> {
     const actualites: Actualite[] = []
-    for (const JSONactualite of await this.kdecole({
+    for (const JSONactualite of await Kdecole.kdecole(this, {
       service: 'actualites',
       parameters: idEleve ? `ideleve/${idEleve}` : undefined
     })) {
@@ -174,7 +189,7 @@ export default class Kdecole {
    * ```
    */
   public async getContenuArticle (uid: string): Promise<ContenuArticle> {
-    return new ContenuArticle(await this.kdecole({ service: 'contenuArticle', parameters: `article/${uid}` }))
+    return new ContenuArticle(await Kdecole.kdecole(this, { service: 'contenuArticle', parameters: `article/${uid}` }))
   }
 
   /**
@@ -191,7 +206,7 @@ export default class Kdecole {
    * ```
    */
   public async getTravailAFaire (idEleve?: string): Promise<TravailAFaire> {
-    return new TravailAFaire(await this.kdecole({
+    return new TravailAFaire(await Kdecole.kdecole(this, {
       service: 'travailAFaire',
       parameters: idEleve ? `ideleve/${idEleve}` : undefined
     }))
@@ -213,7 +228,7 @@ export default class Kdecole {
    * ```
    */
   public async getContenuActivite (uidSeance: number, uid: number, idEleve?: string): Promise<ContenuActivite> {
-    return new ContenuActivite(await this.kdecole({
+    return new ContenuActivite(await Kdecole.kdecole(this, {
       service: 'contenuActivite',
       parameters: `${idEleve ? 'ideleve/' + idEleve : 'idetablissement/' + this.idEtablissement}/${uidSeance}/${uid}`
     }))
@@ -232,7 +247,7 @@ export default class Kdecole {
    * ```
    */
   public async setActiviteFinished (uidSeance: number, uid: number, flagRealise: boolean): Promise<void> {
-    await this.kdecole({
+    await Kdecole.kdecole(this, {
       service: 'contenuActivite',
       parameters: `idetablissement/${this.idEtablissement}/${uidSeance}/${uid}`,
       type: 'put',
@@ -256,7 +271,7 @@ export default class Kdecole {
    * ```
    */
   public async getAbsences (idEleve?: string): Promise<AbsencesList> {
-    return new AbsencesList(await this.kdecole({
+    return new AbsencesList(await Kdecole.kdecole(this, {
       service: 'consulterAbsences',
       parameters: idEleve ? `ideleve/${idEleve}` : undefined
     }))
@@ -276,7 +291,7 @@ export default class Kdecole {
    * ```
    */
   public async getInfoUtilisateur (idEleve?: string): Promise<Utilisateur> {
-    return new Utilisateur(await this.kdecole({
+    return new Utilisateur(await Kdecole.kdecole(this, {
       service: 'infoutilisateur',
       parameters: idEleve ? `ideleve/${idEleve}` : undefined
     }))
@@ -296,7 +311,7 @@ export default class Kdecole {
    * ```
    */
   public async getCalendrier (idEleve?: string): Promise<Calendrier> {
-    return new Calendrier(await this.kdecole({
+    return new Calendrier(await Kdecole.kdecole(this, {
       service: 'calendrier',
       parameters: idEleve ? `ideleve/${idEleve}` : undefined
     }))
@@ -316,7 +331,7 @@ export default class Kdecole {
    * ```
    */
   public async getNotes (idEleve?: string): Promise<NotesList> {
-    return new NotesList(await this.kdecole({
+    return new NotesList(await Kdecole.kdecole(this, {
       service: 'consulterNotes',
       parameters: idEleve ? `ideleve/${idEleve}` : undefined
     }))
@@ -335,7 +350,7 @@ export default class Kdecole {
    * ```
    */
   public async getMessagerieInfo (): Promise<MessageInfo> {
-    return new MessageInfo(await this.kdecole({ service: 'messagerie/info' }))
+    return new MessageInfo(await Kdecole.kdecole(this, { service: 'messagerie/info' }))
   }
 
   /**
@@ -351,7 +366,7 @@ export default class Kdecole {
    * ```
    */
   public async getMessagerieBoiteReception (): Promise<MessageBoiteReception> {
-    return new MessageBoiteReception(await this.kdecole({ service: 'messagerie/boiteReception' }))
+    return new MessageBoiteReception(await Kdecole.kdecole(this, { service: 'messagerie/boiteReception' }))
   }
 
   /**
@@ -368,7 +383,7 @@ export default class Kdecole {
    * ```
    */
   public async getCommunication (id: number): Promise<Communication> {
-    return new Communication(await this.kdecole({
+    return new Communication(await Kdecole.kdecole(this, {
       service: 'messagerie/communication',
       type: 'get',
       parameters: `${id}`
@@ -387,7 +402,7 @@ export default class Kdecole {
    * ```
    */
   public async reportCommunication (id: number): Promise<void> {
-    await this.kdecole({
+    await Kdecole.kdecole(this, {
       service: 'messagerie/communication/signaler',
       type: 'put',
       parameters: `${id}`
@@ -406,7 +421,7 @@ export default class Kdecole {
    * ```
    */
   public async deleteCommunication (id: number): Promise<void> {
-    await this.kdecole({
+    await Kdecole.kdecole(this, {
       service: 'messagerie/communication/supprimer',
       parameters: `${id}`,
       type: 'delete'
@@ -425,7 +440,7 @@ export default class Kdecole {
    * ```
    */
   public async setCommunicationLu (id: number): Promise<void> {
-    await this.kdecole({
+    await Kdecole.kdecole(this, {
       service: 'messagerie/communication/lu',
       parameters: `${id}`,
       type: 'put',
@@ -448,7 +463,7 @@ export default class Kdecole {
    * ```
    */
   public async sendMessage (id: number, corpsMessage: string): Promise<void> {
-    await this.kdecole({
+    await Kdecole.kdecole(this, {
       service: 'messagerie/communication/nouvelleParticipation',
       parameters: `${id}`,
       type: 'put',
@@ -472,7 +487,7 @@ export default class Kdecole {
    * ```
    */
   public async gestionAppels ():Promise<GestionAppels> {
-    return new GestionAppels(await this.kdecole({ service: 'gestionAppels' }))
+    return new GestionAppels(await Kdecole.kdecole(this, { service: 'gestionAppels' }))
   }
 
   /**
@@ -499,8 +514,18 @@ export default class Kdecole {
    * user.validerAppel(appel)
    * ```
    */
-  public async validerAppel (appel: any):Promise<void> {
-    await this.kdecole({
+  public async validerAppel (appel:{
+    idEtab:number,
+    idAppel:number,
+    listeAbsencesAppel:{
+      idEleve:string
+      type:string
+      dateDebut:number
+      dateFin:number
+      modifiable:boolean
+    }[]
+  }):Promise<void> {
+    await Kdecole.kdecole(this, {
       service: 'gestionAppels',
       parameters: `idetablissement/${this.idEtablissement}/valider`,
       type: 'put',
@@ -508,27 +533,14 @@ export default class Kdecole {
     })
   }
 
-  /**
-   * Effectue un premier traitement des données reçues en provenance de l'API et en retourne le résultat
-   */
-  private async kdecole ({ service, parameters, type = 'get', data }: KdecoleRequest): Promise<any> {
-    if (parameters === undefined && service !== 'desactivation' && service !== 'messagerie/info' && service !== 'messagerie/communication' && service !== 'messagerie/boiteReception') parameters = `idetablissement/${this.idEtablissement}`
-    return await Kdecole.callAPI(this.appVersion, this.authToken, { service, parameters, type, data })
-  }
-
-  /**
-   * Envoie les requêtes à l'API
-   * Les en-têtes qui doivent être présentes sont:
-   *  - X-Kdecole-Vers  Version de l'application mobile
-   *  - X-Kdecole-Auth  Jeton d'accès
-   */
-  public static async callAPI (appVersion: string, authToken: string, { service, parameters, type = 'get', data }: KdecoleRequest): Promise<any> {
+  private static async kdecole (ctx: Kdecole, { service, parameters, type = 'get', data }: KdecoleRequest): Promise<any> {
+    if (parameters === undefined && service !== 'desactivation' && service !== 'messagerie/info' && service !== 'messagerie/communication' && service !== 'messagerie/boiteReception') parameters = `idetablissement/${ctx.idEtablissement}`
     try {
       return (await axios.request({
-        baseURL: BASE_URL,
+        baseURL: ctx.apiURL,
         headers: {
-          'X-Kdecole-Vers': appVersion,
-          'X-Kdecole-Auth': authToken
+          'X-Kdecole-Vers': ctx.appVersion,
+          'X-Kdecole-Auth': ctx.authToken
         },
         responseType: 'json',
         method: type,

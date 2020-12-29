@@ -1,5 +1,5 @@
-import { Seance } from './Seance.js';
-export declare class ListeJourCdt {
+import Seance from './Seance';
+export default class ListeJourCdt {
     listeSeances: Seance[];
     date: Date;
     constructor(listeJourCdt: {

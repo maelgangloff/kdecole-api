@@ -1,4 +1,4 @@
-export declare class Actualite {
+export default class Actualite {
     type: string;
     auteur: string;
     codeEmetteur: number;

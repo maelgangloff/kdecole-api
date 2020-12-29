@@ -1,6 +1,6 @@
 import axios from 'axios'
-import {APP_VERSION, BASE_URL} from "../dist/config.js"
-import {Utilisateur} from "../dist/entities/User/Utilisateur.js"
+import Utilisateur from "../dist/entities/User/Utilisateur.js"
+import {APP_VERSION, BASE_URL} from "../dist/Kdecole";
 
 const Kdecole = require('../dist/Kdecole.js').default
 

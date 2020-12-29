@@ -1,4 +1,4 @@
-export class Attachment {
+export default class Attachment {
     public idRessource: number | null
     public url: string | null
     public name: string

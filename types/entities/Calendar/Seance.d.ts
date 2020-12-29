@@ -1,5 +1,5 @@
-import { Exercice } from './Exercice';
-export declare class Seance {
+import Exercice from './Exercice';
+export default class Seance {
     hdeb: Date;
     enSeance: Array<Exercice> | null;
     matiere: string;

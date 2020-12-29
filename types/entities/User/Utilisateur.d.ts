@@ -1,6 +1,6 @@
-import { Eleve } from './Eleve.js';
-import { Etablissement } from './Etablissement.js';
-export declare class Utilisateur {
+import Eleve from './Eleve';
+import Etablissement from './Etablissement';
+export default class Utilisateur {
     type: number;
     nom: string;
     eleves: Array<Eleve>;

@@ -1,5 +1,5 @@
-import { Matiere } from './Matiere.js';
-export declare class Trimestre {
+import Matiere from './Matiere';
+export default class Trimestre {
     matieres: Array<Matiere>;
     idPeriode: number;
     libelleClasse: string;

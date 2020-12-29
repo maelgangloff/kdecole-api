@@ -1,4 +1,4 @@
-export declare class Etablissement {
+export default class Etablissement {
     permissions: string;
     uid: string;
     nom: string;

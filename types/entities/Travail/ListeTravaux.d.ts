@@ -1,5 +1,5 @@
-import { Travail } from './Travail.js';
-export declare class ListeTravaux {
+import Travail from './Travail';
+export default class ListeTravaux {
     date: Date;
     listTravail: Travail[];
     constructor(listTravaux: {

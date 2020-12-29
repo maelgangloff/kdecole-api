@@ -1,6 +1,6 @@
-import { Travail } from './Travail.js'
+import Travail from './Travail'
 
-export class ListeTravaux {
+export default class ListeTravaux {
     public date: Date
     public listTravail: Travail[] = []
 

@@ -1,6 +1,6 @@
-import { Attachment } from '../Messagerie/Attachment'
+import Attachment from '../Messagerie/Attachment'
 
-export class ContenuArticle {
+export default class ContenuArticle {
     public titre: string
     public codeHTML: string
     public date: Date

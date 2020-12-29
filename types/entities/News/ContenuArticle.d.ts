@@ -1,5 +1,5 @@
-import { Attachment } from '../Messagerie/Attachment';
-export declare class ContenuArticle {
+import Attachment from '../Messagerie/Attachment';
+export default class ContenuArticle {
     titre: string;
     codeHTML: string;
     date: Date;

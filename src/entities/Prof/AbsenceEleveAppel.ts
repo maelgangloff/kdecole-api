@@ -1,4 +1,4 @@
-export class AbsenceEleveAppel {
+export default class AbsenceEleveAppel {
   public idAbsence: number|undefined
   public type: string
   public dateDebut: Date

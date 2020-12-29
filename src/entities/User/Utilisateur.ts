@@ -1,7 +1,7 @@
-import { Eleve } from './Eleve.js'
-import { Etablissement } from './Etablissement.js'
+import Eleve from './Eleve'
+import Etablissement from './Etablissement'
 
-export class Utilisateur {
+export default class Utilisateur {
     public type: number
     public nom: string
     public eleves: Array<Eleve> = []

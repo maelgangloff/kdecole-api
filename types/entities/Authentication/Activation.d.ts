@@ -1,4 +1,4 @@
-export declare class Activation {
+export default class Activation {
     success: boolean;
     authtoken: string | null;
     private errmsg;

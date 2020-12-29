@@ -1,4 +1,4 @@
-export declare class Attachment {
+export default class Attachment {
     idRessource: number | null;
     url: string | null;
     name: string;

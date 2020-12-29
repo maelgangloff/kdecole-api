@@ -1,6 +1,6 @@
-import { Attachment } from './Attachment.js';
-import { Participant } from './Participant.js';
-export declare class Participation {
+import Attachment from './Attachment';
+import Participant from './Participant';
+export default class Participation {
     dateEnvoi: Date;
     corpsMessage: string;
     pjs: Attachment[];

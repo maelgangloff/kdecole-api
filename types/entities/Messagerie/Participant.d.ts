@@ -1,4 +1,4 @@
-export declare class Participant {
+export default class Participant {
     id: string;
     libelle: string;
     constructor(participant: {

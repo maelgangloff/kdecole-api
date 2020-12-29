@@ -1,6 +1,6 @@
-import { Exercice } from './Exercice'
+import Exercice from './Exercice'
 
-export class Seance {
+export default class Seance {
     public hdeb: Date
     public enSeance: Array<Exercice> | null = []
     public matiere: string

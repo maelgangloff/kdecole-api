@@ -1,4 +1,4 @@
-export class Note {
+export default class Note {
     public note: number | null
     public date: Date
     public medianeClasse: number | null

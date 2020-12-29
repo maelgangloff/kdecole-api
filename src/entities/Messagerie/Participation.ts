@@ -1,7 +1,7 @@
-import { Attachment } from './Attachment.js'
-import { Participant } from './Participant.js'
+import Attachment from './Attachment'
+import Participant from './Participant'
 
-export class Participation {
+export default class Participation {
     public dateEnvoi: Date
     public corpsMessage: string
     public pjs: Attachment[] = []

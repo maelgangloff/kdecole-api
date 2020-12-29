@@ -1,5 +1,5 @@
-import { Communication } from './Communication.js';
-export declare class MessageBoiteReception {
+import Communication from './Communication';
+export default class MessageBoiteReception {
     nbMaxCommunicationRecues: number;
     communications: Array<Communication>;
     nbMaxCaracteresMessage: number;

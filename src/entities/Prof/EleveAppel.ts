@@ -1,6 +1,6 @@
-import { AbsenceEleveAppel } from './AbsenceEleveAppel'
+import AbsenceEleveAppel from './AbsenceEleveAppel'
 
-export class EleveAppel {
+export default class EleveAppel {
   public nomEleve: string
   public prenomEleve: string
   public idEleve: string

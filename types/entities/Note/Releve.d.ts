@@ -1,5 +1,5 @@
-import { Trimestre } from './Trimestre.js';
-export declare class Releve {
+import Trimestre from './Trimestre';
+export default class Releve {
     trimestres: Array<Trimestre>;
     constructor(releve: Array<{
         matieres: Array<{

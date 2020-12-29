@@ -1,6 +1,6 @@
-import { Note } from './Note.js'
+import Note from './Note'
 
-export class Matiere {
+export default class Matiere {
     public moyenneEleve: number | null
     public bareme: number
     public devoirs: Array<Note> = []

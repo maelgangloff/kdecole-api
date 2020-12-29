@@ -1,6 +1,6 @@
-import { Attachment } from '../Messagerie/Attachment.js'
+import Attachment from '../Messagerie/Attachment'
 
-export class ContenuActivite {
+export default class ContenuActivite {
     public codeHTML: string
     public flagTravailAfaire: boolean
     public flagrealise: boolean

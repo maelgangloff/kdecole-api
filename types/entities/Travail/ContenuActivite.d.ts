@@ -1,5 +1,5 @@
-import { Attachment } from '../Messagerie/Attachment.js';
-export declare class ContenuActivite {
+import Attachment from '../Messagerie/Attachment';
+export default class ContenuActivite {
     codeHTML: string;
     flagTravailAfaire: boolean;
     flagrealise: boolean;

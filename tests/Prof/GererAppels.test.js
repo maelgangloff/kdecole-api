@@ -1,6 +1,6 @@
 import axios from 'axios'
-import {APP_VERSION, BASE_URL} from "../../dist/config.js"
-import {GestionAppels} from "../../dist/entities/Prof/GestionAppels"
+import GestionAppels from "../../dist/entities/Prof/GestionAppels"
+import {APP_VERSION, BASE_URL} from "../../dist/Kdecole";
 
 const Kdecole = require('../../dist/Kdecole.js').default
 
@@ -30,7 +30,7 @@ describe('Test valider appel', () => {
     it('should validate appel', async () => {
         await user.validerAppel(require('../fakeData/Prof/fakeValiderAppel.json'))
         expect(axios.request).toBeCalledWith({
-            "baseURL": BASE_URL,
+            "baseURL": 'https://mobilite.monbureaunumerique.fr/mobilite',
             "data": require('../fakeData/Prof/fakeValiderAppel.json'),
             "headers": {"X-Kdecole-Auth": authToken, "X-Kdecole-Vers": APP_VERSION},
             "method": "put",
