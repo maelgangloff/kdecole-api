@@ -1,0 +1,23 @@
+get:
+  summary: Consulter la feuille d'appel de la classe en cours.
+  operationId: profGestionAppels
+  tags:
+    - Professeur
+  security:
+    - AuthToken: [ ]
+    - AppVersion: [ ]
+  parameters:
+    - $ref: '../../parameters/idetablissement.yaml'
+  responses:
+    200:
+      description: Le serveur renvoit la feuille d'appel.
+      content:
+        application/json:
+          schema:
+            $ref: '../../responses/prof/gestionAppels.yaml'
+    403:
+      description: Le serveur vous refuse l'accès.
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/errmsg.yaml'

@@ -1,17 +1,26 @@
 openapi: 3.0.0
 info:
-  title: Définition API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
-  description: Tentative de définition de l'API Kdecole.
+  title: API Kdecole
+  description: Tentative de définition de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
   version: 1.0.0
 servers:
-  - url: 'https://mobilite.monbureaunumerique.fr/mobilite'
-  - url: 'https://mobilite.preprod.monbureaunumerique.fr/mobilite'
+  - url: https://mobilite.monbureaunumerique.fr/mobilite
+  - url: https://mobilite.preprod.monbureaunumerique.fr/mobilite
+  - url: https://mobilite.mon-ent-occitanie.fr/mobilite
+  - url: https://mobilite.arsene76.fr/mobilite
+  - url: https://mobilite.ent27.fr/mobilite
+  - url: https://mobilite.entcreuse.fr/mobilite
+  - url: https://mobilite.ent.auvergnerhonealpes.fr/mobilite
+  - url: https://mobilite.moncollege.valdoise.fr/mobilite
+  - url: https://mobilite.savoirsnumeriques62.fr/mobilite
+
 tags:
   - name: Utilisateur
   - name: Messagerie
   - name: Vie scolaire
   - name: Etablissement
   - name: Elève
+  - name: Professeur
 paths:
   /activation/{username}/{password}/:
     $ref: './components/paths/activation.yaml'
@@ -91,6 +100,12 @@ paths:
   /contenuActivite/ideleve/{ideleve}/{seance}/{travail}/:
     $ref: './components/paths/parent/contenuActivite.yaml'
 
+  /gestionAppels/idetablissement/{idetablissement}/:
+    $ref: './components/paths/prof/gestionAppels.yaml'
+
+  /gestionAppels/idetablissement/{idetablissement}/valider/:
+    $ref: './components/paths/prof/gestionAppelsValider.yaml'
+
 components:
   securitySchemes:
     AuthToken:
@@ -102,4 +117,4 @@ components:
       type: apiKey
       in: header
       name: X-Kdecole-Vers
-      description: La version de l'application mobile (3.4.14 actuellement)
+      description: La version de l'application mobile (3.4.14 actuellement pour Mon Bureau Numérique)

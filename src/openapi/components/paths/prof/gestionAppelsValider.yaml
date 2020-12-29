@@ -1,0 +1,26 @@
+put:
+  summary: Valider un appel.
+  operationId: profGestionAppelValider
+  tags:
+    - Professeur
+  security:
+    - AuthToken: [ ]
+    - AppVersion: [ ]
+  requestBody:
+    description: L'appel à valider.
+    required: true
+    content:
+      application/json:
+        schema:
+          $ref: '../../schemas/prof/gestionAppelsValider.yaml'
+  parameters:
+    - $ref: '../../parameters/idetablissement.yaml'
+  responses:
+    200:
+      description: Le serveur prend en compte l'appel.
+    403:
+      description: Le serveur vous refuse l'accès.
+      content:
+        application/json:
+          schema:
+            $ref: '../../schemas/errmsg.yaml'

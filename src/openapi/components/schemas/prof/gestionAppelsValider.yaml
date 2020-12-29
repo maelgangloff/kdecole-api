@@ -1,0 +1,21 @@
+type: object
+properties:
+  idEtab:
+    type: number
+  idAppel:
+    type: number
+  listeAbsencesAppel:
+    type: array
+    items:
+      type: object
+      properties:
+        idEleve:
+          type: string
+        type:
+          type: string
+        dateDebut:
+          type: number
+        dateFin:
+          type: number
+          modifiable:
+            type: boolean

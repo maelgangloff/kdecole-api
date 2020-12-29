@@ -1,0 +1,44 @@
+type: object
+properties:
+  dateDuJour:
+    type: number
+  listeAppels:
+    type: array
+    items:
+      type: object
+      properties:
+        isEnCours:
+          type: boolean
+        dateDebut:
+          type: boolean
+        dateFin:
+          type: boolean
+        idAppel:
+          type: number
+        libelleGroupe:
+          type: string
+        listeElevesAppel:
+          type: object
+          properties:
+            nomEleve:
+              type: string
+            prenomEleve:
+              type: string
+            idEleve:
+              type: string
+            absenceEleveAppel:
+              type: object
+              nullable: true
+              properties:
+                idAbsence:
+                  type: number
+                type:
+                  type: string
+                dateDebut:
+                  type: number
+                dateFin:
+                  type: number
+                idMotif:
+                  type: string
+                modifiable:
+                  type: boolean
