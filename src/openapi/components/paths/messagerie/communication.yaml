@@ -1,5 +1,5 @@
 get:
-  summary: Retourne derniers fils de discussion.
+  summary: Retourne les détails d'un fil de discussion.
   operationId: messagerieCommunication
   tags:
     - Messagerie

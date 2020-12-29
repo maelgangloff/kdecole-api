@@ -1,5 +1,5 @@
 get:
-  summary: Retourne derniers fils de discussion.
+  summary: Retourne les derniers fils de discussion.
   operationId: messagerieBoiteReception
   tags:
     - Messagerie
