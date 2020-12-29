@@ -1,6 +1,6 @@
 {
   "name": "kdecole-api",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "dist/Kdecole.js",
   "types": "types/Kdecole.d.ts",
   "author": {
@@ -8,6 +8,11 @@
     "email": "maelgangloffd@gmail.com"
   },
   "license": "ISC",
+  "homepage": "https://github.com/maelgangloff/kdecole-api#readme",
+  "bugs": {
+    "url": "https://github.com/maelgangloff/kdecole-api/issues",
+    "email": "maelgangloffd@gmail.com"
+  },
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/preset-env": "^7.12.11",
