@@ -1,6 +1,6 @@
 {
   "name": "kdecole-api",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "main": "dist/Kdecole.js",
   "types": "types/Kdecole.d.ts",
   "author": {
