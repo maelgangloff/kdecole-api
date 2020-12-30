@@ -4,6 +4,7 @@ export default class Actualite {
     public codeEmetteur: number
     public date: Date
     public uid: string
+    public titre: string
     private errmsg: string | null
 
     constructor (article: {
@@ -11,6 +12,7 @@ export default class Actualite {
         type: string
         auteur: string
         codeEmetteur: string
+        titre: string
         date: number
         uid: string
     }) {
@@ -18,6 +20,7 @@ export default class Actualite {
       this.type = article.type
       this.auteur = article.auteur
       this.codeEmetteur = parseInt(article.codeEmetteur)
+      this.titre = article.titre
       this.date = new Date(article.date)
       this.uid = article.uid
     }
