@@ -8,16 +8,19 @@ get:
     - AppVersion: [ ]
   parameters:
     - in: path
+      description: L'identifiant de l'établissement.
       name: idetablissement
       required: true
       schema:
         type: string
     - in: path
+      description: L'identifiant de la séance.
       name: seance
       required: true
       schema:
         type: number
     - in: path
+      description: L'identifiant du travail à faire.
       name: travail
       required: true
       schema:
@@ -52,16 +55,19 @@ put:
           $ref: '../schemas/flagRealise.yaml'
   parameters:
     - in: path
+      description: L'identifiant de l'établissement.
       name: idetablissement
       required: true
       schema:
         type: string
     - in: path
+      description: L'identifiant de la séance.
       name: seance
       required: true
       schema:
         type: number
     - in: path
+      description: L'identifiant du travail à faire.
       name: travail
       required: true
       schema:

@@ -7,7 +7,7 @@ properties:
     description: Le type de compte (élève, parent, prof, etc.)
   nom:
     type: string
-  eleve:
+  eleves:
     type: array
     items:
       type: object
@@ -60,3 +60,29 @@ properties:
           type: boolean
   timezone:
     type: string
+example:
+  errmsg: null
+  type: 3
+  nom: John Doe
+  eleves:
+    - active: true
+      nom: Jane Doe
+      uid: AAP05567
+      permissions: lecture-actu info-actus messagerie lecture-cdt lecture-taf cdt-calendrier cdt-travaux vsc-abs-consulter vsc-notes-consulter vsc-releves-consulter
+    - active: true
+      nom: Luc Doe
+      uid: AAP05568
+      permissions: null
+  xiti:
+    idProjet: 55
+    idCollectivite: 365101
+    idXiti: 30de67bb18db469ea48a0f1ec054b366
+    idEtab: 34
+    idPlateforme: 6
+    codeProfil: 3
+  idEtablissementSelectionne: null
+  idEleveSelectionne: AAP05567
+  protection: ''
+  etabs: null
+  timezone: Europe/Paris
+

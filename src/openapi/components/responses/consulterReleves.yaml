@@ -23,3 +23,27 @@ items:
             type: string
           moyenneClasse:
             type: string
+example:
+  - matieres:
+      bareme: 20
+      moyenneEleve: 19,0
+      devoirs:
+        - note: 20.0
+          date: 1605604200000
+          medianeClasse: 20.0
+          sousMatiere: null
+          noteMin: 11.0
+          appreciation: null
+          bareme: 20
+          coefficient: 1
+          id: 11720
+          titreDevoir: IE Géométrie molécules
+          noteMax: 20.0
+          facultatif: false
+          moyenne: 18.76
+          comptabilise: true
+          commentaireDevoir: ''
+      enseignants:
+        - Mme DURAND
+      matiereLibelle: SPE_SPC
+      moyenneClasse: 16,0

@@ -8,6 +8,7 @@ get:
     - AppVersion: [ ]
   parameters:
     - in: path
+      description: L'identifiant de l'article.
       name: article
       required: true
       schema:

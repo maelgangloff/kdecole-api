@@ -8,6 +8,7 @@ get:
     - AppVersion: [ ]
   parameters:
     - in: path
+      description: L'identifiant de l'établissement.
       name: idetablissement
       required: true
       schema:

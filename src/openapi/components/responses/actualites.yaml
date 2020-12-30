@@ -16,3 +16,25 @@ items:
       type: number
     uid:
       type: string
+example:
+  - errmsg: null
+    type: article
+    auteur: Lycée Louise WEISS
+    codeEmetteur: 10485
+    titre: Calendrier hivernal pour se former au numérique
+    date: 1606977315000
+    uid: 10485-6999
+  - errmsg: null
+    type: article
+    auteur: Lycée Louise WEISS
+    codeEmetteur: 10485
+    titre: JU 2021
+    date: 1605531945000
+    uid: 10485-6742
+  - errmsg: null
+    type: article
+    auteur: Lycée Louise WEISS
+    codeEmetteur: 10485
+    titre: Que faire si votre enfant présente des symptômes évoquant une infection à COVID 19 / MISE A JOUR DU MARDI 15 SEPTEMBRE 2020
+    date: 1600171534000
+    uid: 10485-5548

@@ -30,3 +30,17 @@ properties:
               type: string
             uidSeance:
               type: string
+example:
+  errmsg: null
+  tafOuvert: true
+  listeTravaux:
+    - date: 1609714800000
+      listTravail:
+        - type: Exercices
+          temps: -1
+          matiere: ANGLAIS
+          flagRealise: false
+          titre: "Compréhension Orale: Document audio en pièce jointe."
+          date: 1608188400000
+          uid: 71784
+          uidSeance: 650397

@@ -8,6 +8,7 @@ get:
     - AppVersion: [ ]
   parameters:
     - in: path
+      description: L'identifiant de la communication.
       name: communication
       required: true
       schema:

@@ -25,6 +25,7 @@ properties:
                 type: string
               aFaire:
                 type: array
+                nullable: true
                 items:
                   $ref: '../schemas/travail.yaml'
               heureFin:
@@ -41,6 +42,7 @@ properties:
                 type: number
               aRendre:
                 type: array
+                nullable: true
                 items:
                   $ref: '../schemas/travail.yaml'
               motifModif:
@@ -53,3 +55,32 @@ properties:
           type: number
   cdtOuvert:
     type: boolean
+example:
+  errmsg: null
+  currentDate: 1608015600000
+  listeJourCdt:
+    - listeSeances:
+        - hdeb: 1607670000000
+          enSeance:
+            - type: Cours
+              uid: 71273
+              date: 1607670000000
+              titre: Cours
+          matiere: SPE_SPC
+          aFaire: null
+          heureFin: 09:50
+          flagModif: false
+          titre: ''
+          flagActif: true
+          heureDebut: 08:00
+          hFin: 1607676600000
+          aRendre:
+            - type: Exercices
+              uid: 70757
+              date: 1607065200000
+              titre: Exercices
+          motifModif: ''
+          idSeance: 647984
+          salle: 256 - 1ERE1 SPE_SPC1
+      date: 1607670000000
+  cdtOuvert: true

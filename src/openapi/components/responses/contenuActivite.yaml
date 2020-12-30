@@ -20,3 +20,13 @@ properties:
     type: string
   pjs:
     $ref: '../schemas/pieceJointe.yaml'
+example:
+  errmsg: null
+  codeHTML: "Devoir à rendre: Pensez-vous, avec Antonin Artaud, que «l’action du théâtre, comme celle de la peste est bienfaisante, car poussant les hommes à se voir tels qu’ils sont, elle fait tomber le masque, elle découvre le mensonge, la veulerie, la bassesse, la tartufferie. Vous construirez votre argumentation en vous appuyant sur Le Malade imaginaire de Molière, mais aussi sur la lecture cursive Knock de Jules Romains, sur des textes complémentaires vus en cours et sur vos connaissances personnelles."
+  flagTravailAFaire: true
+  flagRealise: false
+  titre: Exercices
+  date: 1610953200000
+  isFaitModifiable: true
+  type: Exercices
+  matiere: FRANC

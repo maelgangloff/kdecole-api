@@ -36,3 +36,20 @@ properties:
     type: string
   medianeClasse:
     type: string
+example:
+  coefficient: 0.5
+  id: 12313
+  titreDevoir: TP Savons
+  noteMax: 20.0
+  moyenne: 17.08
+  comptabilise: false
+  commentaireDevoir: ''
+  facultatif: false
+  sousMatiere: ''
+  noteMin: 15.0
+  appreciation: null
+  bareme: 20
+  matiere: SPE_SPC
+  date: 1607900400000
+  note: Non Noté
+  medianeClasse: 16.0

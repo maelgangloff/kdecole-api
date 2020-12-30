@@ -9,12 +9,14 @@ get:
     - AppVersion: [ ]
   parameters:
     - in: path
+      description: L'identifiant de l'utilisateur.
       name: username
       required: true
       schema:
         type: string
         example: john.doe
     - in: path
+      description: Le mot de passe à usage unique fournit lors de l'activation de l'accès mobile.
       name: password
       required: true
       schema:

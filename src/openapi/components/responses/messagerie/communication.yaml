@@ -36,3 +36,49 @@ items:
       type: boolean
     modeReponse:
       type: string
+example:
+  participants:
+    - id: null
+      libelle: "&Eacute;l&egrave;ves 1ERE1&hellip;"
+  expediteurActuel:
+    id: AAB02877
+    libelle: DOE ERIC
+  signalable: true
+  expediteurInitial:
+    id: AAB02877
+    libelle: DOE ERIC
+  id: 31143074
+  dateDernierMessage: 1608298458000
+  nbParticipations: 2
+  isExpediteurInitial: false
+  pieceJointe: false
+  participations:
+    - dateEnvoi: 1608298458000
+      corpsMessage: Message de TEST
+      pjs:
+        - idRessource: null
+          url: null
+          name: PIECEJOINTE_TEST.pdf
+          typeMIME: null
+      id: 31143074
+      libelleObjet: null
+      redacteur:
+        id: AAB02877
+        libelle: DOE ERIC
+      premieresLignes: Message de TEST
+      typeMessage: TEXT_RICH
+    - dateEnvoi: 1608298458001
+      corpsMessage: Réponse au message de test
+      id: 31143074
+      libelleObjet: null
+      redacteur:
+        id: AAB02877
+        libelle: DOE ERIC
+      premieresLignes: Réponse au message de test
+      typeMessage: TEXT_RICH
+  objet: échange EMC et anglais
+  type: FIL_MESSAGES
+  etat: ACTIVE
+  premieresLignes: Message de TEST
+  etatLecture: true
+  modeReponse: TOUS

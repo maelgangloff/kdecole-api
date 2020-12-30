@@ -8,6 +8,7 @@ get:
     - AppVersion: [ ]
   parameters:
     - in: path
+      description: L'identifiant alphanumérique de l'élève.
       name: ideleve
       required: true
       schema:
