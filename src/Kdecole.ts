@@ -89,7 +89,7 @@ export default class Kdecole {
 
   /**
    * Retourne le jeton d'accès de l'utilisateur
-   * @param {string} login Le nom d'utilisateur
+   * @param username
    * @param {string} password Le mot de passe à usage unique
    * @param {string} appVersion La version de l'application mobile autorisée par l'API
    * @return {Promise<string>}
@@ -100,10 +100,10 @@ export default class Kdecole {
    * console.log(authToken) //Afficher son token d'authentification
    * ```
    */
-  public static async login (login: string, password: string, appVersion:string = APP_VERSION): Promise<string> {
+  public static async login (username: string, password: string, appVersion:string = APP_VERSION): Promise<string> {
     const activation = new Activation(await Kdecole.kdecole(new Kdecole('', appVersion, 0), {
       service: 'activation',
-      parameters: `${login}/${password}`
+      parameters: `${username}/${password}`
     }))
     if (activation.authtoken && activation.success) {
       return activation.authtoken
