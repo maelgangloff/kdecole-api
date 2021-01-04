@@ -19,8 +19,8 @@ const rootValue = {
     infoUtilisateur: ({idEleve}, req) => new Kdecole(req.token, req.header('KDECOLE-VERSION'), req.header('idEtablissement'), req.header('apiURL')).getInfoUtilisateur(idEleve),
     calendrier: ({idEleve}, req) => new Kdecole(req.token, req.header('KDECOLE-VERSION'), req.header('idEtablissement'), req.header('apiURL')).getCalendrier(idEleve),
     dernieresNotes: ({idEleve}, req) => new Kdecole(req.token, req.header('KDECOLE-VERSION'), req.header('idEtablissement'), req.header('apiURL')).getNotes(idEleve),
-    MessagerieInfo: (args, req) => new Kdecole(req.token, req.header('KDECOLE-VERSION'), req.header('idEtablissement'), req.header('apiURL')).getMessagerieInfo(),
-    MessagerieBoiteReception: (args, req) => new Kdecole(req.token, req.header('KDECOLE-VERSION'), req.header('idEtablissement'), req.header('apiURL')).getMessagerieBoiteReception(),
+    messagerieInfo: (args, req) => new Kdecole(req.token, req.header('KDECOLE-VERSION'), req.header('idEtablissement'), req.header('apiURL')).getMessagerieInfo(),
+    messagerieBoiteReception: (args, req) => new Kdecole(req.token, req.header('KDECOLE-VERSION'), req.header('idEtablissement'), req.header('apiURL')).getMessagerieBoiteReception(),
     communication: ({id}, req) => new Kdecole(req.token, req.header('KDECOLE-VERSION'), req.header('idEtablissement'), req.header('apiURL')).getCommunication(id),
     appels: (args, req) => new Kdecole(req.token, req.header('KDECOLE-VERSION'), req.header('idEtablissement'), req.header('apiURL')).gestionAppels()
 }
