@@ -1,9 +1,25 @@
 type Query {
-    login: String
-    releve: Releve
+    login(username: String, password: String, appVersion: String): String
+    logout: Desactivation
+    releves(idEleve: String): Releve
+    actualites(idEleve: String): [Actualite]
+    contenuArticle(uid: String): ContenuArticle
+    travailAFaire(idEleve: String): TravailAFaire
+    contenuActivite(uidSeance: Int, uid: Int, idEleve: String): ContenuActivite
+    absences(idEleve: String): AbsenceList
+    infoUtilisateur(idEleve: String): InfoUtilisateur
+    calendrier(idEleve: String): Calendrier
+    dernieresNotes(idEleve: String): NotesList
+    messagerieInfo: InboxInfo
+    messagerieBoiteReception: Inbox
+    communication(id: Int): Communication
+    appels: AppelsList
 }
 
-
+type Desactivation {
+    authtoken: String
+    success: Boolean
+}
 
 type Releve {
     trimestres: [Trimestre]
@@ -45,4 +61,226 @@ type Devoir {
     comptabilise: Boolean
     commentaireDevoir: String
     matiere: String
+}
+
+type Actualite {
+    type: String
+    auteur: String
+    codeEmetteur: Int
+    date: Date
+    uid: String
+    titre: String
+}
+
+type ContenuArticle {
+    titre: String
+    codeHTML: String
+    date: Date
+    url: String
+    auteur: String
+    type: String
+    pjs: [Attachment]
+}
+
+type Attachment {
+    idRessource: Int
+    url: String
+    name: String
+    typeMIME: String
+}
+
+type TravailAFaire {
+    tafOuvert: Boolean
+    listeTravaux: [ListeTravaux]
+}
+
+type ListeTravaux {
+    date: Date
+    travail: Travail
+}
+
+type Travail {
+    type: String
+    temps: Int
+    matiere: String
+    flagRealise: Boolean
+    titre: String
+    date: Date
+    uid: Int
+    uidSeance: Int
+}
+
+type ContenuActivite {
+    codeHTML: String
+    flagTravailAFaire: Boolean
+    flagRealise: Boolean
+    titre: String
+    date: Date
+    isFaitModifiable: Boolean
+    type: String
+    matiere: String
+    pjs: [Attachment]
+}
+
+type AbsenceList {
+    codeEleve: String
+    nbAbsencesMax: Int
+    listeAbsences: [Absence]
+}
+
+type Absence {
+    dateFin: Date
+    motif: String
+    type: String
+    matier: String
+    dateDebut: Date
+    justifiee: Boolean
+}
+
+type InfoUtilisateur {
+    type: Int
+    nom: String
+    eleves: [Eleve]
+    xiti: Xiti
+    idEtablissementSelectionne: String
+    idEleveSelectionne: String
+    protection: String
+    etabs: [Etablissement]
+    timezone: String
+}
+
+type Eleve {
+    active: Boolean
+    nom: String
+    uid: String
+    permissions: String
+}
+
+type Xiti {
+    idProjet: String
+    idCollectivite: String
+    idXiti: String
+    idEtab: String
+    idPlateforme: String
+    codeProfil: String
+}
+
+union Etablissement = Eleve
+
+type Calendrier {
+    currentDate: Date
+    listeJourCdt: [ListeJourCdt]
+    cdtOuvert: Boolean
+}
+
+type ListeJourCdt {
+    listeSeances: [Seance]
+    date: Date
+}
+
+type Seance {
+    hdeb: Date
+    enSeance: [Exercice]
+    matiere: String
+    aFaire: [Exercice]
+    heureFin: String
+    flagModif: Boolean
+    flagActif: Boolean
+    heureDebut: String
+    hfin: Date
+    aRendre: [Exercice]
+    motifModif: String
+    idSeance: Int
+    salle: String
+    titre: String
+}
+
+type Exercice {
+    type: String
+    uid: Int
+    date: Date
+    titre: String
+}
+
+type NotesList {
+    moduleNotesActif: Boolean
+    codeEleve: String
+    nbNotesMax: Int
+    listeNotes: [Devoir]
+}
+
+type InboxInfo {
+    nbMessagesNonLus:Int
+}
+
+type Inbox {
+    nbMaxCommunicationRecues: Int
+    communications: [Communication]
+    nbMaxCaracteresMessage: Int
+    nbMaxCommunicationBoiteReception: Int
+}
+
+type Communication {
+    participants: [Participant]
+    expediteurActuel: Participant
+    signalable: Boolean
+    expediteurInitial: Participant
+    id: Int
+    dateDernierMessage: Date
+    nbParticipations: Int
+    isExpediteurInitial: Boolean
+    pieceJointe: Boolean
+    participations: [Participation]
+    objet: String
+    type: String
+    etat: String
+    premieresLignes: String
+    etatLecture: Boolean
+}
+
+type Participant {
+    id: String
+    libelle: String
+}
+
+type Participation {
+    dateEnvoi: Date
+    corpsMessage: String
+    pjs: [Attachment]
+    id: Int
+    libelleObjet: String
+    redacteur: Participant
+    premieresLignes: String
+    typeMessage: String
+}
+
+type AppelsList {
+    dateDuJour: Date
+    listeAppels: [Appel]
+}
+
+type Appel {
+    isEnCours: Boolean
+    dateDebut: Date
+    dateFin: Date
+    idAppel: Int
+    libelleGroupe: String
+    liteElevesAppel: [AppelElevesList]
+}
+
+type AppelElevesList {
+    nomEleve: String
+    prenomEleve: String
+    idEleve: String
+    absenceEleveAppel: AbsenceEleveAppel
+}
+
+type AbsenceEleveAppel {
+    idAbsence: Int
+    type: String
+    dateDebut: Date
+    dateFin: Date
+    idMotif: String
+    modifiable: Boolean
+    idEleve: String
 }

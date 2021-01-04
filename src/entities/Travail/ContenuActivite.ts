@@ -3,7 +3,7 @@ import Attachment from '../Messagerie/Attachment'
 export default class ContenuActivite {
     public codeHTML: string
     public flagTravailAfaire: boolean
-    public flagrealise: boolean
+    public flagRealise: boolean
     public titre: string
     public date: Date
     public isFaitModifiable: boolean
@@ -31,7 +31,7 @@ export default class ContenuActivite {
     }) {
       this.errmsg = contenuActivite.errmsg
       this.codeHTML = contenuActivite.codeHTML
-      this.flagrealise = contenuActivite.flagRealise
+      this.flagRealise = contenuActivite.flagRealise
       this.flagTravailAfaire = contenuActivite.flagTravailAFaire
       this.titre = contenuActivite.titre
       this.date = new Date(contenuActivite.date)
