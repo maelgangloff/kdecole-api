@@ -1,0 +1,48 @@
+type Query {
+    login: String
+    releve: Releve
+}
+
+
+
+type Releve {
+    trimestres: [Trimestre]
+}
+
+type Trimestre {
+    matieres: [Matiere]
+    idPeriode: Int
+    libelleClasse: String
+    periodeLibelle: String
+    periodeEnCours: Boolean
+    bareme: Int
+}
+
+type Matiere {
+    bareme: Int
+    moyenneEleve: Float
+    devoirs: [Devoir]
+    enseignants: [String]
+    matierreLibelle: String
+    moyenneClasse: Float
+}
+
+scalar Date
+type Devoir {
+    note: Float
+    date: Date
+    medianeClasse: Float
+    sousMatiere: String
+    noteMin: Float
+    appreciation: String
+    bareme: Int
+    coefficient: Int
+    id: Int
+    titreDevoir: String
+    noteMax: Float
+    facultatif: Boolean
+    moyenne: Float
+    comptabilise: Boolean
+    commentaireDevoir: String
+    matiere: String
+}

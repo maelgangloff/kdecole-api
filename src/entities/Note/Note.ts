@@ -14,6 +14,7 @@ export default class Note {
     public comptabilise: boolean
     public commentaireDevoir: string | null
     public matiere?: string
+    public sousMatiere: string | null
 
     constructor (note: {
         note: string | null
@@ -49,6 +50,7 @@ export default class Note {
       this.comptabilise = note.comptabilise
       this.commentaireDevoir = note.commentaireDevoir
       this.matiere = note.matiere
+      this.sousMatiere = note.sousMatiere
     }
 
     public static stringNoteToNumber (note: string | null): number | null {
