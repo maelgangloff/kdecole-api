@@ -21,7 +21,7 @@ function lint(cb) {
 }
 
 function build (cb) {
-  exec('tsc', (err, stdout, stderr)=>{
+  exec('npx tsc', (err, stdout, stderr)=>{
     console.log(stderr);
     cb(err);
   })
