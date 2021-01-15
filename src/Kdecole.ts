@@ -43,6 +43,17 @@ interface KdecoleRequest {
   data?: any
 }
 
+export enum ApiUrl {
+  PROD_MON_BUREAU_NUMERIQUE = 'https://mobilite.monbureaunumerique.fr/mobilite',
+  PREPRO_MON_BUREAU_NUMERIQUE = 'https://mobilite.preprod.monbureaunumerique.fr/mobilite',
+  PROD_MON_ENT_OCCITANIE = 'https://mobilite.mon-ent-occitanie.fr/mobilite',
+  PROD_ARSENE76 = 'https://mobilite.arsene76.fr/mobilite',
+  PROD_ENT27 = 'https://mobilite.ent27.fr/mobilite',
+  PROD_ENDCREUSE = 'https://mobilite.entcreuse.fr/mobilite',
+  PROD_AUVERGNERHONEALPES = 'https://mobilite.ent.auvergnerhonealpes.fr/mobilite',
+  PROD_SAVOIRSNUMERIQUES62 = 'https://mobilite.savoirsnumeriques62.fr/mobilite'
+}
+
 /**
  * Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
  * @example ```js
@@ -69,14 +80,7 @@ export default class Kdecole {
     authToken: string,
     appVersion: string = APP_VERSION,
     idEtablissement = 0,
-    apiURL: 'https://mobilite.monbureaunumerique.fr/mobilite'
-          | 'https://mobilite.preprod.monbureaunumerique.fr/mobilite'
-          | 'https://mobilite.mon-ent-occitanie.fr/mobilite'
-          | 'https://mobilite.arsene76.fr/mobilite'
-          | 'https://mobilite.ent27.fr/mobilite'
-          | 'https://mobilite.entcreuse.fr/mobilite'
-          | 'https://mobilite.ent.auvergnerhonealpes.fr/mobilite'
-          | 'https://mobilite.savoirsnumeriques62.fr/mobilite' = 'https://mobilite.monbureaunumerique.fr/mobilite'
+    apiURL: ApiUrl | string = ApiUrl.PROD_MON_BUREAU_NUMERIQUE
   ) {
     if (authToken === undefined) {
       throw Error("Un jeton d'accès doit être renseigné")
