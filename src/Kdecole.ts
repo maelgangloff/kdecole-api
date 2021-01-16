@@ -45,7 +45,7 @@ interface KdecoleRequest {
 
 export enum ApiUrl {
   PROD_MON_BUREAU_NUMERIQUE = 'https://mobilite.monbureaunumerique.fr/mobilite',
-  PREPRO_MON_BUREAU_NUMERIQUE = 'https://mobilite.preprod.monbureaunumerique.fr/mobilite',
+  PREPROD_MON_BUREAU_NUMERIQUE = 'https://mobilite.preprod.monbureaunumerique.fr/mobilite',
   PROD_MON_ENT_OCCITANIE = 'https://mobilite.mon-ent-occitanie.fr/mobilite',
   PROD_ARSENE76 = 'https://mobilite.arsene76.fr/mobilite',
   PROD_ENT27 = 'https://mobilite.ent27.fr/mobilite',
@@ -123,12 +123,12 @@ export default class Kdecole {
    * const user = new Kdecole(authToken)
    * user.logout()
    * ```
-   * @return {Promise<Desactivation | Error>}
+   * @return {Promise<Desactivation>}
    */
-  public async logout (): Promise<Desactivation | Error> {
+  public async logout (): Promise<Desactivation> {
     const desactivation = new Desactivation(await Kdecole.kdecole(this, { service: 'desactivation' }))
     if (desactivation.success) return desactivation
-    return new Error('Une erreur est survenue dans le traitement des données de déconnexion')
+    throw Error('Une erreur est survenue dans le traitement des données de déconnexion')
   }
 
   /**
