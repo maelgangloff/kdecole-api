@@ -2,9 +2,6 @@
   "name": "kdecole-api",
   "version": "1.0.14",
   "main": "dist/Kdecole.js",
-  "bin": {
-    "kdecole-graphql": "./GraphQL/server.js"
-  },
   "types": "types/Kdecole.d.ts",
   "author": {
     "name": "Maël Gangloff",
@@ -42,11 +39,7 @@
     "url": "https://github.com/maelgangloff/kdecole-api.git"
   },
   "dependencies": {
-    "axios": "^0.21.1",
-    "express": "^4.17.1",
-    "express-bearer-token": "^2.4.0",
-    "express-graphql": "^0.12.0",
-    "graphql": "^15.4.0"
+    "axios": "^0.21.1"
   },
   "keywords": [
     "API",
