@@ -8,7 +8,7 @@ Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
 * [Kdecole](#Kdecole)
     * [new Kdecole(authToken, appVersion, idEtablissement, apiURL)](#new_Kdecole_new)
     * _instance_
-        * [.logout()](#Kdecole+logout) ⇒ <code>Promise.&lt;(Desactivation\|Error)&gt;</code>
+        * [.logout()](#Kdecole+logout) ⇒ <code>Promise.&lt;Desactivation&gt;</code>
         * [.getReleve(idEleve)](#Kdecole+getReleve) ⇒ <code>Promise.&lt;Releve&gt;</code>
         * [.getActualites(idEleve)](#Kdecole+getActualites) ⇒ <code>Promise.&lt;Array.&lt;Actualite&gt;&gt;</code>
         * [.getContenuArticle(uid)](#Kdecole+getContenuArticle) ⇒ <code>Promise.&lt;ContenuArticle&gt;</code>
@@ -29,7 +29,7 @@ Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
         * [.gestionAppels()](#Kdecole+gestionAppels) ⇒ <code>Promise.&lt;GestionAppels&gt;</code>
         * [.validerAppel(appel)](#Kdecole+validerAppel) ⇒ <code>Promise.&lt;void&gt;</code>
     * _static_
-        * [.login(login, password, appVersion)](#Kdecole.login) ⇒ <code>Promise.&lt;string&gt;</code>
+        * [.login(username, password, appVersion)](#Kdecole.login) ⇒ <code>Promise.&lt;string&gt;</code>
 
 <a name="new_Kdecole_new"></a>
 
@@ -40,7 +40,7 @@ Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
 | authToken | <code>string</code> |  | Le jeton d'accès |
 | appVersion | <code>string</code> |  | La version de l'application mobile autorisée par l'API |
 | idEtablissement | <code>number</code> | <code>0</code> | L'identifiant de l'établissement |
-| apiURL | <code>string</code> | <code>&quot;https://mobilite.monbureaunumerique.fr/mobilite&quot;</code> | L'URL de l'API Kdecole |
+| apiURL | <code>string</code> |  | L'URL de l'API Kdecole |
 
 **Example**  
 ```js
@@ -52,7 +52,7 @@ const user = new Kdecole(AUTH_TOKEN)
 ```
 <a name="Kdecole+logout"></a>
 
-### kdecole.logout() ⇒ <code>Promise.&lt;(Desactivation\|Error)&gt;</code>
+### kdecole.logout() ⇒ <code>Promise.&lt;Desactivation&gt;</code>
 Invalide le jeton d'accès
 
 **Kind**: instance method of [<code>Kdecole</code>](#Kdecole)  
@@ -441,14 +441,14 @@ user.validerAppel(appel)
 ```
 <a name="Kdecole.login"></a>
 
-### Kdecole.login(login, password, appVersion) ⇒ <code>Promise.&lt;string&gt;</code>
+### Kdecole.login(username, password, appVersion) ⇒ <code>Promise.&lt;string&gt;</code>
 Retourne le jeton d'accès de l'utilisateur
 
 **Kind**: static method of [<code>Kdecole</code>](#Kdecole)  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| login | <code>string</code> | Le nom d'utilisateur |
+| username |  |  |
 | password | <code>string</code> | Le mot de passe à usage unique |
 | appVersion | <code>string</code> | La version de l'application mobile autorisée par l'API |
 
