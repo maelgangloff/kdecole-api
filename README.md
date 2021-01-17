@@ -1,6 +1,8 @@
 <a name="Kdecole"></a>
 
 ## Kdecole
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmaelgangloff%2Fkdecole-api.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fmaelgangloff%2Fkdecole-api?ref=badge_shield)
+
 Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
 
 **Kind**: global class  
@@ -459,3 +461,7 @@ const Kdecole = require('kdecole-api').default
 const authToken = Kdecole.login(username, password)
 console.log(authToken) //Afficher son token d'authentification
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fmaelgangloff%2Fkdecole-api.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fmaelgangloff%2Fkdecole-api?ref=badge_large)
