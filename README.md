@@ -40,7 +40,7 @@ Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
 | authToken | <code>string</code> |  | Le jeton d'accès |
 | appVersion | <code>string</code> |  | La version de l'application mobile autorisée par l'API |
 | idEtablissement | <code>number</code> | <code>0</code> | L'identifiant de l'établissement |
-| apiURL | <code>string</code> |  | L'URL de l'API Kdecole |
+| apiURL | <code>ApiUrl</code> \| <code>string</code> |  | L'URL de l'API Kdecole |
 
 **Example**  
 ```js
@@ -448,7 +448,7 @@ Retourne le jeton d'accès de l'utilisateur
 
 | Param | Type | Description |
 | --- | --- | --- |
-| username |  |  |
+| username | <code>string</code> | Le nom d'utilisateur |
 | password | <code>string</code> | Le mot de passe à usage unique |
 | appVersion | <code>string</code> | La version de l'application mobile autorisée par l'API |
 

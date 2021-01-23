@@ -74,7 +74,7 @@ export default class Kdecole {
    * @param {string} authToken Le jeton d'accès
    * @param {string} appVersion La version de l'application mobile autorisée par l'API
    * @param {number} idEtablissement L'identifiant de l'établissement
-   * @param {string} apiURL L'URL de l'API Kdecole
+   * @param {ApiUrl|string} apiURL L'URL de l'API Kdecole
    */
   constructor (
     authToken: string,
@@ -93,7 +93,7 @@ export default class Kdecole {
 
   /**
    * Retourne le jeton d'accès de l'utilisateur
-   * @param username
+   * @param {string} username Le nom d'utilisateur
    * @param {string} password Le mot de passe à usage unique
    * @param {string} appVersion La version de l'application mobile autorisée par l'API
    * @return {Promise<string>}
