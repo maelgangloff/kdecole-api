@@ -24,7 +24,7 @@ describe('Test Utilisateur', () => {
             "headers": {"X-Kdecole-Auth": authToken, "X-Kdecole-Vers": APP_VERSION},
             "method": "get",
             "responseType": "json",
-            "url": "/infoutilisateur/idetablissement/10485/"
+            "url": "/infoutilisateur/"
         })
     })
     it('should return utilisateur with idEleveSelectionne', async () => {

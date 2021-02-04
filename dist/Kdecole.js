@@ -474,7 +474,7 @@ class Kdecole {
         });
     }
     static async kdecole(ctx, { service, parameters, type = 'get', data }) {
-        if (parameters === undefined && service !== 'desactivation' && service !== 'messagerie/info' && service !== 'messagerie/communication' && service !== 'messagerie/boiteReception')
+        if (parameters === undefined && service !== 'desactivation' && service !== 'messagerie/info' && service !== 'messagerie/communication' && service !== 'messagerie/boiteReception' && service !== 'infoutilisateur')
             parameters = `idetablissement/${ctx.idEtablissement}`;
         return (await axios_1.default.request({
             baseURL: ctx.apiURL,
