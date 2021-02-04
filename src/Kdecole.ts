@@ -539,20 +539,16 @@ export default class Kdecole {
 
   private static async kdecole (ctx: Kdecole, { service, parameters, type = 'get', data }: KdecoleRequest): Promise<any> {
     if (parameters === undefined && service !== 'desactivation' && service !== 'messagerie/info' && service !== 'messagerie/communication' && service !== 'messagerie/boiteReception') parameters = `idetablissement/${ctx.idEtablissement}`
-    try {
-      return (await axios.request({
-        baseURL: ctx.apiURL,
-        headers: {
-          'X-Kdecole-Vers': ctx.appVersion,
-          'X-Kdecole-Auth': ctx.authToken
-        },
-        responseType: 'json',
-        method: type,
-        url: parameters ? `/${service}/${parameters}/` : `/${service}/`,
-        data: data
-      })).data
-    } catch (e) {
-      throw Error('Une erreur est survenue durant le traitement de la requête')
-    }
+    return (await axios.request({
+      baseURL: ctx.apiURL,
+      headers: {
+        'X-Kdecole-Vers': ctx.appVersion,
+        'X-Kdecole-Auth': ctx.authToken
+      },
+      responseType: 'json',
+      method: type,
+      url: parameters ? `/${service}/${parameters}/` : `/${service}/`,
+      data: data
+    })).data
   }
 }
