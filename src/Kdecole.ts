@@ -66,9 +66,9 @@ export enum ApiUrl {
  */
 export default class Kdecole {
   private readonly authToken: string
-  private readonly appVersion: string
-  private readonly idEtablissement:number
-  private readonly apiURL: string
+  public appVersion: string
+  public idEtablissement:number
+  public apiURL: string
 
   /**
    * @param {string} authToken Le jeton d'accès

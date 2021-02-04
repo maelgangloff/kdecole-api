@@ -36,9 +36,9 @@ export declare enum ApiUrl {
  */
 export default class Kdecole {
     private readonly authToken;
-    private readonly appVersion;
-    private readonly idEtablissement;
-    private readonly apiURL;
+    appVersion: string;
+    idEtablissement: number;
+    apiURL: string;
     /**
      * @param {string} authToken Le jeton d'accès
      * @param {string} appVersion La version de l'application mobile autorisée par l'API
