@@ -96,6 +96,7 @@ export default class Kdecole {
    * @param {string} username Le nom d'utilisateur
    * @param {string} password Le mot de passe à usage unique
    * @param {string} appVersion La version de l'application mobile autorisée par l'API
+   * @param {apiURL} apiUrl L'URL de l'API Kdecole
    * @return {Promise<string>}
    * @example ```js
    * const Kdecole = require('kdecole-api').default
@@ -104,8 +105,8 @@ export default class Kdecole {
    * console.log(authToken) //Afficher son token d'authentification
    * ```
    */
-  public static async login (username: string, password: string, appVersion:string = APP_VERSION): Promise<string> {
-    const activation = new Activation(await Kdecole.kdecole(new Kdecole('', appVersion, 0), {
+  public static async login (username: string, password: string, appVersion:string = APP_VERSION, apiUrl :ApiUrl = ApiUrl.PROD_MON_BUREAU_NUMERIQUE): Promise<string> {
+    const activation = new Activation(await Kdecole.kdecole(new Kdecole('', appVersion, 0, apiUrl), {
       service: 'activation',
       parameters: `${username}/${password}`
     }))

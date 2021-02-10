@@ -51,6 +51,7 @@ export default class Kdecole {
      * @param {string} username Le nom d'utilisateur
      * @param {string} password Le mot de passe à usage unique
      * @param {string} appVersion La version de l'application mobile autorisée par l'API
+     * @param {apiURL} apiUrl L'URL de l'API Kdecole
      * @return {Promise<string>}
      * @example ```js
      * const Kdecole = require('kdecole-api').default
@@ -59,7 +60,7 @@ export default class Kdecole {
      * console.log(authToken) //Afficher son token d'authentification
      * ```
      */
-    static login(username: string, password: string, appVersion?: string): Promise<string>;
+    static login(username: string, password: string, appVersion?: string, apiUrl?: ApiUrl): Promise<string>;
     /**
      * Invalide le jeton d'accès
      * @example ```js

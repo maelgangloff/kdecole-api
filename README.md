@@ -29,7 +29,7 @@ Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
         * [.gestionAppels()](#Kdecole+gestionAppels) ⇒ <code>Promise.&lt;GestionAppels&gt;</code>
         * [.validerAppel(appel)](#Kdecole+validerAppel) ⇒ <code>Promise.&lt;void&gt;</code>
     * _static_
-        * [.login(username, password, appVersion)](#Kdecole.login) ⇒ <code>Promise.&lt;string&gt;</code>
+        * [.login(username, password, appVersion, apiUrl)](#Kdecole.login) ⇒ <code>Promise.&lt;string&gt;</code>
 
 <a name="new_Kdecole_new"></a>
 
@@ -441,7 +441,7 @@ user.validerAppel(appel)
 ```
 <a name="Kdecole.login"></a>
 
-### Kdecole.login(username, password, appVersion) ⇒ <code>Promise.&lt;string&gt;</code>
+### Kdecole.login(username, password, appVersion, apiUrl) ⇒ <code>Promise.&lt;string&gt;</code>
 Retourne le jeton d'accès de l'utilisateur
 
 **Kind**: static method of [<code>Kdecole</code>](#Kdecole)  
@@ -451,6 +451,7 @@ Retourne le jeton d'accès de l'utilisateur
 | username | <code>string</code> | Le nom d'utilisateur |
 | password | <code>string</code> | Le mot de passe à usage unique |
 | appVersion | <code>string</code> | La version de l'application mobile autorisée par l'API |
+| apiUrl | <code>apiURL</code> | L'URL de l'API Kdecole |
 
 **Example**  
 ```js
