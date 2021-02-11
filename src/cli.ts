@@ -1,7 +1,7 @@
 import { Kdecole } from './Kdecole'
 
 /**
- * Pour obtenir un jeton d'authentification, vous pouvez utiliser ligne de commande
+ * Pour obtenir un jeton d'authentification, vous pouvez utiliser la ligne de commande
  * @example ```bash
  * npx kdecole <identifiant> <code_activation_mobile>
  * ```

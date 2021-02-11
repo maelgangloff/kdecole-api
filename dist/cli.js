@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.cli = void 0;
 const Kdecole_1 = require("./Kdecole");
 /**
- * Pour obtenir un jeton d'authentification, vous pouvez utiliser ligne de commande
+ * Pour obtenir un jeton d'authentification, vous pouvez utiliser la ligne de commande
  * @example ```bash
  * npx kdecole <identifiant> <code_activation_mobile>
  * ```

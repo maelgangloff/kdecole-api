@@ -10,7 +10,7 @@
 
 <dl>
 <dt><a href="#cli">cli()</a></dt>
-<dd><p>Pour obtenir un jeton d&#39;authentification, vous pouvez utiliser ligne de commande</p>
+<dd><p>Pour obtenir un jeton d&#39;authentification, vous pouvez utiliser la ligne de commande</p>
 </dd>
 </dl>
 
@@ -479,7 +479,7 @@ console.log(authToken) //Afficher son token d'authentification
 <a name="cli"></a>
 
 ## cli()
-Pour obtenir un jeton d'authentification, vous pouvez utiliser ligne de commande
+Pour obtenir un jeton d'authentification, vous pouvez utiliser la ligne de commande
 
 **Kind**: global function  
 **Example**  
