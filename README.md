@@ -60,7 +60,7 @@ Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
 
 **Example**  
 ```js
-const Kdecole = require('kdecole-api').default
+const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(Kdecole.login(USERNAME, PASSWORD))
 // ou encore:
@@ -74,7 +74,7 @@ Invalide le jeton d'accès
 **Kind**: instance method of [<code>Kdecole</code>](#Kdecole)  
 **Example**  
 ```js
-const Kdecole = require('kdecole-api').default
+const { Kdecole } = require('kdecole-api')
 const user = new Kdecole(authToken)
 user.logout()
 ```
@@ -96,7 +96,7 @@ kdecole.getReleve(idEleve) //Retourne le relevé d'un élève précis
 ```
 **Example**  
 ```js
-const Kdecole = require('kdecole-api').default
+const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
 user.getReleve(idEleve).then((releve)=>{
@@ -116,7 +116,7 @@ Retourne un tableau des actualités de l'établissement de l'utilisateur
 
 **Example**  
 ```js
-const Kdecole = require('kdecole-api').default
+const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
 user.getActualites(idEleve).then((actualites)=>{
@@ -136,7 +136,7 @@ Retourne le contenu d'un article
 
 **Example**  
 ```js
-const Kdecole = require('kdecole-api').default
+const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
 user.getContenuArticle(uid).then((contenuArticle)=>{
@@ -156,7 +156,7 @@ Retourne la liste des devoirs de l'élève
 
 **Example**  
 ```js
-const Kdecole = require('kdecole-api').default
+const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
 user.getTravailAFaire(idEleve).then((taf)=>{
@@ -178,7 +178,7 @@ Retourne les détails d'un devoir à faire
 
 **Example**  
 ```js
-const Kdecole = require('kdecole-api').default
+const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
 user.getContenuActivite(uidSeance, uid, idEleve).then((contenuActivite)=>{
@@ -200,7 +200,7 @@ Permet de marquer un devoir comme étant fait
 
 **Example**  
 ```js
-const Kdecole = require('kdecole-api').default
+const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
 user.setActiviteFinished(uidSeance, uid, flagRealise)
@@ -218,7 +218,7 @@ Retourne la liste des absences d'un élève
 
 **Example**  
 ```js
-const Kdecole = require('kdecole-api').default
+const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
 user.getAbsences(idEleve).then((absences)=>{
@@ -238,7 +238,7 @@ Retourne les informations d'un utilisateur (type de compte, nom complet, numéro
 
 **Example**  
 ```js
-const Kdecole = require('kdecole-api').default
+const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
 user.getInfoUtilisateur(idEleve).then((infoUtilisateur)=>{
@@ -258,7 +258,7 @@ Retourne l'emploi du temps de l'élève à J-7 et J+7
 
 **Example**  
 ```js
-const Kdecole = require('kdecole-api').default
+const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
 user.getCalendrier(idEleve).then((calendrier)=>{
@@ -278,7 +278,7 @@ Retourne la liste des récentes notes de l'élève
 
 **Example**  
 ```js
-const Kdecole = require('kdecole-api').default
+const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
 user.getNotes(idEleve).then((notes)=>{
@@ -293,7 +293,7 @@ Retourne l'état de la messagerie de l'utilisateur (nombre de mails non lus)
 **Kind**: instance method of [<code>Kdecole</code>](#Kdecole)  
 **Example**  
 ```js
-const Kdecole = require('kdecole-api').default
+const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
 user.getMessagerieInfo().then((messagerieInfo)=>{
@@ -308,7 +308,7 @@ Retourne les mails présents dans la boîte mail
 **Kind**: instance method of [<code>Kdecole</code>](#Kdecole)  
 **Example**  
 ```js
-const Kdecole = require('kdecole-api').default
+const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
 user.getMessagerieBoiteReception().then((messagerieBoiteReception)=>{
@@ -328,7 +328,7 @@ Retourne les détails d'un fil de discussion
 
 **Example**  
 ```js
-const Kdecole = require('kdecole-api').default
+const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
 user.getCommunication(id).then((communication)=>{
@@ -348,7 +348,7 @@ Permet de signaler une communication
 
 **Example**  
 ```js
-const Kdecole = require('kdecole-api').default
+const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
 user.reportCommunication(id)
@@ -366,7 +366,7 @@ Supprime la communication
 
 **Example**  
 ```js
-const Kdecole = require('kdecole-api').default
+const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
 user.deleteCommunication(id)
@@ -384,7 +384,7 @@ Marquer une communication lue
 
 **Example**  
 ```js
-const Kdecole = require('kdecole-api').default
+const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
 user.setCommunicationLu(id)
@@ -403,7 +403,7 @@ Envoyer un message sur un fil de discussion
 
 **Example**  
 ```js
-const Kdecole = require('kdecole-api').default
+const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
 user.sendMessage(id, corpsMessage)
@@ -417,7 +417,7 @@ Retourne les feuilles d'appel.
 **Returns**: <code>Promise.&lt;GestionAppels&gt;</code> - Les feuilles d'appel.  
 **Example**  
 ```js
-const Kdecole = require('kdecole-api').default
+const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
 user.gestionAppels().then((gestionAppels)=>{
@@ -437,7 +437,7 @@ Valide l'appel de la classe.
 
 **Example**  
 ```js
-const Kdecole = require('kdecole-api').default
+const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
 const appel = {
@@ -471,7 +471,7 @@ Retourne le jeton d'accès de l'utilisateur
 
 **Example**  
 ```js
-const Kdecole = require('kdecole-api').default
+const { Kdecole } = require('kdecole-api')
 
 const authToken = Kdecole.login(username, password)
 console.log(authToken) //Afficher son token d'authentification
@@ -483,6 +483,6 @@ Pour obtenir un jeton d'authentification, vous pouvez utiliser ligne de commande
 
 **Kind**: global function  
 **Example**  
-```js
+```bash
 npx kdecole <identifiant> <code_activation_mobile>
 ```

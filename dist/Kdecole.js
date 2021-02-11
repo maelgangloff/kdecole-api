@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.ApiUrl = exports.BASE_URL = exports.APP_VERSION = void 0;
+exports.Kdecole = exports.ApiUrl = exports.BASE_URL = exports.APP_VERSION = void 0;
 const axios_1 = __importDefault(require("axios"));
 const Desactivation_1 = __importDefault(require("./entities/Authentication/Desactivation"));
 const Activation_1 = __importDefault(require("./entities/Authentication/Activation"));
@@ -36,7 +36,7 @@ var ApiUrl;
 /**
  * Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
  * @example ```js
- * const Kdecole = require('kdecole-api').default
+ * const { Kdecole } = require('kdecole-api')
  *
  * const user = new Kdecole(Kdecole.login(USERNAME, PASSWORD))
  * // ou encore:
@@ -67,7 +67,7 @@ class Kdecole {
      * @param {apiURL} apiUrl L'URL de l'API Kdecole
      * @return {Promise<string>}
      * @example ```js
-     * const Kdecole = require('kdecole-api').default
+     * const { Kdecole } = require('kdecole-api')
      *
      * const authToken = Kdecole.login(username, password)
      * console.log(authToken) //Afficher son token d'authentification
@@ -88,7 +88,7 @@ class Kdecole {
     /**
      * Invalide le jeton d'accès
      * @example ```js
-     * const Kdecole = require('kdecole-api').default
+     * const { Kdecole } = require('kdecole-api')
      * const user = new Kdecole(authToken)
      * user.logout()
      * ```
@@ -109,7 +109,7 @@ class Kdecole {
      * @param {string} idEleve Identifiant d'un élève
      * @return {Promise<Releve>}
      * @example ```js
-     * const Kdecole = require('kdecole-api').default
+     * const { Kdecole } = require('kdecole-api')
      *
      * const user = new Kdecole(AUTH_TOKEN)
      * user.getReleve(idEleve).then((releve)=>{
@@ -128,7 +128,7 @@ class Kdecole {
      * @param {string} idEleve Identifiant d'un élève
      * @return {Promise<Actualite[]>}
      * @example ```js
-     * const Kdecole = require('kdecole-api').default
+     * const { Kdecole } = require('kdecole-api')
      *
      * const user = new Kdecole(AUTH_TOKEN)
      * user.getActualites(idEleve).then((actualites)=>{
@@ -151,7 +151,7 @@ class Kdecole {
      * @param {string} uid Identifiant unique de l'article
      * @return {Promise<ContenuArticle>}
      * @example ```js
-     * const Kdecole = require('kdecole-api').default
+     * const { Kdecole } = require('kdecole-api')
      *
      * const user = new Kdecole(AUTH_TOKEN)
      * user.getContenuArticle(uid).then((contenuArticle)=>{
@@ -167,7 +167,7 @@ class Kdecole {
      * @param {string} idEleve Identifiant d'un élève
      * @return {Promise<TravailAFaire>}
      * @example ```js
-     * const Kdecole = require('kdecole-api').default
+     * const { Kdecole } = require('kdecole-api')
      *
      * const user = new Kdecole(AUTH_TOKEN)
      * user.getTravailAFaire(idEleve).then((taf)=>{
@@ -188,7 +188,7 @@ class Kdecole {
      * @param {string} idEleve Identifiant d'un élève
      * @return {Promise<ContenuActivite>}
      * @example ```js
-     * const Kdecole = require('kdecole-api').default
+     * const { Kdecole } = require('kdecole-api')
      *
      * const user = new Kdecole(AUTH_TOKEN)
      * user.getContenuActivite(uidSeance, uid, idEleve).then((contenuActivite)=>{
@@ -208,7 +208,7 @@ class Kdecole {
      * @param uid {number} Identifiant du devoir
      * @param flagRealise {boolean} Statut du devoir
      * @example ```js
-     * const Kdecole = require('kdecole-api').default
+     * const { Kdecole } = require('kdecole-api')
      *
      * const user = new Kdecole(AUTH_TOKEN)
      * user.setActiviteFinished(uidSeance, uid, flagRealise)
@@ -229,7 +229,7 @@ class Kdecole {
      * @param {string} idEleve Identifiant d'un élève
      * @return {Promise<AbsencesList>}
      * @example ```js
-     * const Kdecole = require('kdecole-api').default
+     * const { Kdecole } = require('kdecole-api')
      *
      * const user = new Kdecole(AUTH_TOKEN)
      * user.getAbsences(idEleve).then((absences)=>{
@@ -248,7 +248,7 @@ class Kdecole {
      * @param {string} idEleve Identifiant d'un élève
      * @return {Promise<Utilisateur>}
      * @example ```js
-     * const Kdecole = require('kdecole-api').default
+     * const { Kdecole } = require('kdecole-api')
      *
      * const user = new Kdecole(AUTH_TOKEN)
      * user.getInfoUtilisateur(idEleve).then((infoUtilisateur)=>{
@@ -267,7 +267,7 @@ class Kdecole {
      * @param {string} idEleve Identifiant d'un élève
      * @return {Promise<Calendrier>}
      * @example ```js
-     * const Kdecole = require('kdecole-api').default
+     * const { Kdecole } = require('kdecole-api')
      *
      * const user = new Kdecole(AUTH_TOKEN)
      * user.getCalendrier(idEleve).then((calendrier)=>{
@@ -286,7 +286,7 @@ class Kdecole {
      * @param {string} idEleve Identifiant d'un élève
      * @return {Promise<NotesList>}
      * @example ```js
-     * const Kdecole = require('kdecole-api').default
+     * const { Kdecole } = require('kdecole-api')
      *
      * const user = new Kdecole(AUTH_TOKEN)
      * user.getNotes(idEleve).then((notes)=>{
@@ -304,7 +304,7 @@ class Kdecole {
      * Retourne l'état de la messagerie de l'utilisateur (nombre de mails non lus)
      * @return {Promise<MessageInfo>}
      * @example ```js
-     * const Kdecole = require('kdecole-api').default
+     * const { Kdecole } = require('kdecole-api')
      *
      * const user = new Kdecole(AUTH_TOKEN)
      * user.getMessagerieInfo().then((messagerieInfo)=>{
@@ -319,7 +319,7 @@ class Kdecole {
      * Retourne les mails présents dans la boîte mail
      * @return {Promise<MessageBoiteReception>}
      * @example ```js
-     * const Kdecole = require('kdecole-api').default
+     * const { Kdecole } = require('kdecole-api')
      *
      * const user = new Kdecole(AUTH_TOKEN)
      * user.getMessagerieBoiteReception().then((messagerieBoiteReception)=>{
@@ -335,7 +335,7 @@ class Kdecole {
      * @param {number} id Identifiant d'un fil de discussion
      * @return {Promise<Communication>}
      * @example ```js
-     * const Kdecole = require('kdecole-api').default
+     * const { Kdecole } = require('kdecole-api')
      *
      * const user = new Kdecole(AUTH_TOKEN)
      * user.getCommunication(id).then((communication)=>{
@@ -355,7 +355,7 @@ class Kdecole {
      * @param {number} id Identifiant d'un fil de discussion
      * @return {Promise<void>}
      * @example ```js
-     * const Kdecole = require('kdecole-api').default
+     * const { Kdecole } = require('kdecole-api')
      *
      * const user = new Kdecole(AUTH_TOKEN)
      * user.reportCommunication(id)
@@ -373,7 +373,7 @@ class Kdecole {
      * @param {number} id Identifiant d'un fil de discussion
      * @return {Promise<void>}
      * @example ```js
-     * const Kdecole = require('kdecole-api').default
+     * const { Kdecole } = require('kdecole-api')
      *
      * const user = new Kdecole(AUTH_TOKEN)
      * user.deleteCommunication(id)
@@ -391,7 +391,7 @@ class Kdecole {
      * @param id {number} Identifiant d'un fil de discussion
      * @return {Promise<void>}
      * @example ```js
-     * const Kdecole = require('kdecole-api').default
+     * const { Kdecole } = require('kdecole-api')
      *
      * const user = new Kdecole(AUTH_TOKEN)
      * user.setCommunicationLu(id)
@@ -413,7 +413,7 @@ class Kdecole {
      * @param corpsMessage {string} Corps du message HTML
      * @return {Promise<void>}
      * @example ```js
-     * const Kdecole = require('kdecole-api').default
+     * const { Kdecole } = require('kdecole-api')
      *
      * const user = new Kdecole(AUTH_TOKEN)
      * user.sendMessage(id, corpsMessage)
@@ -434,7 +434,7 @@ class Kdecole {
      * Retourne les feuilles d'appel.
      * @return {Promise<GestionAppels>} Les feuilles d'appel.
      * @example ```js
-     * const Kdecole = require('kdecole-api').default
+     * const { Kdecole } = require('kdecole-api')
      *
      * const user = new Kdecole(AUTH_TOKEN)
      * user.gestionAppels().then((gestionAppels)=>{
@@ -450,7 +450,7 @@ class Kdecole {
      * @return {Promise<void>}
      * @param appel L'appel à valider
      * @example ```js
-     * const Kdecole = require('kdecole-api').default
+     * const { Kdecole } = require('kdecole-api')
      *
      * const user = new Kdecole(AUTH_TOKEN)
      * const appel = {
@@ -493,4 +493,4 @@ class Kdecole {
         })).data;
     }
 }
-exports.default = Kdecole;
+exports.Kdecole = Kdecole;

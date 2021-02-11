@@ -2,7 +2,7 @@ import axios from 'axios'
 import Releve from "../dist/entities/Note/Releve.js";
 import {APP_VERSION, BASE_URL} from "../dist/Kdecole";
 
-const Kdecole = require('../dist/Kdecole.js').default
+const { Kdecole } = require('../dist/Kdecole.js')
 
 const authToken = '0AnemIFGvcORx88ESDrvIflY0qRV2ussl0n31tC5Sh2U6xDZJ0E3VrD1RYzrWGX3rYUZK4nI3wLnbxZYQi2sKXMrGbgxIuq2ewjOpRYfWLSP0mLFK3D3CZVu7Ev2s'
 const user = new Kdecole(authToken, APP_VERSION, 10485)
