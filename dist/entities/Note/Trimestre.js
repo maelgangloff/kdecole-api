@@ -1,6 +1,9 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const Matiere_1 = require("./Matiere");
+const Matiere_1 = __importDefault(require("./Matiere"));
 class Trimestre {
     constructor(trimestre) {
         this.matieres = [];

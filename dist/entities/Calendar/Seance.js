@@ -1,6 +1,9 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const Exercice_1 = require("./Exercice");
+const Exercice_1 = __importDefault(require("./Exercice"));
 class Seance {
     constructor(seance) {
         this.enSeance = [];

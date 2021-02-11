@@ -1,22 +1,25 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ApiUrl = exports.BASE_URL = exports.APP_VERSION = void 0;
-const axios_1 = require("axios");
-const Desactivation_1 = require("./entities/Authentication/Desactivation");
-const Activation_1 = require("./entities/Authentication/Activation");
-const Releve_1 = require("./entities/Note/Releve");
-const TravailAFaire_1 = require("./entities/Travail/TravailAFaire");
-const Actualite_1 = require("./entities/News/Actualite");
-const AbsencesList_1 = require("./entities/VieScolaire/AbsencesList");
-const Utilisateur_1 = require("./entities/User/Utilisateur");
-const Calendrier_1 = require("./entities/Calendar/Calendrier");
-const NotesList_1 = require("./entities/Note/NotesList");
-const MessageInfo_1 = require("./entities/Messagerie/MessageInfo");
-const MessageBoiteReception_1 = require("./entities/Messagerie/MessageBoiteReception");
-const ContenuActivite_1 = require("./entities/Travail/ContenuActivite");
-const ContenuArticle_1 = require("./entities/News/ContenuArticle");
-const Communication_1 = require("./entities/Messagerie/Communication");
-const GestionAppels_1 = require("./entities/Prof/GestionAppels");
+const axios_1 = __importDefault(require("axios"));
+const Desactivation_1 = __importDefault(require("./entities/Authentication/Desactivation"));
+const Activation_1 = __importDefault(require("./entities/Authentication/Activation"));
+const Releve_1 = __importDefault(require("./entities/Note/Releve"));
+const TravailAFaire_1 = __importDefault(require("./entities/Travail/TravailAFaire"));
+const Actualite_1 = __importDefault(require("./entities/News/Actualite"));
+const AbsencesList_1 = __importDefault(require("./entities/VieScolaire/AbsencesList"));
+const Utilisateur_1 = __importDefault(require("./entities/User/Utilisateur"));
+const Calendrier_1 = __importDefault(require("./entities/Calendar/Calendrier"));
+const NotesList_1 = __importDefault(require("./entities/Note/NotesList"));
+const MessageInfo_1 = __importDefault(require("./entities/Messagerie/MessageInfo"));
+const MessageBoiteReception_1 = __importDefault(require("./entities/Messagerie/MessageBoiteReception"));
+const ContenuActivite_1 = __importDefault(require("./entities/Travail/ContenuActivite"));
+const ContenuArticle_1 = __importDefault(require("./entities/News/ContenuArticle"));
+const Communication_1 = __importDefault(require("./entities/Messagerie/Communication"));
+const GestionAppels_1 = __importDefault(require("./entities/Prof/GestionAppels"));
 exports.APP_VERSION = '3.4.14';
 exports.BASE_URL = 'https://mobilite.monbureaunumerique.fr/mobilite';
 var ApiUrl;
@@ -79,7 +82,7 @@ class Kdecole {
             return activation.authtoken;
         }
         else {
-            throw Error('Erreur de connexion');
+            throw Error("L'authentification n'a pas fonctionné");
         }
     }
     /**

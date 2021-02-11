@@ -1,3 +1,19 @@
+## Classes
+
+<dl>
+<dt><a href="#Kdecole">Kdecole</a></dt>
+<dd><p>Support non-officiel de l&#39;API Kdecole (Mon Bureau Numérique, Skolengo, etc.)</p>
+</dd>
+</dl>
+
+## Functions
+
+<dl>
+<dt><a href="#cli">cli()</a></dt>
+<dd><p>Pour obtenir un jeton d&#39;authentification, vous pouvez utiliser ligne de commande</p>
+</dd>
+</dl>
+
 <a name="Kdecole"></a>
 
 ## Kdecole
@@ -459,4 +475,14 @@ const Kdecole = require('kdecole-api').default
 
 const authToken = Kdecole.login(username, password)
 console.log(authToken) //Afficher son token d'authentification
+```
+<a name="cli"></a>
+
+## cli()
+Pour obtenir un jeton d'authentification, vous pouvez utiliser ligne de commande
+
+**Kind**: global function  
+**Example**  
+```js
+npx kdecole <identifiant> <code_activation_mobile>
 ```

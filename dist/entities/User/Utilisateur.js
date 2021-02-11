@@ -1,7 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const Eleve_1 = require("./Eleve");
-const Etablissement_1 = require("./Etablissement");
+const Eleve_1 = __importDefault(require("./Eleve"));
+const Etablissement_1 = __importDefault(require("./Etablissement"));
 class Utilisateur {
     constructor(utilisateur) {
         this.eleves = [];

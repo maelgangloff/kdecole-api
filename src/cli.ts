@@ -1,8 +1,15 @@
 import Kdecole from './Kdecole'
 
+/**
+ * Pour obtenir un jeton d'authentification, vous pouvez utiliser ligne de commande
+ * @example ```js
+ * npx kdecole <identifiant> <code_activation_mobile>
+ * ```
+ */
 export async function cli (args: string[]): Promise<void> {
   if (args.length < 4) {
     console.log("Pas assez d'arguments.")
+    console.log('La synthaxe est: kdecole IDENTIFIANT CODE')
     return
   }
 

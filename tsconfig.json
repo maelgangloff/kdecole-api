@@ -6,7 +6,8 @@
     "declaration": true,
     "declarationDir": "./types",
     "moduleResolution": "Node",
-    "module": "CommonJS"
+    "module": "CommonJS",
+    "esModuleInterop": true,
   },
   "exclude": [
     "node_modules"

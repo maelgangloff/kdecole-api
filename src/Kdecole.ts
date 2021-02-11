@@ -113,7 +113,7 @@ export default class Kdecole {
     if (activation.authtoken && activation.success) {
       return activation.authtoken
     } else {
-      throw Error('Erreur de connexion')
+      throw Error("L'authentification n'a pas fonctionné")
     }
   }
 

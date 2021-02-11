@@ -1,7 +1,10 @@
 "use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-const Participant_1 = require("./Participant");
-const Participation_1 = require("./Participation");
+const Participant_1 = __importDefault(require("./Participant"));
+const Participation_1 = __importDefault(require("./Participation"));
 class Communication {
     constructor(communication) {
         this.participants = [];
