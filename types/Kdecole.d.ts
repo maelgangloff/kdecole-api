@@ -20,7 +20,7 @@ export declare enum ApiUrl {
     PROD_MON_ENT_OCCITANIE = "https://mobilite.mon-ent-occitanie.fr/mobilite",
     PROD_ARSENE76 = "https://mobilite.arsene76.fr/mobilite",
     PROD_ENT27 = "https://mobilite.ent27.fr/mobilite",
-    PROD_ENDCREUSE = "https://mobilite.entcreuse.fr/mobilite",
+    PROD_ENTCREUSE = "https://mobilite.entcreuse.fr/mobilite",
     PROD_AUVERGNERHONEALPES = "https://mobilite.ent.auvergnerhonealpes.fr/mobilite",
     PROD_SAVOIRSNUMERIQUES62 = "https://mobilite.savoirsnumeriques62.fr/mobilite"
 }

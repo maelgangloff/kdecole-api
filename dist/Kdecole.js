@@ -29,7 +29,7 @@ var ApiUrl;
     ApiUrl["PROD_MON_ENT_OCCITANIE"] = "https://mobilite.mon-ent-occitanie.fr/mobilite";
     ApiUrl["PROD_ARSENE76"] = "https://mobilite.arsene76.fr/mobilite";
     ApiUrl["PROD_ENT27"] = "https://mobilite.ent27.fr/mobilite";
-    ApiUrl["PROD_ENDCREUSE"] = "https://mobilite.entcreuse.fr/mobilite";
+    ApiUrl["PROD_ENTCREUSE"] = "https://mobilite.entcreuse.fr/mobilite";
     ApiUrl["PROD_AUVERGNERHONEALPES"] = "https://mobilite.ent.auvergnerhonealpes.fr/mobilite";
     ApiUrl["PROD_SAVOIRSNUMERIQUES62"] = "https://mobilite.savoirsnumeriques62.fr/mobilite";
 })(ApiUrl = exports.ApiUrl || (exports.ApiUrl = {}));
