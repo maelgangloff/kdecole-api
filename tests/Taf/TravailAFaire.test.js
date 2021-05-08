@@ -1,7 +1,7 @@
 import axios from 'axios'
 import TravailAFaire from "../../dist/entities/Travail/TravailAFaire.js"
 import ContenuActivite from "../../dist/entities/Travail/ContenuActivite.js"
-import {APP_VERSION, BASE_URL} from "../../dist/Kdecole";
+import {APP_VERSION, ApiUrl} from "../../dist/Kdecole";
 
 const { Kdecole } = require('../../dist/Kdecole.js')
 
@@ -21,7 +21,7 @@ describe('Test TravailAFaire', () => {
         })
         expect(await user.getTravailAFaire()).toBeInstanceOf(TravailAFaire)
         expect(axios.request).toHaveBeenCalledWith({
-            "baseURL": BASE_URL,
+            "baseURL": ApiUrl.PROD_MON_BUREAU_NUMERIQUE,
             "data": undefined,
             "headers": {"X-Kdecole-Auth": authToken, "X-Kdecole-Vers": APP_VERSION},
             "method": "get",
@@ -36,7 +36,7 @@ describe('Test TravailAFaire', () => {
         })
         expect(await user.getTravailAFaire('AAP05567')).toBeInstanceOf(TravailAFaire)
         expect(axios.request).toHaveBeenCalledWith({
-            "baseURL": BASE_URL,
+            "baseURL": ApiUrl.PROD_MON_BUREAU_NUMERIQUE,
             "data": undefined,
             "headers": {"X-Kdecole-Auth": authToken, "X-Kdecole-Vers": APP_VERSION},
             "method": "get",
@@ -51,7 +51,7 @@ describe('Test TravailAFaire', () => {
         })
         expect(await user.getContenuActivite(636051, 72184)).toBeInstanceOf(ContenuActivite)
         expect(axios.request).toBeCalledWith({
-            "baseURL": BASE_URL,
+            "baseURL": ApiUrl.PROD_MON_BUREAU_NUMERIQUE,
             "data": undefined,
             "headers": {"X-Kdecole-Auth": authToken, "X-Kdecole-Vers": APP_VERSION},
             "method": "get",
@@ -66,7 +66,7 @@ describe('Test TravailAFaire', () => {
         })
         await user.getContenuActivite(636051, 72184, 'AAP05567')
         expect(axios.request).toBeCalledWith({
-            "baseURL": BASE_URL,
+            "baseURL": ApiUrl.PROD_MON_BUREAU_NUMERIQUE,
             "data": undefined,
             "headers": {"X-Kdecole-Auth": authToken, "X-Kdecole-Vers": APP_VERSION},
             "method": "get",

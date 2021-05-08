@@ -1,6 +1,6 @@
 import axios from 'axios'
 import GestionAppels from "../../dist/entities/Prof/GestionAppels"
-import {APP_VERSION, BASE_URL} from "../../dist/Kdecole";
+import {APP_VERSION, ApiUrl} from "../../dist/Kdecole";
 
 const { Kdecole } = require('../../dist/Kdecole.js')
 
@@ -19,7 +19,7 @@ describe('Test valider appel', () => {
     it('should call the right url and return appels', async () => {
         expect(await user.gestionAppels()).toBeInstanceOf(GestionAppels)
         expect(axios.request).toBeCalledWith({
-            "baseURL": BASE_URL,
+            "baseURL": ApiUrl.PROD_MON_BUREAU_NUMERIQUE,
             "data": undefined,
             "headers": {"X-Kdecole-Auth": authToken, "X-Kdecole-Vers": APP_VERSION},
             "method": "get",

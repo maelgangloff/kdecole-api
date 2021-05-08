@@ -16,7 +16,6 @@ import Communication from './entities/Messagerie/Communication'
 import GestionAppels from './entities/Prof/GestionAppels'
 
 export const APP_VERSION = '3.4.14'
-export const BASE_URL = 'https://mobilite.monbureaunumerique.fr/mobilite'
 
 interface KdecoleRequest {
   service: 'starting'
@@ -51,7 +50,13 @@ export enum ApiUrl {
   PROD_ENT27 = 'https://mobilite.ent27.fr/mobilite',
   PROD_ENTCREUSE = 'https://mobilite.entcreuse.fr/mobilite',
   PROD_AUVERGNERHONEALPES = 'https://mobilite.ent.auvergnerhonealpes.fr/mobilite',
-  PROD_SAVOIRSNUMERIQUES62 = 'https://mobilite.savoirsnumeriques62.fr/mobilite'
+  PROD_SAVOIRSNUMERIQUES62 = 'https://mobilite.savoirsnumeriques62.fr/mobilite',
+  PROD_AGORA06 = 'https://mobilite.agora06.fr/mobilite',
+  PROD_CYBERCOLLEGES42 = 'https://mobilite.cybercolleges42.fr/mobilite',
+  PROD_ECOLLEGE_HAUTE_GARONNE = 'https://mobilite.ecollege.haute-garonne.fr/mobilite',
+  PROD_MONCOLLEGE_VALDOISE = 'https://mobilite.moncollege.valdoise.fr/mobilite',
+  PROD_WEBCOLLEGE_SEINESAINTDENIS = 'https://mobilite.webcollege.seinesaintdenis.fr/mobilite',
+  PROD_ECLAT_BFC = 'https://mobilite.eclat-bfc.fr/mobilite'
 }
 
 /**

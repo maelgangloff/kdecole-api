@@ -1,6 +1,6 @@
 import axios from 'axios'
 import AbsencesList from "../dist/entities/VieScolaire/AbsencesList.js";
-import {APP_VERSION, BASE_URL} from "../dist/Kdecole";
+import {APP_VERSION, ApiUrl} from "../dist/Kdecole";
 
 const { Kdecole } = require('../dist/Kdecole.js')
 
@@ -19,7 +19,7 @@ describe('Test Absence', () => {
     it('should call the right url and return absences', async () => {
         expect(await user.getAbsences()).toBeInstanceOf(AbsencesList)
         expect(axios.request).toBeCalledWith({
-            "baseURL": BASE_URL,
+            "baseURL": ApiUrl.PROD_MON_BUREAU_NUMERIQUE,
             "data": undefined,
             "headers": {"X-Kdecole-Auth": authToken, "X-Kdecole-Vers": APP_VERSION},
             "method": "get",
@@ -30,7 +30,7 @@ describe('Test Absence', () => {
     it('should call the right url and return absences of a specific student', async () => {
         await user.getAbsences('AAP05567')
         expect(axios.request).toBeCalledWith({
-            "baseURL": BASE_URL,
+            "baseURL": ApiUrl.PROD_MON_BUREAU_NUMERIQUE,
             "data": undefined,
             "headers": {"X-Kdecole-Auth": authToken, "X-Kdecole-Vers": APP_VERSION},
             "method": "get",

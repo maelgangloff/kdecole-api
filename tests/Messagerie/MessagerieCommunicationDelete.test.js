@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {APP_VERSION, BASE_URL} from "../../dist/Kdecole";
+import {APP_VERSION, ApiUrl} from "../../dist/Kdecole";
 
 const { Kdecole } = require('../../dist/Kdecole.js')
 
@@ -18,7 +18,7 @@ describe('Test Messagerie delete a message', () => {
     it('should call the right url', async () => {
         await user.deleteCommunication(123456)
         expect(axios.request).toBeCalledWith({
-            "baseURL": BASE_URL,
+            "baseURL": ApiUrl.PROD_MON_BUREAU_NUMERIQUE,
             "data": undefined,
             "headers": {"X-Kdecole-Auth": authToken, "X-Kdecole-Vers": APP_VERSION},
             "method": "delete",

@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {APP_VERSION, BASE_URL} from "../../dist/Kdecole";
+import {APP_VERSION, ApiUrl} from "../../dist/Kdecole";
 
 const { Kdecole } = require('../../dist/Kdecole.js')
 
@@ -18,7 +18,7 @@ describe('Test Messagerie set lu', () => {
     it('should call the right url', async () => {
         await user.setCommunicationLu(123456)
         expect(axios.request).toBeCalledWith({
-            "baseURL": BASE_URL,
+            "baseURL": ApiUrl.PROD_MON_BUREAU_NUMERIQUE,
             "data": {
                 "action":"lu"
             },

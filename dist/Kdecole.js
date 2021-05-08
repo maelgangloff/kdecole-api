@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Kdecole = exports.ApiUrl = exports.BASE_URL = exports.APP_VERSION = void 0;
+exports.Kdecole = exports.ApiUrl = exports.APP_VERSION = void 0;
 const axios_1 = __importDefault(require("axios"));
 const Desactivation_1 = __importDefault(require("./entities/Authentication/Desactivation"));
 const Activation_1 = __importDefault(require("./entities/Authentication/Activation"));
@@ -21,7 +21,6 @@ const ContenuArticle_1 = __importDefault(require("./entities/News/ContenuArticle
 const Communication_1 = __importDefault(require("./entities/Messagerie/Communication"));
 const GestionAppels_1 = __importDefault(require("./entities/Prof/GestionAppels"));
 exports.APP_VERSION = '3.4.14';
-exports.BASE_URL = 'https://mobilite.monbureaunumerique.fr/mobilite';
 var ApiUrl;
 (function (ApiUrl) {
     ApiUrl["PROD_MON_BUREAU_NUMERIQUE"] = "https://mobilite.monbureaunumerique.fr/mobilite";
@@ -32,6 +31,12 @@ var ApiUrl;
     ApiUrl["PROD_ENTCREUSE"] = "https://mobilite.entcreuse.fr/mobilite";
     ApiUrl["PROD_AUVERGNERHONEALPES"] = "https://mobilite.ent.auvergnerhonealpes.fr/mobilite";
     ApiUrl["PROD_SAVOIRSNUMERIQUES62"] = "https://mobilite.savoirsnumeriques62.fr/mobilite";
+    ApiUrl["PROD_AGORA06"] = "https://mobilite.agora06.fr/mobilite";
+    ApiUrl["PROD_CYBERCOLLEGES42"] = "https://mobilite.cybercolleges42.fr/mobilite";
+    ApiUrl["PROD_ECOLLEGE_HAUTE_GARONNE"] = "https://mobilite.ecollege.haute-garonne.fr/mobilite";
+    ApiUrl["PROD_MONCOLLEGE_VALDOISE"] = "https://mobilite.moncollege.valdoise.fr/mobilite";
+    ApiUrl["PROD_WEBCOLLEGE_SEINESAINTDENIS"] = "https://mobilite.webcollege.seinesaintdenis.fr/mobilite";
+    ApiUrl["PROD_ECLAT_BFC"] = "https://mobilite.eclat-bfc.fr/mobilite";
 })(ApiUrl = exports.ApiUrl || (exports.ApiUrl = {}));
 /**
  * Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)

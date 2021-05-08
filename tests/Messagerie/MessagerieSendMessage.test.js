@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {APP_VERSION, BASE_URL} from "../../dist/Kdecole";
+import {APP_VERSION, ApiUrl} from "../../dist/Kdecole";
 
 const { Kdecole } = require('../../dist/Kdecole.js')
 
@@ -22,7 +22,7 @@ describe('Test Messagerie report a message', () => {
             .mockImplementation(() => mockDate)
         await user.sendMessage(123456, 'test')
         expect(axios.request).toBeCalledWith({
-            "baseURL": BASE_URL,
+            "baseURL": ApiUrl.PROD_MON_BUREAU_NUMERIQUE,
             "data": {
                 dateEnvoi: (new Date()).getTime(),
                 corpsMessage: 'test'

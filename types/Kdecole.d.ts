@@ -13,7 +13,6 @@ import ContenuArticle from './entities/News/ContenuArticle';
 import Communication from './entities/Messagerie/Communication';
 import GestionAppels from './entities/Prof/GestionAppels';
 export declare const APP_VERSION = "3.4.14";
-export declare const BASE_URL = "https://mobilite.monbureaunumerique.fr/mobilite";
 export declare enum ApiUrl {
     PROD_MON_BUREAU_NUMERIQUE = "https://mobilite.monbureaunumerique.fr/mobilite",
     PREPROD_MON_BUREAU_NUMERIQUE = "https://mobilite.preprod.monbureaunumerique.fr/mobilite",
@@ -22,7 +21,13 @@ export declare enum ApiUrl {
     PROD_ENT27 = "https://mobilite.ent27.fr/mobilite",
     PROD_ENTCREUSE = "https://mobilite.entcreuse.fr/mobilite",
     PROD_AUVERGNERHONEALPES = "https://mobilite.ent.auvergnerhonealpes.fr/mobilite",
-    PROD_SAVOIRSNUMERIQUES62 = "https://mobilite.savoirsnumeriques62.fr/mobilite"
+    PROD_SAVOIRSNUMERIQUES62 = "https://mobilite.savoirsnumeriques62.fr/mobilite",
+    PROD_AGORA06 = "https://mobilite.agora06.fr/mobilite",
+    PROD_CYBERCOLLEGES42 = "https://mobilite.cybercolleges42.fr/mobilite",
+    PROD_ECOLLEGE_HAUTE_GARONNE = "https://mobilite.ecollege.haute-garonne.fr/mobilite",
+    PROD_MONCOLLEGE_VALDOISE = "https://mobilite.moncollege.valdoise.fr/mobilite",
+    PROD_WEBCOLLEGE_SEINESAINTDENIS = "https://mobilite.webcollege.seinesaintdenis.fr/mobilite",
+    PROD_ECLAT_BFC = "https://mobilite.eclat-bfc.fr/mobilite"
 }
 /**
  * Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
