@@ -42,6 +42,26 @@ interface KdecoleRequest {
   data?: any
 }
 
+/**
+ * L'accès à l'API requiert une en-tête avec la version de l'application en cours d'utilisation.
+ * Les versions à utiliser lors de la création de l'instance `Kdecole` sont données ci-dessous.
+ *
+ * |         Nom de l'ENT           | Version   | URL de l'API                                              |
+ * |:----------------------------:  |:-------:  |---------------------------------------------------------  |
+ * |     Mon Bureau Numérique       |  3.4.14   | https://mobilite.monbureaunumerique.fr/mobilite           |
+ * |       Mon ENT Occitanie        |  3.5.2    | https://mobilite.mon-ent-occitanie.fr/mobilite            |
+ * |           Arsene 76            |  3.7.11   | https://mobilite.arsene76.fr/mobilite                     |
+ * |             ENT27              |  3.5.6    | https://mobilite.ent27.fr/mobilite                        |
+ * |          ENT Creuse            |  3.5.6    | https://mobilite.entcreuse.fr/mobilite                    |
+ * |   ENT Auvergne-Rhône-Alpes     |  3.7.11   | https://mobilite.ent.auvergnerhonealpes.fr/mobilite       |
+ * |     Savoirs Numériques 62      |  3.5.4    | https://mobilite.savoirsnumeriques62.fr/mobilite          |
+ * |           Agora 06             |  3.7.14   | https://mobilite.agora06.fr/mobilite                      |
+ * |       CyberCollèges 42         |  3.5.6    | https://mobilite.cybercolleges42.fr/mobilite              |
+ * |    eCollège 31 Haute-Garonne   |  3.1.15   | https://mobilite.ecollege.haute-garonne.fr/mobilite       |
+ * |   Mon collège en Val d'Oise    |  3.4.11   | https://mobilite.moncollege.valdoise.fr/mobilite          |
+ * | Webcollège Seine-Saint-Denis   |  3.7.14   | https://mobilite.webcollege.seinesaintdenis.fr/mobilite   |
+ * |           Eclat-BFC            |  3.5.3    | https://mobilite.eclat-bfc.fr/mobilite                    |
+ */
 export enum ApiUrl {
   PROD_MON_BUREAU_NUMERIQUE = 'https://mobilite.monbureaunumerique.fr/mobilite',
   PREPROD_MON_BUREAU_NUMERIQUE = 'https://mobilite.preprod.monbureaunumerique.fr/mobilite',
@@ -56,7 +76,8 @@ export enum ApiUrl {
   PROD_ECOLLEGE_HAUTE_GARONNE = 'https://mobilite.ecollege.haute-garonne.fr/mobilite',
   PROD_MONCOLLEGE_VALDOISE = 'https://mobilite.moncollege.valdoise.fr/mobilite',
   PROD_WEBCOLLEGE_SEINESAINTDENIS = 'https://mobilite.webcollege.seinesaintdenis.fr/mobilite',
-  PROD_ECLAT_BFC = 'https://mobilite.eclat-bfc.fr/mobilite'
+  PROD_ECLAT_BFC = 'https://mobilite.eclat-bfc.fr/mobilite',
+  PROD_DEMO_SKOLENGO = 'https://mobilite.demo.skolengo.com/mobilite'
 }
 
 /**

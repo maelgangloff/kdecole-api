@@ -4,15 +4,26 @@ info:
   description: Tentative de définition de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
   version: 1.0.0
 servers:
-  - url: https://mobilite.monbureaunumerique.fr/mobilite
-  - url: https://mobilite.preprod.monbureaunumerique.fr/mobilite
-  - url: https://mobilite.mon-ent-occitanie.fr/mobilite
-  - url: https://mobilite.arsene76.fr/mobilite
-  - url: https://mobilite.ent27.fr/mobilite
-  - url: https://mobilite.entcreuse.fr/mobilite
-  - url: https://mobilite.ent.auvergnerhonealpes.fr/mobilite
-  - url: https://mobilite.moncollege.valdoise.fr/mobilite
-  - url: https://mobilite.savoirsnumeriques62.fr/mobilite
+  - url: https://mobilite.{ENT}/mobilite
+    variables:
+      ENT:
+        default: monbureaunumerique.fr
+        enum:
+          - monbureaunumerique.fr
+          - preprod.monbureaunumerique.fr
+          - mon-ent-occitanie.fr
+          - arsene76.fr
+          - ent27.fr
+          - entcreuse.fr
+          - ent.auvergnerhonealpes.fr
+          - moncollege.valdoise.fr
+          - savoirsnumeriques62.fr
+          - agora06.fr
+          - cybercolleges42.fr
+          - ecollege.haute-garonne.fr
+          - webcollege.seinesaintdenis.fr
+          - eclat-bfc.fr
+          - demo.skolengo.com
 
 tags:
   - name: Utilisateur
