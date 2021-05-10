@@ -3,14 +3,7 @@
 <dl>
 <dt><a href="#Kdecole">Kdecole</a></dt>
 <dd><p>Support non-officiel de l&#39;API Kdecole (Mon Bureau Numérique, Skolengo, etc.)</p>
-</dd>
-</dl>
-
-## Members
-
-<dl>
-<dt><a href="#ApiUrl">ApiUrl</a></dt>
-<dd><p>L&#39;accès à l&#39;API requiert une en-tête avec la version de l&#39;application en cours d&#39;utilisation.
+<p>L&#39;accès à l&#39;API requiert une en-tête avec la version de l&#39;application en cours d&#39;utilisation.
 Les versions à utiliser lors de la création de l&#39;instance <code>Kdecole</code> sont données ci-dessous.</p>
 <table>
 <thead>
@@ -102,6 +95,25 @@ Les versions à utiliser lors de la création de l&#39;instance <code>Kdecole</c
 ## Kdecole
 Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
 
+L'accès à l'API requiert une en-tête avec la version de l'application en cours d'utilisation.
+Les versions à utiliser lors de la création de l'instance `Kdecole` sont données ci-dessous.
+
+|         Nom de l'ENT           | Version   | URL de l'API                                              |
+|:----------------------------:  |:-------:  |---------------------------------------------------------  |
+|     Mon Bureau Numérique       |  3.4.14   | https://mobilite.monbureaunumerique.fr/mobilite           |
+|       Mon ENT Occitanie        |  3.5.2    | https://mobilite.mon-ent-occitanie.fr/mobilite            |
+|           Arsene 76            |  3.7.11   | https://mobilite.arsene76.fr/mobilite                     |
+|             ENT27              |  3.5.6    | https://mobilite.ent27.fr/mobilite                        |
+|          ENT Creuse            |  3.5.6    | https://mobilite.entcreuse.fr/mobilite                    |
+|   ENT Auvergne-Rhône-Alpes     |  3.7.11   | https://mobilite.ent.auvergnerhonealpes.fr/mobilite       |
+|     Savoirs Numériques 62      |  3.5.4    | https://mobilite.savoirsnumeriques62.fr/mobilite          |
+|           Agora 06             |  3.7.14   | https://mobilite.agora06.fr/mobilite                      |
+|       CyberCollèges 42         |  3.5.6    | https://mobilite.cybercolleges42.fr/mobilite              |
+|    eCollège 31 Haute-Garonne   |  3.1.15   | https://mobilite.ecollege.haute-garonne.fr/mobilite       |
+|   Mon collège en Val d'Oise    |  3.4.11   | https://mobilite.moncollege.valdoise.fr/mobilite          |
+| Webcollège Seine-Saint-Denis   |  3.7.14   | https://mobilite.webcollege.seinesaintdenis.fr/mobilite   |
+|           Eclat-BFC            |  3.5.3    | https://mobilite.eclat-bfc.fr/mobilite                    |
+
 **Kind**: global class  
 
 * [Kdecole](#Kdecole)
@@ -139,7 +151,7 @@ Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
 | authToken | <code>string</code> |  | Le jeton d'accès |
 | appVersion | <code>string</code> |  | La version de l'application mobile autorisée par l'API |
 | idEtablissement | <code>number</code> | <code>0</code> | L'identifiant de l'établissement |
-| apiURL | [<code>ApiUrl</code>](#ApiUrl) \| <code>string</code> |  | L'URL de l'API Kdecole |
+| apiURL | <code>ApiUrl</code> \| <code>string</code> |  | L'URL de l'API Kdecole |
 
 **Example**  
 ```js
@@ -559,29 +571,6 @@ const { Kdecole } = require('kdecole-api')
 const authToken = Kdecole.login(username, password)
 console.log(authToken) //Afficher son token d'authentification
 ```
-<a name="ApiUrl"></a>
-
-## ApiUrl
-L'accès à l'API requiert une en-tête avec la version de l'application en cours d'utilisation.
-Les versions à utiliser lors de la création de l'instance `Kdecole` sont données ci-dessous.
-
-|         Nom de l'ENT           | Version   | URL de l'API                                              |
-|:----------------------------:  |:-------:  |---------------------------------------------------------  |
-|     Mon Bureau Numérique       |  3.4.14   | https://mobilite.monbureaunumerique.fr/mobilite           |
-|       Mon ENT Occitanie        |  3.5.2    | https://mobilite.mon-ent-occitanie.fr/mobilite            |
-|           Arsene 76            |  3.7.11   | https://mobilite.arsene76.fr/mobilite                     |
-|             ENT27              |  3.5.6    | https://mobilite.ent27.fr/mobilite                        |
-|          ENT Creuse            |  3.5.6    | https://mobilite.entcreuse.fr/mobilite                    |
-|   ENT Auvergne-Rhône-Alpes     |  3.7.11   | https://mobilite.ent.auvergnerhonealpes.fr/mobilite       |
-|     Savoirs Numériques 62      |  3.5.4    | https://mobilite.savoirsnumeriques62.fr/mobilite          |
-|           Agora 06             |  3.7.14   | https://mobilite.agora06.fr/mobilite                      |
-|       CyberCollèges 42         |  3.5.6    | https://mobilite.cybercolleges42.fr/mobilite              |
-|    eCollège 31 Haute-Garonne   |  3.1.15   | https://mobilite.ecollege.haute-garonne.fr/mobilite       |
-|   Mon collège en Val d'Oise    |  3.4.11   | https://mobilite.moncollege.valdoise.fr/mobilite          |
-| Webcollège Seine-Saint-Denis   |  3.7.14   | https://mobilite.webcollege.seinesaintdenis.fr/mobilite   |
-|           Eclat-BFC            |  3.5.3    | https://mobilite.eclat-bfc.fr/mobilite                    |
-
-**Kind**: global variable  
 <a name="cli"></a>
 
 ## cli()
