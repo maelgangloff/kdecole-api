@@ -162,6 +162,16 @@ export class Kdecole {
    * Ping à l'API.
    * Cet appel est initialement réalisé par l'application mobile pour vérifier si le token et la version de l'app sont valides.
    * Le serveur retourne un code de statut `HTTP 204 No Content` si l'utilisateur est correctement authentifié.
+   * @example ```js
+   * const { Kdecole } = require('kdecole-api')
+   * const user = new Kdecole(authToken)
+   * try {
+   *   user.starting()
+   * }
+   * catch (e) {
+   *   // Une exception est levée si l'utilisateur n'est pas correctement authentifié
+   * }
+   * ```
    * @return {Promise<void>}
    */
   public async starting (): Promise<void> {
