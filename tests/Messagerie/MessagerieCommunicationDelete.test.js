@@ -21,6 +21,7 @@ describe('Test Messagerie delete a message', () => {
             "baseURL": ApiUrl.PROD_MON_BUREAU_NUMERIQUE,
             "data": undefined,
             "headers": {"X-Kdecole-Auth": authToken, "X-Kdecole-Vers": APP_VERSION},
+            validateStatus: expect.any(Function),
             "method": "delete",
             "responseType": "json",
             "url": "/messagerie/communication/supprimer/123456/"

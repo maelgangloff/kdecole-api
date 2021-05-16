@@ -23,6 +23,7 @@ describe('Test Releve', () => {
             "baseURL": ApiUrl.PROD_MON_BUREAU_NUMERIQUE,
             "data": undefined,
             "headers": {"X-Kdecole-Auth": authToken, "X-Kdecole-Vers": APP_VERSION},
+            validateStatus: expect.any(Function),
             "method": "get",
             "responseType": "json",
             "url": "/consulterReleves/idetablissement/10485/"
@@ -50,6 +51,7 @@ describe('Test Releve', () => {
             "baseURL": ApiUrl.PROD_MON_BUREAU_NUMERIQUE,
             "data": undefined,
             "headers": {"X-Kdecole-Auth": authToken, "X-Kdecole-Vers": APP_VERSION},
+            validateStatus: expect.any(Function),
             "method": "get",
             "responseType": "json",
             "url": "/consulterReleves/ideleve/AAP05567/"

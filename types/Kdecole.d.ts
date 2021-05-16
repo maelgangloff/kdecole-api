@@ -98,6 +98,13 @@ export declare class Kdecole {
      */
     logout(): Promise<Desactivation>;
     /**
+     * Ping à l'API.
+     * Cet appel est initialement réalisé par l'application mobile pour vérifier si le token et la version de l'app sont valides.
+     * Le serveur retourne un code de statut `HTTP 204 No Content` si l'utilisateur est correctement authentifié.
+     * @return {Promise<void>}
+     */
+    starting(): Promise<void>;
+    /**
      * Retourne le relevé de notes de l'élève
      * @example ```js
      * kdecole.getReleve() //Retourne le relevé de l'élève

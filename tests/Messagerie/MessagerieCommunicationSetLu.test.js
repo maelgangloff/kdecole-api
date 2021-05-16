@@ -23,6 +23,7 @@ describe('Test Messagerie set lu', () => {
                 "action":"lu"
             },
             "headers": {"X-Kdecole-Auth": authToken, "X-Kdecole-Vers": APP_VERSION},
+            validateStatus: expect.any(Function),
             "method": "put",
             "responseType": "json",
             "url": "/messagerie/communication/lu/123456/"

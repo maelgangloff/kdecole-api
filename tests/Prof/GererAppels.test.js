@@ -22,6 +22,7 @@ describe('Test valider appel', () => {
             "baseURL": ApiUrl.PROD_MON_BUREAU_NUMERIQUE,
             "data": undefined,
             "headers": {"X-Kdecole-Auth": authToken, "X-Kdecole-Vers": APP_VERSION},
+            validateStatus: expect.any(Function),
             "method": "get",
             "responseType": "json",
             "url": "/gestionAppels/idetablissement/10485/"
@@ -33,6 +34,7 @@ describe('Test valider appel', () => {
             "baseURL": 'https://mobilite.monbureaunumerique.fr/mobilite',
             "data": require('../fakeData/Prof/fakeValiderAppel.json'),
             "headers": {"X-Kdecole-Auth": authToken, "X-Kdecole-Vers": APP_VERSION},
+            validateStatus: expect.any(Function),
             "method": "put",
             "responseType": "json",
             "url": "/gestionAppels/idetablissement/10485/valider/"

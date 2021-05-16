@@ -28,6 +28,7 @@ describe('Test Messagerie report a message', () => {
                 corpsMessage: 'test'
             },
             "headers": {"X-Kdecole-Auth": authToken, "X-Kdecole-Vers": APP_VERSION},
+            validateStatus: expect.any(Function),
             "method": "put",
             "responseType": "json",
             "url": "/messagerie/communication/nouvelleParticipation/123456/"

@@ -127,6 +127,15 @@ class Kdecole {
         throw Error('Une erreur est survenue dans le traitement des données de déconnexion');
     }
     /**
+     * Ping à l'API.
+     * Cet appel est initialement réalisé par l'application mobile pour vérifier si le token et la version de l'app sont valides.
+     * Le serveur retourne un code de statut `HTTP 204 No Content` si l'utilisateur est correctement authentifié.
+     * @return {Promise<void>}
+     */
+    async starting() {
+        await Kdecole.kdecole(this, { service: 'starting' });
+    }
+    /**
      * Retourne le relevé de notes de l'élève
      * @example ```js
      * kdecole.getReleve() //Retourne le relevé de l'élève
@@ -512,6 +521,7 @@ class Kdecole {
                 'X-Kdecole-Vers': ctx.appVersion,
                 'X-Kdecole-Auth': ctx.authToken
             },
+            validateStatus: (status) => (status >= 200 && status < 300) || status === 204,
             responseType: 'json',
             method: type,
             url: parameters ? `/${service}/${parameters}/` : `/${service}/`,
