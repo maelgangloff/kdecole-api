@@ -165,7 +165,10 @@ export class Kdecole {
    * @return {Promise<void>}
    */
   public async starting (): Promise<void> {
-    await Kdecole.kdecole(this, { service: 'starting' })
+    await Kdecole.kdecole(this, {
+      service: 'starting',
+      parameters: ''
+    })
   }
 
   /**

@@ -133,7 +133,10 @@ class Kdecole {
      * @return {Promise<void>}
      */
     async starting() {
-        await Kdecole.kdecole(this, { service: 'starting' });
+        await Kdecole.kdecole(this, {
+            service: 'starting',
+            parameters: ''
+        });
     }
     /**
      * Retourne le relevé de notes de l'élève
