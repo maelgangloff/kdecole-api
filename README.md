@@ -107,7 +107,7 @@ Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)L
         * [.getContenuArticle(uid)](#Kdecole+getContenuArticle) ⇒ <code>Promise.&lt;ContenuArticle&gt;</code>
         * [.getTravailAFaire(idEleve)](#Kdecole+getTravailAFaire) ⇒ <code>Promise.&lt;TravailAFaire&gt;</code>
         * [.getContenuActivite(uidSeance, uid, idEleve)](#Kdecole+getContenuActivite) ⇒ <code>Promise.&lt;ContenuActivite&gt;</code>
-        * [.setActiviteFinished(uidSeance, uid, flagRealise)](#Kdecole+setActiviteFinished)
+        * [.setActiviteFinished(uidSeance, uid, flagRealise)](#Kdecole+setActiviteFinished) ⇒ <code>Promise.&lt;void&gt;</code>
         * [.getAbsences(idEleve)](#Kdecole+getAbsences) ⇒ <code>Promise.&lt;AbsencesList&gt;</code>
         * [.getInfoUtilisateur(idEleve)](#Kdecole+getInfoUtilisateur) ⇒ <code>Promise.&lt;Utilisateur&gt;</code>
         * [.getCalendrier(idEleve)](#Kdecole+getCalendrier) ⇒ <code>Promise.&lt;Calendrier&gt;</code>
@@ -224,7 +224,7 @@ Retourne les détails d'un devoir à faire
 ```jsconst { Kdecole } = require('kdecole-api')const user = new Kdecole(AUTH_TOKEN)user.getContenuActivite(uidSeance, uid, idEleve).then((contenuActivite)=>{ // Votre code })```
 <a name="Kdecole+setActiviteFinished"></a>
 
-### kdecole.setActiviteFinished(uidSeance, uid, flagRealise)
+### kdecole.setActiviteFinished(uidSeance, uid, flagRealise) ⇒ <code>Promise.&lt;void&gt;</code>
 Permet de marquer un devoir comme étant fait
 
 **Kind**: instance method of [<code>Kdecole</code>](#Kdecole)  

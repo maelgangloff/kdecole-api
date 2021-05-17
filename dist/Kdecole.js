@@ -261,6 +261,7 @@ class Kdecole {
      * const user = new Kdecole(AUTH_TOKEN)
      * user.setActiviteFinished(uidSeance, uid, flagRealise)
      * ```
+     * @return {Promise<void>}
      */
     async setActiviteFinished(uidSeance, uid, flagRealise) {
         await Kdecole.kdecole(this, {
