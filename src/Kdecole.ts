@@ -15,8 +15,6 @@ import ContenuArticle from './entities/News/ContenuArticle'
 import Communication from './entities/Messagerie/Communication'
 import GestionAppels from './entities/Prof/GestionAppels'
 
-export const APP_VERSION = '3.4.14'
-
 interface KdecoleRequest {
   service: 'starting'
       | 'actualites'
@@ -59,6 +57,24 @@ export enum ApiUrl {
   PROD_ECLAT_BFC = 'https://mobilite.eclat-bfc.fr/mobilite',
   PROD_DEMO_SKOLENGO = 'https://mobilite.demo.skolengo.com/mobilite'
 }
+
+export enum ApiVersion {
+  PROD_MON_BUREAU_NUMERIQUE = '3.4.14',
+  PROD_MON_ENT_OCCITANIE = '3.5.2',
+  PROD_ARSENE76 = '3.7.11',
+  PROD_ENT27 = '3.5.6',
+  PROD_ENTCREUSE = '3.5.6',
+  PROD_AUVERGNERHONEALPES = '3.7.11',
+  PROD_SAVOIRSNUMERIQUES62 = '3.5.4',
+  PROD_AGORA06 = '3.7.14',
+  PROD_CYBERCOLLEGES42 = '3.5.6',
+  PROD_ECOLLEGE_HAUTE_GARONNE = '3.1.15',
+  PROD_MONCOLLEGE_VALDOISE = '3.4.11',
+  PROD_WEBCOLLEGE_SEINESAINTDENIS = '3.7.14',
+  PROD_ECLAT_BFC = '3.5.3'
+}
+
+export const APP_VERSION = ApiVersion.PROD_MON_BUREAU_NUMERIQUE
 
 /**
  * Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
