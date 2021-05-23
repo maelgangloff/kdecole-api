@@ -94,7 +94,7 @@ class Kdecole {
      */
     constructor(authToken, appVersion = ApiVersion.PROD_MON_BUREAU_NUMERIQUE, idEtablissement = 0, apiURL = ApiUrl.PROD_MON_BUREAU_NUMERIQUE) {
         if (authToken === undefined) {
-            throw Error("Un jeton d'accès doit être renseigné");
+            throw Error('Un jeton d\'accès doit être renseigné');
         }
         this.authToken = authToken;
         this.appVersion = appVersion;
@@ -121,7 +121,7 @@ class Kdecole {
         if (activation.authtoken && activation.success) {
             return activation.authtoken;
         }
-        throw Error("L'authentification n'a pas fonctionné");
+        throw Error('L\'authentification n\'a pas fonctionné');
     }
     /**
      * Invalide le jeton d'accès
@@ -133,9 +133,8 @@ class Kdecole {
      * @return {Promise<void>}
      */
     async logout() {
-        const desactivation = new Desactivation_1.default(await Kdecole.kdecole(this, { service: 'desactivation' }));
-        if (!desactivation.success) {
-            throw Error("Une erreur est survenue lors de l'invalidation du jeton d'accès.");
+        if (!new Desactivation_1.default(await Kdecole.kdecole(this, { service: 'desactivation' })).success) {
+            throw Error('Une erreur est survenue lors de l\'invalidation du jeton d\'accès.');
         }
     }
     /**
@@ -220,7 +219,10 @@ class Kdecole {
      * ```
      */
     async getContenuArticle(uid) {
-        return new ContenuArticle_1.default(await Kdecole.kdecole(this, { service: 'contenuArticle', parameters: `article/${uid}` }));
+        return new ContenuArticle_1.default(await Kdecole.kdecole(this, {
+            service: 'contenuArticle',
+            parameters: `article/${uid}`
+        }));
     }
     /**
      * Retourne la liste des devoirs de l'élève
@@ -378,7 +380,9 @@ class Kdecole {
     }
     /**
      * Retourne les mails présents dans la boîte mail
+     * Le paramètre `pagination` permet de remonter dans le passé dans la liste des fils de discussions
      * @return {Promise<MessageBoiteReception>}
+     * @param {number} pagination Le nombre de fils de discussion à tronquer (système de pagination)
      * @example ```js
      * const { Kdecole } = require('kdecole-api')
      *
@@ -388,8 +392,11 @@ class Kdecole {
      *  })
      * ```
      */
-    async getMessagerieBoiteReception() {
-        return new MessageBoiteReception_1.default(await Kdecole.kdecole(this, { service: 'messagerie/boiteReception' }));
+    async getMessagerieBoiteReception(pagination = 0) {
+        return new MessageBoiteReception_1.default(await Kdecole.kdecole(this, {
+            service: 'messagerie/boiteReception',
+            parameters: pagination !== 0 ? `${pagination}` : undefined
+        }));
     }
     /**
      * Retourne les détails d'un fil de discussion
@@ -407,7 +414,6 @@ class Kdecole {
     async getCommunication(id) {
         return new Communication_1.default(await Kdecole.kdecole(this, {
             service: 'messagerie/communication',
-            type: 'get',
             parameters: `${id}`
         }));
     }

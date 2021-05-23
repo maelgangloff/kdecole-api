@@ -287,7 +287,9 @@ export declare class Kdecole {
     getMessagerieInfo(): Promise<MessageInfo>;
     /**
      * Retourne les mails présents dans la boîte mail
+     * Le paramètre `pagination` permet de remonter dans le passé dans la liste des fils de discussions
      * @return {Promise<MessageBoiteReception>}
+     * @param {number} pagination Le nombre de fils de discussion à tronquer (système de pagination)
      * @example ```js
      * const { Kdecole } = require('kdecole-api')
      *
@@ -297,7 +299,7 @@ export declare class Kdecole {
      *  })
      * ```
      */
-    getMessagerieBoiteReception(): Promise<MessageBoiteReception>;
+    getMessagerieBoiteReception(pagination?: number): Promise<MessageBoiteReception>;
     /**
      * Retourne les détails d'un fil de discussion
      * @param {number} id Identifiant d'un fil de discussion

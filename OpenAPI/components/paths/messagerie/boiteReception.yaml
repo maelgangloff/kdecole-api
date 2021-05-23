@@ -1,5 +1,5 @@
 get:
-  summary: Retourne les derniers fils de discussion.
+  summary: Retourne les fils de discussion.
   operationId: messagerieBoiteReception
   tags:
     - Messagerie
@@ -8,7 +8,7 @@ get:
     - AppVersion: [ ]
   responses:
     200:
-      description: Le serveur retourne les derniers fils de discussion.
+      description: Le serveur retourne les fils de discussion.
       content:
         application/json:
           schema:

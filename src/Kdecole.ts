@@ -125,7 +125,7 @@ export class Kdecole {
     apiURL: ApiUrl | string = ApiUrl.PROD_MON_BUREAU_NUMERIQUE
   ) {
     if (authToken === undefined) {
-      throw Error("Un jeton d'accès doit être renseigné")
+      throw Error('Un jeton d\'accès doit être renseigné')
     }
     this.authToken = authToken
     this.appVersion = appVersion
@@ -153,7 +153,7 @@ export class Kdecole {
     if (activation.authtoken && activation.success) {
       return activation.authtoken
     }
-    throw Error("L'authentification n'a pas fonctionné")
+    throw Error('L\'authentification n\'a pas fonctionné')
   }
 
   /**
@@ -166,9 +166,8 @@ export class Kdecole {
    * @return {Promise<void>}
    */
   public async logout (): Promise<void> {
-    const desactivation = new Desactivation(await Kdecole.kdecole(this, { service: 'desactivation' }))
-    if (!desactivation.success) {
-      throw Error("Une erreur est survenue lors de l'invalidation du jeton d'accès.")
+    if (!new Desactivation(await Kdecole.kdecole(this, { service: 'desactivation' })).success) {
+      throw Error('Une erreur est survenue lors de l\'invalidation du jeton d\'accès.')
     }
   }
 
@@ -257,7 +256,10 @@ export class Kdecole {
    * ```
    */
   public async getContenuArticle (uid: string): Promise<ContenuArticle> {
-    return new ContenuArticle(await Kdecole.kdecole(this, { service: 'contenuArticle', parameters: `article/${uid}` }))
+    return new ContenuArticle(await Kdecole.kdecole(this, {
+      service: 'contenuArticle',
+      parameters: `article/${uid}`
+    }))
   }
 
   /**
@@ -424,7 +426,9 @@ export class Kdecole {
 
   /**
    * Retourne les mails présents dans la boîte mail
+   * Le paramètre `pagination` permet de remonter dans le passé dans la liste des fils de discussions
    * @return {Promise<MessageBoiteReception>}
+   * @param {number} pagination Le nombre de fils de discussion à tronquer (système de pagination)
    * @example ```js
    * const { Kdecole } = require('kdecole-api')
    *
@@ -434,8 +438,11 @@ export class Kdecole {
    *  })
    * ```
    */
-  public async getMessagerieBoiteReception (): Promise<MessageBoiteReception> {
-    return new MessageBoiteReception(await Kdecole.kdecole(this, { service: 'messagerie/boiteReception' }))
+  public async getMessagerieBoiteReception (pagination = 0): Promise<MessageBoiteReception> {
+    return new MessageBoiteReception(await Kdecole.kdecole(this, {
+      service: 'messagerie/boiteReception',
+      parameters: pagination !== 0 ? `${pagination}` : undefined
+    }))
   }
 
   /**
@@ -454,7 +461,6 @@ export class Kdecole {
   public async getCommunication (id: number): Promise<Communication> {
     return new Communication(await Kdecole.kdecole(this, {
       service: 'messagerie/communication',
-      type: 'get',
       parameters: `${id}`
     }))
   }
@@ -602,7 +608,12 @@ export class Kdecole {
     })
   }
 
-  private static async kdecole (ctx: Kdecole, { service, parameters, type = 'get', data }: KdecoleRequest): Promise<any> {
+  private static async kdecole (ctx: Kdecole, {
+    service,
+    parameters,
+    type = 'get',
+    data
+  }: KdecoleRequest): Promise<any> {
     if (parameters === undefined && service !== 'desactivation' && service !== 'messagerie/info' && service !== 'messagerie/communication' && service !== 'messagerie/boiteReception' && service !== 'infoutilisateur') parameters = `idetablissement/${ctx.idEtablissement}`
     return (await axios.request({
       baseURL: ctx.apiURL,

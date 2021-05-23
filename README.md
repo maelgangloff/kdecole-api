@@ -132,7 +132,7 @@ Les versions à utiliser lors de la création de l'instance `Kdecole` sont donn�
         * [.getCalendrier(idEleve)](#Kdecole+getCalendrier) ⇒ <code>Promise.&lt;Calendrier&gt;</code>
         * [.getNotes(idEleve)](#Kdecole+getNotes) ⇒ <code>Promise.&lt;NotesList&gt;</code>
         * [.getMessagerieInfo()](#Kdecole+getMessagerieInfo) ⇒ <code>Promise.&lt;MessageInfo&gt;</code>
-        * [.getMessagerieBoiteReception()](#Kdecole+getMessagerieBoiteReception) ⇒ <code>Promise.&lt;MessageBoiteReception&gt;</code>
+        * [.getMessagerieBoiteReception(pagination)](#Kdecole+getMessagerieBoiteReception) ⇒ <code>Promise.&lt;MessageBoiteReception&gt;</code>
         * [.getCommunication(id)](#Kdecole+getCommunication) ⇒ <code>Promise.&lt;Communication&gt;</code>
         * [.reportCommunication(id)](#Kdecole+reportCommunication) ⇒ <code>Promise.&lt;void&gt;</code>
         * [.deleteCommunication(id)](#Kdecole+deleteCommunication) ⇒ <code>Promise.&lt;void&gt;</code>
@@ -417,10 +417,16 @@ user.getMessagerieInfo().then((messagerieInfo)=>{
 ```
 <a name="Kdecole+getMessagerieBoiteReception"></a>
 
-### kdecole.getMessagerieBoiteReception() ⇒ <code>Promise.&lt;MessageBoiteReception&gt;</code>
+### kdecole.getMessagerieBoiteReception(pagination) ⇒ <code>Promise.&lt;MessageBoiteReception&gt;</code>
 Retourne les mails présents dans la boîte mail
+Le paramètre `pagination` permet de remonter dans le passé dans la liste des fils de discussions
 
 **Kind**: instance method of [<code>Kdecole</code>](#Kdecole)  
+
+| Param | Type | Default | Description |
+| --- | --- | --- | --- |
+| pagination | <code>number</code> | <code>0</code> | Le nombre de fils de discussion à tronquer (système de pagination) |
+
 **Example**  
 ```js
 const { Kdecole } = require('kdecole-api')
