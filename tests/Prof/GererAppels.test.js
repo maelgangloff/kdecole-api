@@ -1,8 +1,8 @@
 import axios from 'axios'
 import GestionAppels from "../../dist/entities/Prof/GestionAppels"
-import {APP_VERSION, BASE_URL} from "../../dist/Kdecole";
+import {APP_VERSION, ApiUrl} from "../../dist/Kdecole";
 
-const Kdecole = require('../../dist/Kdecole.js').default
+const { Kdecole } = require('../../dist/Kdecole.js')
 
 const authToken = '0AnemIFGvcORx88ESDrvIflY0qRV2ussl0n31tC5Sh2U6xDZJ0E3VrD1RYzrWGX3rYUZK4nI3wLnbxZYQi2sKXMrGbgxIuq2ewjOpRYfWLSP0mLFK3D3CZVu7Ev2s'
 const user = new Kdecole(authToken, APP_VERSION, 10485)
@@ -19,9 +19,10 @@ describe('Test valider appel', () => {
     it('should call the right url and return appels', async () => {
         expect(await user.gestionAppels()).toBeInstanceOf(GestionAppels)
         expect(axios.request).toBeCalledWith({
-            "baseURL": BASE_URL,
+            "baseURL": ApiUrl.PROD_MON_BUREAU_NUMERIQUE,
             "data": undefined,
             "headers": {"X-Kdecole-Auth": authToken, "X-Kdecole-Vers": APP_VERSION},
+            validateStatus: expect.any(Function),
             "method": "get",
             "responseType": "json",
             "url": "/gestionAppels/idetablissement/10485/"
@@ -33,6 +34,7 @@ describe('Test valider appel', () => {
             "baseURL": 'https://mobilite.monbureaunumerique.fr/mobilite',
             "data": require('../fakeData/Prof/fakeValiderAppel.json'),
             "headers": {"X-Kdecole-Auth": authToken, "X-Kdecole-Vers": APP_VERSION},
+            validateStatus: expect.any(Function),
             "method": "put",
             "responseType": "json",
             "url": "/gestionAppels/idetablissement/10485/valider/"

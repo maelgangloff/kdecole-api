@@ -1,9 +1,9 @@
 import axios from 'axios'
 import TravailAFaire from "../../dist/entities/Travail/TravailAFaire.js"
 import ContenuActivite from "../../dist/entities/Travail/ContenuActivite.js"
-import {APP_VERSION, BASE_URL} from "../../dist/Kdecole";
+import {APP_VERSION, ApiUrl} from "../../dist/Kdecole";
 
-const Kdecole = require('../../dist/Kdecole.js').default
+const { Kdecole } = require('../../dist/Kdecole.js')
 
 const authToken = '0AnemIFGvcORx88ESDrvIflY0qRV2ussl0n31tC5Sh2U6xDZJ0E3VrD1RYzrWGX3rYUZK4nI3wLnbxZYQi2sKXMrGbgxIuq2ewjOpRYfWLSP0mLFK3D3CZVu7Ev2s'
 const user = new Kdecole(authToken, APP_VERSION, 10485)
@@ -21,9 +21,10 @@ describe('Test TravailAFaire', () => {
         })
         expect(await user.getTravailAFaire()).toBeInstanceOf(TravailAFaire)
         expect(axios.request).toHaveBeenCalledWith({
-            "baseURL": BASE_URL,
+            "baseURL": ApiUrl.PROD_MON_BUREAU_NUMERIQUE,
             "data": undefined,
             "headers": {"X-Kdecole-Auth": authToken, "X-Kdecole-Vers": APP_VERSION},
+            validateStatus: expect.any(Function),
             "method": "get",
             "responseType": "json",
             "url": "/travailAFaire/idetablissement/10485/"
@@ -36,9 +37,10 @@ describe('Test TravailAFaire', () => {
         })
         expect(await user.getTravailAFaire('AAP05567')).toBeInstanceOf(TravailAFaire)
         expect(axios.request).toHaveBeenCalledWith({
-            "baseURL": BASE_URL,
+            "baseURL": ApiUrl.PROD_MON_BUREAU_NUMERIQUE,
             "data": undefined,
             "headers": {"X-Kdecole-Auth": authToken, "X-Kdecole-Vers": APP_VERSION},
+            validateStatus: expect.any(Function),
             "method": "get",
             "responseType": "json",
             "url": "/travailAFaire/ideleve/AAP05567/"
@@ -51,9 +53,10 @@ describe('Test TravailAFaire', () => {
         })
         expect(await user.getContenuActivite(636051, 72184)).toBeInstanceOf(ContenuActivite)
         expect(axios.request).toBeCalledWith({
-            "baseURL": BASE_URL,
+            "baseURL": ApiUrl.PROD_MON_BUREAU_NUMERIQUE,
             "data": undefined,
             "headers": {"X-Kdecole-Auth": authToken, "X-Kdecole-Vers": APP_VERSION},
+            validateStatus: expect.any(Function),
             "method": "get",
             "responseType": "json",
             "url": "/contenuActivite/idetablissement/10485/636051/72184/"
@@ -66,9 +69,10 @@ describe('Test TravailAFaire', () => {
         })
         await user.getContenuActivite(636051, 72184, 'AAP05567')
         expect(axios.request).toBeCalledWith({
-            "baseURL": BASE_URL,
+            "baseURL": ApiUrl.PROD_MON_BUREAU_NUMERIQUE,
             "data": undefined,
             "headers": {"X-Kdecole-Auth": authToken, "X-Kdecole-Vers": APP_VERSION},
+            validateStatus: expect.any(Function),
             "method": "get",
             "responseType": "json",
             "url": "/contenuActivite/ideleve/AAP05567/636051/72184/"

@@ -13,7 +13,7 @@ function cleanTypes() {
 }
 
 function lint(cb) {
-  exec('npx eslint . --ext .ts', (err, stdout, stderr)=>{
+  exec('npx eslint src/ --ext .ts', (err, stdout, stderr)=>{
     console.log(stdout);
     console.log(stderr);
     cb(err);
@@ -21,7 +21,7 @@ function lint(cb) {
 }
 
 function build (cb) {
-  exec('tsc', (err, stdout, stderr)=>{
+  exec('npx tsc', (err, stdout, stderr)=>{
     console.log(stderr);
     cb(err);
   })

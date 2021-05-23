@@ -1,7 +1,7 @@
 import axios from 'axios'
-import {APP_VERSION, BASE_URL} from "../../dist/Kdecole";
+import {APP_VERSION, ApiUrl} from "../../dist/Kdecole";
 
-const Kdecole = require('../../dist/Kdecole.js').default
+const { Kdecole } = require('../../dist/Kdecole.js')
 
 const authToken = '0AnemIFGvcORx88ESDrvIflY0qRV2ussl0n31tC5Sh2U6xDZJ0E3VrD1RYzrWGX3rYUZK4nI3wLnbxZYQi2sKXMrGbgxIuq2ewjOpRYfWLSP0mLFK3D3CZVu7Ev2s'
 const user = new Kdecole(authToken, APP_VERSION, 10485)
@@ -22,12 +22,13 @@ describe('Test Messagerie report a message', () => {
             .mockImplementation(() => mockDate)
         await user.sendMessage(123456, 'test')
         expect(axios.request).toBeCalledWith({
-            "baseURL": BASE_URL,
+            "baseURL": ApiUrl.PROD_MON_BUREAU_NUMERIQUE,
             "data": {
                 dateEnvoi: (new Date()).getTime(),
                 corpsMessage: 'test'
             },
             "headers": {"X-Kdecole-Auth": authToken, "X-Kdecole-Vers": APP_VERSION},
+            validateStatus: expect.any(Function),
             "method": "put",
             "responseType": "json",
             "url": "/messagerie/communication/nouvelleParticipation/123456/"

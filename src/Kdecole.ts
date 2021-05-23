@@ -15,68 +15,114 @@ import ContenuArticle from './entities/News/ContenuArticle'
 import Communication from './entities/Messagerie/Communication'
 import GestionAppels from './entities/Prof/GestionAppels'
 
-export const APP_VERSION = '3.4.14'
-export const BASE_URL = 'https://mobilite.monbureaunumerique.fr/mobilite'
-
 interface KdecoleRequest {
   service: 'starting'
-      | 'actualites'
-      | 'contenuArticle'
-      | 'activation'
-      | 'consulterReleves'
-      | 'consulterAbsences'
-      | 'infoutilisateur'
-      | 'desactivation'
-      | 'calendrier'
-      | 'consulterNotes'
-      | 'messagerie/info'
-      | 'messagerie/boiteReception'
-      | 'messagerie/communication'
-      | 'messagerie/communication/nouvelleParticipation'
-      | 'messagerie/communication/signaler'
-      | 'messagerie/communication/supprimer'
-      | 'messagerie/communication/lu'
-      | 'travailAFaire' | 'contenuActivite'
-      | 'gestionAppels'
+    | 'actualites'
+    | 'contenuArticle'
+    | 'activation'
+    | 'consulterReleves'
+    | 'consulterAbsences'
+    | 'infoutilisateur'
+    | 'desactivation'
+    | 'calendrier'
+    | 'consulterNotes'
+    | 'messagerie/info'
+    | 'messagerie/boiteReception'
+    | 'messagerie/communication'
+    | 'messagerie/communication/nouvelleParticipation'
+    | 'messagerie/communication/signaler'
+    | 'messagerie/communication/supprimer'
+    | 'messagerie/communication/lu'
+    | 'travailAFaire' | 'contenuActivite'
+    | 'gestionAppels'
   parameters?: string
   type?: 'get' | 'post' | 'delete' | 'put'
   data?: any
 }
 
+export enum ApiUrl {
+  PROD_MON_BUREAU_NUMERIQUE = 'https://mobilite.monbureaunumerique.fr/mobilite',
+  PREPROD_MON_BUREAU_NUMERIQUE = 'https://mobilite.preprod.monbureaunumerique.fr/mobilite',
+  PROD_MON_ENT_OCCITANIE = 'https://mobilite.mon-ent-occitanie.fr/mobilite',
+  PROD_ARSENE76 = 'https://mobilite.arsene76.fr/mobilite',
+  PROD_ENT27 = 'https://mobilite.ent27.fr/mobilite',
+  PROD_ENTCREUSE = 'https://mobilite.entcreuse.fr/mobilite',
+  PROD_AUVERGNERHONEALPES = 'https://mobilite.ent.auvergnerhonealpes.fr/mobilite',
+  PROD_SAVOIRSNUMERIQUES62 = 'https://mobilite.savoirsnumeriques62.fr/mobilite',
+  PROD_AGORA06 = 'https://mobilite.agora06.fr/mobilite',
+  PROD_CYBERCOLLEGES42 = 'https://mobilite.cybercolleges42.fr/mobilite',
+  PROD_ECOLLEGE_HAUTE_GARONNE = 'https://mobilite.ecollege.haute-garonne.fr/mobilite',
+  PROD_MONCOLLEGE_VALDOISE = 'https://mobilite.moncollege.valdoise.fr/mobilite',
+  PROD_WEBCOLLEGE_SEINESAINTDENIS = 'https://mobilite.webcollege.seinesaintdenis.fr/mobilite',
+  PROD_ECLAT_BFC = 'https://mobilite.eclat-bfc.fr/mobilite',
+  PROD_DEMO_SKOLENGO = 'https://mobilite.demo.skolengo.com/mobilite'
+}
+
+export enum ApiVersion {
+  PROD_MON_BUREAU_NUMERIQUE = '3.4.14',
+  PROD_MON_ENT_OCCITANIE = '3.5.2',
+  PROD_ARSENE76 = '3.7.11',
+  PROD_ENT27 = '3.5.6',
+  PROD_ENTCREUSE = '3.5.6',
+  PROD_AUVERGNERHONEALPES = '3.7.11',
+  PROD_SAVOIRSNUMERIQUES62 = '3.5.4',
+  PROD_AGORA06 = '3.7.14',
+  PROD_CYBERCOLLEGES42 = '3.5.6',
+  PROD_ECOLLEGE_HAUTE_GARONNE = '3.1.15',
+  PROD_MONCOLLEGE_VALDOISE = '3.4.11',
+  PROD_WEBCOLLEGE_SEINESAINTDENIS = '3.7.14',
+  PROD_ECLAT_BFC = '3.5.3'
+}
+
+export const APP_VERSION = ApiVersion.PROD_MON_BUREAU_NUMERIQUE
+
 /**
  * Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
+ *
+ * L'accès à l'API requiert une en-tête avec la version de l'application en cours d'utilisation.
+ * Les versions à utiliser lors de la création de l'instance `Kdecole` sont données ci-dessous.
+ *
+ * |         Nom de l'ENT           | Version   | URL de l'API                                              |
+ * |:----------------------------:  |:-------:  |---------------------------------------------------------  |
+ * |     Mon Bureau Numérique       |  3.4.14   | https://mobilite.monbureaunumerique.fr/mobilite           |
+ * |       Mon ENT Occitanie        |  3.5.2    | https://mobilite.mon-ent-occitanie.fr/mobilite            |
+ * |           Arsene 76            |  3.7.11   | https://mobilite.arsene76.fr/mobilite                     |
+ * |             ENT27              |  3.5.6    | https://mobilite.ent27.fr/mobilite                        |
+ * |          ENT Creuse            |  3.5.6    | https://mobilite.entcreuse.fr/mobilite                    |
+ * |   ENT Auvergne-Rhône-Alpes     |  3.7.11   | https://mobilite.ent.auvergnerhonealpes.fr/mobilite       |
+ * |     Savoirs Numériques 62      |  3.5.4    | https://mobilite.savoirsnumeriques62.fr/mobilite          |
+ * |           Agora 06             |  3.7.14   | https://mobilite.agora06.fr/mobilite                      |
+ * |       CyberCollèges 42         |  3.5.6    | https://mobilite.cybercolleges42.fr/mobilite              |
+ * |    eCollège 31 Haute-Garonne   |  3.1.15   | https://mobilite.ecollege.haute-garonne.fr/mobilite       |
+ * |   Mon collège en Val d'Oise    |  3.4.11   | https://mobilite.moncollege.valdoise.fr/mobilite          |
+ * | Webcollège Seine-Saint-Denis   |  3.7.14   | https://mobilite.webcollege.seinesaintdenis.fr/mobilite   |
+ * |           Eclat-BFC            |  3.5.3    | https://mobilite.eclat-bfc.fr/mobilite                    |
+ *
  * @example ```js
- * const Kdecole = require('kdecole-api').default
+ * const { Kdecole } = require('kdecole-api')
  *
  * const user = new Kdecole(Kdecole.login(USERNAME, PASSWORD))
  * // ou encore:
  * const user = new Kdecole(AUTH_TOKEN)
  * ```
  */
-export default class Kdecole {
+export class Kdecole {
   private readonly authToken: string
-  private readonly appVersion: string
-  private readonly idEtablissement:number
-  private readonly apiURL: string
+  public appVersion: string
+  public idEtablissement: number
+  public apiURL: string
 
   /**
    * @param {string} authToken Le jeton d'accès
    * @param {string} appVersion La version de l'application mobile autorisée par l'API
    * @param {number} idEtablissement L'identifiant de l'établissement
-   * @param {string} apiURL L'URL de l'API Kdecole
+   * @param {ApiUrl|string} apiURL L'URL de l'API Kdecole
    */
   constructor (
     authToken: string,
-    appVersion: string = APP_VERSION,
+    appVersion: ApiVersion | string = ApiVersion.PROD_MON_BUREAU_NUMERIQUE,
     idEtablissement = 0,
-    apiURL: 'https://mobilite.monbureaunumerique.fr/mobilite'
-          | 'https://mobilite.preprod.monbureaunumerique.fr/mobilite'
-          | 'https://mobilite.mon-ent-occitanie.fr/mobilite'
-          | 'https://mobilite.arsene76.fr/mobilite'
-          | 'https://mobilite.ent27.fr/mobilite'
-          | 'https://mobilite.entcreuse.fr/mobilite'
-          | 'https://mobilite.ent.auvergnerhonealpes.fr/mobilite'
-          | 'https://mobilite.savoirsnumeriques62.fr/mobilite' = 'https://mobilite.monbureaunumerique.fr/mobilite'
+    apiURL: ApiUrl | string = ApiUrl.PROD_MON_BUREAU_NUMERIQUE
   ) {
     if (authToken === undefined) {
       throw Error("Un jeton d'accès doit être renseigné")
@@ -89,42 +135,64 @@ export default class Kdecole {
 
   /**
    * Retourne le jeton d'accès de l'utilisateur
-   * @param username
+   * @param {string} username Le nom d'utilisateur
    * @param {string} password Le mot de passe à usage unique
    * @param {string} appVersion La version de l'application mobile autorisée par l'API
+   * @param {apiURL} apiUrl L'URL de l'API Kdecole
    * @return {Promise<string>}
    * @example ```js
-   * const Kdecole = require('kdecole-api').default
-   *
-   * const authToken = Kdecole.login(username, password)
-   * console.log(authToken) //Afficher son token d'authentification
+   * const { Kdecole } = require('kdecole-api')
+   * Kdecole.login(username, uniquePassword).then(token => console.log(token)) // Affiche dans la console son token
    * ```
    */
-  public static async login (username: string, password: string, appVersion:string = APP_VERSION): Promise<string> {
-    const activation = new Activation(await Kdecole.kdecole(new Kdecole('', appVersion, 0), {
+  public static async login (username: string, password: string, appVersion: ApiVersion | string = ApiVersion.PROD_MON_BUREAU_NUMERIQUE, apiUrl: ApiUrl = ApiUrl.PROD_MON_BUREAU_NUMERIQUE): Promise<string> {
+    const activation = new Activation(await Kdecole.kdecole(new Kdecole('', appVersion, 0, apiUrl), {
       service: 'activation',
       parameters: `${username}/${password}`
     }))
     if (activation.authtoken && activation.success) {
       return activation.authtoken
-    } else {
-      throw Error('Erreur de connexion')
     }
+    throw Error("L'authentification n'a pas fonctionné")
   }
 
   /**
    * Invalide le jeton d'accès
    * @example ```js
-   * const Kdecole = require('kdecole-api').default
+   * const { Kdecole } = require('kdecole-api')
    * const user = new Kdecole(authToken)
    * user.logout()
    * ```
-   * @return {Promise<Desactivation | Error>}
+   * @return {Promise<void>}
    */
-  public async logout (): Promise<Desactivation | Error> {
+  public async logout (): Promise<void> {
     const desactivation = new Desactivation(await Kdecole.kdecole(this, { service: 'desactivation' }))
-    if (desactivation.success) return desactivation
-    return new Error('Une erreur est survenue dans le traitement des données de déconnexion')
+    if (!desactivation.success) {
+      throw Error("Une erreur est survenue lors de l'invalidation du jeton d'accès.")
+    }
+  }
+
+  /**
+   * Ping à l'API.
+   * Cet appel est initialement réalisé par l'application mobile pour vérifier si le token et la version de l'app sont valides.
+   * Le serveur retourne un code de statut `HTTP 204 No Content` si l'utilisateur est correctement authentifié.
+   * @example ```js
+   * const { Kdecole } = require('kdecole-api')
+   * const user = new Kdecole(authToken)
+   * try {
+   *   user.starting()
+   * }
+   * catch (e) {
+   *   // Une exception est levée si l'utilisateur n'est pas correctement authentifié
+   * }
+   * ```
+   * @return {Promise<void>}
+   */
+  public async starting (): Promise<void> {
+    await Kdecole.kdecole(this, {
+      service: 'starting',
+      parameters: ''
+    })
   }
 
   /**
@@ -136,7 +204,7 @@ export default class Kdecole {
    * @param {string} idEleve Identifiant d'un élève
    * @return {Promise<Releve>}
    * @example ```js
-   * const Kdecole = require('kdecole-api').default
+   * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
    * user.getReleve(idEleve).then((releve)=>{
@@ -156,7 +224,7 @@ export default class Kdecole {
    * @param {string} idEleve Identifiant d'un élève
    * @return {Promise<Actualite[]>}
    * @example ```js
-   * const Kdecole = require('kdecole-api').default
+   * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
    * user.getActualites(idEleve).then((actualites)=>{
@@ -180,7 +248,7 @@ export default class Kdecole {
    * @param {string} uid Identifiant unique de l'article
    * @return {Promise<ContenuArticle>}
    * @example ```js
-   * const Kdecole = require('kdecole-api').default
+   * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
    * user.getContenuArticle(uid).then((contenuArticle)=>{
@@ -197,7 +265,7 @@ export default class Kdecole {
    * @param {string} idEleve Identifiant d'un élève
    * @return {Promise<TravailAFaire>}
    * @example ```js
-   * const Kdecole = require('kdecole-api').default
+   * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
    * user.getTravailAFaire(idEleve).then((taf)=>{
@@ -219,7 +287,7 @@ export default class Kdecole {
    * @param {string} idEleve Identifiant d'un élève
    * @return {Promise<ContenuActivite>}
    * @example ```js
-   * const Kdecole = require('kdecole-api').default
+   * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
    * user.getContenuActivite(uidSeance, uid, idEleve).then((contenuActivite)=>{
@@ -240,11 +308,12 @@ export default class Kdecole {
    * @param uid {number} Identifiant du devoir
    * @param flagRealise {boolean} Statut du devoir
    * @example ```js
-   * const Kdecole = require('kdecole-api').default
+   * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
    * user.setActiviteFinished(uidSeance, uid, flagRealise)
    * ```
+   * @return {Promise<void>}
    */
   public async setActiviteFinished (uidSeance: number, uid: number, flagRealise: boolean): Promise<void> {
     await Kdecole.kdecole(this, {
@@ -262,7 +331,7 @@ export default class Kdecole {
    * @param {string} idEleve Identifiant d'un élève
    * @return {Promise<AbsencesList>}
    * @example ```js
-   * const Kdecole = require('kdecole-api').default
+   * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
    * user.getAbsences(idEleve).then((absences)=>{
@@ -282,7 +351,7 @@ export default class Kdecole {
    * @param {string} idEleve Identifiant d'un élève
    * @return {Promise<Utilisateur>}
    * @example ```js
-   * const Kdecole = require('kdecole-api').default
+   * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
    * user.getInfoUtilisateur(idEleve).then((infoUtilisateur)=>{
@@ -302,7 +371,7 @@ export default class Kdecole {
    * @param {string} idEleve Identifiant d'un élève
    * @return {Promise<Calendrier>}
    * @example ```js
-   * const Kdecole = require('kdecole-api').default
+   * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
    * user.getCalendrier(idEleve).then((calendrier)=>{
@@ -322,7 +391,7 @@ export default class Kdecole {
    * @param {string} idEleve Identifiant d'un élève
    * @return {Promise<NotesList>}
    * @example ```js
-   * const Kdecole = require('kdecole-api').default
+   * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
    * user.getNotes(idEleve).then((notes)=>{
@@ -341,7 +410,7 @@ export default class Kdecole {
    * Retourne l'état de la messagerie de l'utilisateur (nombre de mails non lus)
    * @return {Promise<MessageInfo>}
    * @example ```js
-   * const Kdecole = require('kdecole-api').default
+   * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
    * user.getMessagerieInfo().then((messagerieInfo)=>{
@@ -357,7 +426,7 @@ export default class Kdecole {
    * Retourne les mails présents dans la boîte mail
    * @return {Promise<MessageBoiteReception>}
    * @example ```js
-   * const Kdecole = require('kdecole-api').default
+   * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
    * user.getMessagerieBoiteReception().then((messagerieBoiteReception)=>{
@@ -374,7 +443,7 @@ export default class Kdecole {
    * @param {number} id Identifiant d'un fil de discussion
    * @return {Promise<Communication>}
    * @example ```js
-   * const Kdecole = require('kdecole-api').default
+   * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
    * user.getCommunication(id).then((communication)=>{
@@ -395,7 +464,7 @@ export default class Kdecole {
    * @param {number} id Identifiant d'un fil de discussion
    * @return {Promise<void>}
    * @example ```js
-   * const Kdecole = require('kdecole-api').default
+   * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
    * user.reportCommunication(id)
@@ -414,7 +483,7 @@ export default class Kdecole {
    * @param {number} id Identifiant d'un fil de discussion
    * @return {Promise<void>}
    * @example ```js
-   * const Kdecole = require('kdecole-api').default
+   * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
    * user.deleteCommunication(id)
@@ -433,7 +502,7 @@ export default class Kdecole {
    * @param id {number} Identifiant d'un fil de discussion
    * @return {Promise<void>}
    * @example ```js
-   * const Kdecole = require('kdecole-api').default
+   * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
    * user.setCommunicationLu(id)
@@ -456,7 +525,7 @@ export default class Kdecole {
    * @param corpsMessage {string} Corps du message HTML
    * @return {Promise<void>}
    * @example ```js
-   * const Kdecole = require('kdecole-api').default
+   * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
    * user.sendMessage(id, corpsMessage)
@@ -478,7 +547,7 @@ export default class Kdecole {
    * Retourne les feuilles d'appel.
    * @return {Promise<GestionAppels>} Les feuilles d'appel.
    * @example ```js
-   * const Kdecole = require('kdecole-api').default
+   * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
    * user.gestionAppels().then((gestionAppels)=>{
@@ -486,7 +555,7 @@ export default class Kdecole {
    *  })
    * ```
    */
-  public async gestionAppels ():Promise<GestionAppels> {
+  public async gestionAppels (): Promise<GestionAppels> {
     return new GestionAppels(await Kdecole.kdecole(this, { service: 'gestionAppels' }))
   }
 
@@ -495,7 +564,7 @@ export default class Kdecole {
    * @return {Promise<void>}
    * @param appel L'appel à valider
    * @example ```js
-   * const Kdecole = require('kdecole-api').default
+   * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
    * const appel = {
@@ -514,17 +583,17 @@ export default class Kdecole {
    * user.validerAppel(appel)
    * ```
    */
-  public async validerAppel (appel:{
-    idEtab:number,
-    idAppel:number,
-    listeAbsencesAppel:{
-      idEleve:string
-      type:string
-      dateDebut:number
-      dateFin:number
-      modifiable:boolean
+  public async validerAppel (appel: {
+    idEtab: number,
+    idAppel: number,
+    listeAbsencesAppel: {
+      idEleve: string
+      type: string
+      dateDebut: number
+      dateFin: number
+      modifiable: boolean
     }[]
-  }):Promise<void> {
+  }): Promise<void> {
     await Kdecole.kdecole(this, {
       service: 'gestionAppels',
       parameters: `idetablissement/${this.idEtablissement}/valider`,
@@ -534,21 +603,18 @@ export default class Kdecole {
   }
 
   private static async kdecole (ctx: Kdecole, { service, parameters, type = 'get', data }: KdecoleRequest): Promise<any> {
-    if (parameters === undefined && service !== 'desactivation' && service !== 'messagerie/info' && service !== 'messagerie/communication' && service !== 'messagerie/boiteReception') parameters = `idetablissement/${ctx.idEtablissement}`
-    try {
-      return (await axios.request({
-        baseURL: ctx.apiURL,
-        headers: {
-          'X-Kdecole-Vers': ctx.appVersion,
-          'X-Kdecole-Auth': ctx.authToken
-        },
-        responseType: 'json',
-        method: type,
-        url: parameters ? `/${service}/${parameters}/` : `/${service}/`,
-        data: data
-      })).data
-    } catch (e) {
-      throw Error('Une erreur est survenue durant le traitement de la requête')
-    }
+    if (parameters === undefined && service !== 'desactivation' && service !== 'messagerie/info' && service !== 'messagerie/communication' && service !== 'messagerie/boiteReception' && service !== 'infoutilisateur') parameters = `idetablissement/${ctx.idEtablissement}`
+    return (await axios.request({
+      baseURL: ctx.apiURL,
+      headers: {
+        'X-Kdecole-Vers': ctx.appVersion,
+        'X-Kdecole-Auth': ctx.authToken
+      },
+      validateStatus: (status) => (status >= 200 && status < 300) || status === 204, // starting retourne HTTP204 donc axios ne doit pas lever une exception
+      responseType: 'json',
+      method: type,
+      url: parameters ? `/${service}/${parameters}/` : `/${service}/`,
+      data: data
+    })).data
   }
 }

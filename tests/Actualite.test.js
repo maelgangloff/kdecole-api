@@ -1,10 +1,10 @@
 import axios from 'axios'
 import Actualite from "../dist/entities/News/Actualite"
 import ContenuArticle from "../dist/entities/News/ContenuArticle"
-import {APP_VERSION, BASE_URL} from "../dist/Kdecole";
+import {APP_VERSION, ApiUrl} from "../dist/Kdecole";
 
 
-const Kdecole = require('../dist/Kdecole.js').default
+const { Kdecole } = require('../dist/Kdecole.js')
 
 const authToken = '0AnemIFGvcORx88ESDrvIflY0qRV2ussl0n31tC5Sh2U6xDZJ0E3VrD1RYzrWGX3rYUZK4nI3wLnbxZYQi2sKXMrGbgxIuq2ewjOpRYfWLSP0mLFK3D3CZVu7Ev2s'
 const user = new Kdecole(authToken, APP_VERSION, 10485)
@@ -28,9 +28,10 @@ describe('Test Actualite', () => {
         }
 
         expect(axios.request).toHaveBeenCalledWith({
-            "baseURL": BASE_URL,
+            "baseURL": ApiUrl.PROD_MON_BUREAU_NUMERIQUE,
             "data": undefined,
             "headers": {"X-Kdecole-Auth": authToken, "X-Kdecole-Vers": APP_VERSION},
+            validateStatus: expect.any(Function),
             "method": "get",
             "responseType": "json",
             "url": "/actualites/idetablissement/10485/"
@@ -44,9 +45,10 @@ describe('Test Actualite', () => {
         await user.getActualites('AAP05567')
 
         expect(axios.request).toHaveBeenCalledWith({
-            "baseURL": BASE_URL,
+            "baseURL": ApiUrl.PROD_MON_BUREAU_NUMERIQUE,
             "data": undefined,
             "headers": {"X-Kdecole-Auth": authToken, "X-Kdecole-Vers": APP_VERSION},
+            validateStatus: expect.any(Function),
             "method": "get",
             "responseType": "json",
             "url": "/actualites/ideleve/AAP05567/"
@@ -59,9 +61,10 @@ describe('Test Actualite', () => {
         })
         expect(await user.getContenuArticle('10485-5237')).toBeInstanceOf(ContenuArticle)
         expect(axios.request).toHaveBeenCalledWith({
-            "baseURL": BASE_URL,
+            "baseURL": ApiUrl.PROD_MON_BUREAU_NUMERIQUE,
             "data": undefined,
             "headers": {"X-Kdecole-Auth": authToken, "X-Kdecole-Vers": APP_VERSION},
+            validateStatus: expect.any(Function),
             "method": "get",
             "responseType": "json",
             "url": "/contenuArticle/article/10485-5237/"

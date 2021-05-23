@@ -1,11 +1,11 @@
 {
   "name": "kdecole-api",
-  "version": "1.0.12",
+  "version": "1.1.1",
   "main": "dist/Kdecole.js",
-  "bin": {
-    "kdecole-graphql": "./GraphQL/server.js"
-  },
   "types": "types/Kdecole.d.ts",
+  "bin": {
+    "kdecole": "bin/kdecole"
+  },
   "author": {
     "name": "Maël Gangloff",
     "email": "maelgangloffd@gmail.com"
@@ -21,7 +21,7 @@
     "@babel/preset-env": "^7.12.11",
     "@types/express": "^4.17.9",
     "@types/jest": "^26.0.19",
-    "@types/node": "^14.14.9",
+    "@types/node": "^15.0.1",
     "@typescript-eslint/eslint-plugin": "^4.10.0",
     "@typescript-eslint/parser": "^4.10.0",
     "babel-jest": "^26.6.3",
@@ -30,23 +30,20 @@
     "gulp": "^4.0.2",
     "gulp-exec": "^5.0.0",
     "jest": "^26.6.3",
-    "jsdoc-to-markdown": "^6.0.1",
+    "jsdoc-to-markdown": "^7.0.0",
     "ts-standard": "^10.0.0",
     "typescript": "^4.1.2"
   },
   "scripts": {
-    "build": "npx gulp"
+    "build": "npx gulp",
+    "test" : "npx gulp"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/maelgangloff/kdecole-api.git"
   },
   "dependencies": {
-    "axios": "^0.21.1",
-    "express": "^4.17.1",
-    "express-bearer-token": "^2.4.0",
-    "express-graphql": "^0.12.0",
-    "graphql": "^15.4.0"
+    "axios": "^0.21.1"
   },
   "keywords": [
     "API",

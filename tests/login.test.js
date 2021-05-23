@@ -1,6 +1,6 @@
 import axios from 'axios'
-import {APP_VERSION, BASE_URL} from "../dist/Kdecole";
-const Kdecole = require('../dist/Kdecole.js').default
+import {APP_VERSION, ApiUrl} from "../dist/Kdecole";
+const { Kdecole } = require('../dist/Kdecole.js')
 
 jest.mock('axios')
 
@@ -17,9 +17,10 @@ describe('Test login method', () => {
         })
         expect(await Kdecole.login('mael.gangloff', 'PRJROFCOZ')).toBe(expectedToken)
         expect(axios.request).toHaveBeenCalledWith({
-            "baseURL": BASE_URL,
+            "baseURL": ApiUrl.PROD_MON_BUREAU_NUMERIQUE,
             "data": undefined,
             "headers": {"X-Kdecole-Auth": "", "X-Kdecole-Vers": APP_VERSION},
+            validateStatus: expect.any(Function),
             "method": "get",
             "responseType": "json",
             "url": "/activation/mael.gangloff/PRJROFCOZ/"
@@ -37,9 +38,10 @@ describe('Test login method', () => {
         })
         await expect(Kdecole.login('mael.gangloff', 'PRJROFCOZ')).rejects.toThrowError()
         expect(axios.request).toHaveBeenCalledWith({
-            "baseURL": BASE_URL,
+            "baseURL": ApiUrl.PROD_MON_BUREAU_NUMERIQUE,
             "data": undefined,
             "headers": {"X-Kdecole-Auth": "", "X-Kdecole-Vers": APP_VERSION},
+            validateStatus: expect.any(Function),
             "method": "get",
             "responseType": "json",
             "url": "/activation/mael.gangloff/PRJROFCOZ/"
@@ -60,9 +62,10 @@ describe('Test login method', () => {
         })
         await expect(Kdecole.login('mael.gangloff', 'PRJROFCOZ')).rejects.toThrow()
         expect(axios.request).toHaveBeenCalledWith({
-            "baseURL": BASE_URL,
+            "baseURL": ApiUrl.PROD_MON_BUREAU_NUMERIQUE,
             "data": undefined,
             "headers": {"X-Kdecole-Auth": "", "X-Kdecole-Vers": APP_VERSION},
+            validateStatus: expect.any(Function),
             "method": "get",
             "responseType": "json",
             "url": "/activation/mael.gangloff/PRJROFCOZ/"
