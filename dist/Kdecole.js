@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Kdecole = exports.ApiUrl = exports.APP_VERSION = void 0;
+exports.Kdecole = exports.APP_VERSION = exports.ApiVersion = exports.ApiUrl = void 0;
 const axios_1 = __importDefault(require("axios"));
 const Desactivation_1 = __importDefault(require("./entities/Authentication/Desactivation"));
 const Activation_1 = __importDefault(require("./entities/Authentication/Activation"));
@@ -20,7 +20,6 @@ const ContenuActivite_1 = __importDefault(require("./entities/Travail/ContenuAct
 const ContenuArticle_1 = __importDefault(require("./entities/News/ContenuArticle"));
 const Communication_1 = __importDefault(require("./entities/Messagerie/Communication"));
 const GestionAppels_1 = __importDefault(require("./entities/Prof/GestionAppels"));
-exports.APP_VERSION = '3.4.14';
 var ApiUrl;
 (function (ApiUrl) {
     ApiUrl["PROD_MON_BUREAU_NUMERIQUE"] = "https://mobilite.monbureaunumerique.fr/mobilite";
@@ -39,6 +38,23 @@ var ApiUrl;
     ApiUrl["PROD_ECLAT_BFC"] = "https://mobilite.eclat-bfc.fr/mobilite";
     ApiUrl["PROD_DEMO_SKOLENGO"] = "https://mobilite.demo.skolengo.com/mobilite";
 })(ApiUrl = exports.ApiUrl || (exports.ApiUrl = {}));
+var ApiVersion;
+(function (ApiVersion) {
+    ApiVersion["PROD_MON_BUREAU_NUMERIQUE"] = "3.4.14";
+    ApiVersion["PROD_MON_ENT_OCCITANIE"] = "3.5.2";
+    ApiVersion["PROD_ARSENE76"] = "3.7.11";
+    ApiVersion["PROD_ENT27"] = "3.5.6";
+    ApiVersion["PROD_ENTCREUSE"] = "3.5.6";
+    ApiVersion["PROD_AUVERGNERHONEALPES"] = "3.7.11";
+    ApiVersion["PROD_SAVOIRSNUMERIQUES62"] = "3.5.4";
+    ApiVersion["PROD_AGORA06"] = "3.7.14";
+    ApiVersion["PROD_CYBERCOLLEGES42"] = "3.5.6";
+    ApiVersion["PROD_ECOLLEGE_HAUTE_GARONNE"] = "3.1.15";
+    ApiVersion["PROD_MONCOLLEGE_VALDOISE"] = "3.4.11";
+    ApiVersion["PROD_WEBCOLLEGE_SEINESAINTDENIS"] = "3.7.14";
+    ApiVersion["PROD_ECLAT_BFC"] = "3.5.3";
+})(ApiVersion = exports.ApiVersion || (exports.ApiVersion = {}));
+exports.APP_VERSION = ApiVersion.PROD_MON_BUREAU_NUMERIQUE;
 /**
  * Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
  *
@@ -76,7 +92,7 @@ class Kdecole {
      * @param {number} idEtablissement L'identifiant de l'établissement
      * @param {ApiUrl|string} apiURL L'URL de l'API Kdecole
      */
-    constructor(authToken, appVersion = exports.APP_VERSION, idEtablissement = 0, apiURL = ApiUrl.PROD_MON_BUREAU_NUMERIQUE) {
+    constructor(authToken, appVersion = ApiVersion.PROD_MON_BUREAU_NUMERIQUE, idEtablissement = 0, apiURL = ApiUrl.PROD_MON_BUREAU_NUMERIQUE) {
         if (authToken === undefined) {
             throw Error("Un jeton d'accès doit être renseigné");
         }
@@ -94,12 +110,10 @@ class Kdecole {
      * @return {Promise<string>}
      * @example ```js
      * const { Kdecole } = require('kdecole-api')
-     *
-     * const authToken = Kdecole.login(username, password)
-     * console.log(authToken) //Afficher son token d'authentification
+     * Kdecole.login(username, uniquePassword).then(token => console.log(token)) // Affiche dans la console son token
      * ```
      */
-    static async login(username, password, appVersion = exports.APP_VERSION, apiUrl = ApiUrl.PROD_MON_BUREAU_NUMERIQUE) {
+    static async login(username, password, appVersion = ApiVersion.PROD_MON_BUREAU_NUMERIQUE, apiUrl = ApiUrl.PROD_MON_BUREAU_NUMERIQUE) {
         const activation = new Activation_1.default(await Kdecole.kdecole(new Kdecole('', appVersion, 0, apiUrl), {
             service: 'activation',
             parameters: `${username}/${password}`
@@ -107,9 +121,7 @@ class Kdecole {
         if (activation.authtoken && activation.success) {
             return activation.authtoken;
         }
-        else {
-            throw Error("L'authentification n'a pas fonctionné");
-        }
+        throw Error("L'authentification n'a pas fonctionné");
     }
     /**
      * Invalide le jeton d'accès
@@ -118,13 +130,13 @@ class Kdecole {
      * const user = new Kdecole(authToken)
      * user.logout()
      * ```
-     * @return {Promise<Desactivation>}
+     * @return {Promise<void>}
      */
     async logout() {
         const desactivation = new Desactivation_1.default(await Kdecole.kdecole(this, { service: 'desactivation' }));
-        if (desactivation.success)
-            return desactivation;
-        throw Error('Une erreur est survenue dans le traitement des données de déconnexion');
+        if (!desactivation.success) {
+            throw Error("Une erreur est survenue lors de l'invalidation du jeton d'accès.");
+        }
     }
     /**
      * Ping à l'API.

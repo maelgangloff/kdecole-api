@@ -15,28 +15,26 @@ import ContenuArticle from './entities/News/ContenuArticle'
 import Communication from './entities/Messagerie/Communication'
 import GestionAppels from './entities/Prof/GestionAppels'
 
-export const APP_VERSION = '3.4.14'
-
 interface KdecoleRequest {
   service: 'starting'
-      | 'actualites'
-      | 'contenuArticle'
-      | 'activation'
-      | 'consulterReleves'
-      | 'consulterAbsences'
-      | 'infoutilisateur'
-      | 'desactivation'
-      | 'calendrier'
-      | 'consulterNotes'
-      | 'messagerie/info'
-      | 'messagerie/boiteReception'
-      | 'messagerie/communication'
-      | 'messagerie/communication/nouvelleParticipation'
-      | 'messagerie/communication/signaler'
-      | 'messagerie/communication/supprimer'
-      | 'messagerie/communication/lu'
-      | 'travailAFaire' | 'contenuActivite'
-      | 'gestionAppels'
+    | 'actualites'
+    | 'contenuArticle'
+    | 'activation'
+    | 'consulterReleves'
+    | 'consulterAbsences'
+    | 'infoutilisateur'
+    | 'desactivation'
+    | 'calendrier'
+    | 'consulterNotes'
+    | 'messagerie/info'
+    | 'messagerie/boiteReception'
+    | 'messagerie/communication'
+    | 'messagerie/communication/nouvelleParticipation'
+    | 'messagerie/communication/signaler'
+    | 'messagerie/communication/supprimer'
+    | 'messagerie/communication/lu'
+    | 'travailAFaire' | 'contenuActivite'
+    | 'gestionAppels'
   parameters?: string
   type?: 'get' | 'post' | 'delete' | 'put'
   data?: any
@@ -59,6 +57,24 @@ export enum ApiUrl {
   PROD_ECLAT_BFC = 'https://mobilite.eclat-bfc.fr/mobilite',
   PROD_DEMO_SKOLENGO = 'https://mobilite.demo.skolengo.com/mobilite'
 }
+
+export enum ApiVersion {
+  PROD_MON_BUREAU_NUMERIQUE = '3.4.14',
+  PROD_MON_ENT_OCCITANIE = '3.5.2',
+  PROD_ARSENE76 = '3.7.11',
+  PROD_ENT27 = '3.5.6',
+  PROD_ENTCREUSE = '3.5.6',
+  PROD_AUVERGNERHONEALPES = '3.7.11',
+  PROD_SAVOIRSNUMERIQUES62 = '3.5.4',
+  PROD_AGORA06 = '3.7.14',
+  PROD_CYBERCOLLEGES42 = '3.5.6',
+  PROD_ECOLLEGE_HAUTE_GARONNE = '3.1.15',
+  PROD_MONCOLLEGE_VALDOISE = '3.4.11',
+  PROD_WEBCOLLEGE_SEINESAINTDENIS = '3.7.14',
+  PROD_ECLAT_BFC = '3.5.3'
+}
+
+export const APP_VERSION = ApiVersion.PROD_MON_BUREAU_NUMERIQUE
 
 /**
  * Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
@@ -93,7 +109,7 @@ export enum ApiUrl {
 export class Kdecole {
   private readonly authToken: string
   public appVersion: string
-  public idEtablissement:number
+  public idEtablissement: number
   public apiURL: string
 
   /**
@@ -104,7 +120,7 @@ export class Kdecole {
    */
   constructor (
     authToken: string,
-    appVersion: string = APP_VERSION,
+    appVersion: ApiVersion | string = ApiVersion.PROD_MON_BUREAU_NUMERIQUE,
     idEtablissement = 0,
     apiURL: ApiUrl | string = ApiUrl.PROD_MON_BUREAU_NUMERIQUE
   ) {
@@ -126,21 +142,18 @@ export class Kdecole {
    * @return {Promise<string>}
    * @example ```js
    * const { Kdecole } = require('kdecole-api')
-   *
-   * const authToken = Kdecole.login(username, password)
-   * console.log(authToken) //Afficher son token d'authentification
+   * Kdecole.login(username, uniquePassword).then(token => console.log(token)) // Affiche dans la console son token
    * ```
    */
-  public static async login (username: string, password: string, appVersion:string = APP_VERSION, apiUrl :ApiUrl = ApiUrl.PROD_MON_BUREAU_NUMERIQUE): Promise<string> {
+  public static async login (username: string, password: string, appVersion: ApiVersion | string = ApiVersion.PROD_MON_BUREAU_NUMERIQUE, apiUrl: ApiUrl = ApiUrl.PROD_MON_BUREAU_NUMERIQUE): Promise<string> {
     const activation = new Activation(await Kdecole.kdecole(new Kdecole('', appVersion, 0, apiUrl), {
       service: 'activation',
       parameters: `${username}/${password}`
     }))
     if (activation.authtoken && activation.success) {
       return activation.authtoken
-    } else {
-      throw Error("L'authentification n'a pas fonctionné")
     }
+    throw Error("L'authentification n'a pas fonctionné")
   }
 
   /**
@@ -150,12 +163,13 @@ export class Kdecole {
    * const user = new Kdecole(authToken)
    * user.logout()
    * ```
-   * @return {Promise<Desactivation>}
+   * @return {Promise<void>}
    */
-  public async logout (): Promise<Desactivation> {
+  public async logout (): Promise<void> {
     const desactivation = new Desactivation(await Kdecole.kdecole(this, { service: 'desactivation' }))
-    if (desactivation.success) return desactivation
-    throw Error('Une erreur est survenue dans le traitement des données de déconnexion')
+    if (!desactivation.success) {
+      throw Error("Une erreur est survenue lors de l'invalidation du jeton d'accès.")
+    }
   }
 
   /**
@@ -541,7 +555,7 @@ export class Kdecole {
    *  })
    * ```
    */
-  public async gestionAppels ():Promise<GestionAppels> {
+  public async gestionAppels (): Promise<GestionAppels> {
     return new GestionAppels(await Kdecole.kdecole(this, { service: 'gestionAppels' }))
   }
 
@@ -569,17 +583,17 @@ export class Kdecole {
    * user.validerAppel(appel)
    * ```
    */
-  public async validerAppel (appel:{
-    idEtab:number,
-    idAppel:number,
-    listeAbsencesAppel:{
-      idEleve:string
-      type:string
-      dateDebut:number
-      dateFin:number
-      modifiable:boolean
+  public async validerAppel (appel: {
+    idEtab: number,
+    idAppel: number,
+    listeAbsencesAppel: {
+      idEleve: string
+      type: string
+      dateDebut: number
+      dateFin: number
+      modifiable: boolean
     }[]
-  }):Promise<void> {
+  }): Promise<void> {
     await Kdecole.kdecole(this, {
       service: 'gestionAppels',
       parameters: `idetablissement/${this.idEtablissement}/valider`,
