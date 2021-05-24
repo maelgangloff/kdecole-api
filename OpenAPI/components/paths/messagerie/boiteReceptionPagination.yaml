@@ -1,6 +1,6 @@
 get:
-  summary: Retourne les détails d'un fil de discussion.
-  operationId: messagerieCommunication
+  summary: Retourne les fils de discussion.
+  operationId: messagerieBoiteReceptionPagination
   tags:
     - Messagerie
   security:
@@ -8,18 +8,18 @@ get:
     - AppVersion: [ ]
   parameters:
     - in: path
-      description: L'identifiant de la communication.
-      name: communication
+      description: Le nombre de fils de discussion les plus récents à tronquer.
+      name: pagination
       required: true
       schema:
         type: number
   responses:
     200:
-      description: Le serveur retourne le fil de discussion.
+      description: Le serveur retourne les fils de discussion.
       content:
         application/json:
           schema:
-            $ref: '../../responses/messagerie/communication.yaml'
+            $ref: '../../responses/messagerie/boiteReception.yaml'
     403:
       description: Le serveur vous refuse l'accès.
       content:

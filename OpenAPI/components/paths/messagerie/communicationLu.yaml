@@ -12,7 +12,7 @@ put:
       name: communication
       required: true
       schema:
-        type: string
+        type: number
   responses:
     200:
       description: Le serveur marque la communication lue.

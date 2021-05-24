@@ -52,7 +52,7 @@ paths:
     $ref: './components/paths/messagerie/boiteReception.yaml'
 
   /messagerie/boiteReception/{pagination}/:
-    $ref: './components/paths/messagerie/boiteReception.yaml'
+    $ref: './components/paths/messagerie/boiteReceptionPagination.yaml'
 
   /messagerie/communication/{communication}/:
     $ref: './components/paths/messagerie/communication.yaml'

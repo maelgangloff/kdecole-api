@@ -28,4 +28,16 @@ describe('Test Messagerie Boite de réception', () => {
             "url": "/messagerie/boiteReception/"
         })
     })
+    it('should call the right url and return boite de réception when pagination parameter is given', async () => {
+        expect(await user.getMessagerieBoiteReception(20)).toBeInstanceOf(MessageBoiteReception)
+        expect(axios.request).toBeCalledWith({
+            "baseURL": ApiUrl.PROD_MON_BUREAU_NUMERIQUE,
+            "data": undefined,
+            "headers": {"X-Kdecole-Auth": authToken, "X-Kdecole-Vers": APP_VERSION},
+            validateStatus: expect.any(Function),
+            "method": "get",
+            "responseType": "json",
+            "url": "/messagerie/boiteReception/20/"
+        })
+    })
 })
