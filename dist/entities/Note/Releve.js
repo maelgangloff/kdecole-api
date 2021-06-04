@@ -5,8 +5,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const Trimestre_1 = __importDefault(require("./Trimestre"));
 class Releve {
+    trimestres = [];
     constructor(releve) {
-        this.trimestres = [];
         releve.forEach(trimestre => this.trimestres.push(new Trimestre_1.default(trimestre)));
     }
 }

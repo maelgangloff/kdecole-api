@@ -5,8 +5,15 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const Attachment_1 = __importDefault(require("../Messagerie/Attachment"));
 class ContenuArticle {
+    titre;
+    codeHTML;
+    date;
+    url;
+    auteur;
+    type;
+    pjs = [];
+    errmsg;
     constructor(contenuArticle) {
-        this.pjs = [];
         this.errmsg = contenuArticle.errmsg;
         this.titre = contenuArticle.titre;
         this.codeHTML = contenuArticle.codeHTML;

@@ -1,6 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class Travail {
+    type;
+    temps;
+    matiere;
+    flagRealise;
+    titre;
+    date;
+    uid;
+    uidSeance;
     constructor(travailAFaire) {
         this.type = travailAFaire.type;
         this.temps = travailAFaire.temps;

@@ -1,6 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class AbsenceEleveAppel {
+    idAbsence;
+    type;
+    dateDebut;
+    dateFin;
+    idMotif;
+    modifiable;
+    idEleve;
     constructor(absenceEleveAppel) {
         this.idAbsence = absenceEleveAppel.idAbsence;
         this.type = absenceEleveAppel.type;

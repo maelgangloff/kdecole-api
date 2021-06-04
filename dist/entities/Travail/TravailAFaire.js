@@ -5,8 +5,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const ListeTravaux_1 = __importDefault(require("./ListeTravaux"));
 class TravailAFaire {
+    tafOuvert;
+    listeTravaux = [];
+    errmsg;
     constructor(travailAFaire) {
-        this.listeTravaux = [];
         this.errmsg = travailAFaire.errmsg;
         this.tafOuvert = travailAFaire.tafOuvert;
         travailAFaire.listeTravaux.forEach(listeTravaux => this.listeTravaux.push(new ListeTravaux_1.default(listeTravaux)));

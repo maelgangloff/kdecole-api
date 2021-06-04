@@ -21,7 +21,7 @@ function lint(cb) {
 }
 
 function build (cb) {
-  exec('npx tsc', (err, stdout, stderr)=>{
+  exec('npx tsc -p ./tsconfig.json', (err, stdout, stderr)=>{
     console.log(stderr);
     cb(err);
   })

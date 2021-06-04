@@ -6,9 +6,17 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Eleve_1 = __importDefault(require("./Eleve"));
 const Etablissement_1 = __importDefault(require("./Etablissement"));
 class Utilisateur {
+    type;
+    nom;
+    eleves = [];
+    xiti;
+    idEtablissementSelectionne;
+    idEleveSelectionne;
+    protection;
+    etabs = [];
+    timezone;
+    errmsg;
     constructor(utilisateur) {
-        this.eleves = [];
-        this.etabs = [];
         this.errmsg = utilisateur.errmsg;
         this.type = utilisateur.type;
         this.nom = utilisateur.nom;

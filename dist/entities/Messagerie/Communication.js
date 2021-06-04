@@ -6,9 +6,22 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Participant_1 = __importDefault(require("./Participant"));
 const Participation_1 = __importDefault(require("./Participation"));
 class Communication {
+    participants = [];
+    expediteurActuel;
+    signalable;
+    expediteurInitial;
+    id;
+    dateDernierMessage;
+    nbParticipations;
+    isExpediteurInitial;
+    pieceJointe;
+    participations = [];
+    objet;
+    type;
+    etat;
+    premieresLignes;
+    etatLecure;
     constructor(communication) {
-        this.participants = [];
-        this.participations = [];
         communication.participants?.forEach(participant => this.participants.push(new Participant_1.default(participant)));
         this.expediteurActuel = new Participant_1.default(communication.expediteurActuel);
         this.signalable = communication.signalable;

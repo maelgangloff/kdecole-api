@@ -47,9 +47,9 @@ export declare const APP_VERSION = ApiVersion.PROD_MON_BUREAU_NUMERIQUE;
 /**
  * Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
  *
- * L'accès à l'API requiert une en-tête avec la version de l'application en cours d'utilisation.
- * Les versions à utiliser lors de la création de l'instance `Kdecole` sont données ci-dessous.
+ * L'accès à l'API requiert une en-tête (header) avec la version de l'application en cours d'utilisation.
  *
+ * Les versions à utiliser lors de la création de l'instance `Kdecole` sont données ci-dessous.
  * |         Nom de l'ENT           | Version   | URL de l'API                                              |
  * |:----------------------------:  |:-------:  |---------------------------------------------------------  |
  * |     Mon Bureau Numérique       |  3.4.14   | https://mobilite.monbureaunumerique.fr/mobilite           |
@@ -66,6 +66,11 @@ export declare const APP_VERSION = ApiVersion.PROD_MON_BUREAU_NUMERIQUE;
  * | Webcollège Seine-Saint-Denis   |  3.7.14   | https://mobilite.webcollege.seinesaintdenis.fr/mobilite   |
  * |           Eclat-BFC            |  3.5.3    | https://mobilite.eclat-bfc.fr/mobilite                    |
  *
+ * Une autre méthode pour obtenir un token est d'utiliser la commande
+ *
+ *```shell
+ * npx kdecole -u USERNAME -p CODE -ent PROD_MON_BUREAU_NUMERIQUE
+ * ```
  * @example ```js
  * const { Kdecole } = require('kdecole-api')
  *
@@ -76,12 +81,12 @@ export declare const APP_VERSION = ApiVersion.PROD_MON_BUREAU_NUMERIQUE;
  */
 export declare class Kdecole {
     private readonly authToken;
-    appVersion: string;
+    appVersion: ApiVersion | string;
     idEtablissement: number;
-    apiURL: string;
+    apiURL: ApiUrl | string;
     /**
      * @param {string} authToken Le jeton d'accès
-     * @param {string} appVersion La version de l'application mobile autorisée par l'API
+     * @param {ApiVersion|string} appVersion La version de l'application mobile autorisée par l'API
      * @param {number} idEtablissement L'identifiant de l'établissement
      * @param {ApiUrl|string} apiURL L'URL de l'API Kdecole
      */
@@ -90,15 +95,15 @@ export declare class Kdecole {
      * Retourne le jeton d'accès de l'utilisateur
      * @param {string} username Le nom d'utilisateur
      * @param {string} password Le mot de passe à usage unique
-     * @param {string} appVersion La version de l'application mobile autorisée par l'API
-     * @param {apiURL} apiUrl L'URL de l'API Kdecole
+     * @param {ApiVersion|string} appVersion La version de l'application mobile autorisée par l'API
+     * @param {apiURL|string} apiUrl L'URL de l'API Kdecole
      * @return {Promise<string>}
      * @example ```js
      * const { Kdecole } = require('kdecole-api')
-     * Kdecole.login(username, uniquePassword).then(token => console.log(token)) // Affiche dans la console son token
+     * Kdecole.login(username, uniquePassword).then(token => console.log(token)) // Affiche son token dans la console
      * ```
      */
-    static login(username: string, password: string, appVersion?: ApiVersion | string, apiUrl?: ApiUrl): Promise<string>;
+    static login(username: string, password: string, appVersion?: ApiVersion | string, apiUrl?: ApiUrl | string): Promise<string>;
     /**
      * Invalide le jeton d'accès
      * @example ```js

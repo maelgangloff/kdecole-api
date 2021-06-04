@@ -5,8 +5,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const ListeJourCdt_1 = __importDefault(require("./ListeJourCdt"));
 class Calendrier {
+    currentDate;
+    listeJourCdt = [];
+    cdtOuvert;
+    errmsg;
     constructor(calendrier) {
-        this.listeJourCdt = [];
         this.errmsg = calendrier.errmsg;
         this.currentDate = new Date(calendrier.currentDate);
         this.cdtOuvert = calendrier.cdtOuvert;

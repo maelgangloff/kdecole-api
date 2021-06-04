@@ -5,8 +5,12 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const Note_1 = __importDefault(require("./Note"));
 class NotesList {
+    moduleNotesActif;
+    codeEleve;
+    nbNotesMax;
+    listeNotes = [];
+    errmsg;
     constructor(notesList) {
-        this.listeNotes = [];
         this.errmsg = notesList.errmsg;
         this.codeEleve = notesList.codeEleve;
         this.moduleNotesActif = notesList.moduleNotesActif;

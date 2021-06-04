@@ -1,6 +1,22 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class Note {
+    note;
+    date;
+    medianeClasse;
+    noteMin;
+    appreciation;
+    bareme;
+    coefficient;
+    id;
+    titreDevoir;
+    noteMax;
+    facultatif;
+    moyenne;
+    comptabilise;
+    commentaireDevoir;
+    matiere;
+    sousMatiere;
     constructor(note) {
         this.note = Note.stringNoteToNumber(note.note);
         this.date = new Date(note.date);

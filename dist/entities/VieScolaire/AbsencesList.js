@@ -5,8 +5,11 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const Absence_1 = __importDefault(require("./Absence"));
 class AbsencesList {
+    codeEleve;
+    nbAbsencesMax;
+    listeAbsences = [];
+    errmsg;
     constructor(absenceList) {
-        this.listeAbsences = [];
         this.errmsg = absenceList.errmsg;
         this.codeEleve = absenceList.codeEleve;
         this.nbAbsencesMax = absenceList.nbAbsencesMax;

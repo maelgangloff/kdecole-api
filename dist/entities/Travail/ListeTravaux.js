@@ -5,8 +5,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const Travail_1 = __importDefault(require("./Travail"));
 class ListeTravaux {
+    date;
+    listTravail = [];
     constructor(listTravaux) {
-        this.listTravail = [];
         this.date = new Date(listTravaux.date);
         listTravaux.listTravail.forEach(travail => this.listTravail.push(new Travail_1.default(travail)));
     }

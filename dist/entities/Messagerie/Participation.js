@@ -6,8 +6,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const Attachment_1 = __importDefault(require("./Attachment"));
 const Participant_1 = __importDefault(require("./Participant"));
 class Participation {
+    dateEnvoi;
+    corpsMessage;
+    pjs = [];
+    id;
+    libelleObjet;
+    redacteur;
+    premieresLignes;
+    typeMessage;
     constructor(participation) {
-        this.pjs = [];
         this.dateEnvoi = new Date(participation.dateEnvoi);
         this.corpsMessage = participation.corpsMessage;
         participation.pjs.forEach(pj => this.pjs.push(new Attachment_1.default(pj)));

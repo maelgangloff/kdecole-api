@@ -1,6 +1,13 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 class Actualite {
+    type;
+    auteur;
+    codeEmetteur;
+    date;
+    uid;
+    titre;
+    errmsg;
     constructor(article) {
         this.errmsg = article.errmsg;
         this.type = article.type;

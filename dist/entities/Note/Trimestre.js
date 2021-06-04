@@ -5,8 +5,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const Matiere_1 = __importDefault(require("./Matiere"));
 class Trimestre {
+    matieres = [];
+    idPeriode;
+    libelleClasse;
+    periodeLibelle;
+    periodeEnCours;
+    bareme;
     constructor(trimestre) {
-        this.matieres = [];
         trimestre.matieres.forEach(matiere => this.matieres.push(new Matiere_1.default(matiere)));
         this.idPeriode = trimestre.idPeriode;
         this.libelleClasse = trimestre.libelleClasse;

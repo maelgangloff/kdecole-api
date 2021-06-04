@@ -1,103 +1,11 @@
-## Classes
-
-<dl>
-<dt><a href="#Kdecole">Kdecole</a></dt>
-<dd><p>Support non-officiel de l&#39;API Kdecole (Mon Bureau Numérique, Skolengo, etc.)</p>
-<p>L&#39;accès à l&#39;API requiert une en-tête avec la version de l&#39;application en cours d&#39;utilisation.
-Les versions à utiliser lors de la création de l&#39;instance <code>Kdecole</code> sont données ci-dessous.</p>
-<table>
-<thead>
-<tr>
-<th align="center">Nom de l&#39;ENT</th>
-<th align="center">Version</th>
-<th>URL de l&#39;API</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="center">Mon Bureau Numérique</td>
-<td align="center">3.4.14</td>
-<td><a href="https://mobilite.monbureaunumerique.fr/mobilite">https://mobilite.monbureaunumerique.fr/mobilite</a></td>
-</tr>
-<tr>
-<td align="center">Mon ENT Occitanie</td>
-<td align="center">3.5.2</td>
-<td><a href="https://mobilite.mon-ent-occitanie.fr/mobilite">https://mobilite.mon-ent-occitanie.fr/mobilite</a></td>
-</tr>
-<tr>
-<td align="center">Arsene 76</td>
-<td align="center">3.7.11</td>
-<td><a href="https://mobilite.arsene76.fr/mobilite">https://mobilite.arsene76.fr/mobilite</a></td>
-</tr>
-<tr>
-<td align="center">ENT27</td>
-<td align="center">3.5.6</td>
-<td><a href="https://mobilite.ent27.fr/mobilite">https://mobilite.ent27.fr/mobilite</a></td>
-</tr>
-<tr>
-<td align="center">ENT Creuse</td>
-<td align="center">3.5.6</td>
-<td><a href="https://mobilite.entcreuse.fr/mobilite">https://mobilite.entcreuse.fr/mobilite</a></td>
-</tr>
-<tr>
-<td align="center">ENT Auvergne-Rhône-Alpes</td>
-<td align="center">3.7.11</td>
-<td><a href="https://mobilite.ent.auvergnerhonealpes.fr/mobilite">https://mobilite.ent.auvergnerhonealpes.fr/mobilite</a></td>
-</tr>
-<tr>
-<td align="center">Savoirs Numériques 62</td>
-<td align="center">3.5.4</td>
-<td><a href="https://mobilite.savoirsnumeriques62.fr/mobilite">https://mobilite.savoirsnumeriques62.fr/mobilite</a></td>
-</tr>
-<tr>
-<td align="center">Agora 06</td>
-<td align="center">3.7.14</td>
-<td><a href="https://mobilite.agora06.fr/mobilite">https://mobilite.agora06.fr/mobilite</a></td>
-</tr>
-<tr>
-<td align="center">CyberCollèges 42</td>
-<td align="center">3.5.6</td>
-<td><a href="https://mobilite.cybercolleges42.fr/mobilite">https://mobilite.cybercolleges42.fr/mobilite</a></td>
-</tr>
-<tr>
-<td align="center">eCollège 31 Haute-Garonne</td>
-<td align="center">3.1.15</td>
-<td><a href="https://mobilite.ecollege.haute-garonne.fr/mobilite">https://mobilite.ecollege.haute-garonne.fr/mobilite</a></td>
-</tr>
-<tr>
-<td align="center">Mon collège en Val d&#39;Oise</td>
-<td align="center">3.4.11</td>
-<td><a href="https://mobilite.moncollege.valdoise.fr/mobilite">https://mobilite.moncollege.valdoise.fr/mobilite</a></td>
-</tr>
-<tr>
-<td align="center">Webcollège Seine-Saint-Denis</td>
-<td align="center">3.7.14</td>
-<td><a href="https://mobilite.webcollege.seinesaintdenis.fr/mobilite">https://mobilite.webcollege.seinesaintdenis.fr/mobilite</a></td>
-</tr>
-<tr>
-<td align="center">Eclat-BFC</td>
-<td align="center">3.5.3</td>
-<td><a href="https://mobilite.eclat-bfc.fr/mobilite">https://mobilite.eclat-bfc.fr/mobilite</a></td>
-</tr>
-</tbody></table>
-</dd>
-</dl>
-
-## Functions
-
-<dl>
-<dt><a href="#cli">cli()</a></dt>
-<dd><p>Pour obtenir un jeton d&#39;authentification, vous pouvez utiliser la ligne de commande</p>
-</dd>
-</dl>
-
 <a name="Kdecole"></a>
 
 ## Kdecole
 Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
 
-L'accès à l'API requiert une en-tête avec la version de l'application en cours d'utilisation.
-Les versions à utiliser lors de la création de l'instance `Kdecole` sont données ci-dessous.
+L'accès à l'API requiert une en-tête (header) avec la version de l'application en cours d'utilisation.
 
+Les versions à utiliser lors de la création de l'instance `Kdecole` sont données ci-dessous.
 |         Nom de l'ENT           | Version   | URL de l'API                                              |
 |:----------------------------:  |:-------:  |---------------------------------------------------------  |
 |     Mon Bureau Numérique       |  3.4.14   | https://mobilite.monbureaunumerique.fr/mobilite           |
@@ -113,6 +21,12 @@ Les versions à utiliser lors de la création de l'instance `Kdecole` sont donn�
 |   Mon collège en Val d'Oise    |  3.4.11   | https://mobilite.moncollege.valdoise.fr/mobilite          |
 | Webcollège Seine-Saint-Denis   |  3.7.14   | https://mobilite.webcollege.seinesaintdenis.fr/mobilite   |
 |           Eclat-BFC            |  3.5.3    | https://mobilite.eclat-bfc.fr/mobilite                    |
+
+Une autre méthode pour obtenir un token est d'utiliser la commande
+
+```shell
+npx kdecole -u USERNAME -p CODE -ent PROD_MON_BUREAU_NUMERIQUE
+```
 
 **Kind**: global class  
 
@@ -150,7 +64,7 @@ Les versions à utiliser lors de la création de l'instance `Kdecole` sont donn�
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | authToken | <code>string</code> |  | Le jeton d'accès |
-| appVersion | <code>string</code> |  | La version de l'application mobile autorisée par l'API |
+| appVersion | <code>ApiVersion</code> \| <code>string</code> |  | La version de l'application mobile autorisée par l'API |
 | idEtablissement | <code>number</code> | <code>0</code> | L'identifiant de l'établissement |
 | apiURL | <code>ApiUrl</code> \| <code>string</code> |  | L'URL de l'API Kdecole |
 
@@ -587,21 +501,11 @@ Retourne le jeton d'accès de l'utilisateur
 | --- | --- | --- |
 | username | <code>string</code> | Le nom d'utilisateur |
 | password | <code>string</code> | Le mot de passe à usage unique |
-| appVersion | <code>string</code> | La version de l'application mobile autorisée par l'API |
-| apiUrl | <code>apiURL</code> | L'URL de l'API Kdecole |
+| appVersion | <code>ApiVersion</code> \| <code>string</code> | La version de l'application mobile autorisée par l'API |
+| apiUrl | <code>apiURL</code> \| <code>string</code> | L'URL de l'API Kdecole |
 
 **Example**  
 ```js
 const { Kdecole } = require('kdecole-api')
-Kdecole.login(username, uniquePassword).then(token => console.log(token)) // Affiche dans la console son token
-```
-<a name="cli"></a>
-
-## cli()
-Pour obtenir un jeton d'authentification, vous pouvez utiliser la ligne de commande
-
-**Kind**: global function  
-**Example**  
-```bash
-npx kdecole <identifiant> <code_activation_mobile>
+Kdecole.login(username, uniquePassword).then(token => console.log(token)) // Affiche son token dans la console
 ```

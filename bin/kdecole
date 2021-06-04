@@ -1,2 +1,35 @@
 #!/usr/bin/env node
-require('../dist/cli').cli(process.argv);
+const yargs = require('yargs')
+const { Kdecole, ApiVersion, ApiUrl } = require('../dist/Kdecole.js')
+
+const {u, p, ent} = yargs
+  .usage('Usage: -u <username> -p <uniquePassword> -e <ENT>')
+  .option('u', { alias: 'username', describe: "Nom d'utilisateur", demandOption: true })
+  .option('p', { alias: 'password', describe: 'Mot de passe unique', demandOption: true })
+  .option('e', {
+    alias: 'ent',
+    describe: "ENT auquel s'authentifier",
+    choices: [
+      'PROD_MON_BUREAU_NUMERIQUE',
+      'PROD_MON_ENT_OCCITANIE',
+      'PROD_ARSENE76',
+      'PROD_ENT27',
+      'PROD_ENTCREUSE',
+      'PROD_AUVERGNERHONEALPES',
+      'PROD_SAVOIRSNUMERIQUES62',
+      'PROD_AGORA06',
+      'PROD_CYBERCOLLEGES42',
+      'PROD_ECOLLEGE_HAUTE_GARONNE',
+      'PROD_MONCOLLEGE_VALDOISE',
+      'PROD_WEBCOLLEGE_SEINESAINTDENIS',
+      'PROD_ECLAT_BFC',
+      'PROD_DEMO_SKOLENGO'
+    ],
+    demandOption: false,
+  })
+  .argv
+
+Kdecole.login(u, p, ApiVersion[ent], ApiUrl[ent]).then(token => {
+  console.log(token)
+  console.log('ATTENTION: Ce token octroie un accès majeur à votre compte et ne doit donc jamais être transmis à un tiers.')
+}).catch(console.log)

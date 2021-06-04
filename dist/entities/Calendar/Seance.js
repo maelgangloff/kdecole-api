@@ -5,10 +5,21 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const Exercice_1 = __importDefault(require("./Exercice"));
 class Seance {
+    hdeb;
+    enSeance = [];
+    matiere;
+    aFaire = [];
+    heureFin;
+    flagModif;
+    flagActif;
+    heureDebut;
+    hfin;
+    aRendre = [];
+    motifModif;
+    idSeance;
+    salle;
+    titre;
     constructor(seance) {
-        this.enSeance = [];
-        this.aFaire = [];
-        this.aRendre = [];
         this.hdeb = new Date(seance.hdeb);
         seance.enSeance?.forEach(enSeance => this.enSeance?.push(new Exercice_1.default(enSeance)));
         this.matiere = seance.matiere;

@@ -79,9 +79,9 @@ export const APP_VERSION = ApiVersion.PROD_MON_BUREAU_NUMERIQUE
 /**
  * Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
  *
- * L'accès à l'API requiert une en-tête avec la version de l'application en cours d'utilisation.
- * Les versions à utiliser lors de la création de l'instance `Kdecole` sont données ci-dessous.
+ * L'accès à l'API requiert une en-tête (header) avec la version de l'application en cours d'utilisation.
  *
+ * Les versions à utiliser lors de la création de l'instance `Kdecole` sont données ci-dessous.
  * |         Nom de l'ENT           | Version   | URL de l'API                                              |
  * |:----------------------------:  |:-------:  |---------------------------------------------------------  |
  * |     Mon Bureau Numérique       |  3.4.14   | https://mobilite.monbureaunumerique.fr/mobilite           |
@@ -98,6 +98,11 @@ export const APP_VERSION = ApiVersion.PROD_MON_BUREAU_NUMERIQUE
  * | Webcollège Seine-Saint-Denis   |  3.7.14   | https://mobilite.webcollege.seinesaintdenis.fr/mobilite   |
  * |           Eclat-BFC            |  3.5.3    | https://mobilite.eclat-bfc.fr/mobilite                    |
  *
+ * Une autre méthode pour obtenir un token est d'utiliser la commande
+ *
+ *```shell
+ * npx kdecole -u USERNAME -p CODE -ent PROD_MON_BUREAU_NUMERIQUE
+ * ```
  * @example ```js
  * const { Kdecole } = require('kdecole-api')
  *
@@ -107,52 +112,39 @@ export const APP_VERSION = ApiVersion.PROD_MON_BUREAU_NUMERIQUE
  * ```
  */
 export class Kdecole {
-  private readonly authToken: string
-  public appVersion: string
-  public idEtablissement: number
-  public apiURL: string
-
   /**
    * @param {string} authToken Le jeton d'accès
-   * @param {string} appVersion La version de l'application mobile autorisée par l'API
+   * @param {ApiVersion|string} appVersion La version de l'application mobile autorisée par l'API
    * @param {number} idEtablissement L'identifiant de l'établissement
    * @param {ApiUrl|string} apiURL L'URL de l'API Kdecole
    */
   constructor (
-    authToken: string,
-    appVersion: ApiVersion | string = ApiVersion.PROD_MON_BUREAU_NUMERIQUE,
-    idEtablissement = 0,
-    apiURL: ApiUrl | string = ApiUrl.PROD_MON_BUREAU_NUMERIQUE
+    private readonly authToken: string,
+    public appVersion: ApiVersion | string = ApiVersion.PROD_MON_BUREAU_NUMERIQUE,
+    public idEtablissement: number = 0,
+    public apiURL: ApiUrl | string = ApiUrl.PROD_MON_BUREAU_NUMERIQUE
   ) {
-    if (authToken === undefined) {
-      throw Error('Un jeton d\'accès doit être renseigné')
-    }
-    this.authToken = authToken
-    this.appVersion = appVersion
-    this.idEtablissement = idEtablissement
-    this.apiURL = apiURL
+    if (authToken === undefined) throw Error('Un jeton d\'accès doit être renseigné')
   }
 
   /**
    * Retourne le jeton d'accès de l'utilisateur
    * @param {string} username Le nom d'utilisateur
    * @param {string} password Le mot de passe à usage unique
-   * @param {string} appVersion La version de l'application mobile autorisée par l'API
-   * @param {apiURL} apiUrl L'URL de l'API Kdecole
+   * @param {ApiVersion|string} appVersion La version de l'application mobile autorisée par l'API
+   * @param {apiURL|string} apiUrl L'URL de l'API Kdecole
    * @return {Promise<string>}
    * @example ```js
    * const { Kdecole } = require('kdecole-api')
-   * Kdecole.login(username, uniquePassword).then(token => console.log(token)) // Affiche dans la console son token
+   * Kdecole.login(username, uniquePassword).then(token => console.log(token)) // Affiche son token dans la console
    * ```
    */
-  public static async login (username: string, password: string, appVersion: ApiVersion | string = ApiVersion.PROD_MON_BUREAU_NUMERIQUE, apiUrl: ApiUrl = ApiUrl.PROD_MON_BUREAU_NUMERIQUE): Promise<string> {
+  public static async login (username: string, password: string, appVersion: ApiVersion | string = ApiVersion.PROD_MON_BUREAU_NUMERIQUE, apiUrl: ApiUrl | string = ApiUrl.PROD_MON_BUREAU_NUMERIQUE): Promise<string> {
     const activation = new Activation(await Kdecole.kdecole(new Kdecole('', appVersion, 0, apiUrl), {
       service: 'activation',
       parameters: `${username}/${password}`
     }))
-    if (activation.authtoken && activation.success) {
-      return activation.authtoken
-    }
+    if (activation.authtoken && activation.success) return activation.authtoken
     throw Error('L\'authentification n\'a pas fonctionné')
   }
 
@@ -188,10 +180,7 @@ export class Kdecole {
    * @return {Promise<void>}
    */
   public async starting (): Promise<void> {
-    await Kdecole.kdecole(this, {
-      service: 'starting',
-      parameters: ''
-    })
+    await Kdecole.kdecole(this, { service: 'starting' })
   }
 
   /**
@@ -614,7 +603,13 @@ export class Kdecole {
     type = 'get',
     data
   }: KdecoleRequest): Promise<any> {
-    if (parameters === undefined && service !== 'desactivation' && service !== 'messagerie/info' && service !== 'messagerie/communication' && service !== 'messagerie/boiteReception' && service !== 'infoutilisateur') parameters = `idetablissement/${ctx.idEtablissement}`
+    if (parameters === undefined &&
+      service !== 'desactivation' &&
+      service !== 'messagerie/info' &&
+      service !== 'messagerie/communication' &&
+      service !== 'messagerie/boiteReception' &&
+      service !== 'starting' &&
+      service !== 'infoutilisateur') parameters = `idetablissement/${ctx.idEtablissement}`
     return (await axios.request({
       baseURL: ctx.apiURL,
       headers: {
