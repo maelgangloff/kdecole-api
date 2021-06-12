@@ -6,6 +6,7 @@ Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
 L'accès à l'API requiert une en-tête (header) avec la version de l'application en cours d'utilisation.
 
 Les versions à utiliser lors de la création de l'instance `Kdecole` sont données ci-dessous.
+
 |         Nom de l'ENT           | Version   | URL de l'API                                              |
 |:----------------------------:  |:-------:  |---------------------------------------------------------  |
 |     Mon Bureau Numérique       |  3.4.14   | https://mobilite.monbureaunumerique.fr/mobilite           |
@@ -22,10 +23,10 @@ Les versions à utiliser lors de la création de l'instance `Kdecole` sont donn�
 | Webcollège Seine-Saint-Denis   |  3.7.14   | https://mobilite.webcollege.seinesaintdenis.fr/mobilite   |
 |           Eclat-BFC            |  3.5.3    | https://mobilite.eclat-bfc.fr/mobilite                    |
 
-Une autre méthode pour obtenir un token est d'utiliser la commande
+Une autre méthode pour obtenir un token est d'utiliser la ligne de commande.
 
 ```shell
-npx kdecole -u USERNAME -p CODE -ent PROD_MON_BUREAU_NUMERIQUE
+npx kdecole-api -u USERNAME -p CODE -ent PROD_MON_BUREAU_NUMERIQUE
 ```
 
 **Kind**: global class  

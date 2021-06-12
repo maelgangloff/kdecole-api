@@ -61,6 +61,7 @@ exports.APP_VERSION = ApiVersion.PROD_MON_BUREAU_NUMERIQUE;
  * L'accès à l'API requiert une en-tête (header) avec la version de l'application en cours d'utilisation.
  *
  * Les versions à utiliser lors de la création de l'instance `Kdecole` sont données ci-dessous.
+ *
  * |         Nom de l'ENT           | Version   | URL de l'API                                              |
  * |:----------------------------:  |:-------:  |---------------------------------------------------------  |
  * |     Mon Bureau Numérique       |  3.4.14   | https://mobilite.monbureaunumerique.fr/mobilite           |
@@ -77,10 +78,10 @@ exports.APP_VERSION = ApiVersion.PROD_MON_BUREAU_NUMERIQUE;
  * | Webcollège Seine-Saint-Denis   |  3.7.14   | https://mobilite.webcollege.seinesaintdenis.fr/mobilite   |
  * |           Eclat-BFC            |  3.5.3    | https://mobilite.eclat-bfc.fr/mobilite                    |
  *
- * Une autre méthode pour obtenir un token est d'utiliser la commande
+ * Une autre méthode pour obtenir un token est d'utiliser la ligne de commande.
  *
  *```shell
- * npx kdecole -u USERNAME -p CODE -ent PROD_MON_BUREAU_NUMERIQUE
+ * npx kdecole-api -u USERNAME -p CODE -ent PROD_MON_BUREAU_NUMERIQUE
  * ```
  * @example ```js
  * const { Kdecole } = require('kdecole-api')
