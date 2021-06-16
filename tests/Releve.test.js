@@ -64,8 +64,4 @@ describe('Test Releve', () => {
         const releve = await user.getReleve()
         expect(releve.exportCSV().matieres).toBe(readFileSync(__dirname + '/fakeData/csv/matieres.csv', 'utf8'))
     })
-    it('should return correct devoirs csv', async () => {
-        const releve = await user.getReleve()
-        expect(releve.exportCSV().devoirs).toBe(readFileSync(__dirname + '/fakeData/csv/devoirs.csv', 'utf8'))
-    })
 })
