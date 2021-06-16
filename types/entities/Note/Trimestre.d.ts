@@ -43,12 +43,12 @@ export default class Trimestre {
      * Retourne la moyenne générale de l'élève
      * @return {number}
      */
-    getMoyenneGenerale(): number | false;
+    getMoyenneGenerale(): number | null;
     /**
      * Retourne la médiane des moyennes des matières de l'élève
      * @return {number}
      */
-    getMedianeGenerale(): number | false;
+    getMedianeGenerale(): number | null;
     /**
      * Retourne un tableau contenant les moyennes des matières de l'élève
      * @return {number[]}

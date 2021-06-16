@@ -34,4 +34,9 @@ export default class Releve {
         periodeEnCours: boolean;
         bareme: string;
     }>);
+    exportCSV(): {
+        devoirs: string;
+        trimestres: string;
+        matieres: string;
+    };
 }

@@ -26,7 +26,7 @@ class Trimestre {
     getMoyenneGenerale() {
         const moyennes = this.getTableauMoyennes();
         if (moyennes.length === 0)
-            return false;
+            return null;
         let moyenneGenerale = 0;
         for (const moyenne of moyennes) {
             moyenneGenerale += moyenne / moyennes.length;
@@ -40,7 +40,7 @@ class Trimestre {
     getMedianeGenerale() {
         let moyennes = this.getTableauMoyennes();
         if (moyennes.length === 0)
-            return false;
+            return null;
         moyennes = moyennes.slice(0).sort(function (x, y) {
             return x - y;
         });

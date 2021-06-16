@@ -1,6 +1,8 @@
 import axios from 'axios'
 import Releve from "../dist/entities/Note/Releve.js";
 import {APP_VERSION, ApiUrl} from "../dist/Kdecole";
+import {readFileSync} from "fs"
+import * as fs from "fs";
 
 const { Kdecole } = require('../dist/Kdecole.js')
 
@@ -31,17 +33,14 @@ describe('Test Releve', () => {
     })
     it('should return moyenneGenerale and medianeGenerale', async () => {
         const releve = await user.getReleve()
-        const expectedMoyennesGenerales = ["14.55", "15.83", false]
+        const expectedMoyennesGenerales = ["14.55", "15.83", null]
         expect(releve).toBeInstanceOf(Releve)
         for (const trimestre in releve.trimestres) {
             const moyenneGenerale = releve.trimestres[trimestre].getMoyenneGenerale()
-            switch (typeof moyenneGenerale) {
-                case "number":
-                    expect(moyenneGenerale.toFixed(2)).toBe(expectedMoyennesGenerales[trimestre])
-                    break
-                case "boolean":
-                    expect(moyenneGenerale).toBe(expectedMoyennesGenerales[trimestre])
-                    break
+            if(moyenneGenerale === null) {
+                expect(moyenneGenerale).toBe(expectedMoyennesGenerales[trimestre])
+            } else {
+                expect(moyenneGenerale.toFixed(2)).toBe(expectedMoyennesGenerales[trimestre])
             }
         }
     })
@@ -56,5 +55,17 @@ describe('Test Releve', () => {
             "responseType": "json",
             "url": "/consulterReleves/ideleve/AAP05567/"
         })
+    })
+    it('should return correct trimestres csv', async () => {
+        const releve = await user.getReleve()
+        expect(releve.exportCSV().trimestres).toBe(readFileSync(__dirname + '/fakeData/csv/trimestres.csv', 'utf8'))
+    })
+    it('should return correct matieres csv', async () => {
+        const releve = await user.getReleve()
+        expect(releve.exportCSV().matieres).toBe(readFileSync(__dirname + '/fakeData/csv/matieres.csv', 'utf8'))
+    })
+    it('should return correct devoirs csv', async () => {
+        const releve = await user.getReleve()
+        expect(releve.exportCSV().devoirs).toBe(readFileSync(__dirname + '/fakeData/csv/devoirs.csv', 'utf8'))
     })
 })

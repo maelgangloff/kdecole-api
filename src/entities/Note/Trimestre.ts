@@ -53,9 +53,9 @@ export default class Trimestre {
    * Retourne la moyenne générale de l'élève
    * @return {number}
    */
-  public getMoyenneGenerale (): number|false {
+  public getMoyenneGenerale (): number|null {
     const moyennes = this.getTableauMoyennes()
-    if (moyennes.length === 0) return false
+    if (moyennes.length === 0) return null
     let moyenneGenerale = 0
     for (const moyenne of moyennes) {
       moyenneGenerale += moyenne / moyennes.length
@@ -67,9 +67,9 @@ export default class Trimestre {
    * Retourne la médiane des moyennes des matières de l'élève
    * @return {number}
    */
-  public getMedianeGenerale (): number|false {
+  public getMedianeGenerale (): number|null {
     let moyennes = this.getTableauMoyennes()
-    if (moyennes.length === 0) return false
+    if (moyennes.length === 0) return null
     moyennes = moyennes.slice(0).sort(function (x, y) {
       return x - y
     })
