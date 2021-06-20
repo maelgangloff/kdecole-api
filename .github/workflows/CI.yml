@@ -1,4 +1,4 @@
-name: Testing and linting
+name: CI
 
 on: [push, pull_request]
 
@@ -11,7 +11,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v1
         with:
-          node-version: 15.x
+          node-version: 16.x
       - name: Cache Node Modules
         id: cache-node-modules
         uses: actions/cache@v2
@@ -24,7 +24,7 @@ jobs:
         run: yarn install
 
       - name: Lint
-        run: yarn eslint src --ext .ts
+        run: npx eslint src tests --ext .ts
 
       - name: Test
-        run: yarn jest
+        run: npx jest
