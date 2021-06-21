@@ -1,6 +1,0 @@
-type: object
-properties:
-  dateEnvoi:
-    type: number
-  corpsMessage:
-    type: string

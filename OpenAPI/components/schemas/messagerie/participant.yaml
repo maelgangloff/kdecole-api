@@ -1,8 +1,0 @@
-type: object
-nullable: true
-properties:
-  id:
-    type: string
-    nullable: true
-  libelle:
-    type: string

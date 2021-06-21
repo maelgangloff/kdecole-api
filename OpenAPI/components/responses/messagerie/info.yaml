@@ -1,6 +1,0 @@
-type: object
-properties:
-  nbMessagesNonLus:
-    type: number
-example:
-  nbMessagesNonLus: 123
