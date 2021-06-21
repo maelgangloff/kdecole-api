@@ -40,14 +40,10 @@ paths:
       tags:
         - Utilisateur
       responses:
-        200:
+        204:
           description: L'information a été prise en compte.
-        default:
-          description: Le serveur vous refuse l'accès.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
 
   /activation/{username}/{password}/:
     get:
@@ -78,12 +74,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/activation'
-        default:
-          description: Mauvais identifiants.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
 
   /desactivation/:
     get:
@@ -98,12 +90,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/activation'
-        default:
-          description: Le token fournit est invalide.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
 
   /infoutilisateur/:
     get:
@@ -118,12 +106,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/infoUtilisateur'
-        default:
-          description: Le serveur vous refuse l'accès.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
 
 
   /infoutilisateur/ideleve/{ideleve}/:
@@ -146,12 +130,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/infoUtilisateur'
-        default:
-          description: Le serveur vous refuse l'accès.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
 
   /messagerie/info/:
     get:
@@ -166,12 +146,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/messagerieInfo'
-        default:
-          description: Le serveur vous refuse l'accès.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
   /messagerie/boiteReception/:
     get:
       summary: Retourne les fils de discussion.
@@ -185,12 +161,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/messagerieBoiteReception'
-        default:
-          description: Le serveur vous refuse l'accès.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
 
   /messagerie/boiteReception/{pagination}/:
     get:
@@ -212,12 +184,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/messagerieBoiteReception'
-        default:
-          description: Le serveur vous refuse l'accès.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
 
   /messagerie/communication/{communication}/:
     get:
@@ -239,12 +207,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/messagerieCommunication'
-        default:
-          description: Le serveur vous refuse l'accès.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
 
   /messagerie/communication/lu/{communication}/:
     put:
@@ -262,12 +226,8 @@ paths:
       responses:
         200:
           description: Le serveur marque la communication lue.
-        default:
-          description: Le serveur vous refuse l'accès.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
 
   /messagerie/communication/nouvelleParticipation/{communication}/:
     put:
@@ -292,12 +252,8 @@ paths:
       responses:
         200:
           description: Le serveur prend en compte la nouvelle participation au fil de messages.
-        default:
-          description: Le serveur vous refuse l'accès.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
 
   /messagerie/communication/supprimer/{communication}/:
     delete:
@@ -315,12 +271,8 @@ paths:
       responses:
         200:
           description: Le serveur prend en compte la suppression du fil de discussion de la boite mail.
-        default:
-          description: Le serveur vous refuse l'accès.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
 
   /messagerie/communication/signaler/{communication}/:
     put:
@@ -338,12 +290,8 @@ paths:
       responses:
         200:
           description: Le serveur prend en compte le signalement du fil de discussion.
-        default:
-          description: Le serveur vous refuse l'accès.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
 
   /consulterAbsences/ideleve/{ideleve}/:
     get:
@@ -365,16 +313,12 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/vieScolaireConsulterAbsences'
-        default:
-          description: Le serveur vous refuse l'accès.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
 
   /consulterAbsences/idetablissement/{idetablissement}/:
     get:
-      summary: Consulter les absences de l'utilisateur actel (ou de l'élève sélectionné par défaut si l'utilisateur est un parent).
+      summary: Consulter les absences de l'utilisateur actuel (ou de l'élève sélectionné par défaut si l'utilisateur est un parent).
       operationId: getAbsences
       tags:
         - Vie scolaire
@@ -392,12 +336,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/vieScolaireConsulterAbsences'
-        default:
-          description: Le serveur vous refuse l'accès.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
 
   /actualites/idetablissement/{idetablissement}/:
     get:
@@ -419,12 +359,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/etablissementActualites'
-        default:
-          description: Le serveur vous refuse l'accès.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
   /actualites/ideleve/{ideleve}/:
     get:
       summary: Consulter les dernières actualités de l'établissement d'un élève.
@@ -445,12 +381,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/etablissementActualites'
-        default:
-          description: Le serveur vous refuse l'accès.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
 
   /contenuArticle/article/{article}/:
     get:
@@ -472,12 +404,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/etablissementContenuArticle'
-        default:
-          description: Le serveur vous refuse l'accès.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
 
   /calendrier/idetablissement/{idetablissement}/:
     get:
@@ -499,12 +427,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/eleveConsulterEDT'
-        default:
-          description: Le serveur vous refuse l'accès.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
 
   /calendrier/ideleve/{ideleve}/:
     get:
@@ -526,12 +450,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/eleveConsulterEDT'
-        default:
-          description: Le serveur vous refuse l'accès.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
 
   /consulterNotes/idetablissement/{idetablissement}/:
     get:
@@ -553,12 +473,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/eleveConsulterNotes'
-        default:
-          description: Le serveur vous refuse l'accès.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
 
   /consulterNotes/ideleve/{ideleve}/:
     get:
@@ -580,12 +496,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/eleveConsulterNotes'
-        default:
-          description: Le serveur vous refuse l'accès.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
 
   /consulterReleves/idetablissement/{idetablissement}/:
     get:
@@ -607,12 +519,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/eleveConsulterReleve'
-        default:
-          description: Le serveur vous refuse l'accès.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
 
   /consulterReleves/ideleve/{ideleve}/:
     get:
@@ -634,12 +542,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/eleveConsulterReleve'
-        default:
-          description: Le serveur vous refuse l'accès.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
 
   /travailAFaire/idetablissement/{idetablissement}/:
     get:
@@ -661,12 +565,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/eleveConsulterTravailAFaire'
-        default:
-          description: Le serveur vous refuse l'accès.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
 
   /travailAFaire/ideleve/{ideleve}/:
     get:
@@ -688,12 +588,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/eleveConsulterTravailAFaire'
-        default:
-          description: Le serveur vous refuse l'accès.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
 
   /contenuActivite/idetablissement/{idetablissement}/{seance}/{travail}/:
     get:
@@ -727,12 +623,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/eleveConsulterActivite'
-        default:
-          description: Le serveur vous refuse l'accès.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
     put:
       summary: Marquer le devoir fait.
       operationId: setHomeworkMade
@@ -771,12 +663,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/flagRealise'
-        default:
-          description: Le serveur vous refuse l'accès.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
 
   /contenuActivite/ideleve/{ideleve}/{seance}/{travail}/:
     get:
@@ -810,12 +698,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/eleveConsulterActivite'
-        default:
-          description: Le serveur vous refuse l'accès.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
 
   /gestionAppels/idetablissement/{idetablissement}/:
     get:
@@ -837,12 +721,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/profGestionAppels'
-        default:
-          description: Le serveur vous refuse l'accès.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
 
   /gestionAppels/idetablissement/{idetablissement}/valider/:
     put:
@@ -867,12 +747,8 @@ paths:
       responses:
         200:
           description: Le serveur prend en compte l'appel.
-        default:
-          description: Le serveur vous refuse l'accès.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/errmsg'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
 components:
   securitySchemes:
     authToken:
@@ -1437,6 +1313,16 @@ components:
                 type: number
               modifiable:
                 type: boolean
+  responses:
+    badAuthenticationData:
+      description: Le serveur vous refuse l'accès.
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              errmsg:
+                $ref: '#/components/schemas/errmsg'
 security:
   - authToken: [ ]
   - appVersion: [ ]
