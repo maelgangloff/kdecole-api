@@ -13,7 +13,6 @@ import Communication from './entities/Messagerie/Communication';
 import GestionAppels from './entities/Prof/GestionAppels';
 export declare enum ApiUrl {
     PROD_MON_BUREAU_NUMERIQUE = "https://mobilite.monbureaunumerique.fr/mobilite",
-    PREPROD_MON_BUREAU_NUMERIQUE = "https://mobilite.preprod.monbureaunumerique.fr/mobilite",
     PROD_MON_ENT_OCCITANIE = "https://mobilite.mon-ent-occitanie.fr/mobilite",
     PROD_ARSENE76 = "https://mobilite.arsene76.fr/mobilite",
     PROD_ENT27 = "https://mobilite.ent27.fr/mobilite",
@@ -31,21 +30,22 @@ export declare enum ApiUrl {
     PROD_DEMO_SKOLENGO = "https://mobilite.demo.skolengo.com/mobilite"
 }
 export declare enum ApiVersion {
-    PROD_MON_BUREAU_NUMERIQUE = "3.4.14",
-    PROD_MON_ENT_OCCITANIE = "3.5.2",
-    PROD_ARSENE76 = "3.7.11",
-    PROD_ENT27 = "3.5.6",
-    PROD_ENTCREUSE = "3.5.6",
-    PROD_AUVERGNERHONEALPES = "3.7.11",
-    PROD_SAVOIRSNUMERIQUES62 = "3.5.4",
+    PROD_MON_BUREAU_NUMERIQUE = "3.7.14",
+    PROD_MON_ENT_OCCITANIE = "3.7.14",
+    PROD_ARSENE76 = "3.7.14",
+    PROD_ENT27 = "3.7.14",
+    PROD_ENTCREUSE = "3.7.14",
+    PROD_AUVERGNERHONEALPES = "3.7.14",
+    PROD_SAVOIRSNUMERIQUES62 = "3.7.14",
     PROD_AGORA06 = "3.7.14",
-    PROD_CYBERCOLLEGES42 = "3.5.6",
-    PROD_ECOLLEGE_HAUTE_GARONNE = "3.1.15",
-    PROD_MONCOLLEGE_VALDOISE = "3.4.11",
+    PROD_CYBERCOLLEGES42 = "3.7.14",
+    PROD_ECOLLEGE_HAUTE_GARONNE = "3.7.14",
+    PROD_MONCOLLEGE_VALDOISE = "3.7.14",
     PROD_WEBCOLLEGE_SEINESAINTDENIS = "3.7.14",
-    PROD_ECLAT_BFC = "3.5.3",
+    PROD_ECLAT_BFC = "3.7.14",
     PROD_AUCOLLEGE84_VAUCLUSE = "3.7.14",
-    PROD_KOSMOS_EDUCATION = "3.7.14"
+    PROD_KOSMOS_EDUCATION = "3.7.14",
+    PROD_DEMO_SKOLENGO = "3.7.14"
 }
 /**
  * Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
@@ -56,21 +56,22 @@ export declare enum ApiVersion {
  *
  * |          Nom de l'ENT         | Version | URL de l'API                                            |
  * |:-----------------------------:|:-------:|---------------------------------------------------------|
- * |      Mon Bureau Numérique     |  3.4.14 | https://mobilite.monbureaunumerique.fr/mobilite         |
- * |       Mon ENT Occitanie       |  3.5.2  | https://mobilite.mon-ent-occitanie.fr/mobilite          |
- * |           Arsene 76           |  3.7.11 | https://mobilite.arsene76.fr/mobilite                   |
- * |             ENT27             |  3.5.6  | https://mobilite.ent27.fr/mobilite                      |
- * |           ENT Creuse          |  3.5.6  | https://mobilite.entcreuse.fr/mobilite                  |
- * |    ENT Auvergne-Rhône-Alpes   |  3.7.11 | https://mobilite.ent.auvergnerhonealpes.fr/mobilite     |
- * |     Savoirs Numériques 62     |  3.5.4  | https://mobilite.savoirsnumeriques62.fr/mobilite        |
+ * |      Mon Bureau Numérique     |  3.7.14 | https://mobilite.monbureaunumerique.fr/mobilite         |
+ * |       Mon ENT Occitanie       |  3.7.14 | https://mobilite.mon-ent-occitanie.fr/mobilite          |
+ * |           Arsene 76           |  3.7.14 | https://mobilite.arsene76.fr/mobilite                   |
+ * |             ENT27             |  3.7.14 | https://mobilite.ent27.fr/mobilite                      |
+ * |           ENT Creuse          |  3.7.14 | https://mobilite.entcreuse.fr/mobilite                  |
+ * |    ENT Auvergne-Rhône-Alpes   |  3.7.14 | https://mobilite.ent.auvergnerhonealpes.fr/mobilite     |
+ * |     Savoirs Numériques 62     |  3.7.14 | https://mobilite.savoirsnumeriques62.fr/mobilite        |
  * |            Agora 06           |  3.7.14 | https://mobilite.agora06.fr/mobilite                    |
- * |        CyberCollèges 42       |  3.5.6  | https://mobilite.cybercolleges42.fr/mobilite            |
- * |   eCollège 31 Haute-Garonne   |  3.1.15 | https://mobilite.ecollege.haute-garonne.fr/mobilite     |
- * |   Mon collège en Val d'Oise   |  3.4.11 | https://mobilite.moncollege.valdoise.fr/mobilite        |
+ * |        CyberCollèges 42       |  3.7.14 | https://mobilite.cybercolleges42.fr/mobilite            |
+ * |   eCollège 31 Haute-Garonne   |  3.7.14 | https://mobilite.ecollege.haute-garonne.fr/mobilite     |
+ * |   Mon collège en Val d'Oise   |  3.7.14 | https://mobilite.moncollege.valdoise.fr/mobilite        |
  * |  Webcollège Seine-Saint-Denis |  3.7.14 | https://mobilite.webcollege.seinesaintdenis.fr/mobilite |
- * |           Eclat-BFC           |  3.5.3  | https://mobilite.eclat-bfc.fr/mobilite                  |
+ * |           Eclat-BFC           |  3.7.14 | https://mobilite.eclat-bfc.fr/mobilite                  |
  * |          @ucollège84          |  3.7.14 | https://mobilite.aucollege84.vaucluse.fr/mobilite       |
- * | Kosmos Éducation (aefe, etc.) |  3.7.14 | https://mobilite.kosmoseducation.com/mobilite          |
+ * |         Skolengo Demo         |  3.7.14 | https://mobilite.demo.skolengo.com/mobilite             |
+ * | Kosmos Éducation (aefe, etc.) |  3.7.14 | https://mobilite.kosmoseducation.com/mobilite           |
  *
  * Une autre méthode pour obtenir un token est d'utiliser la ligne de commande.
  *

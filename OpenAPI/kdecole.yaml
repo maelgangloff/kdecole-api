@@ -762,7 +762,7 @@ components:
       type: apiKey
       in: header
       name: X-Kdecole-Vers
-      description: La version de l'application mobile (3.4.14 actuellement pour Mon Bureau Numérique)
+      description: La version de l'application mobile
   schemas:
     errmsg:
       nullable: true
