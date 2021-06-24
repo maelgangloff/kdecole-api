@@ -1,5 +1,5 @@
 {
-  "name": "kdecole-api",
+  "name": "@maelgangloff/kdecole-api",
   "version": "1.2.3",
   "main": "dist/Kdecole.js",
   "types": "types/Kdecole.d.ts",

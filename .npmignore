@@ -12,3 +12,4 @@ babel.config.js
 CONTRIBUTING.md
 openapi
 jest.config.js
+Makefile
