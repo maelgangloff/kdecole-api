@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Kdecole = exports.APP_VERSION = exports.ApiVersion = exports.ApiUrl = void 0;
+exports.Kdecole = exports.ApiVersion = exports.ApiUrl = void 0;
 const axios_1 = __importDefault(require("axios"));
 const Desactivation_1 = __importDefault(require("./entities/Authentication/Desactivation"));
 const Activation_1 = __importDefault(require("./entities/Authentication/Activation"));
@@ -36,6 +36,8 @@ var ApiUrl;
     ApiUrl["PROD_MONCOLLEGE_VALDOISE"] = "https://mobilite.moncollege.valdoise.fr/mobilite";
     ApiUrl["PROD_WEBCOLLEGE_SEINESAINTDENIS"] = "https://mobilite.webcollege.seinesaintdenis.fr/mobilite";
     ApiUrl["PROD_ECLAT_BFC"] = "https://mobilite.eclat-bfc.fr/mobilite";
+    ApiUrl["PROD_KOSMOS_EDUCATION"] = "https://mobilite.kosmoseducation.com/mobilite";
+    ApiUrl["PROD_AUCOLLEGE84_VAUCLUSE"] = "https://mobilite.aucollege84.vaucluse.fr/mobilite";
     ApiUrl["PROD_DEMO_SKOLENGO"] = "https://mobilite.demo.skolengo.com/mobilite";
 })(ApiUrl = exports.ApiUrl || (exports.ApiUrl = {}));
 var ApiVersion;
@@ -53,8 +55,9 @@ var ApiVersion;
     ApiVersion["PROD_MONCOLLEGE_VALDOISE"] = "3.4.11";
     ApiVersion["PROD_WEBCOLLEGE_SEINESAINTDENIS"] = "3.7.14";
     ApiVersion["PROD_ECLAT_BFC"] = "3.5.3";
+    ApiVersion["PROD_AUCOLLEGE84_VAUCLUSE"] = "3.7.14";
+    ApiVersion["PROD_KOSMOS_EDUCATION"] = "3.7.14";
 })(ApiVersion = exports.ApiVersion || (exports.ApiVersion = {}));
-exports.APP_VERSION = ApiVersion.PROD_MON_BUREAU_NUMERIQUE;
 /**
  * Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
  *
@@ -62,21 +65,23 @@ exports.APP_VERSION = ApiVersion.PROD_MON_BUREAU_NUMERIQUE;
  *
  * Les versions à utiliser lors de la création de l'instance `Kdecole` sont données ci-dessous.
  *
- * |         Nom de l'ENT           | Version   | URL de l'API                                              |
- * |:----------------------------:  |:-------:  |---------------------------------------------------------  |
- * |     Mon Bureau Numérique       |  3.4.14   | https://mobilite.monbureaunumerique.fr/mobilite           |
- * |       Mon ENT Occitanie        |  3.5.2    | https://mobilite.mon-ent-occitanie.fr/mobilite            |
- * |           Arsene 76            |  3.7.11   | https://mobilite.arsene76.fr/mobilite                     |
- * |             ENT27              |  3.5.6    | https://mobilite.ent27.fr/mobilite                        |
- * |          ENT Creuse            |  3.5.6    | https://mobilite.entcreuse.fr/mobilite                    |
- * |   ENT Auvergne-Rhône-Alpes     |  3.7.11   | https://mobilite.ent.auvergnerhonealpes.fr/mobilite       |
- * |     Savoirs Numériques 62      |  3.5.4    | https://mobilite.savoirsnumeriques62.fr/mobilite          |
- * |           Agora 06             |  3.7.14   | https://mobilite.agora06.fr/mobilite                      |
- * |       CyberCollèges 42         |  3.5.6    | https://mobilite.cybercolleges42.fr/mobilite              |
- * |    eCollège 31 Haute-Garonne   |  3.1.15   | https://mobilite.ecollege.haute-garonne.fr/mobilite       |
- * |   Mon collège en Val d'Oise    |  3.4.11   | https://mobilite.moncollege.valdoise.fr/mobilite          |
- * | Webcollège Seine-Saint-Denis   |  3.7.14   | https://mobilite.webcollege.seinesaintdenis.fr/mobilite   |
- * |           Eclat-BFC            |  3.5.3    | https://mobilite.eclat-bfc.fr/mobilite                    |
+ * |          Nom de l'ENT         | Version | URL de l'API                                            |
+ * |:-----------------------------:|:-------:|---------------------------------------------------------|
+ * |      Mon Bureau Numérique     |  3.4.14 | https://mobilite.monbureaunumerique.fr/mobilite         |
+ * |       Mon ENT Occitanie       |  3.5.2  | https://mobilite.mon-ent-occitanie.fr/mobilite          |
+ * |           Arsene 76           |  3.7.11 | https://mobilite.arsene76.fr/mobilite                   |
+ * |             ENT27             |  3.5.6  | https://mobilite.ent27.fr/mobilite                      |
+ * |           ENT Creuse          |  3.5.6  | https://mobilite.entcreuse.fr/mobilite                  |
+ * |    ENT Auvergne-Rhône-Alpes   |  3.7.11 | https://mobilite.ent.auvergnerhonealpes.fr/mobilite     |
+ * |     Savoirs Numériques 62     |  3.5.4  | https://mobilite.savoirsnumeriques62.fr/mobilite        |
+ * |            Agora 06           |  3.7.14 | https://mobilite.agora06.fr/mobilite                    |
+ * |        CyberCollèges 42       |  3.5.6  | https://mobilite.cybercolleges42.fr/mobilite            |
+ * |   eCollège 31 Haute-Garonne   |  3.1.15 | https://mobilite.ecollege.haute-garonne.fr/mobilite     |
+ * |   Mon collège en Val d'Oise   |  3.4.11 | https://mobilite.moncollege.valdoise.fr/mobilite        |
+ * |  Webcollège Seine-Saint-Denis |  3.7.14 | https://mobilite.webcollege.seinesaintdenis.fr/mobilite |
+ * |           Eclat-BFC           |  3.5.3  | https://mobilite.eclat-bfc.fr/mobilite                  |
+ * |          @ucollège84          |  3.7.14 | https://mobilite.aucollege84.vaucluse.fr/mobilite       |
+ * | Kosmos Éducation (aefe, etc.) |  3.7.14 | https://mobilite.kosmoseducation.com/mobilite          |
  *
  * Une autre méthode pour obtenir un token est d'utiliser la ligne de commande.
  *
@@ -118,8 +123,8 @@ class Kdecole {
      * @param {apiURL|string} apiUrl L'URL de l'API Kdecole
      * @return {Promise<string>}
      * @example ```js
-     * const { Kdecole } = require('kdecole-api')
-     * Kdecole.login(username, uniquePassword).then(token => console.log(token)) // Affiche son token dans la console
+     * const { Kdecole, ApiUrl, ApiVersion } = require('kdecole-api')
+     * Kdecole.login(username, uniquePassword, ApiVersion.PROD_MON_BUREAU_NUMERIQUE, ApiUrl.PROD_MON_BUREAU_NUMERIQUE).then(token => console.log(token)) // Affiche son token dans la console
      * ```
      */
     static async login(username, password, appVersion = ApiVersion.PROD_MON_BUREAU_NUMERIQUE, apiUrl = ApiUrl.PROD_MON_BUREAU_NUMERIQUE) {

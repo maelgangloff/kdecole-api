@@ -24,6 +24,8 @@ servers:
           - webcollege.seinesaintdenis.fr
           - eclat-bfc.fr
           - demo.skolengo.com
+          - aucollege84.vaucluse.fr
+          - kosmoseducation.com
 
 tags:
   - name: Utilisateur
