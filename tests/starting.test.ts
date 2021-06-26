@@ -1,5 +1,4 @@
 import axios from 'axios'
-import { readFileSync } from 'fs'
 import { ApiVersion, ApiUrl, Kdecole } from '../src/Kdecole'
 
 jest.mock('axios')
@@ -9,8 +8,6 @@ const user = new Kdecole(authToken, ApiVersion.PROD_MON_BUREAU_NUMERIQUE, 10485)
 
 describe('Test starting method', () => {
   beforeEach(() => {
-    // eslint-disable-next-line node/no-path-concat
-    readFileSync(__dirname + '/fakeData/csv/matieres.csv', 'utf8')
     mockedAxios.mockClear()
   })
 

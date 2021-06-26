@@ -40,7 +40,6 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "csv-writer": "^1.6.0",
     "yargs": "^17.0.1"
   },
   "keywords": [

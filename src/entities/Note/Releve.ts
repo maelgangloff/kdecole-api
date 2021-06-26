@@ -1,5 +1,4 @@
 import Trimestre from './Trimestre'
-import { createObjectCsvStringifier } from 'csv-writer'
 
 export default class Releve {
     public trimestres: Array<Trimestre> = []
@@ -42,42 +41,16 @@ export default class Releve {
 
     public exportCSV (): {devoirs: string, trimestres: string, matieres: string} {
       const ouiNon = (boolean: boolean) => boolean ? 'oui' : 'non'
-      const formatNumber = (number: number|null) => typeof number === 'number' && !isNaN(number) ? number.toFixed(2).replace('.', ',') : ''
+      const surroundWithQuotes = (text: string) => text.indexOf(',') === -1 ? text : `"${text}"`
+      const formatNumber = (number: number|null) => typeof number === 'number' && !isNaN(number) ? surroundWithQuotes(number.toFixed(2).replace('.', ',')) : ''
+      const arrayToCSV = (array: any[]) => array.map(obj => Object.values(obj)).map(e => e.join(',')).join('\n')
 
-      const devoirsCsvStringifier = createObjectCsvStringifier({
-        header: [
-          { id: 'periodeLibelle', title: 'Période' },
-          { id: 'matiereLibelle', title: 'Matière' },
-          { id: 'date', title: 'Date/Heure' },
-          { id: 'titreDevoir', title: 'Devoir' },
-          { id: 'coefficient', title: 'Coefficient' },
-          { id: 'bareme', title: 'Barème' },
-          { id: 'note', title: 'Note' },
-          { id: 'noteMin', title: 'Note minimale' },
-          { id: 'noteMax', title: 'Note maximale' },
-          { id: 'moyenne', title: 'Note moyenne' },
-          { id: 'medianeClasse', title: 'Note médiane' },
-          { id: 'facultatif', title: 'Facultatif' },
-          { id: 'comptabilise', title: 'Comptabilisé' }
-        ]
-      })
-      const trimestresCsvStringifier = createObjectCsvStringifier({
-        header: [
-          { id: 'periodeLibelle', title: 'Période' },
-          { id: 'moyenneGenerale', title: 'Moyenne générale élève' }
-        ]
-      })
-      const matieresCsvStringifier = createObjectCsvStringifier({
-        header: [
-          { id: 'periodeLibelle', title: 'Période' },
-          { id: 'matiereLibelle', title: 'Matière' },
-          { id: 'devoirsLength', title: 'Nombre de devoirs' },
-          { id: 'moyenneEleve', title: 'Moyenne élève' },
-          { id: 'moyenneClasse', title: 'Moyenne classe' }
-        ]
-      })
+      const devoirsHeader = ['Période', 'Matière', 'Date/Heure', 'Devoir', 'Coefficient', 'Barème', 'Note', 'Note minimale', 'Note maximale', 'Note moyenne', 'Note médiane', 'Facultatif', 'Comptabilisé']
+      const trimestresHeader = ['Période', 'Moyenne générale élève']
+      const matieresHeader = ['Période', 'Matière', 'Nombre de devoirs', 'Moyenne élève', 'Moyenne classe']
+
       return {
-        devoirs: devoirsCsvStringifier.getHeaderString() + devoirsCsvStringifier.stringifyRecords(this.trimestres.map(({ periodeLibelle, matieres }) =>
+        devoirs: arrayToCSV([devoirsHeader, ...this.trimestres.map(({ periodeLibelle, matieres }) =>
           matieres.map(({ matiereLibelle, devoirs }) =>
             devoirs.map(({
               date,
@@ -93,12 +66,12 @@ export default class Releve {
               comptabilise
             }) =>
               ({
-                periodeLibelle,
-                matiereLibelle,
+                periodeLibelle: surroundWithQuotes(periodeLibelle),
+                matiereLibelle: surroundWithQuotes(matiereLibelle),
                 date,
-                titreDevoir,
+                titreDevoir: surroundWithQuotes(titreDevoir),
                 coefficient: formatNumber(coefficient),
-                bareme,
+                bareme: bareme % 1 === 0 ? bareme : formatNumber(bareme),
                 note: formatNumber(note),
                 noteMin: formatNumber(noteMin),
                 noteMax: formatNumber(noteMax),
@@ -112,25 +85,23 @@ export default class Releve {
           .sort((a, b) => a.date.getTime() - b.date.getTime()).map(devoir => ({
             ...devoir,
             date: `${devoir.date.toLocaleDateString()} ${devoir.date.toLocaleTimeString()}`
-          }))),
-
-        trimestres: trimestresCsvStringifier.getHeaderString() + trimestresCsvStringifier.stringifyRecords(this.trimestres.map(trimestre => ({
-          periodeLibelle: trimestre.periodeLibelle,
+          }))]),
+        trimestres: arrayToCSV([trimestresHeader, ...this.trimestres.map(trimestre => ({
+          periodeLibelle: surroundWithQuotes(trimestre.periodeLibelle),
           moyenneGenerale: formatNumber(trimestre.getMoyenneGenerale())
-        }))),
-
-        matieres: matieresCsvStringifier.getHeaderString() + matieresCsvStringifier.stringifyRecords(this.trimestres.map(({ periodeLibelle, matieres }) => matieres.map(({
+        }))]),
+        matieres: arrayToCSV([matieresHeader, ...this.trimestres.map(({ periodeLibelle, matieres }) => matieres.map(({
           matiereLibelle,
           devoirs,
           moyenneEleve,
           moyenneClasse
         }) => ({
-          periodeLibelle,
-          matiereLibelle,
+          periodeLibelle: surroundWithQuotes(periodeLibelle),
+          matiereLibelle: surroundWithQuotes(matiereLibelle),
           devoirsLength: devoirs.length,
           moyenneEleve: formatNumber(moyenneEleve),
           moyenneClasse: formatNumber(moyenneClasse)
-        }))).flat(2))
+        }))).flat(2)])
       }
     }
 }
