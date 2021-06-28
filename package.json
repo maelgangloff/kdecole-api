@@ -20,7 +20,7 @@
     "@types/jest": "^26.0.23",
     "@types/node": "^15.0.1",
     "@typescript-eslint/eslint-plugin": "^4.10.0",
-    "@typescript-eslint/parser": "^4.10.0",
+    "@typescript-eslint/parser": "^4.28.0",
     "eslint": "^7.16.0",
     "jest": "^27.0.4",
     "jsdoc-to-markdown": "^7.0.0",
