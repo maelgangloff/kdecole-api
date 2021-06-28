@@ -22,7 +22,7 @@
     "@typescript-eslint/eslint-plugin": "^4.10.0",
     "@typescript-eslint/parser": "^4.28.0",
     "eslint": "^7.16.0",
-    "jest": "^27.0.4",
+    "jest": "^27.0.5",
     "jsdoc-to-markdown": "^7.0.0",
     "ts-jest": "^27.0.3",
     "ts-standard": "^10.0.0",
