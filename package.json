@@ -26,7 +26,7 @@
     "jsdoc-to-markdown": "^7.0.0",
     "ts-jest": "^27.0.3",
     "ts-standard": "^10.0.0",
-    "typescript": "^4.1.2"
+    "typescript": "^4.3.5"
   },
   "scripts": {
     "build": "npx tsc -p tsconfig.json",
