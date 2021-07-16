@@ -5,6 +5,8 @@ Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
 
 L'accès à l'API requiert une en-tête (header) avec la version de l'application en cours d'utilisation.
 
+Le terme "code" ou "password" ne réfère pas ici à votre mot de passe, mais à un code temporaire généré par votre ENT (dans paramètres > application mobile). C'est comme cela que fonctionne l'authentification à l'API.
+
 Les versions à utiliser lors de la création de l'instance `Kdecole` sont données ci-dessous.
 
 |          Nom de l'ENT         | Version | URL de l'API                                            |
