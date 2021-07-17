@@ -23,6 +23,6 @@ export default class AbsencesList {
       this.errmsg = absenceList.errmsg
       this.codeEleve = absenceList.codeEleve
       this.nbAbsencesMax = absenceList.nbAbsencesMax
-      absenceList.listeAbsences.forEach(absence => this.listeAbsences.push(new Absence(absence)))
+      absenceList.listeAbsences?.forEach(absence => this.listeAbsences.push(new Absence(absence)))
     }
 }
