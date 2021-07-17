@@ -1,7 +1,7 @@
 export default class Actualite {
     public type: string
     public auteur: string
-    public codeEmetteur: number
+    public codeEmetteur: string
     public date: Date
     public uid: string
     public titre: string
