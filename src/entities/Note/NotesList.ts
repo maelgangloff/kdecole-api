@@ -36,6 +36,6 @@ export default class NotesList {
       this.codeEleve = notesList.codeEleve
       this.moduleNotesActif = notesList.moduleNotesActif
       this.nbNotesMax = notesList.nbNotesMax
-      notesList.listeNotes.forEach(note => this.listeNotes.push(new Note(note)))
+      notesList.listeNotes?.forEach(note => this.listeNotes.push(new Note(note)))
     }
 }
