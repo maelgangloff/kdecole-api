@@ -4,28 +4,38 @@ info:
   description: Tentative de définition de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
   version: 1.0.0
 servers:
-  - url: https://mobilite.{ENT}/mobilite
-    variables:
-      ENT:
-        default: monbureaunumerique.fr
-        enum:
-          - monbureaunumerique.fr
-          - preprod.monbureaunumerique.fr
-          - mon-ent-occitanie.fr
-          - arsene76.fr
-          - ent27.fr
-          - entcreuse.fr
-          - ent.auvergnerhonealpes.fr
-          - moncollege.valdoise.fr
-          - savoirsnumeriques62.fr
-          - agora06.fr
-          - cybercolleges42.fr
-          - ecollege.haute-garonne.fr
-          - webcollege.seinesaintdenis.fr
-          - eclat-bfc.fr
-          - demo.skolengo.com
-          - aucollege84.vaucluse.fr
-          - kosmoseducation.com
+  - url: https://mobilite.monbureaunumerique.fr/mobilite
+    description: Mon Bureau Numérique
+  - url: https://mobilite.mon-ent-occitanie.fr/mobilite
+    description: Mon ENT Occitanie
+  - url: https://mobilite.arsene76.fr/mobilite
+    description: Arsene 76
+  - url: https://mobilite.ent27.fr/mobilite
+    description: ENT27
+  - url: https://mobilite.entcreuse.fr/mobilite
+    description: ENT Creuse
+  - url: https://mobilite.ent.auvergnerhonealpes.fr/mobilite
+    description: ENT Auvergne-Rhône-Alpes
+  - url: https://mobilite.savoirsnumeriques62.fr/mobilite
+    description: Savoirs Numériques 62
+  - url: https://mobilite.agora06.fr/mobilite
+    description: Agora 06
+  - url: https://mobilite.cybercolleges42.fr/mobilite
+    description: CyberCollèges 42
+  - url: https://mobilite.ecollege.haute-garonne.fr/mobilite
+    description: eCollège 31 Haute-Garonne
+  - url: https://mobilite.moncollege.valdoise.fr/mobilite
+    description: Mon collège en Val d'Oise
+  - url: https://mobilite.webcollege.seinesaintdenis.fr/mobilite
+    description: Webcollège Seine-Saint-Denis
+  - url: https://mobilite.eclat-bfc.fr/mobilite
+    description: Eclat-BFC
+  - url: https://mobilite.aucollege84.vaucluse.fr/mobilite
+    description: '@ucollège84'
+  - url: https://mobilite.demo.skolengo.com/mobilite
+    description: Skolengo Demo
+  - url: https://mobilite.kosmoseducation.com/mobilite
+    description: Kosmos Éducation (aefe, etc.)
 
 tags:
   - name: Utilisateur
@@ -178,7 +188,7 @@ paths:
           name: pagination
           required: true
           schema:
-            type: number
+            type: integer
       responses:
         200:
           description: Le serveur retourne les fils de discussion.
@@ -201,7 +211,7 @@ paths:
           name: communication
           required: true
           schema:
-            type: number
+            type: integer
       responses:
         200:
           description: Le serveur retourne le fil de discussion.
@@ -224,7 +234,7 @@ paths:
           name: communication
           required: true
           schema:
-            type: number
+            type: integer
       responses:
         200:
           description: Le serveur marque la communication lue.
@@ -611,13 +621,13 @@ paths:
           name: seance
           required: true
           schema:
-            type: number
+            type: integer
         - in: path
           description: L'identifiant du travail à faire.
           name: travail
           required: true
           schema:
-            type: number
+            type: integer
       responses:
         200:
           description: Le serveur renvoit les détails du travail à faire.
@@ -651,13 +661,13 @@ paths:
           name: seance
           required: true
           schema:
-            type: number
+            type: integer
         - in: path
           description: L'identifiant du travail à faire.
           name: travail
           required: true
           schema:
-            type: number
+            type: integer
       responses:
         200:
           description: Le serveur confirme le changement.
@@ -686,13 +696,13 @@ paths:
           name: seance
           required: true
           schema:
-            type: number
+            type: integer
         - in: path
           description: L'identifiant du travail à faire.
           name: travail
           required: true
           schema:
-            type: number
+            type: integer
       responses:
         200:
           description: Le serveur renvoit les détails du travail à faire.
@@ -771,13 +781,13 @@ components:
         titre:
           type: string
         code:
-          type: number
+          type: integer
         type:
           type: string
         message:
           type: string
         tempsvalide:
-          type: number
+          type: integer
     activation:
       type: object
       properties:
@@ -794,7 +804,7 @@ components:
         errmsg:
           $ref: '#/components/schemas/errmsg'
         type:
-          type: number
+          type: integer
           description: Le type de compte (élève, parent, prof, etc.)
         nom:
           type: string
@@ -858,7 +868,7 @@ components:
         type: object
         properties:
           idRessource:
-            type: number
+            type: integer
             nullable: true
           url:
             type: string
@@ -872,7 +882,7 @@ components:
       type: object
       properties:
         nbMessagesNonLus:
-          type: number
+          type: integer
     messagerieParticipant:
       type: object
       nullable: true
@@ -889,13 +899,13 @@ components:
         type: object
         properties:
           dateEnvoi:
-            type: number
+            type: integer
           corpsMessage:
             type: string
           pjs:
             $ref: '#/components/schemas/pieceJointe'
           id:
-            type: number
+            type: integer
           libelleObjet:
             type: string
             nullable: true
@@ -921,11 +931,11 @@ components:
           expediteurInitial:
             $ref: '#/components/schemas/messagerieParticipant'
           id:
-            type: number
+            type: integer
           dateDernierMessage:
-            type: number
+            type: integer
           nbParticipants:
-            type: number
+            type: integer
           isExpediteurInitial:
             type: boolean
           pieceJointe:
@@ -948,20 +958,20 @@ components:
       type: object
       properties:
         nbMaxCommunicationRecues:
-          type: number
+          type: integer
         communications:
           type: array
           items:
             $ref: '#/components/schemas/messagerieCommunication'
         nbMaxCaracteresMessage:
-          type: number
+          type: integer
         nbMaxCommunicationBoiteReception:
-          type: number
+          type: integer
     messagerieNouvelleParticipation:
       type: object
       properties:
         dateEnvoi:
-          type: number
+          type: integer
         corpsMessage:
           type: string
     vieScolaireConsulterAbsences:
@@ -972,14 +982,14 @@ components:
         codeEleve:
           type: string
         nbAbsencesMax:
-          type: number
+          type: integer
         listeAbsences:
           type: array
           items:
             type: object
             properties:
               dateFin:
-                type: number
+                type: integer
               motif:
                 type: string
                 nullable: true
@@ -988,7 +998,7 @@ components:
               matiere:
                 type: string
               dateDebut:
-                type: number
+                type: integer
               justifiee:
                 type: boolean
     etablissementActualites:
@@ -1007,7 +1017,7 @@ components:
           titre:
             type: string
           date:
-            type: number
+            type: integer
           uid:
             type: string
     etablissementContenuArticle:
@@ -1020,7 +1030,7 @@ components:
         codeHTML:
           type: string
         date:
-          type: number
+          type: integer
         url:
           type: string
         auteur:
@@ -1037,9 +1047,9 @@ components:
         type:
           type: string
         uid:
-          type: number
+          type: integer
         date:
-          type: number
+          type: integer
         titre:
           type: string
     eleveConsulterEDT:
@@ -1048,7 +1058,7 @@ components:
         errmsg:
           $ref: '#/components/schemas/errmsg'
         currentDate:
-          type: number
+          type: integer
         listeJourCdt:
           type: array
           items:
@@ -1060,7 +1070,7 @@ components:
                   type: object
                   properties:
                     hdeb:
-                      type: number
+                      type: integer
                     enSeance:
                       nullable: true
                       type: array
@@ -1084,7 +1094,7 @@ components:
                     heureDebut:
                       type: string
                     hFin:
-                      type: number
+                      type: integer
                     aRendre:
                       type: array
                       nullable: true
@@ -1093,22 +1103,22 @@ components:
                     motifModif:
                       type: string
                     idSeance:
-                      type: number
+                      type: integer
                     salle:
                       type: string
               date:
-                type: number
+                type: integer
         cdtOuvert:
           type: boolean
     note:
       type: object
       properties:
         coefficient:
-          type: number
+          type: integer
         pjs:
           $ref: '#/components/schemas/pieceJointe'
         id:
-          type: number
+          type: integer
         titreDevoir:
           type: string
         noteMax:
@@ -1134,12 +1144,12 @@ components:
           nullable: true
           type: string
         bareme:
-          type: number
+          type: integer
         matiere:
           type: string
           nullable: true
         date:
-          type: number
+          type: integer
         note:
           type: string
           nullable: true
@@ -1156,7 +1166,7 @@ components:
         codeEleve:
           type: string
         nbNotesMax:
-          type: number
+          type: integer
         listeNotes:
           type: array
           items:
@@ -1200,14 +1210,14 @@ components:
             type: object
             properties:
               date:
-                type: number
+                type: integer
               listTravail:
                 type: object
                 properties:
                   type:
                     type: string
                   temps:
-                    type: number
+                    type: integer
                   matiere:
                     type: string
                   flagRealise:
@@ -1215,7 +1225,7 @@ components:
                   titre:
                     type: string
                   date:
-                    type: number
+                    type: integer
                   uid:
                     type: string
                   uidSeance:
@@ -1239,7 +1249,7 @@ components:
         titre:
           type: string
         date:
-          type: number
+          type: integer
         isFaitModifiable:
           type: boolean
         type:
@@ -1252,7 +1262,7 @@ components:
       type: object
       properties:
         dateDuJour:
-          type: number
+          type: integer
         listeAppels:
           type: array
           items:
@@ -1261,11 +1271,11 @@ components:
               isEnCours:
                 type: boolean
               dateDebut:
-                type: number
+                type: integer
               dateFin:
-                type: number
+                type: integer
               idAppel:
-                type: number
+                type: integer
               libelleGroupe:
                 type: string
               listeElevesAppel:
@@ -1282,13 +1292,13 @@ components:
                     nullable: true
                     properties:
                       idAbsence:
-                        type: number
+                        type: integer
                       type:
                         type: string
                       dateDebut:
-                        type: number
+                        type: integer
                       dateFin:
-                        type: number
+                        type: integer
                       idMotif:
                         type: string
                       modifiable:
@@ -1297,9 +1307,9 @@ components:
       type: object
       properties:
         idEtab:
-          type: number
+          type: integer
         idAppel:
-          type: number
+          type: integer
         listeAbsencesAppel:
           type: array
           items:
@@ -1310,9 +1320,9 @@ components:
               type:
                 type: string
               dateDebut:
-                type: number
+                type: integer
               dateFin:
-                type: number
+                type: integer
               modifiable:
                 type: boolean
   responses:
