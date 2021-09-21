@@ -1,16 +1,16 @@
 {
   "errmsg": null,
-  "currentDate": 1608015600000,
+  "currentDate": 1632204000000,
   "listeJourCdt": [
     {
       "listeSeances": [
         {
-          "hdeb": 1607670000000,
+          "hdeb": 1631858400000,
           "enSeance": [
             {
               "type": "Cours",
-              "uid": 71273,
-              "date": 1607670000000,
+              "uid": 87695,
+              "date": 1631858400000,
               "titre": "Cours"
             }
           ],
@@ -21,42 +21,261 @@
           "titre": "",
           "flagActif": true,
           "heureDebut": "08:00",
-          "hfin": 1607676600000,
+          "hfin": 1631865000000,
           "aRendre": [
             {
               "type": "Exercices",
-              "uid": 70759,
-              "date": 1607065200000,
+              "uid": 86542,
+              "date": 1631253600000,
+              "titre": "Exercices"
+            },
+            {
+              "type": "Exercices",
+              "uid": 86901,
+              "date": 1631599200000,
               "titre": "Exercices"
             }
           ],
           "motifModif": "",
-          "idSeance": 647984,
-          "salle": "256 - 1ERE1 SPE_SPC1"
+          "idSeance": 769044,
+          "salle": "256 - TLE 2 SPE_SPC_TLE"
         },
         {
-          "hdeb": 1607677800000,
-          "enSeance": null,
-          "matiere": "SPE_SVT",
-          "aFaire": null,
-          "heureFin": "12:00",
+          "hdeb": 1631866200000,
+          "enSeance": [
+            {
+              "type": "Cours",
+              "uid": 87556,
+              "date": 1631866200000,
+              "titre": "Cours"
+            }
+          ],
+          "matiere": "ENSEIG_SCIENTIFIQUE",
+          "aFaire": [
+            {
+              "type": "Exercices",
+              "uid": 87557,
+              "date": 1632434400000,
+              "titre": "Exercices"
+            }
+          ],
+          "heureFin": "11:05",
           "flagModif": false,
           "titre": "",
           "flagActif": true,
           "heureDebut": "10:10",
-          "hfin": 1607684400000,
+          "hfin": 1631869500000,
           "aRendre": null,
           "motifModif": "",
-          "idSeance": 642127,
-          "salle": "252 - 1ERE1 SPE_SVT1"
+          "idSeance": 765936,
+          "salle": "256 - TLE 2 A"
         },
         {
-          "hdeb": 1607688000000,
+          "hdeb": 1631876400000,
+          "enSeance": null,
+          "matiere": "ENSEIG_SCIENTIFIQUE",
+          "aFaire": null,
+          "heureFin": "13:55",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "13:00",
+          "hfin": 1631879700000,
+          "aRendre": [
+            {
+              "type": "Travail à faire",
+              "uid": 86531,
+              "date": 1631876400000,
+              "titre": "Rendre l'affiche sur la vaccination contre la covid 19. (rappel : consigne et documents dans \"dos..."
+            }
+          ],
+          "motifModif": "",
+          "idSeance": 750736,
+          "salle": "252 - TLE 2"
+        },
+        {
+          "hdeb": 1631879700000,
+          "enSeance": null,
+          "matiere": "SPE_MATH",
+          "aFaire": null,
+          "heureFin": "15:45",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "13:55",
+          "hfin": 1631886300000,
+          "aRendre": [
+            {
+              "type": "Préparer la séance",
+              "uid": 86584,
+              "date": 1631274900000,
+              "titre": "Préparer la séance"
+            },
+            {
+              "type": "Préparer la séance",
+              "uid": 87458,
+              "date": 1631800800000,
+              "titre": "Préparer la séance"
+            }
+          ],
+          "motifModif": "",
+          "idSeance": 775763,
+          "salle": "302 - SPE_MATH_TLE_G2"
+        }
+      ],
+      "date": 1631858400000
+    },
+    {
+      "listeSeances": [
+        {
+          "hdeb": 1632117600000,
+          "enSeance": null,
+          "matiere": "SPE_MATH",
+          "aFaire": null,
+          "heureFin": "09:50",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "08:00",
+          "hfin": 1632124200000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 768626,
+          "salle": "302 - SPE_MATHS_TLE"
+        },
+        {
+          "hdeb": 1632125400000,
+          "enSeance": null,
+          "matiere": "ED.PHYSIQUE & SPORT",
+          "aFaire": null,
+          "heureFin": "12:00",
+          "flagModif": false,
+          "titre": "EPS",
+          "flagActif": true,
+          "heureDebut": "10:10",
+          "hfin": 1632132000000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 771135,
+          "salle": "GYM - EPS_TLEG_GEN"
+        },
+        {
+          "hdeb": 1632135600000,
           "enSeance": [
             {
               "type": "Cours",
-              "uid": 71581,
-              "date": 1607688000000,
+              "uid": 87810,
+              "date": 1632135600000,
+              "titre": "entrainement à la dissertation"
+            }
+          ],
+          "matiere": "PHILOSOPHIE",
+          "aFaire": null,
+          "heureFin": "13:55",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "13:00",
+          "hfin": 1632138900000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 755556,
+          "salle": "302 - TLE 2"
+        },
+        {
+          "hdeb": 1632138900000,
+          "enSeance": null,
+          "matiere": "SPE_SPC",
+          "aFaire": null,
+          "heureFin": "15:45",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "13:55",
+          "hfin": 1632145500000,
+          "aRendre": [
+            {
+              "type": "Exercices",
+              "uid": 86902,
+              "date": 1631599200000,
+              "titre": "Exercices"
+            }
+          ],
+          "motifModif": "",
+          "idSeance": 769008,
+          "salle": "256 - TLE 2 SPE_SPC_TLE"
+        },
+        {
+          "hdeb": 1632146400000,
+          "enSeance": null,
+          "matiere": "LATIN",
+          "aFaire": null,
+          "heureFin": "17:50",
+          "flagModif": false,
+          "titre": "LCA LATIN",
+          "flagActif": true,
+          "heureDebut": "16:00",
+          "hfin": 1632153000000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 770958,
+          "salle": "303 - LATIN_TLE"
+        }
+      ],
+      "date": 1632117600000
+    },
+    {
+      "listeSeances": [
+        {
+          "hdeb": 1632204000000,
+          "enSeance": [
+            {
+              "type": "Cours",
+              "uid": 87908,
+              "date": 1632204000000,
+              "titre": "Cours"
+            }
+          ],
+          "matiere": "SPE_SPC",
+          "aFaire": [
+            {
+              "type": "Exercices",
+              "uid": 87909,
+              "date": 1632463200000,
+              "titre": "Exercices"
+            },
+            {
+              "type": "Exercices",
+              "uid": 87910,
+              "date": 1633068000000,
+              "titre": "Exercices"
+            }
+          ],
+          "heureFin": "09:50",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "08:00",
+          "hfin": 1632210600000,
+          "aRendre": [
+            {
+              "type": "Exercices",
+              "uid": 86903,
+              "date": 1631599200000,
+              "titre": "Exercices"
+            }
+          ],
+          "motifModif": "",
+          "idSeance": 768972,
+          "salle": "256 - TLE 2 SPE_SPC_TLE"
+        },
+        {
+          "hdeb": 1632211800000,
+          "enSeance": [
+            {
+              "type": "Cours",
+              "uid": 87990,
+              "date": 1632211800000,
               "titre": "Cours"
             }
           ],
@@ -64,70 +283,663 @@
           "aFaire": [
             {
               "type": "Exercices",
-              "uid": 71580,
-              "date": 1607940300000,
+              "uid": 87989,
+              "date": 1632816600000,
               "titre": "Exercices"
             }
           ],
+          "heureFin": "12:00",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "10:10",
+          "hfin": 1632218400000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 752986,
+          "salle": "302 - TLE 2"
+        },
+        {
+          "hdeb": 1632222000000,
+          "enSeance": null,
+          "matiere": "HISTOIRE-GEOGRAPHIE",
+          "aFaire": null,
+          "heureFin": "13:55",
+          "flagModif": false,
+          "titre": "HIST-GEO",
+          "flagActif": true,
+          "heureDebut": "13:00",
+          "hfin": 1632225300000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 753984,
+          "salle": "302 - TLE 2"
+        },
+        {
+          "hdeb": 1632225300000,
+          "enSeance": [
+            {
+              "type": "Cours",
+              "uid": 88106,
+              "date": 1632225300000,
+              "titre": "The Roaring Twenties "
+            }
+          ],
+          "matiere": "ANGLAIS",
+          "aFaire": null,
+          "heureFin": "14:50",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "13:55",
+          "hfin": 1632228600000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 747131,
+          "salle": "302 - TLE 2"
+        },
+        {
+          "hdeb": 1632228600000,
+          "enSeance": [
+            {
+              "type": "Cours",
+              "uid": 88092,
+              "date": 1632228600000,
+              "titre": "La nature"
+            }
+          ],
+          "matiere": "PHILOSOPHIE",
+          "aFaire": null,
+          "heureFin": "15:45",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "14:50",
+          "hfin": 1632231900000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 755592,
+          "salle": "302 - TLE 2"
+        }
+      ],
+      "date": 1632204000000
+    },
+    {
+      "listeSeances": [
+        {
+          "hdeb": 1632298200000,
+          "enSeance": null,
+          "matiere": "HISTOIRE-GEOGRAPHIE",
+          "aFaire": null,
+          "heureFin": "12:00",
+          "flagModif": false,
+          "titre": "HIST-GEO",
+          "flagActif": true,
+          "heureDebut": "10:10",
+          "hfin": 1632304800000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 753948,
+          "salle": "302 - TLE 2"
+        },
+        {
+          "hdeb": 1632308400000,
+          "enSeance": null,
+          "matiere": "EMC",
+          "aFaire": null,
           "heureFin": "13:55",
           "flagModif": false,
           "titre": "",
           "flagActif": true,
           "heureDebut": "13:00",
-          "hfin": 1607691300000,
-          "aRendre": [
-            {
-              "type": "Exercices",
-              "uid": 70900,
-              "date": 1607335500000,
-              "titre": "Exercices"
-            }
-          ],
+          "hfin": 1632311700000,
+          "aRendre": null,
           "motifModif": "",
-          "idSeance": 644967,
-          "salle": "307 - 1ERE1"
+          "idSeance": 745685,
+          "salle": "302 - TLE 2"
         },
         {
-          "hdeb": 1607691300000,
+          "hdeb": 1632311700000,
           "enSeance": null,
-          "matiere": "SPE_MATH2",
-          "aFaire": [
-            {
-              "type": "Exercices",
-              "uid": 71557,
-              "date": 1608073200000,
-              "titre": "Probabilités"
-            }
-          ],
+          "matiere": "PHILOSOPHIE",
+          "aFaire": null,
           "heureFin": "15:45",
           "flagModif": false,
           "titre": "",
           "flagActif": true,
           "heureDebut": "13:55",
-          "hfin": 1607697900000,
+          "hfin": 1632318300000,
           "aRendre": null,
           "motifModif": "",
-          "idSeance": 634609,
-          "salle": "312 - 1ERE1 SPEMATH2"
+          "idSeance": 755520,
+          "salle": "302 - TLE 2"
+        }
+      ],
+      "date": 1632298200000
+    },
+    {
+      "listeSeances": [
+        {
+          "hdeb": 1632376800000,
+          "enSeance": null,
+          "matiere": "MATHS EXPERTES",
+          "aFaire": null,
+          "heureFin": "09:50",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "08:00",
+          "hfin": 1632383400000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 776740,
+          "salle": "302 - MATHS_EXP"
         },
         {
-          "hdeb": 1607698800000,
+          "hdeb": 1632394800000,
           "enSeance": null,
-          "matiere": "LCA LATIN",
+          "matiere": "MATHS EXPERTES",
           "aFaire": null,
-          "heureFin": "16:55",
+          "heureFin": "13:55",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "13:00",
+          "hfin": 1632398100000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 770488,
+          "salle": "302 - MATHS_EXP"
+        },
+        {
+          "hdeb": 1632398100000,
+          "enSeance": null,
+          "matiere": "ANGLAIS",
+          "aFaire": null,
+          "heureFin": "14:50",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "13:55",
+          "hfin": 1632401400000,
+          "aRendre": [
+            {
+              "type": "Apprendre la leçon",
+              "uid": 87418,
+              "date": 1631793300000,
+              "titre": "compréhension orale évaluation"
+            }
+          ],
+          "motifModif": "",
+          "idSeance": 747168,
+          "salle": "302 - TLE 2"
+        },
+        {
+          "hdeb": 1632405600000,
+          "enSeance": null,
+          "matiere": "SPE_MATH",
+          "aFaire": null,
+          "heureFin": "17:50",
           "flagModif": false,
           "titre": "",
           "flagActif": true,
           "heureDebut": "16:00",
-          "hfin": 1607702100000,
+          "hfin": 1632412200000,
           "aRendre": null,
           "motifModif": "",
-          "idSeance": 638962,
-          "salle": "304 - LATIN_1ERE"
+          "idSeance": 768663,
+          "salle": "302 - SPE_MATHS_TLE"
         }
       ],
-      "date": 1607670000000
+      "date": 1632376800000
+    },
+    {
+      "listeSeances": [
+        {
+          "hdeb": 1632463200000,
+          "enSeance": null,
+          "matiere": "SPE_SPC",
+          "aFaire": null,
+          "heureFin": "09:50",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "08:00",
+          "hfin": 1632469800000,
+          "aRendre": [
+            {
+              "type": "Exercices",
+              "uid": 86904,
+              "date": 1631599200000,
+              "titre": "Exercices"
+            },
+            {
+              "type": "Exercices",
+              "uid": 87909,
+              "date": 1632204000000,
+              "titre": "Exercices"
+            }
+          ],
+          "motifModif": "",
+          "idSeance": 769045,
+          "salle": "256 - TLE 2 SPE_SPC_TLE"
+        },
+        {
+          "hdeb": 1632474300000,
+          "enSeance": null,
+          "matiere": "ENSEIG_SCIENTIFIQUE",
+          "aFaire": null,
+          "heureFin": "12:00",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "11:05",
+          "hfin": 1632477600000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 765918,
+          "salle": "252 - TLE 2 A"
+        },
+        {
+          "hdeb": 1632481200000,
+          "enSeance": null,
+          "matiere": "ENSEIG_SCIENTIFIQUE",
+          "aFaire": null,
+          "heureFin": "13:55",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "13:00",
+          "hfin": 1632484500000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 750753,
+          "salle": "256 - TLE 2"
+        },
+        {
+          "hdeb": 1632484500000,
+          "enSeance": null,
+          "matiere": "SPE_MATH",
+          "aFaire": null,
+          "heureFin": "15:45",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "13:55",
+          "hfin": 1632491100000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 775764,
+          "salle": "302 - SPE_MATH_TLE_G2"
+        }
+      ],
+      "date": 1632463200000
+    },
+    {
+      "listeSeances": [
+        {
+          "hdeb": 1632722400000,
+          "enSeance": null,
+          "matiere": "SPE_MATH",
+          "aFaire": null,
+          "heureFin": "09:50",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "08:00",
+          "hfin": 1632729000000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 768627,
+          "salle": "302 - SPE_MATHS_TLE"
+        },
+        {
+          "hdeb": 1632730200000,
+          "enSeance": null,
+          "matiere": "ED.PHYSIQUE & SPORT",
+          "aFaire": null,
+          "heureFin": "12:00",
+          "flagModif": false,
+          "titre": "EPS",
+          "flagActif": true,
+          "heureDebut": "10:10",
+          "hfin": 1632736800000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 771136,
+          "salle": "GYM - EPS_TLEG_GEN"
+        },
+        {
+          "hdeb": 1632740400000,
+          "enSeance": null,
+          "matiere": "PHILOSOPHIE",
+          "aFaire": null,
+          "heureFin": "13:55",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "13:00",
+          "hfin": 1632743700000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 755557,
+          "salle": "302 - TLE 2"
+        },
+        {
+          "hdeb": 1632743700000,
+          "enSeance": null,
+          "matiere": "SPE_SPC",
+          "aFaire": null,
+          "heureFin": "15:45",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "13:55",
+          "hfin": 1632750300000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 769009,
+          "salle": "256 - TLE 2 SPE_SPC_TLE"
+        },
+        {
+          "hdeb": 1632751200000,
+          "enSeance": null,
+          "matiere": "LATIN",
+          "aFaire": null,
+          "heureFin": "17:50",
+          "flagModif": false,
+          "titre": "LCA LATIN",
+          "flagActif": true,
+          "heureDebut": "16:00",
+          "hfin": 1632757800000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 770959,
+          "salle": "303 - LATIN_TLE"
+        }
+      ],
+      "date": 1632722400000
+    },
+    {
+      "listeSeances": [
+        {
+          "hdeb": 1632808800000,
+          "enSeance": null,
+          "matiere": "SPE_SPC",
+          "aFaire": null,
+          "heureFin": "09:50",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "08:00",
+          "hfin": 1632815400000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 768973,
+          "salle": "256 - TLE 2 SPE_SPC_TLE"
+        },
+        {
+          "hdeb": 1632816600000,
+          "enSeance": null,
+          "matiere": "ALLEMAND",
+          "aFaire": null,
+          "heureFin": "12:00",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "10:10",
+          "hfin": 1632823200000,
+          "aRendre": [
+            {
+              "type": "Exercices",
+              "uid": 87989,
+              "date": 1632211800000,
+              "titre": "Exercices"
+            }
+          ],
+          "motifModif": "",
+          "idSeance": 752987,
+          "salle": "302 - TLE 2"
+        },
+        {
+          "hdeb": 1632826800000,
+          "enSeance": null,
+          "matiere": "HISTOIRE-GEOGRAPHIE",
+          "aFaire": null,
+          "heureFin": "13:55",
+          "flagModif": false,
+          "titre": "HIST-GEO",
+          "flagActif": true,
+          "heureDebut": "13:00",
+          "hfin": 1632830100000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 753985,
+          "salle": "302 - TLE 2"
+        },
+        {
+          "hdeb": 1632830100000,
+          "enSeance": null,
+          "matiere": "ANGLAIS",
+          "aFaire": null,
+          "heureFin": "14:50",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "13:55",
+          "hfin": 1632833400000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 747132,
+          "salle": "302 - TLE 2"
+        },
+        {
+          "hdeb": 1632833400000,
+          "enSeance": null,
+          "matiere": "PHILOSOPHIE",
+          "aFaire": null,
+          "heureFin": "15:45",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "14:50",
+          "hfin": 1632836700000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 755593,
+          "salle": "302 - TLE 2"
+        }
+      ],
+      "date": 1632808800000
+    },
+    {
+      "listeSeances": [
+        {
+          "hdeb": 1632903000000,
+          "enSeance": null,
+          "matiere": "HISTOIRE-GEOGRAPHIE",
+          "aFaire": null,
+          "heureFin": "12:00",
+          "flagModif": false,
+          "titre": "HIST-GEO",
+          "flagActif": true,
+          "heureDebut": "10:10",
+          "hfin": 1632909600000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 753949,
+          "salle": "302 - TLE 2"
+        },
+        {
+          "hdeb": 1632916500000,
+          "enSeance": null,
+          "matiere": "PHILOSOPHIE",
+          "aFaire": null,
+          "heureFin": "15:45",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "13:55",
+          "hfin": 1632923100000,
+          "aRendre": [
+            {
+              "type": "Exercices",
+              "uid": 86800,
+              "date": 1631530800000,
+              "titre": "Dissertation"
+            }
+          ],
+          "motifModif": "",
+          "idSeance": 755521,
+          "salle": "302 - TLE 2"
+        }
+      ],
+      "date": 1632903000000
+    },
+    {
+      "listeSeances": [
+        {
+          "hdeb": 1632981600000,
+          "enSeance": null,
+          "matiere": "MATHS EXPERTES",
+          "aFaire": null,
+          "heureFin": "09:50",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "08:00",
+          "hfin": 1632988200000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 776741,
+          "salle": "302 - MATHS_EXP"
+        },
+        {
+          "hdeb": 1632999600000,
+          "enSeance": null,
+          "matiere": "MATHS EXPERTES",
+          "aFaire": null,
+          "heureFin": "13:55",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "13:00",
+          "hfin": 1633002900000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 770489,
+          "salle": "302 - MATHS_EXP"
+        },
+        {
+          "hdeb": 1633002900000,
+          "enSeance": null,
+          "matiere": "ANGLAIS",
+          "aFaire": null,
+          "heureFin": "14:50",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "13:55",
+          "hfin": 1633006200000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 747169,
+          "salle": "302 - TLE 2"
+        },
+        {
+          "hdeb": 1633010400000,
+          "enSeance": null,
+          "matiere": "SPE_MATH",
+          "aFaire": null,
+          "heureFin": "17:50",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "16:00",
+          "hfin": 1633017000000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 768664,
+          "salle": "302 - SPE_MATHS_TLE"
+        }
+      ],
+      "date": 1632981600000
+    },
+    {
+      "listeSeances": [
+        {
+          "hdeb": 1633068000000,
+          "enSeance": null,
+          "matiere": "SPE_SPC",
+          "aFaire": null,
+          "heureFin": "09:50",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "08:00",
+          "hfin": 1633074600000,
+          "aRendre": [
+            {
+              "type": "Exercices",
+              "uid": 87910,
+              "date": 1632204000000,
+              "titre": "Exercices"
+            }
+          ],
+          "motifModif": "",
+          "idSeance": 769046,
+          "salle": "256 - TLE 2 SPE_SPC_TLE"
+        },
+        {
+          "hdeb": 1633075800000,
+          "enSeance": null,
+          "matiere": "ENSEIG_SCIENTIFIQUE",
+          "aFaire": null,
+          "heureFin": "11:05",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "10:10",
+          "hfin": 1633079100000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 765937,
+          "salle": "256 - TLE 2 A"
+        },
+        {
+          "hdeb": 1633086000000,
+          "enSeance": null,
+          "matiere": "ENSEIG_SCIENTIFIQUE",
+          "aFaire": null,
+          "heureFin": "13:55",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "13:00",
+          "hfin": 1633089300000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 750737,
+          "salle": "252 - TLE 2"
+        },
+        {
+          "hdeb": 1633089300000,
+          "enSeance": null,
+          "matiere": "SPE_MATH",
+          "aFaire": null,
+          "heureFin": "15:45",
+          "flagModif": false,
+          "titre": "",
+          "flagActif": true,
+          "heureDebut": "13:55",
+          "hfin": 1633095900000,
+          "aRendre": null,
+          "motifModif": "",
+          "idSeance": 775765,
+          "salle": "302 - SPE_MATH_TLE_G2"
+        }
+      ],
+      "date": 1633068000000
     }
   ],
   "cdtOuvert": true

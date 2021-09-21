@@ -55,14 +55,14 @@ describe('Test Releve', () => {
   })
   it('should return correct trimestres csv', async () => {
     const releve = await user.getReleve()
-    expect(releve.exportCSV().trimestres).toBe(`Période,Moyenne générale élève
+    expect(releve.toCSV().trimestres).toBe(`Période,Moyenne générale élève
 Premier trimestre,"14,55"
 Deuxième trimestre,"15,83"
 Troisième trimestre,`)
   })
   it('should return correct matieres csv', async () => {
     const releve = await user.getReleve()
-    expect(releve.exportCSV().matieres).toBe(`Période,Matière,Nombre de devoirs,Moyenne élève,Moyenne classe
+    expect(releve.toCSV().matieres).toBe(`Période,Matière,Nombre de devoirs,Moyenne élève,Moyenne classe
 Premier trimestre,SPE_SPC,4,"19,00","16,00"
 Premier trimestre,LCA LATIN,1,"15,50","16,50"
 Premier trimestre,EMC,1,"17,00","16,50"
