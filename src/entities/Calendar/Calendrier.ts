@@ -62,6 +62,8 @@ export default class Calendrier {
 
       const numberOfWeek = (d1: Date, d2: Date): number => ((d1.getTime() - d2.getTime()) / (7 * 24 * 60 * 60 * 1000))
 
+      const getMonday = (d: Date): Date => new Date(new Date(d.setDate((d.getDate() - d.getDay()) + (d.getDay() === 0 ? -6 : 1))).setHours(0, 0, 0, 0))
+
       return `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//kdecole-api//ical//EN
@@ -70,7 +72,7 @@ TZID:Europe/Paris
 NAME:${name}
 X-WR-CALNAME:${name}
 ` + this.listeJourCdt
-        .filter(jour => this.currentDate <= jour.date && numberOfWeek(jour.date, this.currentDate) < weeks)
+        .filter(jour => getMonday(this.currentDate) <= jour.date && numberOfWeek(jour.date, this.currentDate) < weeks)
         .map(jour => jour.listeSeances).flat()
         .filter(seance => seance.flagActif)
         .reduce((acc, seance) =>
