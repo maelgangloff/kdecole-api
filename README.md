@@ -44,7 +44,7 @@ npx kdecole-api -u USERNAME -p CODE -ent PROD_MON_BUREAU_NUMERIQUE
         * [.getReleve(idEleve)](#Kdecole+getReleve) ⇒ <code>Promise.&lt;Releve&gt;</code>
         * [.getActualites(idEleve)](#Kdecole+getActualites) ⇒ <code>Promise.&lt;Array.&lt;Actualite&gt;&gt;</code>
         * [.getContenuArticle(uid)](#Kdecole+getContenuArticle) ⇒ <code>Promise.&lt;ContenuArticle&gt;</code>
-        * [.getTravailAFaire(idEleve)](#Kdecole+getTravailAFaire) ⇒ <code>Promise.&lt;TravailAFaire&gt;</code>
+        * [.getTravailAFaire(idEleve, notBeforeDate)](#Kdecole+getTravailAFaire) ⇒ <code>Promise.&lt;TravailAFaire&gt;</code>
         * [.getContenuActivite(uidSeance, uid, idEleve)](#Kdecole+getContenuActivite) ⇒ <code>Promise.&lt;ContenuActivite&gt;</code>
         * [.setActiviteFinished(uidSeance, uid, flagRealise)](#Kdecole+setActiviteFinished) ⇒ <code>Promise.&lt;void&gt;</code>
         * [.getAbsences(idEleve)](#Kdecole+getAbsences) ⇒ <code>Promise.&lt;AbsencesList&gt;</code>
@@ -134,8 +134,9 @@ kdecole.getReleve(idEleve) //Retourne le relevé d'un élève précis
 const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
-user.getReleve(idEleve).then((releve)=>{
+user.getReleve(idEleve).then(releve => {
  // Votre code
+ releve.toCSV() // Exporter son relevé des notes dans un objet contenant les devoirs au format CSV
  })
 ```
 <a name="Kdecole+getActualites"></a>
@@ -154,7 +155,7 @@ Retourne un tableau des actualités de l'établissement de l'utilisateur
 const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
-user.getActualites(idEleve).then((actualites)=>{
+user.getActualites(idEleve).then(actualites => {
  // Votre code
  })
 ```
@@ -174,13 +175,13 @@ Retourne le contenu d'un article
 const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
-user.getContenuArticle(uid).then((contenuArticle)=>{
+user.getContenuArticle(uid).then(contenuArticle => {
  // Votre code
  })
 ```
 <a name="Kdecole+getTravailAFaire"></a>
 
-### kdecole.getTravailAFaire(idEleve) ⇒ <code>Promise.&lt;TravailAFaire&gt;</code>
+### kdecole.getTravailAFaire(idEleve, notBeforeDate) ⇒ <code>Promise.&lt;TravailAFaire&gt;</code>
 Retourne la liste des devoirs de l'élève
 
 **Kind**: instance method of [<code>Kdecole</code>](#Kdecole)  
@@ -188,13 +189,14 @@ Retourne la liste des devoirs de l'élève
 | Param | Type | Description |
 | --- | --- | --- |
 | idEleve | <code>string</code> | Identifiant d'un élève |
+| notBeforeDate | <code>Date</code> | Un objet Date pour ne sélectionner que les devoirs postérieurs à une date |
 
 **Example**  
 ```js
 const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
-user.getTravailAFaire(idEleve).then((taf)=>{
+user.getTravailAFaire(idEleve).then(taf => {
  // Votre code
  })
 ```
@@ -216,7 +218,7 @@ Retourne les détails d'un devoir à faire
 const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
-user.getContenuActivite(uidSeance, uid, idEleve).then((contenuActivite)=>{
+user.getContenuActivite(uidSeance, uid, idEleve).then(contenuActivite => {
  // Votre code
  })
 ```
@@ -256,7 +258,7 @@ Retourne la liste des absences d'un élève
 const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
-user.getAbsences(idEleve).then((absences)=>{
+user.getAbsences(idEleve).then(absences => {
  // Votre code
  })
 ```
@@ -276,7 +278,7 @@ Retourne les informations d'un utilisateur (type de compte, nom complet, numéro
 const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
-user.getInfoUtilisateur(idEleve).then((infoUtilisateur)=>{
+user.getInfoUtilisateur(idEleve).then(infoUtilisateur => {
  // Votre code
  })
 ```
@@ -296,7 +298,7 @@ Retourne l'emploi du temps de l'élève à J-7 et J+7
 const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
-user.getCalendrier(idEleve).then((calendrier)=>{
+user.getCalendrier(idEleve).then(calendrier => {
  // Votre code
  })
 ```
@@ -316,7 +318,7 @@ Retourne la liste des récentes notes de l'élève
 const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
-user.getNotes(idEleve).then((notes)=>{
+user.getNotes(idEleve).then(notes => {
  // Votre code
  })
 ```
@@ -331,7 +333,7 @@ Retourne l'état de la messagerie de l'utilisateur (nombre de mails non lus)
 const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
-user.getMessagerieInfo().then((messagerieInfo)=>{
+user.getMessagerieInfo().then(messagerieInfo => {
  // Votre code
  })
 ```
@@ -352,7 +354,7 @@ Le paramètre `pagination` permet de remonter dans le passé dans la liste des f
 const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
-user.getMessagerieBoiteReception().then((messagerieBoiteReception)=>{
+user.getMessagerieBoiteReception().then(messagerieBoiteReception => {
  // Votre code
  })
 ```
@@ -372,7 +374,7 @@ Retourne les détails d'un fil de discussion
 const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
-user.getCommunication(id).then((communication)=>{
+user.getCommunication(id).then(communication => {
  // Votre code
  })
 ```
@@ -461,7 +463,7 @@ Retourne les feuilles d'appel.
 const { Kdecole } = require('kdecole-api')
 
 const user = new Kdecole(AUTH_TOKEN)
-user.gestionAppels().then((gestionAppels)=>{
+user.gestionAppels().then(gestionAppels => {
  // Votre code
  })
 ```

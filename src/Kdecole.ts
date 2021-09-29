@@ -203,8 +203,9 @@ export class Kdecole {
    * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
-   * user.getReleve(idEleve).then((releve)=>{
+   * user.getReleve(idEleve).then(releve => {
    *  // Votre code
+   *  releve.toCSV() // Exporter son relevé des notes dans un objet contenant les devoirs au format CSV
    *  })
    * ```
    */
@@ -223,7 +224,7 @@ export class Kdecole {
    * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
-   * user.getActualites(idEleve).then((actualites)=>{
+   * user.getActualites(idEleve).then(actualites => {
    *  // Votre code
    *  })
    * ```
@@ -247,7 +248,7 @@ export class Kdecole {
    * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
-   * user.getContenuArticle(uid).then((contenuArticle)=>{
+   * user.getContenuArticle(uid).then(contenuArticle => {
    *  // Votre code
    *  })
    * ```
@@ -262,20 +263,21 @@ export class Kdecole {
   /**
    * Retourne la liste des devoirs de l'élève
    * @param {string} idEleve Identifiant d'un élève
+   * @param notBeforeDate {Date} Un objet Date pour ne sélectionner que les devoirs postérieurs à une date
    * @return {Promise<TravailAFaire>}
    * @example ```js
    * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
-   * user.getTravailAFaire(idEleve).then((taf)=>{
+   * user.getTravailAFaire(idEleve).then(taf => {
    *  // Votre code
    *  })
    * ```
    */
-  public async getTravailAFaire (idEleve?: string): Promise<TravailAFaire> {
+  public async getTravailAFaire (idEleve?: string, notBeforeDate?: Date): Promise<TravailAFaire> {
     return new TravailAFaire(await Kdecole.kdecole(this, {
       service: 'travailAFaire',
-      parameters: idEleve ? `ideleve/${idEleve}` : undefined
+      parameters: idEleve ? `ideleve/${idEleve}${notBeforeDate ? '/' + notBeforeDate.getTime().toString() : ''}` : `idetablissement/${this.idEtablissement}${notBeforeDate ? '/' + notBeforeDate.getTime().toString() : ''}`
     }))
   }
 
@@ -289,7 +291,7 @@ export class Kdecole {
    * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
-   * user.getContenuActivite(uidSeance, uid, idEleve).then((contenuActivite)=>{
+   * user.getContenuActivite(uidSeance, uid, idEleve).then(contenuActivite => {
    *  // Votre code
    *  })
    * ```
@@ -333,7 +335,7 @@ export class Kdecole {
    * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
-   * user.getAbsences(idEleve).then((absences)=>{
+   * user.getAbsences(idEleve).then(absences => {
    *  // Votre code
    *  })
    * ```
@@ -353,7 +355,7 @@ export class Kdecole {
    * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
-   * user.getInfoUtilisateur(idEleve).then((infoUtilisateur)=>{
+   * user.getInfoUtilisateur(idEleve).then(infoUtilisateur => {
    *  // Votre code
    *  })
    * ```
@@ -373,7 +375,7 @@ export class Kdecole {
    * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
-   * user.getCalendrier(idEleve).then((calendrier)=>{
+   * user.getCalendrier(idEleve).then(calendrier => {
    *  // Votre code
    *  })
    * ```
@@ -393,7 +395,7 @@ export class Kdecole {
    * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
-   * user.getNotes(idEleve).then((notes)=>{
+   * user.getNotes(idEleve).then(notes => {
    *  // Votre code
    *  })
    * ```
@@ -412,7 +414,7 @@ export class Kdecole {
    * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
-   * user.getMessagerieInfo().then((messagerieInfo)=>{
+   * user.getMessagerieInfo().then(messagerieInfo => {
    *  // Votre code
    *  })
    * ```
@@ -430,7 +432,7 @@ export class Kdecole {
    * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
-   * user.getMessagerieBoiteReception().then((messagerieBoiteReception)=>{
+   * user.getMessagerieBoiteReception().then(messagerieBoiteReception => {
    *  // Votre code
    *  })
    * ```
@@ -450,7 +452,7 @@ export class Kdecole {
    * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
-   * user.getCommunication(id).then((communication)=>{
+   * user.getCommunication(id).then(communication => {
    *  // Votre code
    *  })
    * ```
@@ -553,7 +555,7 @@ export class Kdecole {
    * const { Kdecole } = require('kdecole-api')
    *
    * const user = new Kdecole(AUTH_TOKEN)
-   * user.gestionAppels().then((gestionAppels)=>{
+   * user.gestionAppels().then(gestionAppels => {
    *  // Votre code
    *  })
    * ```
