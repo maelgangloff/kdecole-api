@@ -9,22 +9,7 @@ const {u, p, ent} = yargs
   .option('e', {
     alias: 'ent',
     describe: "ENT auquel s'authentifier",
-    choices: [
-      'PROD_MON_BUREAU_NUMERIQUE',
-      'PROD_MON_ENT_OCCITANIE',
-      'PROD_ARSENE76',
-      'PROD_ENT27',
-      'PROD_ENTCREUSE',
-      'PROD_AUVERGNERHONEALPES',
-      'PROD_SAVOIRSNUMERIQUES62',
-      'PROD_AGORA06',
-      'PROD_CYBERCOLLEGES42',
-      'PROD_ECOLLEGE_HAUTE_GARONNE',
-      'PROD_MONCOLLEGE_VALDOISE',
-      'PROD_WEBCOLLEGE_SEINESAINTDENIS',
-      'PROD_ECLAT_BFC',
-      'PROD_DEMO_SKOLENGO'
-    ],
+    choices: Object.keys(ApiUrl).filter(x => Object.keys(ApiVersion).includes(x)),
     demandOption: false,
   })
   .argv
