@@ -41,7 +41,7 @@ export default class Releve {
 
     public toCSV (): {devoirs: string, trimestres: string, matieres: string} {
       const ouiNon = (boolean: boolean) => boolean ? 'oui' : 'non'
-      const surroundWithQuotes = (text: string) => text.indexOf(',') === -1 ? text : `"${text}"`
+      const surroundWithQuotes = (text: string) => text.indexOf(',') === -1 ? text.replace(/"/g, "'") : `"${text.replace(/"/g, "'")}"`
       const formatNumber = (number: number|null) => typeof number === 'number' && !isNaN(number) ? surroundWithQuotes(number.toFixed(2).replace('.', ',')) : ''
       const arrayToCSV = (array: any[]) => array.map(obj => Object.values(obj)).map(e => e.join(',')).join('\n')
 
