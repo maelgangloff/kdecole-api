@@ -9,24 +9,25 @@ Le terme "code" ou "password" ne réfère pas ici à votre mot de passe, mais à
 
 Les versions à utiliser lors de la création de l'instance `Kdecole` sont données ci-dessous.
 
-|          Nom de l'ENT         | Version | URL de l'API                                            |
+|         Nom de l'ENT          | Version | URL de l'API                                            |
 |:-----------------------------:|:-------:|---------------------------------------------------------|
-|      Mon Bureau Numérique     |  3.7.14 | https://mobilite.monbureaunumerique.fr/mobilite         |
+|     Mon Bureau Numérique      |  3.7.14 | https://mobilite.monbureaunumerique.fr/mobilite         |
 |       Mon ENT Occitanie       |  3.7.14 | https://mobilite.mon-ent-occitanie.fr/mobilite          |
 |           Arsene 76           |  3.7.14 | https://mobilite.arsene76.fr/mobilite                   |
 |             ENT27             |  3.7.14 | https://mobilite.ent27.fr/mobilite                      |
-|           ENT Creuse          |  3.7.14 | https://mobilite.entcreuse.fr/mobilite                  |
-|    ENT Auvergne-Rhône-Alpes   |  3.7.14 | https://mobilite.ent.auvergnerhonealpes.fr/mobilite     |
+|          ENT Creuse           |  3.7.14 | https://mobilite.entcreuse.fr/mobilite                  |
+|   ENT Auvergne-Rhône-Alpes    |  3.7.14 | https://mobilite.ent.auvergnerhonealpes.fr/mobilite     |
 |     Savoirs Numériques 62     |  3.7.14 | https://mobilite.savoirsnumeriques62.fr/mobilite        |
-|            Agora 06           |  3.7.14 | https://mobilite.agora06.fr/mobilite                    |
-|        CyberCollèges 42       |  3.7.14 | https://mobilite.cybercolleges42.fr/mobilite            |
+|           Agora 06            |  3.7.14 | https://mobilite.agora06.fr/mobilite                    |
+|       CyberCollèges 42        |  3.7.14 | https://mobilite.cybercolleges42.fr/mobilite            |
 |   eCollège 31 Haute-Garonne   |  3.7.14 | https://mobilite.ecollege.haute-garonne.fr/mobilite     |
 |   Mon collège en Val d'Oise   |  3.7.14 | https://mobilite.moncollege.valdoise.fr/mobilite        |
-|  Webcollège Seine-Saint-Denis |  3.7.14 | https://mobilite.webcollege.seinesaintdenis.fr/mobilite |
+| Webcollège Seine-Saint-Denis  |  3.7.14 | https://mobilite.webcollege.seinesaintdenis.fr/mobilite |
 |           Eclat-BFC           |  3.7.14 | https://mobilite.eclat-bfc.fr/mobilite                  |
 |          @ucollège84          |  3.7.14 | https://mobilite.aucollege84.vaucluse.fr/mobilite       |
 |         Skolengo Demo         |  3.7.14 | https://mobilite.demo.skolengo.com/mobilite             |
 | Kosmos Éducation (aefe, etc.) |  3.7.14 | https://mobilite.kosmoseducation.com/mobilite           |
+|      Skolengo formation       |  3.7.14 | https://mobilite.formation.skolengo.com/mobilite        |
 
 Une autre méthode pour obtenir un token est d'utiliser la ligne de commande.
 

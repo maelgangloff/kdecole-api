@@ -36,6 +36,8 @@ servers:
     description: Skolengo Demo
   - url: https://mobilite.kosmoseducation.com/mobilite
     description: Kosmos Éducation (aefe, etc.)
+  - url: https://mobilite.formation.skolengo.com/mobilite
+    description: Formation Skolengo
 
 tags:
   - name: Utilisateur
