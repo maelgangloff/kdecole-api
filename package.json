@@ -39,7 +39,7 @@
     "url": "https://github.com/maelgangloff/kdecole-api.git"
   },
   "dependencies": {
-    "axios": "^0.25.0",
+    "axios": "^0.26.0",
     "yargs": "^17.0.1"
   },
   "keywords": [
