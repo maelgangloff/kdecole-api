@@ -1,6 +1,6 @@
 {
   "name": "kdecole-api",
-  "version": "1.3.1",
+  "version": "1.3.6",
   "main": "dist/Kdecole.js",
   "types": "types/Kdecole.d.ts",
   "bin": {
@@ -8,7 +8,7 @@
   },
   "author": {
     "name": "Maël Gangloff",
-    "email": "maelgangloffd@gmail.com"
+    "email": "contact@maelgangloff.fr"
   },
   "license": "ISC",
   "homepage": "https://github.com/maelgangloff/kdecole-api#readme",
