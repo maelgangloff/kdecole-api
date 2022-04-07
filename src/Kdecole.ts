@@ -47,7 +47,6 @@ export enum ApiUrl {
   PROD_ENT27 = 'https://mobilite.ent27.fr/mobilite',
   PROD_ENTCREUSE = 'https://mobilite.entcreuse.fr/mobilite',
   PROD_AUVERGNERHONEALPES = 'https://mobilite.ent.auvergnerhonealpes.fr/mobilite',
-  PROD_SAVOIRSNUMERIQUES62 = 'https://mobilite.savoirsnumeriques62.fr/mobilite',
   PROD_AGORA06 = 'https://mobilite.agora06.fr/mobilite',
   PROD_CYBERCOLLEGES42 = 'https://mobilite.cybercolleges42.fr/mobilite',
   PROD_ECOLLEGE_HAUTE_GARONNE = 'https://mobilite.ecollege.haute-garonne.fr/mobilite',
@@ -57,7 +56,8 @@ export enum ApiUrl {
   PROD_KOSMOS_EDUCATION = 'https://mobilite.kosmoseducation.com/mobilite',
   PROD_AUCOLLEGE84_VAUCLUSE = 'https://mobilite.aucollege84.vaucluse.fr/mobilite',
   PROD_DEMO_SKOLENGO = 'https://mobilite.demo.skolengo.com/mobilite',
-  PROD_SKOLENGO_FORMATION = 'https://mobilite.formation.skolengo.com/mobilite'
+  PROD_SKOLENGO_FORMATION = 'https://mobilite.formation.skolengo.com/mobilite',
+  PROD_SCHULPORTAL_OSTBELGIEN = 'https://mobilite.schulen.be/mobilite'
 }
 
 export enum ApiVersion {
@@ -67,7 +67,6 @@ export enum ApiVersion {
   PROD_ENT27 = '3.7.14',
   PROD_ENTCREUSE = '3.7.14',
   PROD_AUVERGNERHONEALPES = '3.7.14',
-  PROD_SAVOIRSNUMERIQUES62 = '3.7.14',
   PROD_AGORA06 = '3.7.14',
   PROD_CYBERCOLLEGES42 = '3.7.14',
   PROD_ECOLLEGE_HAUTE_GARONNE = '3.7.14',
@@ -76,7 +75,9 @@ export enum ApiVersion {
   PROD_ECLAT_BFC = '3.7.14',
   PROD_AUCOLLEGE84_VAUCLUSE = '3.7.14',
   PROD_KOSMOS_EDUCATION = '3.7.14',
-  PROD_DEMO_SKOLENGO = '3.7.14'
+  PROD_DEMO_SKOLENGO = '3.7.14',
+  PROD_SKOLENGO_FORMATION = '3.7.14',
+  PROD_SCHULPORTAL_OSTBELGIEN = '3.7.14'
 }
 
 /**
@@ -96,7 +97,6 @@ export enum ApiVersion {
  * |             ENT27             |  3.7.14 | https://mobilite.ent27.fr/mobilite                      |
  * |          ENT Creuse           |  3.7.14 | https://mobilite.entcreuse.fr/mobilite                  |
  * |   ENT Auvergne-Rhône-Alpes    |  3.7.14 | https://mobilite.ent.auvergnerhonealpes.fr/mobilite     |
- * |     Savoirs Numériques 62     |  3.7.14 | https://mobilite.savoirsnumeriques62.fr/mobilite        |
  * |           Agora 06            |  3.7.14 | https://mobilite.agora06.fr/mobilite                    |
  * |       CyberCollèges 42        |  3.7.14 | https://mobilite.cybercolleges42.fr/mobilite            |
  * |   eCollège 31 Haute-Garonne   |  3.7.14 | https://mobilite.ecollege.haute-garonne.fr/mobilite     |
@@ -107,6 +107,7 @@ export enum ApiVersion {
  * |         Skolengo Demo         |  3.7.14 | https://mobilite.demo.skolengo.com/mobilite             |
  * | Kosmos Éducation (aefe, etc.) |  3.7.14 | https://mobilite.kosmoseducation.com/mobilite           |
  * |      Skolengo formation       |  3.7.14 | https://mobilite.formation.skolengo.com/mobilite        |
+ * |    Schulportal Ostbelgien     |  3.7.14 | https://mobilite.schulen.be/mobilite                    |
  *
  * Une autre méthode pour obtenir un token est d'utiliser la ligne de commande.
  *
