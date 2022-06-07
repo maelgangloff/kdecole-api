@@ -83,6 +83,8 @@ export enum ApiVersion {
 /**
  * Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
  *
+ * Ce module permet de récupérer les données de l'ENT de manière automatique. De plus, certaines fonctions implantées permettent de prétraiter les données (conversion de l'emploi du temps au format iCalendar, export du relevé de notes au format CSV par exemple).
+ *
  * L'accès à l'API requiert une en-tête (header) avec la version de l'application en cours d'utilisation.
  *
  * Le terme "code" ou "password" ne réfère pas ici à votre mot de passe, mais à un code temporaire généré par votre ENT (dans paramètres > application mobile). C'est comme cela que fonctionne l'authentification à l'API.
@@ -115,23 +117,25 @@ export enum ApiVersion {
  * npx kdecole-api -u USERNAME -p CODE -ent PROD_MON_BUREAU_NUMERIQUE
  * ```
  * @example ```js
- * const { Kdecole } = require('kdecole-api')
+ * const { Kdecole, ApiVersion, ApiUrl } = require('kdecole-api');
  *
- * const user = new Kdecole(Kdecole.login(USERNAME, PASSWORD))
- * // ou encore:
- * const user = new Kdecole(AUTH_TOKEN)
+ * const token = 'azertyuiopazertyuiopazertyuiopazertyuiopazertyuiopazertyuiopazertyuiopazertyuiopazertyuiopazertyuiopazertyuiopazertyuiopazert'
+ * const user = new Kdecole(token, ApiVersion.PROD_MON_BUREAU_NUMERIQUE, 0, ApiUrl.PROD_MON_BUREAU_NUMERIQUE)
+ * user.getInfoUtilisateur().then(infoUser => {
+ *   console.log(`Jeton valide, connecté en tant que ${infoUser.nom}.`)
+ * })
  * ```
  */
 export class Kdecole {
   /**
    * @param {string} authToken Le jeton d'accès
-   * @param {ApiVersion|string} appVersion La version de l'application mobile autorisée par l'API
+   * @param {ApiVersion|string} apiVersion La version de l'application mobile autorisée par l'API
    * @param {number} idEtablissement L'identifiant de l'établissement
    * @param {ApiUrl|string} apiURL L'URL de l'API Kdecole
    */
   constructor (
     private readonly authToken: string,
-    public appVersion: ApiVersion | string = ApiVersion.PROD_MON_BUREAU_NUMERIQUE,
+    public apiVersion: ApiVersion | string = ApiVersion.PROD_MON_BUREAU_NUMERIQUE,
     public idEtablissement: number = 0,
     public apiURL: ApiUrl | string = ApiUrl.PROD_MON_BUREAU_NUMERIQUE
   ) {
@@ -139,10 +143,10 @@ export class Kdecole {
   }
 
   /**
-   * Retourne le jeton d'accès de l'utilisateur
+   * Demande à l'API de générer un nouveau jeton pour l'utilisateur
    * @param {string} username Le nom d'utilisateur
    * @param {string} password Le mot de passe à usage unique
-   * @param {ApiVersion|string} appVersion La version de l'application mobile autorisée par l'API
+   * @param {ApiVersion|string} apiVersion La version de l'application mobile autorisée par l'API
    * @param {apiURL|string} apiUrl L'URL de l'API Kdecole
    * @return {Promise<string>}
    * @example ```js
@@ -150,8 +154,8 @@ export class Kdecole {
    * Kdecole.login(username, uniquePassword, ApiVersion.PROD_MON_BUREAU_NUMERIQUE, ApiUrl.PROD_MON_BUREAU_NUMERIQUE).then(token => console.log(token)) // Affiche son token dans la console
    * ```
    */
-  public static async login (username: string, password: string, appVersion: ApiVersion | string = ApiVersion.PROD_MON_BUREAU_NUMERIQUE, apiUrl: ApiUrl | string = ApiUrl.PROD_MON_BUREAU_NUMERIQUE): Promise<string> {
-    const activation = new Activation(await Kdecole.kdecole(new Kdecole('', appVersion, 0, apiUrl), {
+  public static async login (username: string, password: string, apiVersion: ApiVersion | string = ApiVersion.PROD_MON_BUREAU_NUMERIQUE, apiUrl: ApiUrl | string = ApiUrl.PROD_MON_BUREAU_NUMERIQUE): Promise<string> {
+    const activation = new Activation(await Kdecole.kdecole(new Kdecole('', apiVersion, 0, apiUrl), {
       service: 'activation',
       parameters: `${username}/${password}`
     }))
@@ -160,7 +164,7 @@ export class Kdecole {
   }
 
   /**
-   * Invalide le jeton d'accès
+   * Révoque le jeton d'accès
    * @example ```js
    * const { Kdecole } = require('kdecole-api')
    * const user = new Kdecole(authToken)
@@ -626,10 +630,10 @@ export class Kdecole {
     return (await axios.request({
       baseURL: ctx.apiURL,
       headers: {
-        'X-Kdecole-Vers': ctx.appVersion,
+        'X-Kdecole-Vers': ctx.apiVersion,
         'X-Kdecole-Auth': ctx.authToken
       },
-      validateStatus: (status) => (status >= 200 && status < 300) || status === 204, // starting retourne HTTP204 donc axios ne doit pas lever une exception
+      validateStatus: (status: number) => (status >= 200 && status < 300) || status === 204, // starting retourne HTTP204 donc axios ne doit pas lever une exception
       responseType: 'json',
       method: type,
       url: parameters ? `/${service}/${parameters}/` : `/${service}/`,
