@@ -83,7 +83,7 @@ export enum ApiVersion {
 /**
  * Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
  *
- * Ce module permet de récupérer les données de l'ENT de manière automatique. De plus, certaines fonctions implantées permettent de prétraiter les données (conversion de l'emploi du temps au format iCalendar, export du relevé de notes au format CSV par exemple).
+ * Ce module permet de récupérer les données de l'ENT de manière automatique. De plus, certaines fonctions implémentées permettent de prétraiter les données (conversion de l'emploi du temps au format iCalendar, export du relevé de notes au format CSV par exemple).
  *
  * L'accès à l'API requiert une en-tête (header) avec la version de l'application en cours d'utilisation.
  *
