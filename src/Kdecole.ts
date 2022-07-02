@@ -114,7 +114,7 @@ export enum ApiVersion {
  * Une autre méthode pour obtenir un token est d'utiliser la ligne de commande.
  *
  *```shell
- * npx kdecole-api -u USERNAME -p CODE -ent PROD_MON_BUREAU_NUMERIQUE
+ * npx kdecole-api -u USERNAME -p CODE --ent PROD_MON_BUREAU_NUMERIQUE
  * ```
  * @example ```js
  * const { Kdecole, ApiVersion, ApiUrl } = require('kdecole-api');
