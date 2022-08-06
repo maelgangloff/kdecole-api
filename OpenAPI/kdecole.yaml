@@ -32,6 +32,10 @@ servers:
     description: Eclat-BFC
   - url: https://mobilite.aucollege84.vaucluse.fr/mobilite
     description: '@ucollège84'
+  - url: https://mobilite.schulen.be/mobilite
+    description: Schulportal Ostbelgien
+  - url: https://mobilite.entvaldemarne.skolengo.com/mobilite
+    description: ENT Val de Marne
   - url: https://mobilite.demo.skolengo.com/mobilite
     description: Skolengo Demo
   - url: https://mobilite.kosmoseducation.com/mobilite

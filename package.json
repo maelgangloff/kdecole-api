@@ -1,6 +1,6 @@
 {
   "name": "kdecole-api",
-  "version": "1.3.6",
+  "version": "1.3.7",
   "main": "dist/Kdecole.js",
   "types": "types/Kdecole.d.ts",
   "bin": {
@@ -14,7 +14,7 @@
   "homepage": "https://github.com/maelgangloff/kdecole-api#readme",
   "bugs": {
     "url": "https://github.com/maelgangloff/kdecole-api/issues",
-    "email": "maelgangloffd@gmail.com"
+    "email": "contact@maelgangloff.fr"
   },
   "devDependencies": {
     "@types/jest": "^27.0.1",
@@ -45,7 +45,9 @@
   "keywords": [
     "API",
     "Kdecole",
+    "Kosmos",
+    "Skolengo",
     "Mon Bureau Numérique"
   ],
-  "description": "Unofficial API client of Kdecole (Mon Bureau Numérique)"
+  "description": "Unofficial API client of Kdecole"
 }
