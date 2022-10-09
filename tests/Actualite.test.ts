@@ -66,4 +66,20 @@ describe('Test Actualite', () => {
       url: '/contenuArticle/article/10485-5237/'
     })
   })
+
+  it('should call the right url and return the full content of an information', async () => {
+    mockedAxios.request.mockResolvedValue({
+      data: require('./fakeData/fakeInformation.json')
+    })
+    expect(await user.getContenuInformation('96619')).toBeInstanceOf(ContenuArticle)
+    expect(mockedAxios.request).toHaveBeenCalledWith({
+      baseURL: ApiUrl.PROD_MON_BUREAU_NUMERIQUE,
+      data: undefined,
+      headers: { 'X-Kdecole-Auth': authToken, 'X-Kdecole-Vers': ApiVersion.PROD_MON_BUREAU_NUMERIQUE },
+      validateStatus: expect.any(Function),
+      method: 'get',
+      responseType: 'json',
+      url: '/contenuArticle/information/96619/'
+    })
+  })
 })

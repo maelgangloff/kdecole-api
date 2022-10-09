@@ -424,6 +424,28 @@ paths:
                 $ref: '#/components/schemas/etablissementContenuArticle'
         403:
           $ref: '#/components/responses/badAuthenticationData'
+  /contenuArticle/information/{information}/:
+    get:
+      summary: Consulter les détails d'une information.
+      operationId: getEtabInformationDetails
+      tags:
+        - Etablissement
+      parameters:
+        - in: path
+          description: L'identifiant de l'information.
+          name: information
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Le serveur renvoit le contenu de l'information.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/etablissementContenuArticle'
+        403:
+          $ref: '#/components/responses/badAuthenticationData'
 
   /calendrier/idetablissement/{idetablissement}/:
     get:

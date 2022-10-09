@@ -252,6 +252,7 @@ export class Kdecole {
 
   /**
    * Retourne le contenu d'un article
+   * Un article est publié par l'établissement.
    * @param {string} uid Identifiant unique de l'article
    * @return {Promise<ContenuArticle>}
    * @example ```js
@@ -267,6 +268,27 @@ export class Kdecole {
     return new ContenuArticle(await Kdecole.kdecole(this, {
       service: 'contenuArticle',
       parameters: `article/${uid}`
+    }))
+  }
+
+  /**
+   * Retourne le contenu d'une information
+   * Une information est publiée par la plateforme EMS.
+   * @param {string} uid Identifiant unique de l'information
+   * @return {Promise<ContenuArticle>}
+   * @example ```js
+   * const { Kdecole } = require('kdecole-api')
+   *
+   * const user = new Kdecole(AUTH_TOKEN)
+   * user.getContenuInformation(uid).then(contenuInformation => {
+   *  // Votre code
+   *  })
+   * ```
+   */
+  public async getContenuInformation (uid: string): Promise<ContenuArticle> {
+    return new ContenuArticle(await Kdecole.kdecole(this, {
+      service: 'contenuArticle',
+      parameters: `information/${uid}`
     }))
   }
 
