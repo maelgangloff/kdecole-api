@@ -326,7 +326,7 @@ paths:
             type: string
       responses:
         200:
-          description: Le serveur renvoit les absences de l'élève.
+          description: Le serveur renvoie les absences de l'élève.
           content:
             application/json:
               schema:
@@ -349,7 +349,7 @@ paths:
             type: string
       responses:
         200:
-          description: Le serveur renvoit les absences de l'élève.
+          description: Le serveur renvoie les absences de l'élève.
           content:
             application/json:
               schema:
@@ -372,7 +372,7 @@ paths:
             type: string
       responses:
         200:
-          description: Le serveur renvoit les actualités de l'établissement.
+          description: Le serveur renvoie les actualités de l'établissement.
           content:
             application/json:
               schema:
@@ -394,7 +394,7 @@ paths:
             type: string
       responses:
         200:
-          description: Le serveur renvoit les actualités de l'établissement.
+          description: Le serveur renvoie les actualités de l'établissement.
           content:
             application/json:
               schema:
@@ -417,7 +417,7 @@ paths:
             type: string
       responses:
         200:
-          description: Le serveur renvoit le contenu de l'article.
+          description: Le serveur renvoie le contenu de l'article.
           content:
             application/json:
               schema:
@@ -439,7 +439,7 @@ paths:
             type: string
       responses:
         200:
-          description: Le serveur renvoit le contenu de l'information.
+          description: Le serveur renvoie le contenu de l'information.
           content:
             application/json:
               schema:
@@ -462,7 +462,7 @@ paths:
             type: string
       responses:
         200:
-          description: Le serveur renvoit l'emploi du temps de l'élève sur 7 jours.
+          description: Le serveur renvoie l'emploi du temps de l'élève sur 7 jours.
           content:
             application/json:
               schema:
@@ -485,7 +485,7 @@ paths:
             type: string
       responses:
         200:
-          description: Le serveur renvoit l'emploi du temps de l'élève sur 7 jours.
+          description: Le serveur renvoie l'emploi du temps de l'élève sur 7 jours.
           content:
             application/json:
               schema:
@@ -508,7 +508,7 @@ paths:
             type: string
       responses:
         200:
-          description: Le serveur renvoit les dernières notes de l'élève.
+          description: Le serveur renvoie les dernières notes de l'élève.
           content:
             application/json:
               schema:
@@ -531,7 +531,7 @@ paths:
             type: string
       responses:
         200:
-          description: Le serveur renvoit les dernières notes de l'élève.
+          description: Le serveur renvoie les dernières notes de l'élève.
           content:
             application/json:
               schema:
@@ -554,7 +554,7 @@ paths:
             type: string
       responses:
         200:
-          description: Le serveur renvoit le relevé de notes de l'élève.
+          description: Le serveur renvoie le relevé de notes de l'élève.
           content:
             application/json:
               schema:
@@ -577,7 +577,7 @@ paths:
             type: string
       responses:
         200:
-          description: Le serveur renvoit le relevé de notes de l'élève.
+          description: Le serveur renvoie le relevé de notes de l'élève.
           content:
             application/json:
               schema:
@@ -600,7 +600,7 @@ paths:
             type: string
       responses:
         200:
-          description: Le serveur renvoit le travail à faire.
+          description: Le serveur renvoie le travail à faire.
           content:
             application/json:
               schema:
@@ -623,7 +623,7 @@ paths:
             type: string
       responses:
         200:
-          description: Le serveur renvoit les travaux à faire.
+          description: Le serveur renvoie les travaux à faire.
           content:
             application/json:
               schema:
@@ -652,7 +652,7 @@ paths:
             type: string
       responses:
         200:
-          description: Le serveur renvoit le travail à faire.
+          description: Le serveur renvoie le travail à faire.
           content:
             application/json:
               schema:
@@ -681,7 +681,7 @@ paths:
             type: string
       responses:
         200:
-          description: Le serveur renvoit les travaux à faire.
+          description: Le serveur renvoie les travaux à faire.
           content:
             application/json:
               schema:
@@ -716,7 +716,7 @@ paths:
             type: integer
       responses:
         200:
-          description: Le serveur renvoit les détails du travail à faire.
+          description: Le serveur renvoie les détails du travail à faire.
           content:
             application/json:
               schema:
@@ -791,7 +791,7 @@ paths:
             type: integer
       responses:
         200:
-          description: Le serveur renvoit les détails du travail à faire.
+          description: Le serveur renvoie les détails du travail à faire.
           content:
             application/json:
               schema:
@@ -814,7 +814,7 @@ paths:
             type: string
       responses:
         200:
-          description: Le serveur renvoit la feuille d'appel.
+          description: Le serveur renvoie la feuille d'appel.
           content:
             application/json:
               schema:
