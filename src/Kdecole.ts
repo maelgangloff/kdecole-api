@@ -354,7 +354,7 @@ export class Kdecole {
       parameters: `idetablissement/${this.idEtablissement}/${uidSeance}/${uid}`,
       type: 'put',
       data: {
-        flagRealise: flagRealise
+        flagRealise
       }
     })
   }
@@ -575,7 +575,7 @@ export class Kdecole {
       type: 'put',
       data: {
         dateEnvoi: (new Date()).getTime(),
-        corpsMessage: corpsMessage
+        corpsMessage
       }
     })
   }
@@ -662,7 +662,7 @@ export class Kdecole {
       responseType: 'json',
       method: type,
       url: parameters ? `/${service}/${parameters}/` : `/${service}/`,
-      data: data
+      data
     })).data
   }
 }
