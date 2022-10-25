@@ -380,7 +380,7 @@ export class Kdecole {
   }
 
   /**
-   * Retourne les informations d'un utilisateur (type de compte, nom complet, numéro de l'établiissement, etc.)
+   * Retourne les informations d'un utilisateur (type de compte, nom complet, numéro de l'établissement, etc.)
    * @param {string} idEleve Identifiant d'un élève
    * @return {Promise<Utilisateur>}
    * @example ```js
