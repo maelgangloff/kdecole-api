@@ -57,6 +57,7 @@ export enum ApiUrl {
   PROD_AUCOLLEGE84_VAUCLUSE = 'https://mobilite.aucollege84.vaucluse.fr/mobilite',
   PROD_DEMO_SKOLENGO = 'https://mobilite.demo.skolengo.com/mobilite',
   PROD_SKOLENGO_FORMATION = 'https://mobilite.formation.skolengo.com/mobilite',
+  PROD_SKOLENGO = 'https://mobilite.skolengo.com/mobilite',
   PROD_SCHULPORTAL_OSTBELGIEN = 'https://mobilite.schulen.be/mobilite',
   PROD_ENT_VAL_DE_MARNE = 'https://mobilite.entvaldemarne.skolengo.com/mobilite'
 }
@@ -78,6 +79,7 @@ export enum ApiVersion {
   PROD_KOSMOS_EDUCATION = '3.7.14',
   PROD_DEMO_SKOLENGO = '3.7.14',
   PROD_SKOLENGO_FORMATION = '3.7.14',
+  PROD_SKOLENGO = '3.7.14',
   PROD_SCHULPORTAL_OSTBELGIEN = '3.7.14',
   PROD_ENT_VAL_DE_MARNE = '3.7.14'
 }
@@ -110,6 +112,7 @@ export enum ApiVersion {
  * |          @ucollège84          |  3.7.14 | https://mobilite.aucollege84.vaucluse.fr/mobilite       |
  * |      ENT Val de Marne         |  3.7.14 | https://mobilite.entvaldemarne.skolengo.com/mobilite    |
  * |         Skolengo Demo         |  3.7.14 | https://mobilite.demo.skolengo.com/mobilite             |
+ * |            Skolengo           |  3.7.14 | https://mobilite.skolengo.com/mobilite                  |
  * | Kosmos Éducation (aefe, etc.) |  3.7.14 | https://mobilite.kosmoseducation.com/mobilite           |
  * |      Skolengo formation       |  3.7.14 | https://mobilite.formation.skolengo.com/mobilite        |
  * |    Schulportal Ostbelgien     |  3.7.14 | https://mobilite.schulen.be/mobilite                    |

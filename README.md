@@ -28,6 +28,7 @@ Les versions à utiliser lors de la création de l'instance `Kdecole` sont donn�
 |          @ucollège84          |  3.7.14 | https://mobilite.aucollege84.vaucluse.fr/mobilite       |
 |      ENT Val de Marne         |  3.7.14 | https://mobilite.entvaldemarne.skolengo.com/mobilite    |
 |         Skolengo Demo         |  3.7.14 | https://mobilite.demo.skolengo.com/mobilite             |
+|            Skolengo           |  3.7.14 | https://mobilite.skolengo.com/mobilite                  |
 | Kosmos Éducation (aefe, etc.) |  3.7.14 | https://mobilite.kosmoseducation.com/mobilite           |
 |      Skolengo formation       |  3.7.14 | https://mobilite.formation.skolengo.com/mobilite        |
 |    Schulportal Ostbelgien     |  3.7.14 | https://mobilite.schulen.be/mobilite                    |
@@ -294,7 +295,7 @@ user.getAbsences(idEleve).then(absences => {
 <a name="Kdecole+getInfoUtilisateur"></a>
 
 ### kdecole.getInfoUtilisateur(idEleve) ⇒ <code>Promise.&lt;Utilisateur&gt;</code>
-Retourne les informations d'un utilisateur (type de compte, nom complet, numéro de l'établiissement, etc.)
+Retourne les informations d'un utilisateur (type de compte, nom complet, numéro de l'établissement, etc.)
 
 **Kind**: instance method of [<code>Kdecole</code>](#Kdecole)  
 
