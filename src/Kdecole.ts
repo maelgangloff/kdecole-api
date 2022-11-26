@@ -661,7 +661,7 @@ export class Kdecole {
         'X-Kdecole-Vers': ctx.apiVersion,
         'X-Kdecole-Auth': ctx.authToken
       },
-      validateStatus: (status: number) => (status >= 200 && status < 300) || status === 204, // starting retourne HTTP204 donc axios ne doit pas lever une exception
+      validateStatus: (status: number) => status >= 200 && status < 300, // starting retourne HTTP204 donc axios ne doit pas lever une exception
       responseType: 'json',
       method: type,
       url: parameters ? `/${service}/${parameters}/` : `/${service}/`,
