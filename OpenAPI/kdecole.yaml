@@ -16,8 +16,6 @@ servers:
     description: ENT Creuse
   - url: https://mobilite.ent.auvergnerhonealpes.fr/mobilite
     description: ENT Auvergne-Rhône-Alpes
-  - url: https://mobilite.savoirsnumeriques62.fr/mobilite
-    description: Savoirs Numériques 62
   - url: https://mobilite.agora06.fr/mobilite
     description: Agora 06
   - url: https://mobilite.cybercolleges42.fr/mobilite
@@ -32,14 +30,16 @@ servers:
     description: Eclat-BFC
   - url: https://mobilite.aucollege84.vaucluse.fr/mobilite
     description: '@ucollège84'
-  - url: https://mobilite.schulen.be/mobilite
-    description: Schulportal Ostbelgien
   - url: https://mobilite.entvaldemarne.skolengo.com/mobilite
     description: ENT Val de Marne
-  - url: https://mobilite.demo.skolengo.com/mobilite
-    description: Skolengo Demo
   - url: https://mobilite.kosmoseducation.com/mobilite
     description: Kosmos Éducation (aefe, etc.)
+  - url: https://mobilite.schulen.be/mobilite
+    description: Schulportal Ostbelgien
+  - url: https://mobilite.skolengo.com/mobilite
+    description: Skolengo
+  - url: https://mobilite.demo.skolengo.com/mobilite
+    description: Skolengo Demo
   - url: https://mobilite.formation.skolengo.com/mobilite
     description: Formation Skolengo
 
