@@ -75,8 +75,8 @@ export enum ApiName {
   PROD_AUCOLLEGE84_VAUCLUSE = '@ucollège84',
   PROD_KOSMOS_EDUCATION = 'Kosmos Éducation (AEFE, ...)',
   PROD_SKOLENGO = 'Skolengo',
-  PROD_SCHULPORTAL_OSTBELGIEN = '3.7.14',
-  PROD_ENT_VAL_DE_MARNE = 'Schulportal Ostbelgien',
+  PROD_SCHULPORTAL_OSTBELGIEN = 'Schulportal Ostbelgien',
+  PROD_ENT_VAL_DE_MARNE = 'ENT Val de Marne',
   PROD_DEMO_SKOLENGO = 'Skolengo Demo',
   PROD_SKOLENGO_FORMATION = 'Skolengo formation'
 }
