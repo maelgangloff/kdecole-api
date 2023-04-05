@@ -15,31 +15,6 @@ import ContenuArticle from './entities/News/ContenuArticle'
 import Communication from './entities/Messagerie/Communication'
 import GestionAppels from './entities/Prof/GestionAppels'
 
-interface KdecoleRequest {
-  service: 'starting'
-    | 'actualites'
-    | 'contenuArticle'
-    | 'activation'
-    | 'consulterReleves'
-    | 'consulterAbsences'
-    | 'infoutilisateur'
-    | 'desactivation'
-    | 'calendrier'
-    | 'consulterNotes'
-    | 'messagerie/info'
-    | 'messagerie/boiteReception'
-    | 'messagerie/communication'
-    | 'messagerie/communication/nouvelleParticipation'
-    | 'messagerie/communication/signaler'
-    | 'messagerie/communication/supprimer'
-    | 'messagerie/communication/lu'
-    | 'travailAFaire' | 'contenuActivite'
-    | 'gestionAppels'
-  parameters?: string
-  type?: 'get' | 'post' | 'delete' | 'put'
-  data?: any
-}
-
 export enum ApiUrl {
   PROD_MON_BUREAU_NUMERIQUE = 'https://mobilite.monbureaunumerique.fr/mobilite',
   PROD_MON_ENT_OCCITANIE = 'https://mobilite.mon-ent-occitanie.fr/mobilite',
@@ -84,6 +59,28 @@ export enum ApiVersion {
   PROD_ENT_VAL_DE_MARNE = '3.7.14'
 }
 
+export enum ApiName {
+  PROD_MON_BUREAU_NUMERIQUE = 'Mon Bureau Numérique',
+  PROD_MON_ENT_OCCITANIE = 'Mon ENT Occitanie',
+  PROD_ARSENE76 = 'Arsène76',
+  PROD_ENT27 = 'ENT27',
+  PROD_ENTCREUSE = 'ENT Creuse',
+  PROD_AUVERGNERHONEALPES = 'ENT Auvergne-Rhône-Alpes',
+  PROD_AGORA06 = 'Agora06',
+  PROD_CYBERCOLLEGES42 = 'CyberCollèges 42',
+  PROD_ECOLLEGE_HAUTE_GARONNE = 'eCollège 31 Haute-Garonne',
+  PROD_MONCOLLEGE_VALDOISE = 'Mon collège en Val d\'Oise',
+  PROD_WEBCOLLEGE_SEINESAINTDENIS = 'Webcollège Seine-Saint-Denis',
+  PROD_ECLAT_BFC = 'Eclat-BFC',
+  PROD_AUCOLLEGE84_VAUCLUSE = '@ucollège84',
+  PROD_KOSMOS_EDUCATION = 'Kosmos Éducation (AEFE, ...)',
+  PROD_SKOLENGO = 'Skolengo',
+  PROD_SCHULPORTAL_OSTBELGIEN = '3.7.14',
+  PROD_ENT_VAL_DE_MARNE = 'Schulportal Ostbelgien',
+  PROD_DEMO_SKOLENGO = 'Skolengo Demo',
+  PROD_SKOLENGO_FORMATION = 'Skolengo formation'
+}
+
 /**
  * Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
  *
@@ -99,7 +96,7 @@ export enum ApiVersion {
  * |:-----------------------------:|:-------:|---------------------------------------------------------|
  * |     Mon Bureau Numérique      |  3.7.14 | https://mobilite.monbureaunumerique.fr/mobilite         |
  * |       Mon ENT Occitanie       |  3.7.14 | https://mobilite.mon-ent-occitanie.fr/mobilite          |
- * |           Arsene 76           |  3.7.14 | https://mobilite.arsene76.fr/mobilite                   |
+ * |           Arsène 76           |  3.7.14 | https://mobilite.arsene76.fr/mobilite                   |
  * |             ENT27             |  3.7.14 | https://mobilite.ent27.fr/mobilite                      |
  * |          ENT Creuse           |  3.7.14 | https://mobilite.entcreuse.fr/mobilite                  |
  * |   ENT Auvergne-Rhône-Alpes    |  3.7.14 | https://mobilite.ent.auvergnerhonealpes.fr/mobilite     |
@@ -647,14 +644,39 @@ export class Kdecole {
     parameters,
     type = 'get',
     data
-  }: KdecoleRequest): Promise<any> {
+  }: {
+    service: 'starting'
+      | 'actualites'
+      | 'contenuArticle'
+      | 'activation'
+      | 'consulterReleves'
+      | 'consulterAbsences'
+      | 'infoutilisateur'
+      | 'desactivation'
+      | 'calendrier'
+      | 'consulterNotes'
+      | 'messagerie/info'
+      | 'messagerie/boiteReception'
+      | 'messagerie/communication'
+      | 'messagerie/communication/nouvelleParticipation'
+      | 'messagerie/communication/signaler'
+      | 'messagerie/communication/supprimer'
+      | 'messagerie/communication/lu'
+      | 'travailAFaire' | 'contenuActivite'
+      | 'gestionAppels'
+    parameters?: string
+    type?: 'get' | 'post' | 'delete' | 'put'
+    data?: any
+  }): Promise<any> {
     if (parameters === undefined &&
       service !== 'desactivation' &&
       service !== 'messagerie/info' &&
       service !== 'messagerie/communication' &&
       service !== 'messagerie/boiteReception' &&
       service !== 'starting' &&
-      service !== 'infoutilisateur') parameters = `idetablissement/${ctx.idEtablissement}`
+      service !== 'infoutilisateur') {
+      parameters = `idetablissement/${ctx.idEtablissement}`
+    }
     return (await axios.request({
       baseURL: ctx.apiURL,
       headers: {
@@ -668,4 +690,22 @@ export class Kdecole {
       data
     })).data
   }
+}
+
+export {
+  Desactivation,
+  Activation,
+  Releve,
+  TravailAFaire,
+  Actualite,
+  AbsencesList,
+  Utilisateur,
+  Calendrier,
+  NotesList,
+  MessageInfo,
+  MessageBoiteReception,
+  ContenuActivite,
+  ContenuArticle,
+  Communication,
+  GestionAppels
 }

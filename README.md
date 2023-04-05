@@ -15,7 +15,7 @@ Les versions à utiliser lors de la création de l'instance `Kdecole` sont donn�
 |:-----------------------------:|:-------:|---------------------------------------------------------|
 |     Mon Bureau Numérique      |  3.7.14 | https://mobilite.monbureaunumerique.fr/mobilite         |
 |       Mon ENT Occitanie       |  3.7.14 | https://mobilite.mon-ent-occitanie.fr/mobilite          |
-|           Arsene 76           |  3.7.14 | https://mobilite.arsene76.fr/mobilite                   |
+|           Arsène 76           |  3.7.14 | https://mobilite.arsene76.fr/mobilite                   |
 |             ENT27             |  3.7.14 | https://mobilite.ent27.fr/mobilite                      |
 |          ENT Creuse           |  3.7.14 | https://mobilite.entcreuse.fr/mobilite                  |
 |   ENT Auvergne-Rhône-Alpes    |  3.7.14 | https://mobilite.ent.auvergnerhonealpes.fr/mobilite     |
