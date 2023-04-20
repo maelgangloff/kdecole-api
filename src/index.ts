@@ -126,7 +126,7 @@ export class Kdecole {
       service: 'activation',
       parameters: `${username}/${password}`
     }))
-    if (activation.authtoken && activation.success) return activation.authtoken
+    if (activation.authtoken !== null && activation.success) return activation.authtoken
     throw Error('L\'authentification n\'a pas fonctionné')
   }
 
@@ -186,7 +186,7 @@ export class Kdecole {
   public async getReleve (idEleve?: string): Promise<Releve> {
     return new Releve(await Kdecole.kdecole(this, {
       service: 'consulterReleves',
-      parameters: idEleve ? `ideleve/${idEleve}` : undefined
+      parameters: idEleve !== undefined ? `ideleve/${idEleve}` : undefined
     }))
   }
 
@@ -207,7 +207,7 @@ export class Kdecole {
     const actualites: Actualite[] = []
     for (const JSONactualite of await Kdecole.kdecole(this, {
       service: 'actualites',
-      parameters: idEleve ? `ideleve/${idEleve}` : undefined
+      parameters: idEleve !== undefined ? `ideleve/${idEleve}` : undefined
     })) {
       actualites.push(new Actualite(JSONactualite))
     }
@@ -273,7 +273,7 @@ export class Kdecole {
   public async getTravailAFaire (idEleve?: string, notBeforeDate?: Date): Promise<TravailAFaire> {
     return new TravailAFaire(await Kdecole.kdecole(this, {
       service: 'travailAFaire',
-      parameters: idEleve ? `ideleve/${idEleve}${notBeforeDate ? '/' + notBeforeDate.getTime().toString() : ''}` : `idetablissement/${this.idEtablissement}${notBeforeDate ? '/' + notBeforeDate.getTime().toString() : ''}`
+      parameters: idEleve !== undefined ? `ideleve/${idEleve}${(notBeforeDate != null) ? '/' + notBeforeDate.getTime().toString() : ''}` : `idetablissement/${this.idEtablissement}${(notBeforeDate != null) ? '/' + notBeforeDate.getTime().toString() : ''}`
     }))
   }
 
@@ -295,7 +295,7 @@ export class Kdecole {
   public async getContenuActivite (uidSeance: number, uid: number, idEleve?: string): Promise<ContenuActivite> {
     return new ContenuActivite(await Kdecole.kdecole(this, {
       service: 'contenuActivite',
-      parameters: `${idEleve ? 'ideleve/' + idEleve : 'idetablissement/' + this.idEtablissement}/${uidSeance}/${uid}`
+      parameters: `${idEleve !== undefined ? `ideleve/${idEleve}` : `idetablissement/${this.idEtablissement}`}/${uidSeance}/${uid}`
     }))
   }
 
@@ -339,7 +339,7 @@ export class Kdecole {
   public async getAbsences (idEleve?: string): Promise<AbsencesList> {
     return new AbsencesList(await Kdecole.kdecole(this, {
       service: 'consulterAbsences',
-      parameters: idEleve ? `ideleve/${idEleve}` : undefined
+      parameters: idEleve !== undefined ? `ideleve/${idEleve}` : undefined
     }))
   }
 
@@ -359,7 +359,7 @@ export class Kdecole {
   public async getInfoUtilisateur (idEleve?: string): Promise<Utilisateur> {
     return new Utilisateur(await Kdecole.kdecole(this, {
       service: 'infoutilisateur',
-      parameters: idEleve ? `ideleve/${idEleve}` : undefined
+      parameters: idEleve !== undefined ? `ideleve/${idEleve}` : undefined
     }))
   }
 
@@ -379,7 +379,7 @@ export class Kdecole {
   public async getCalendrier (idEleve?: string): Promise<Calendrier> {
     return new Calendrier(await Kdecole.kdecole(this, {
       service: 'calendrier',
-      parameters: idEleve ? `ideleve/${idEleve}` : undefined
+      parameters: idEleve !== undefined ? `ideleve/${idEleve}` : undefined
     }))
   }
 
@@ -399,7 +399,7 @@ export class Kdecole {
   public async getNotes (idEleve?: string): Promise<NotesList> {
     return new NotesList(await Kdecole.kdecole(this, {
       service: 'consulterNotes',
-      parameters: idEleve ? `ideleve/${idEleve}` : undefined
+      parameters: idEleve !== undefined ? `ideleve/${idEleve}` : undefined
     }))
   }
 
@@ -585,15 +585,15 @@ export class Kdecole {
    * ```
    */
   public async validerAppel (appel: {
-    idEtab: number,
-    idAppel: number,
-    listeAbsencesAppel: {
+    idEtab: number
+    idAppel: number
+    listeAbsencesAppel: Array<{
       idEleve: string
       type: string
       dateDebut: number
       dateFin: number
       modifiable: boolean
-    }[]
+    }>
   }): Promise<void> {
     await Kdecole.kdecole(this, {
       service: 'gestionAppels',
@@ -610,24 +610,24 @@ export class Kdecole {
     data
   }: {
     service: 'starting'
-      | 'actualites'
-      | 'contenuArticle'
-      | 'activation'
-      | 'consulterReleves'
-      | 'consulterAbsences'
-      | 'infoutilisateur'
-      | 'desactivation'
-      | 'calendrier'
-      | 'consulterNotes'
-      | 'messagerie/info'
-      | 'messagerie/boiteReception'
-      | 'messagerie/communication'
-      | 'messagerie/communication/nouvelleParticipation'
-      | 'messagerie/communication/signaler'
-      | 'messagerie/communication/supprimer'
-      | 'messagerie/communication/lu'
-      | 'travailAFaire' | 'contenuActivite'
-      | 'gestionAppels'
+    | 'actualites'
+    | 'contenuArticle'
+    | 'activation'
+    | 'consulterReleves'
+    | 'consulterAbsences'
+    | 'infoutilisateur'
+    | 'desactivation'
+    | 'calendrier'
+    | 'consulterNotes'
+    | 'messagerie/info'
+    | 'messagerie/boiteReception'
+    | 'messagerie/communication'
+    | 'messagerie/communication/nouvelleParticipation'
+    | 'messagerie/communication/signaler'
+    | 'messagerie/communication/supprimer'
+    | 'messagerie/communication/lu'
+    | 'travailAFaire' | 'contenuActivite'
+    | 'gestionAppels'
     parameters?: string
     type?: 'get' | 'post' | 'delete' | 'put'
     data?: any
@@ -650,7 +650,7 @@ export class Kdecole {
       validateStatus: (status: number) => status >= 200 && status < 300, // starting retourne HTTP204 donc axios ne doit pas lever une exception
       responseType: 'json',
       method: type,
-      url: parameters ? `/${service}/${parameters}/` : `/${service}/`,
+      url: parameters !== undefined ? `/${service}/${parameters}/` : `/${service}/`,
       data
     })).data
   }

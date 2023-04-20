@@ -10,7 +10,7 @@
     "name": "Maël Gangloff",
     "email": "contact@maelgangloff.fr"
   },
-  "license": "ISC",
+  "license": "GPL-3.0-or-later",
   "homepage": "https://github.com/maelgangloff/kdecole-api#readme",
   "bugs": {
     "url": "https://github.com/maelgangloff/kdecole-api/issues",
@@ -19,8 +19,6 @@
   "devDependencies": {
     "@types/jest": "^27.0.1",
     "@types/node": "^18.0.0",
-    "@typescript-eslint/eslint-plugin": "^4.28.3",
-    "@typescript-eslint/parser": "^4.28.2",
     "eslint": "^7.30.0",
     "jest": "^27.0.6",
     "jsdoc-to-markdown": "^8.0.0",

@@ -1,7 +1,7 @@
 import Matiere from './Matiere'
 
 export default class Trimestre {
-  public matieres: Array<Matiere> = []
+  public matieres: Matiere[] = []
   public idPeriode: number
   public libelleClasse: string
   public periodeLibelle: string
@@ -21,7 +21,7 @@ export default class Trimestre {
         appreciation: string | null
         bareme: number
         coefficient: number
-        pjs: Array<any>
+        pjs: any[]
         id: number
         titreDevoir: string
         noteMax: string | null
@@ -31,7 +31,7 @@ export default class Trimestre {
         comptabilise: boolean
         commentaireDevoir: string
       }>
-      enseignants: Array<string>
+      enseignants: string[]
       matiereLibelle: string
       moyenneClasse: string
     }>
@@ -74,7 +74,7 @@ export default class Trimestre {
       return x - y
     })
     const b = (moyennes.length + 1) / 2
-    return (moyennes.length % 2) ? moyennes[b - 1] : (moyennes[b - 1.5] + moyennes[b - 0.5]) / 2
+    return (moyennes.length % 2) !== 0 ? moyennes[b - 1] : (moyennes[b - 1.5] + moyennes[b - 0.5]) / 2
   }
 
   /**

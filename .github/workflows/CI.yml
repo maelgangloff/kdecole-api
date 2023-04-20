@@ -24,7 +24,7 @@ jobs:
         run: yarn install
 
       - name: Lint
-        run: npx eslint src tests --ext .ts
+        run: npx eslint src/ --ext .ts
 
       - name: Test
         run: npx jest

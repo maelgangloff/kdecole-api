@@ -5,16 +5,16 @@ export default class AbsenceEleveAppel {
   public dateFin: Date
   public idMotif: string|undefined
   public modifiable: boolean
-  public idEleve:string|undefined
+  public idEleve: string|undefined
 
-  constructor (absenceEleveAppel:{
-    idEleve:string|undefined
-    idAbsence:number|undefined
-    type:string
-    dateDebut:number
-    dateFin:number
-    idMotif:string|undefined
-    modifiable:boolean
+  constructor (absenceEleveAppel: {
+    idEleve: string|undefined
+    idAbsence: number|undefined
+    type: string
+    dateDebut: number
+    dateFin: number
+    idMotif: string|undefined
+    modifiable: boolean
   }) {
     this.idAbsence = absenceEleveAppel.idAbsence
     this.type = absenceEleveAppel.type
