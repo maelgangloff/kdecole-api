@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 const yargs = require('yargs')
-const { Kdecole, ApiVersion, ApiUrl } = require('../dist/Kdecole.js')
+const { Kdecole, ApiVersion, ApiUrl } = require('../dist/index.js')
 
 const {u, p, ent} = yargs
   .usage('Usage: -u <username> -p <uniquePassword> -e <ENT>')

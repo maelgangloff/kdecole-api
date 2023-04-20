@@ -1,44 +1,63 @@
-<a name="Kdecole"></a>
+# kdecole-api
 
-## Kdecole
-Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
+[![view on npm](http://img.shields.io/npm/v/kdecole-api.svg?style=flat-square)](https://www.npmjs.org/package/kdecole-api)
+![GitHub CI](https://github.com/maelgangloff/kdecole-api/actions/workflows/CI.yml/badge.svg)
+[![Discord](https://img.shields.io/discord/1095829734211977276?label=Discord&style=flat-square)](https://discord.gg/9u69mxsFT6)
+[![npm](https://img.shields.io/npm/dm/kdecole-api?style=flat-square)](https://npm-stat.com/charts.html?package=kdecole-api)
+
+Support non officiel de l'API Kdecole  (Mon Bureau Numérique, Skolengo, etc.).
 
 Ce module permet de récupérer les données de l'ENT de manière automatique. De plus, certaines fonctions implémentées permettent de prétraiter les données (conversion de l'emploi du temps au format iCalendar, export du relevé de notes au format CSV par exemple).
+
+Cette librairie est destinée à être dépréciée au profit de [scolengo-api](https://github.com/maelgangloff/scolengo-api) dans l'éventualité où l'accès à l'ancienne API est définitivement clos.  
+
+Pour participer et se tenir informé, **rejoins le serveur Discord: https://discord.gg/9u69mxsFT6**  
+
+
+## Remarques importantes:
+- Il est clairement mentionné que cette librairie est n'est pas officielle.
+- Ce module n'est pas une contrefaçon car il n'existe pas de module similaire édité officiellement.
+- Les utilisateurs ne peuvent accéder qu'à leurs propres données. Ils sont soumis au même processus d'authentification que celui implémenté dans l'application.
+- Les données des utilisateurs ne sont pas davantage exposées puisqu'un utilisateur ne peut accéder qu'à ses propres données. Personne n'a le contrôle sur cette limitation qui est inhérente au fonctionnement de l'API des serveurs de Skolengo.
+- Cette librairie ne se suffit pas à elle-même pour fonctionner. Il est nécessaire de l'importer dans un projet et l'utilisateur est le seul responsable de son code et des éventuelles conséquences.
+- Tout utilisateur de cette librairie a *a priori* lu l'entièreté du fichier de licence GPLv3 disponible publiquement [LICENSE](https://github.com/maelgangloff/kdecole-api/blob/master/LICENSE) ainsi que de ce présent fichier de présentation.
+- Tout utilisateur de cette librairie a *a priori* lu l'entièreté du code de ce projet avant toute utilisation.
+- Eu égard l'ensemble de ces remarques, les contributeurs et *a fortiori* l'auteur du projet ne peuvent être tenus comme responsables de tout dommage potentiel.  
 
 L'accès à l'API requiert une en-tête (header) avec la version de l'application en cours d'utilisation.
 
 Le terme "code" ou "password" ne réfère pas ici à votre mot de passe, mais à un code temporaire généré par votre ENT (dans paramètres > application mobile). C'est comme cela que fonctionne l'authentification à l'API.
 
-Les versions à utiliser lors de la création de l'instance `Kdecole` sont données ci-dessous.
+## Liste des ENT supportés :
+| Nom usuel de l'ENT           | Identifiant interne librairie      | URL de l'API mobilité                                     |
+|------------------------------|------------------------------------|-----------------------------------------------------------|
+| Mon Bureau Numérique         | PROD_MON_BUREAU_NUMERIQUE          | https://mobilite.monbureaunumerique.fr/mobilite           |
+| Mon ENT Occitanie            | PROD_MON_ENT_OCCITANIE             | https://mobilite.mon-ent-occitanie.fr/mobilite            |
+| Arsène 76                    | PROD_ARSENE76                      | https://mobilite.arsene76.fr/mobilite                     |
+| ENT27                        | PROD_ENT27                         | https://mobilite.ent27.fr/mobilite                        |
+| ENT Creuse                   | PROD_ENTCREUSE                     | https://mobilite.entcreuse.fr/mobilite                    |
+| ENT Auvergne-Rhône-Alpes     | PROD_AUVERGNERHONEALPES            | https://mobilite.ent.auvergnerhonealpes.fr/mobilite       |
+| Agora 06                     | PROD_AGORA06                       | https://mobilite.agora06.fr/mobilite                      |
+| CyberCollèges 42             | PROD_CYBERCOLLEGES42               | https://mobilite.cybercolleges42.fr/mobilite              |
+| eCollège 31 Haute-Garonne    | PROD_ECOLLEGE_HAUTE_GARONNE        | https://mobilite.ecollege.haute-garonne.fr/mobilite       |
+| Mon collège en Val d'Oise    | PROD_MONCOLLEGE_VALDOISE           | https://mobilite.moncollege.valdoise.fr/mobilite          |
+| Webcollège Seine-Saint-Denis | PROD_WEBCOLLEGE_SEINESAINTDENIS    | https://mobilite.webcollege.seinesaintdenis.fr/mobilite   |
+| Eclat-BFC                    | PROD_ECLAT_BFC                     | https://mobilite.eclat-bfc.fr/mobilite                    |
+| @ucollège84                  | PROD_AUCOLLEGE84_VAUCLUSE          | https://mobilite.aucollege84.vaucluse.fr/mobilite         |
+| ENT Val de Marne             | PROD_ENT_VAL_DE_MARNE              | https://mobilite.entvaldemarne.skolengo.com/mobilite      |
+| Skolengo                     | PROD_SKOLENGO                      | https://mobilite.skolengo.com/mobilite                    |
+| Kosmos Éducation             | PROD_KOSMOS_EDUCATION              | https://mobilite.kosmoseducation.com/mobilite             |
+| Skolengo-Collèges et Lycées  | PROD_KOSMOS_EDUCATION_PDL          | https://mobilite.pdl.kosmoseducation.com/mobilite         |
+| Schulportal Ostbelgien       | PROD_SCHULPORTAL_OSTBELGIEN        | https://mobilite.schulen.be/mobilite                      |
 
-|         Nom de l'ENT          | Version | URL de l'API                                            |
-|:-----------------------------:|:-------:|---------------------------------------------------------|
-|     Mon Bureau Numérique      |  3.7.14 | https://mobilite.monbureaunumerique.fr/mobilite         |
-|       Mon ENT Occitanie       |  3.7.14 | https://mobilite.mon-ent-occitanie.fr/mobilite          |
-|           Arsène 76           |  3.7.14 | https://mobilite.arsene76.fr/mobilite                   |
-|             ENT27             |  3.7.14 | https://mobilite.ent27.fr/mobilite                      |
-|          ENT Creuse           |  3.7.14 | https://mobilite.entcreuse.fr/mobilite                  |
-|   ENT Auvergne-Rhône-Alpes    |  3.7.14 | https://mobilite.ent.auvergnerhonealpes.fr/mobilite     |
-|           Agora 06            |  3.7.14 | https://mobilite.agora06.fr/mobilite                    |
-|       CyberCollèges 42        |  3.7.14 | https://mobilite.cybercolleges42.fr/mobilite            |
-|   eCollège 31 Haute-Garonne   |  3.7.14 | https://mobilite.ecollege.haute-garonne.fr/mobilite     |
-|   Mon collège en Val d'Oise   |  3.7.14 | https://mobilite.moncollege.valdoise.fr/mobilite        |
-| Webcollège Seine-Saint-Denis  |  3.7.14 | https://mobilite.webcollege.seinesaintdenis.fr/mobilite |
-|           Eclat-BFC           |  3.7.14 | https://mobilite.eclat-bfc.fr/mobilite                  |
-|          @ucollège84          |  3.7.14 | https://mobilite.aucollege84.vaucluse.fr/mobilite       |
-|      ENT Val de Marne         |  3.7.14 | https://mobilite.entvaldemarne.skolengo.com/mobilite    |
-|         Skolengo Demo         |  3.7.14 | https://mobilite.demo.skolengo.com/mobilite             |
-|            Skolengo           |  3.7.14 | https://mobilite.skolengo.com/mobilite                  |
-| Kosmos Éducation (aefe, etc.) |  3.7.14 | https://mobilite.kosmoseducation.com/mobilite           |
-|      Skolengo formation       |  3.7.14 | https://mobilite.formation.skolengo.com/mobilite        |
-|    Schulportal Ostbelgien     |  3.7.14 | https://mobilite.schulen.be/mobilite                    |
-
-Une autre méthode pour obtenir un token est d'utiliser la ligne de commande.
-
+Une autre méthode pour obtenir un token est d'utiliser la ligne de commande:
 ```shell
 npx kdecole-api -u USERNAME -p CODE --ent PROD_MON_BUREAU_NUMERIQUE
 ```
 
+<a name="Kdecole"></a>
+
+## Kdecole
 **Kind**: global class  
 
 * [Kdecole](#Kdecole)

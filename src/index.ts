@@ -33,6 +33,7 @@ export enum ApiUrl {
   PROD_DEMO_SKOLENGO = 'https://mobilite.demo.skolengo.com/mobilite',
   PROD_SKOLENGO_FORMATION = 'https://mobilite.formation.skolengo.com/mobilite',
   PROD_SKOLENGO = 'https://mobilite.skolengo.com/mobilite',
+  PROD_KOSMOS_EDUCATION_PDL = 'https://mobilite.pdl.kosmoseducation.com/mobilite',
   PROD_SCHULPORTAL_OSTBELGIEN = 'https://mobilite.schulen.be/mobilite',
   PROD_ENT_VAL_DE_MARNE = 'https://mobilite.entvaldemarne.skolengo.com/mobilite'
 }
@@ -56,7 +57,8 @@ export enum ApiVersion {
   PROD_SKOLENGO_FORMATION = '3.7.14',
   PROD_SKOLENGO = '3.7.14',
   PROD_SCHULPORTAL_OSTBELGIEN = '3.7.14',
-  PROD_ENT_VAL_DE_MARNE = '3.7.14'
+  PROD_ENT_VAL_DE_MARNE = '3.7.14',
+  PROD_KOSMOS_EDUCATION_PDL = '3.7.14'
 }
 
 export enum ApiName {
@@ -78,63 +80,25 @@ export enum ApiName {
   PROD_SCHULPORTAL_OSTBELGIEN = 'Schulportal Ostbelgien',
   PROD_ENT_VAL_DE_MARNE = 'ENT Val de Marne',
   PROD_DEMO_SKOLENGO = 'Skolengo Demo',
-  PROD_SKOLENGO_FORMATION = 'Skolengo formation'
+  PROD_SKOLENGO_FORMATION = 'Skolengo formation',
+  PROD_KOSMOS_EDUCATION_PDL = 'Skolengo Collèges et Lycées'
 }
 
-/**
- * Support non-officiel de l'API Kdecole (Mon Bureau Numérique, Skolengo, etc.)
- *
- * Ce module permet de récupérer les données de l'ENT de manière automatique. De plus, certaines fonctions implémentées permettent de prétraiter les données (conversion de l'emploi du temps au format iCalendar, export du relevé de notes au format CSV par exemple).
- *
- * L'accès à l'API requiert une en-tête (header) avec la version de l'application en cours d'utilisation.
- *
- * Le terme "code" ou "password" ne réfère pas ici à votre mot de passe, mais à un code temporaire généré par votre ENT (dans paramètres > application mobile). C'est comme cela que fonctionne l'authentification à l'API.
- *
- * Les versions à utiliser lors de la création de l'instance `Kdecole` sont données ci-dessous.
- *
- * |         Nom de l'ENT          | Version | URL de l'API                                            |
- * |:-----------------------------:|:-------:|---------------------------------------------------------|
- * |     Mon Bureau Numérique      |  3.7.14 | https://mobilite.monbureaunumerique.fr/mobilite         |
- * |       Mon ENT Occitanie       |  3.7.14 | https://mobilite.mon-ent-occitanie.fr/mobilite          |
- * |           Arsène 76           |  3.7.14 | https://mobilite.arsene76.fr/mobilite                   |
- * |             ENT27             |  3.7.14 | https://mobilite.ent27.fr/mobilite                      |
- * |          ENT Creuse           |  3.7.14 | https://mobilite.entcreuse.fr/mobilite                  |
- * |   ENT Auvergne-Rhône-Alpes    |  3.7.14 | https://mobilite.ent.auvergnerhonealpes.fr/mobilite     |
- * |           Agora 06            |  3.7.14 | https://mobilite.agora06.fr/mobilite                    |
- * |       CyberCollèges 42        |  3.7.14 | https://mobilite.cybercolleges42.fr/mobilite            |
- * |   eCollège 31 Haute-Garonne   |  3.7.14 | https://mobilite.ecollege.haute-garonne.fr/mobilite     |
- * |   Mon collège en Val d'Oise   |  3.7.14 | https://mobilite.moncollege.valdoise.fr/mobilite        |
- * | Webcollège Seine-Saint-Denis  |  3.7.14 | https://mobilite.webcollege.seinesaintdenis.fr/mobilite |
- * |           Eclat-BFC           |  3.7.14 | https://mobilite.eclat-bfc.fr/mobilite                  |
- * |          @ucollège84          |  3.7.14 | https://mobilite.aucollege84.vaucluse.fr/mobilite       |
- * |      ENT Val de Marne         |  3.7.14 | https://mobilite.entvaldemarne.skolengo.com/mobilite    |
- * |         Skolengo Demo         |  3.7.14 | https://mobilite.demo.skolengo.com/mobilite             |
- * |            Skolengo           |  3.7.14 | https://mobilite.skolengo.com/mobilite                  |
- * | Kosmos Éducation (aefe, etc.) |  3.7.14 | https://mobilite.kosmoseducation.com/mobilite           |
- * |      Skolengo formation       |  3.7.14 | https://mobilite.formation.skolengo.com/mobilite        |
- * |    Schulportal Ostbelgien     |  3.7.14 | https://mobilite.schulen.be/mobilite                    |
- *
- * Une autre méthode pour obtenir un token est d'utiliser la ligne de commande.
- *
- *```shell
- * npx kdecole-api -u USERNAME -p CODE --ent PROD_MON_BUREAU_NUMERIQUE
- * ```
- * @example ```js
- * const { Kdecole, ApiVersion, ApiUrl } = require('kdecole-api');
- *
- * const token = 'azertyuiopazertyuiopazertyuiopazertyuiopazertyuiopazertyuiopazertyuiopazertyuiopazertyuiopazertyuiopazertyuiopazertyuiopazert'
- * const user = new Kdecole(token, ApiVersion.PROD_MON_BUREAU_NUMERIQUE, 0, ApiUrl.PROD_MON_BUREAU_NUMERIQUE)
- * user.getInfoUtilisateur().then(infoUser => {
- *   console.log(`Jeton valide, connecté en tant que ${infoUser.nom}.`)
- * })
- * ```
- */
 export class Kdecole {
   /**
    * @param {string} authToken Le jeton d'accès
    * @param {ApiVersion|string} apiVersion La version de l'application mobile autorisée par l'API
    * @param {number} idEtablissement L'identifiant de l'établissement
    * @param {ApiUrl|string} apiURL L'URL de l'API Kdecole
+   * @example ```js
+   * const { Kdecole, ApiVersion, ApiUrl } = require('kdecole-api');
+   *
+   * const token = 'azertyuiopazertyuiopazertyuiopazertyuiopazertyuiopazertyuiopazertyuiopazertyuiopazertyuiopazertyuiopazertyuiopazertyuiopazert'
+   * const user = new Kdecole(token, ApiVersion.PROD_MON_BUREAU_NUMERIQUE, 0, ApiUrl.PROD_MON_BUREAU_NUMERIQUE)
+   * user.getInfoUtilisateur().then(infoUser => {
+   *   console.log(`Jeton valide, connecté en tant que ${infoUser.nom}.`)
+   * })
+   * ```
    */
   constructor (
     private readonly authToken: string,

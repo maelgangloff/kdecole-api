@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { ApiUrl, ApiVersion, Kdecole } from '../src/Kdecole'
+import { ApiUrl, ApiVersion, Kdecole } from '../src/index'
 import Actualite from '../src/entities/News/Actualite'
 import ContenuArticle from '../src/entities/News/ContenuArticle'
 

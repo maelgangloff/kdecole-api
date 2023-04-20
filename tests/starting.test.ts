@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { ApiVersion, ApiUrl, Kdecole } from '../src/Kdecole'
+import { ApiVersion, ApiUrl, Kdecole } from '../src/index'
 
 jest.mock('axios')
 const mockedAxios = axios as jest.Mocked<typeof axios> & jest.Mock<typeof axios>

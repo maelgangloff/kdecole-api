@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Releve from '../src/entities/Note/Releve'
-import { Kdecole, ApiUrl, ApiVersion } from '../src/Kdecole'
+import { Kdecole, ApiUrl, ApiVersion } from '../src/index'
 
 const authToken = '0AnemIFGvcORx88ESDrvIflY0qRV2ussl0n31tC5Sh2U6xDZJ0E3VrD1RYzrWGX3rYUZK4nI3wLnbxZYQi2sKXMrGbgxIuq2ewjOpRYfWLSP0mLFK3D3CZVu7Ev2s'
 const user = new Kdecole(authToken, ApiVersion.PROD_MON_BUREAU_NUMERIQUE, 10485)

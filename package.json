@@ -1,8 +1,8 @@
 {
   "name": "kdecole-api",
-  "version": "1.4.3",
-  "main": "dist/Kdecole.js",
-  "types": "types/Kdecole.d.ts",
+  "version": "1.4.4",
+  "main": "dist/index.js",
+  "types": "types/index.d.ts",
   "bin": {
     "kdecole": "bin/kdecole-api"
   },
@@ -32,7 +32,7 @@
     "build": "npx tsc -p tsconfig.json",
     "lint": "npx eslint src/ --ext .ts",
     "test": "npx jest",
-    "doc": "npx jsdoc2md -f dist/Kdecole.js > README.md"
+    "doc": "npx jsdoc2md --template docs/README.hbs -f dist/index.js  > README.md"
   },
   "repository": {
     "type": "git",

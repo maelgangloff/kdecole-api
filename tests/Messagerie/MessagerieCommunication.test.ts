@@ -1,6 +1,6 @@
 import axios from 'axios'
 import Communication from '../../src/entities/Messagerie/Communication'
-import { Kdecole, ApiVersion, ApiUrl } from '../../src/Kdecole'
+import { Kdecole, ApiVersion, ApiUrl } from '../../src/index'
 
 const authToken = '0AnemIFGvcORx88ESDrvIflY0qRV2ussl0n31tC5Sh2U6xDZJ0E3VrD1RYzrWGX3rYUZK4nI3wLnbxZYQi2sKXMrGbgxIuq2ewjOpRYfWLSP0mLFK3D3CZVu7Ev2s'
 const user = new Kdecole(authToken, ApiVersion.PROD_MON_BUREAU_NUMERIQUE, 10485)
