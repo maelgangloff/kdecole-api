@@ -9,5 +9,8 @@ module.exports = {
   testMatch: [
     '**/tests/**/*.test.ts'
   ],
-  testEnvironment: 'node'
+  testEnvironment: 'node',
+  moduleNameMapper: {
+    '^axios$': require.resolve('axios'),
+  },
 }
