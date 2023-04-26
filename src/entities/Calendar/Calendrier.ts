@@ -58,7 +58,7 @@ export default class Calendrier {
      * @returns {string} L'emploi du temps au format iCalendar
      */
   public toICalendar (weeks = 2, name = 'Emploi du temps'): string {
-    const convertDT = (d: Date): string => d.toISOString().replace(/[-:.]/g, '').replace('000Z', 'Z')
+    const convertDT = (d: Date): string => new Date(d).toISOString().replace(/[-:.]/g, '').slice(0, -4) + 'Z'
 
     const numberOfWeek = (d1: Date, d2: Date): number => ((d1.getTime() - d2.getTime()) / (7 * 24 * 60 * 60 * 1000))
 
