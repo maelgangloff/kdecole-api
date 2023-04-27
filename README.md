@@ -503,7 +503,7 @@ user.sendMessage(id, corpsMessage)
 <a name="Kdecole+gestionAppels"></a>
 
 ### kdecole.gestionAppels() ⇒ <code>Promise.&lt;GestionAppels&gt;</code>
-Retourne les feuilles d'appel.
+Retourne les feuilles d'appel
 
 **Kind**: instance method of [<code>Kdecole</code>](#Kdecole)  
 **Returns**: <code>Promise.&lt;GestionAppels&gt;</code> - Les feuilles d'appel.  
@@ -519,7 +519,7 @@ user.gestionAppels().then(gestionAppels => {
 <a name="Kdecole+validerAppel"></a>
 
 ### kdecole.validerAppel(appel) ⇒ <code>Promise.&lt;void&gt;</code>
-Valide l'appel de la classe.
+Valide l'appel de la classe
 
 **Kind**: instance method of [<code>Kdecole</code>](#Kdecole)  
 
