@@ -545,7 +545,7 @@ export class Kdecole {
   }
 
   /**
-   * Retourne les feuilles d'appel.
+   * Retourne les feuilles d'appel
    * @return {Promise<GestionAppels>} Les feuilles d'appel.
    * @example ```js
    * const { Kdecole } = require('kdecole-api')
@@ -561,7 +561,7 @@ export class Kdecole {
   }
 
   /**
-   * Valide l'appel de la classe.
+   * Valide l'appel de la classe
    * @return {Promise<void>}
    * @param appel L'appel à valider
    * @example ```js
