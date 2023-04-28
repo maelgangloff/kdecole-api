@@ -1,20 +1,30 @@
-name: NPM Publish
-
+name: Publish Package to npmjs
 on:
   release:
-    types: [created]
-
+    types: [published]
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
+    permissions:
+     contents: read
+     id-token: write
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: "16.x"
-          registry-url: "https://registry.npmjs.org"
-      - run: yarn install
-      - run: yarn build
-      - run: npm publish --access public
+          node-version: '18.x'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install Dependencies
+        run: yarn install
+
+      - name: Lint
+        run: npx eslint src/ --ext .ts
+
+      - name: Build
+        run: npx tsc
+
+      - name: Publish
+        run: npm publish --provenance --access public
         env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
