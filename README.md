@@ -5,6 +5,10 @@
 [![Discord](https://img.shields.io/discord/1095829734211977276?label=Discord&style=flat-square)](https://discord.gg/9u69mxsFT6)
 [![npm](https://img.shields.io/npm/dm/kdecole-api?style=flat-square)](https://npm-stat.com/charts.html?package=kdecole-api)
 
+<p align="center">
+  <img src="https://github.com/maelgangloff/kdecole-api/assets/51171251/16a21d6c-f8e0-4b6e-bc29-6634da1437a0" />
+</p>
+
 Support non officiel de l'API Kdecole  (Mon Bureau Numérique, Skolengo, etc.).
 
 Ce module permet de récupérer les données de l'ENT de manière automatique. De plus, certaines fonctions implémentées permettent de prétraiter les données (conversion de l'emploi du temps au format iCalendar, export du relevé de notes au format CSV par exemple).
@@ -60,33 +64,34 @@ npx kdecole-api -u USERNAME -p CODE --ent PROD_MON_BUREAU_NUMERIQUE
 ## Kdecole
 **Kind**: global class  
 
-* [Kdecole](#Kdecole)
-    * [new Kdecole(authToken, apiVersion, idEtablissement, apiURL)](#new_Kdecole_new)
-    * _instance_
-        * [.logout()](#Kdecole+logout) ⇒ <code>Promise.&lt;void&gt;</code>
-        * [.starting()](#Kdecole+starting) ⇒ <code>Promise.&lt;void&gt;</code>
-        * [.getReleve(idEleve)](#Kdecole+getReleve) ⇒ <code>Promise.&lt;Releve&gt;</code>
-        * [.getActualites(idEleve)](#Kdecole+getActualites) ⇒ <code>Promise.&lt;Array.&lt;Actualite&gt;&gt;</code>
-        * [.getContenuArticle(uid)](#Kdecole+getContenuArticle) ⇒ <code>Promise.&lt;ContenuArticle&gt;</code>
-        * [.getContenuInformation(uid)](#Kdecole+getContenuInformation) ⇒ <code>Promise.&lt;ContenuArticle&gt;</code>
-        * [.getTravailAFaire(idEleve, notBeforeDate)](#Kdecole+getTravailAFaire) ⇒ <code>Promise.&lt;TravailAFaire&gt;</code>
-        * [.getContenuActivite(uidSeance, uid, idEleve)](#Kdecole+getContenuActivite) ⇒ <code>Promise.&lt;ContenuActivite&gt;</code>
-        * [.setActiviteFinished(uidSeance, uid, flagRealise)](#Kdecole+setActiviteFinished) ⇒ <code>Promise.&lt;void&gt;</code>
-        * [.getAbsences(idEleve)](#Kdecole+getAbsences) ⇒ <code>Promise.&lt;AbsencesList&gt;</code>
-        * [.getInfoUtilisateur(idEleve)](#Kdecole+getInfoUtilisateur) ⇒ <code>Promise.&lt;Utilisateur&gt;</code>
-        * [.getCalendrier(idEleve)](#Kdecole+getCalendrier) ⇒ <code>Promise.&lt;Calendrier&gt;</code>
-        * [.getNotes(idEleve)](#Kdecole+getNotes) ⇒ <code>Promise.&lt;NotesList&gt;</code>
-        * [.getMessagerieInfo()](#Kdecole+getMessagerieInfo) ⇒ <code>Promise.&lt;MessageInfo&gt;</code>
-        * [.getMessagerieBoiteReception(pagination)](#Kdecole+getMessagerieBoiteReception) ⇒ <code>Promise.&lt;MessageBoiteReception&gt;</code>
-        * [.getCommunication(id)](#Kdecole+getCommunication) ⇒ <code>Promise.&lt;Communication&gt;</code>
-        * [.reportCommunication(id)](#Kdecole+reportCommunication) ⇒ <code>Promise.&lt;void&gt;</code>
-        * [.deleteCommunication(id)](#Kdecole+deleteCommunication) ⇒ <code>Promise.&lt;void&gt;</code>
-        * [.setCommunicationLu(id)](#Kdecole+setCommunicationLu) ⇒ <code>Promise.&lt;void&gt;</code>
-        * [.sendMessage(id, corpsMessage)](#Kdecole+sendMessage) ⇒ <code>Promise.&lt;void&gt;</code>
-        * [.gestionAppels()](#Kdecole+gestionAppels) ⇒ <code>Promise.&lt;GestionAppels&gt;</code>
-        * [.validerAppel(appel)](#Kdecole+validerAppel) ⇒ <code>Promise.&lt;void&gt;</code>
-    * _static_
-        * [.login(username, password, apiVersion, apiUrl)](#Kdecole.login) ⇒ <code>Promise.&lt;string&gt;</code>
+- [kdecole-api](#kdecole-api)
+  - [Remarques importantes:](#remarques-importantes)
+  - [Liste des ENT supportés :](#liste-des-ent-supportés-)
+  - [Kdecole](#kdecole)
+    - [new Kdecole(authToken, apiVersion, idEtablissement, apiURL)](#new-kdecoleauthtoken-apiversion-idetablissement-apiurl)
+    - [kdecole.logout() ⇒ Promise.\<void\>](#kdecolelogout--promisevoid)
+    - [kdecole.starting() ⇒ Promise.\<void\>](#kdecolestarting--promisevoid)
+    - [kdecole.getReleve(idEleve) ⇒ Promise.\<Releve\>](#kdecolegetreleveideleve--promisereleve)
+    - [kdecole.getActualites(idEleve) ⇒ Promise.\<Array.\<Actualite\>\>](#kdecolegetactualitesideleve--promisearrayactualite)
+    - [kdecole.getContenuArticle(uid) ⇒ Promise.\<ContenuArticle\>](#kdecolegetcontenuarticleuid--promisecontenuarticle)
+    - [kdecole.getContenuInformation(uid) ⇒ Promise.\<ContenuArticle\>](#kdecolegetcontenuinformationuid--promisecontenuarticle)
+    - [kdecole.getTravailAFaire(idEleve, notBeforeDate) ⇒ Promise.\<TravailAFaire\>](#kdecolegettravailafaireideleve-notbeforedate--promisetravailafaire)
+    - [kdecole.getContenuActivite(uidSeance, uid, idEleve) ⇒ Promise.\<ContenuActivite\>](#kdecolegetcontenuactiviteuidseance-uid-ideleve--promisecontenuactivite)
+    - [kdecole.setActiviteFinished(uidSeance, uid, flagRealise) ⇒ Promise.\<void\>](#kdecolesetactivitefinisheduidseance-uid-flagrealise--promisevoid)
+    - [kdecole.getAbsences(idEleve) ⇒ Promise.\<AbsencesList\>](#kdecolegetabsencesideleve--promiseabsenceslist)
+    - [kdecole.getInfoUtilisateur(idEleve) ⇒ Promise.\<Utilisateur\>](#kdecolegetinfoutilisateurideleve--promiseutilisateur)
+    - [kdecole.getCalendrier(idEleve) ⇒ Promise.\<Calendrier\>](#kdecolegetcalendrierideleve--promisecalendrier)
+    - [kdecole.getNotes(idEleve) ⇒ Promise.\<NotesList\>](#kdecolegetnotesideleve--promisenoteslist)
+    - [kdecole.getMessagerieInfo() ⇒ Promise.\<MessageInfo\>](#kdecolegetmessagerieinfo--promisemessageinfo)
+    - [kdecole.getMessagerieBoiteReception(pagination) ⇒ Promise.\<MessageBoiteReception\>](#kdecolegetmessagerieboitereceptionpagination--promisemessageboitereception)
+    - [kdecole.getCommunication(id) ⇒ Promise.\<Communication\>](#kdecolegetcommunicationid--promisecommunication)
+    - [kdecole.reportCommunication(id) ⇒ Promise.\<void\>](#kdecolereportcommunicationid--promisevoid)
+    - [kdecole.deleteCommunication(id) ⇒ Promise.\<void\>](#kdecoledeletecommunicationid--promisevoid)
+    - [kdecole.setCommunicationLu(id) ⇒ Promise.\<void\>](#kdecolesetcommunicationluid--promisevoid)
+    - [kdecole.sendMessage(id, corpsMessage) ⇒ Promise.\<void\>](#kdecolesendmessageid-corpsmessage--promisevoid)
+    - [kdecole.gestionAppels() ⇒ Promise.\<GestionAppels\>](#kdecolegestionappels--promisegestionappels)
+    - [kdecole.validerAppel(appel) ⇒ Promise.\<void\>](#kdecolevaliderappelappel--promisevoid)
+    - [Kdecole.login(username, password, apiVersion, apiUrl) ⇒ Promise.\<string\>](#kdecoleloginusername-password-apiversion-apiurl--promisestring)
 
 <a name="new_Kdecole_new"></a>
 
