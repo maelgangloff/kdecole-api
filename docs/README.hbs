@@ -6,7 +6,7 @@
 [![npm](https://img.shields.io/npm/dm/kdecole-api?style=flat-square)](https://npm-stat.com/charts.html?package=kdecole-api)
 
 <p align="center">
-  <img src="https://github.com/maelgangloff/kdecole-api/assets/51171251/347907f8-a89a-40a4-bd93-309d81646066" />
+  <img src="https://github.com/The-Rabbit-Team/.github/blob/master/banners/kdecole-api.png?raw=true" />
 </p>
 
 Support non officiel de l'API Kdecole  (Mon Bureau Numérique, Skolengo, etc.).
